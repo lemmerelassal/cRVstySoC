@@ -26,7 +26,7 @@ architecture behavioural of registerFile is
     signal registers, n_registers : registers_t := (others => (others => '0'));
     signal register_lock : std_logic_vector(31 downto 1);
 
-    type state_t is (IDLE, ACCESS_GRANTED);
+    type state_t is (SCAN_FOR_ACCESS_REQUEST, ACCESS_GRANTED);
     signal state, n_state : state_t;
 
     signal current_selection, access_grant, n_access_grant : std_logic_vector(7 downto 0);
@@ -43,7 +43,7 @@ begin
         set_register_value <= '0';
         n_access_grant <= access_grant;
         case state is
-            when IDLE =>
+            when SCAN_FOR_ACCESS_REQUEST =>
                 if (current_selection and access_request) = X"00" then
                     shift_selection <= '1';
                 else
@@ -53,7 +53,7 @@ begin
 
             when ACCESS_GRANTED =>
                 if access_stop = '1' then
-                    n_state <= IDLE;
+                    n_state <= SCAN_FOR_ACCESS_REQUEST;
                     shift_selection <= '1';
                 else
                     if (set_lock_status = '1') and (register_selected /= "00000") then
@@ -70,10 +70,10 @@ begin
     process(rst, clk)
     begin
         if rst = '1' then
-            state <= IDLE;
+            state <= SCAN_FOR_ACCESS_REQUEST;
             current_selection <= X"01";
             register_lock <= (others => '0');
-            registers <= (others => (others => '0'));
+            --registers <= (others => (others => '0'));
             access_grant <= (others => '0');
         elsif rising_edge(clk) then
             state <= n_state;
