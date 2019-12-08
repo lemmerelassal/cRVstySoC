@@ -38,9 +38,6 @@ end cpu;
 
 architecture behavioural of cpu is
 
-    type 
-
-
     signal pc, n_pc, pc_plus_imm_b, pc_plus_four, imm_i, imm_s, imm_b, imm_u, imm_j, instruction, n_instruction, ram_addr, reg_rs1, reg_rs2, reg_rd, n_reg_rd : std_logic_vector(31 downto 0); -- Program Counter
     
     -- Instruction fields
@@ -359,38 +356,4 @@ begin
     registerfile_access_request <= i_registerfile_access_request;
     interrupt_error <= i_interrupt_error;
     
-
-
-decode_b_type: process(funct3, reg_rs1, reg_rs2)
-begin
-    n_
-    case funct3 is
-        when "000" => -- BEQ
-            if signed(reg_rs1) = signed(reg_rs2) then
-                n_pc <= pc_plus_imm_b;
-            end if;
-        when "001" => -- BNE
-            if signed(reg_rs1) /= signed(reg_rs2) then
-                n_pc <= pc_plus_imm_b;
-            end if;
-        when "100" => -- BLT
-            if signed(reg_rs1) < signed(reg_rs2) then
-                n_pc <= pc_plus_imm_b;
-            end if;
-        when "101" => -- BGE
-            if signed(reg_rs1) >= signed(reg_rs2) then
-                n_pc <= pc_plus_imm_b;
-            end if;
-        when "110" => -- BLTU
-            if unsigned(reg_rs1) < unsigned(reg_rs2) then
-                n_pc <= pc_plus_imm_b;
-            end if;
-        when "111" => -- BGEU
-            if unsigned(reg_rs1) >= unsigned(reg_rs2) then
-                n_pc <= pc_plus_imm_b;
-            end if;
-        when others =>
-    end case;
-end process;
-
 end behavioural;

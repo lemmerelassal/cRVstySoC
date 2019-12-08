@@ -23,7 +23,6 @@ entity cpu is
     registerfile_access_request : out std_logic;
     registerfile_access_grant : in std_logic;
     registerfile_register_selection : out std_logic_vector(4 downto 0);
-    registerfile_register_selected : in std_logic_vector(4 downto 0);
     registerfile_set_lock_status, registerfile_set_lock_status_value, registerfile_set_value : out std_logic;
     registerfile_current_lock_status : in std_logic;
 
@@ -38,9 +37,6 @@ end cpu;
 
 architecture behavioural of cpu is
 
-    type 
-
-
     signal pc, n_pc, pc_plus_imm_b, pc_plus_four, imm_i, imm_s, imm_b, imm_u, imm_j, instruction, n_instruction, ram_addr, reg_rs1, reg_rs2, reg_rd, n_reg_rd : std_logic_vector(31 downto 0); -- Program Counter
     
     -- Instruction fields
@@ -48,7 +44,7 @@ architecture behavioural of cpu is
     signal rs1, rs2, rd : std_logic_vector(4 downto 0);
     signal funct3 : std_logic_vector(2 downto 0);
 
-    type state_t is (FETCH, PREDECODE, ADD_IMM_B_TO_PC, S_GET_RS2, DECODE, WRITEBACK, GIVE_UP_REGISTERFILE, EXCEPTION);
+    type state_t is (FETCH, PREDECODE, GET_RS1_OR_RS2, S_GET_RS2, DECODE, WRITEBACK, GIVE_UP_REGISTERFILE, EXCEPTION);
     signal state, n_state : state_t;
 
     -- Opcodes
@@ -117,40 +113,84 @@ begin
                     n_state <= PREDECODE;
                 end if;
             
+            when PREDECODE =>
+
+                n_registerfile_access_request <= '1';
+
+                if registerfile_access_grant = '1' then
+                    n_registerfile_access_stop <= '0';
+                    n_state <= GET_RS1_OR_RS2;
+                end if;
+
+            when GET_RS1_OR_RS2 =>
+                if instruction_properties(HAS_RS1) = '1' then
+                    registerfile_register_selection <= rs1;
+                    if registerfile_current_lock_status = '0' then    
+                        set_reg_rs1 <= '1';
+                        if instruction_properties(HAS_RS2) = '0' then
+                            n_state <= DECODE;
+                        else
+                            n_state <= S_GET_RS2;
+                        end if;
+                    else
+                        n_state <= GIVE_UP_REGISTERFILE;
+                    end if;
+                elsif instruction_properties(HAS_RS2) = '1' then
+                    registerfile_register_selection <= rs2;
+                    if registerfile_current_lock_status = '0' then
+                        set_reg_rs2 <= '1';
+                        n_state <= DECODE;
+                    else
+                        n_state <= GIVE_UP_REGISTERFILE;
+                    end if;
+                else
+                    n_state <= DECODE;
+                end if;
+
+            when S_GET_RS2 =>
+                registerfile_register_selection <= rs2;
+                if registerfile_current_lock_status = '0' then
+                    set_reg_rs2 <= '1';
+                    n_state <= DECODE;
+                else
+                    n_state <= GIVE_UP_REGISTERFILE;
+                end if;
 
             when DECODE =>
+                n_pc <= pc_plus_four;
+                increment_pc <= '1';
+                if instruction_properties(HAS_RD) = '1' then
+                    n_state <= WRITEBACK;
+                else
+                    n_state <= GIVE_UP_REGISTERFILE;
+                end if;
+
                 case opcode is
                     when B_TYPE =>
                         case funct3 is
                             when "000" => -- BEQ
                                 if signed(reg_rs1) = signed(reg_rs2) then
                                     n_pc <= pc_plus_imm_b;
-                                    n_state <= FETCH;
                                 end if;
                             when "001" => -- BNE
                                 if signed(reg_rs1) /= signed(reg_rs2) then
                                     n_pc <= pc_plus_imm_b;
-                                    n_state <= FETCH;
                                 end if;
                             when "100" => -- BLT
                                 if signed(reg_rs1) < signed(reg_rs2) then
                                     n_pc <= pc_plus_imm_b;
-                                    n_state <= FETCH;
                                 end if;
                             when "101" => -- BGE
                                 if signed(reg_rs1) >= signed(reg_rs2) then
                                     n_pc <= pc_plus_imm_b;
-                                    n_state <= FETCH;
                                 end if;
                             when "110" => -- BLTU
                                 if unsigned(reg_rs1) < unsigned(reg_rs2) then
                                     n_pc <= pc_plus_imm_b;
-                                    n_state <= FETCH;
                                 end if;
                             when "111" => -- BGEU
                                 if unsigned(reg_rs1) >= unsigned(reg_rs2) then
                                     n_pc <= pc_plus_imm_b;
-                                    n_state <= FETCH;
                                 end if;
                             when others =>
                         end case;
@@ -359,38 +399,4 @@ begin
     registerfile_access_request <= i_registerfile_access_request;
     interrupt_error <= i_interrupt_error;
     
-
-
-decode_b_type: process(funct3, reg_rs1, reg_rs2)
-begin
-    n_
-    case funct3 is
-        when "000" => -- BEQ
-            if signed(reg_rs1) = signed(reg_rs2) then
-                n_pc <= pc_plus_imm_b;
-            end if;
-        when "001" => -- BNE
-            if signed(reg_rs1) /= signed(reg_rs2) then
-                n_pc <= pc_plus_imm_b;
-            end if;
-        when "100" => -- BLT
-            if signed(reg_rs1) < signed(reg_rs2) then
-                n_pc <= pc_plus_imm_b;
-            end if;
-        when "101" => -- BGE
-            if signed(reg_rs1) >= signed(reg_rs2) then
-                n_pc <= pc_plus_imm_b;
-            end if;
-        when "110" => -- BLTU
-            if unsigned(reg_rs1) < unsigned(reg_rs2) then
-                n_pc <= pc_plus_imm_b;
-            end if;
-        when "111" => -- BGEU
-            if unsigned(reg_rs1) >= unsigned(reg_rs2) then
-                n_pc <= pc_plus_imm_b;
-            end if;
-        when others =>
-    end case;
-end process;
-
 end behavioural;
