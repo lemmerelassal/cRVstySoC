@@ -363,7 +363,6 @@ begin
 
 decode_b_type: process(funct3, reg_rs1, reg_rs2)
 begin
-    n_
     case funct3 is
         when "000" => -- BEQ
             if signed(reg_rs1) = signed(reg_rs2) then

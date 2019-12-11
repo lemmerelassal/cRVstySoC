@@ -6,7 +6,7 @@ use IEEE.std_logic_unsigned.all;
 entity registerFile is
   Port (
     rst, clk : in std_logic;
-    access_request : in std_logic_vector(7 downto 0);
+    --access_request : in std_logic_vector(7 downto 0);
     access_grant : out std_logic_vector(7 downto 0);
 
     register_selection_0 : in std_logic_vector(4 downto 0);
@@ -86,7 +86,11 @@ architecture behavioural of registerFile is
     attribute noprune: boolean; attribute noprune of data_in_r: signal is true;
 
 
+    signal access_request : std_logic_vector(7 downto 0);
+
 begin
+
+    access_request <= we_7 & we_6 & we_5 & we_4 & we_3 & we_2 & we_1 & we_0;
 
     process(state, current_selection, access_request,  i_access_grant)
     begin
@@ -236,14 +240,14 @@ begin
         end if;
     end process;
 
-    data_out_0 <= registers(to_integer(unsigned(register_selection_0r)));-- when register_selection_0r /= "00000" else (others => '0');
-    data_out_1 <= registers(to_integer(unsigned(register_selection_1r)));-- when register_selection_1r /= "00000" else (others => '0');
-    data_out_2 <= registers(to_integer(unsigned(register_selection_2r)));-- when register_selection_2r /= "00000" else (others => '0');
-    data_out_3 <= registers(to_integer(unsigned(register_selection_3r)));-- when register_selection_3r /= "00000" else (others => '0');
-    data_out_4 <= registers(to_integer(unsigned(register_selection_4r)));-- when register_selection_4r /= "00000" else (others => '0');
-    data_out_5 <= registers(to_integer(unsigned(register_selection_5r)));-- when register_selection_5r /= "00000" else (others => '0');
-    data_out_6 <= registers(to_integer(unsigned(register_selection_6r)));-- when register_selection_6r /= "00000" else (others => '0');
-    data_out_7 <= registers(to_integer(unsigned(register_selection_7r)));-- when register_selection_7r /= "00000" else (others => '0');
+    data_out_0 <= registers(to_integer(unsigned(register_selection_0r))) when register_selection_0r /= "00000" else data_in_0;
+    data_out_1 <= registers(to_integer(unsigned(register_selection_1r))) when register_selection_1r /= "00000" else data_in_1;
+    data_out_2 <= registers(to_integer(unsigned(register_selection_2r))) when register_selection_2r /= "00000" else data_in_2;
+    data_out_3 <= registers(to_integer(unsigned(register_selection_3r))) when register_selection_3r /= "00000" else data_in_3;
+    data_out_4 <= registers(to_integer(unsigned(register_selection_4r))) when register_selection_4r /= "00000" else data_in_4;
+    data_out_5 <= registers(to_integer(unsigned(register_selection_5r))) when register_selection_5r /= "00000" else data_in_5;
+    data_out_6 <= registers(to_integer(unsigned(register_selection_6r))) when register_selection_6r /= "00000" else data_in_6;
+    data_out_7 <= registers(to_integer(unsigned(register_selection_7r))) when register_selection_7r /= "00000" else data_in_7;
 
     access_grant <= i_access_grant;
 

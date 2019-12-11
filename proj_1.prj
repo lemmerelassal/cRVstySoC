@@ -1,10 +1,11 @@
 #--  Synopsys, Inc.
 #--  Version O-2018.09M-SP1-1
 #--  Project file D:\FPGA\H13D\proj_1.prj
-#--  Written on Mon Nov 18 12:28:49 2019
+#--  Written on Tue Dec 10 16:05:14 2019
 
 
 #project files
+add_file -vhdl -lib work "hdl/cpu_new.vhd"
 
 
 
@@ -31,7 +32,7 @@ set_option -use_fsm_explorer 0
 set_option -distributed_compile 0
 
 # mapper_without_write_options
-set_option -frequency auto
+set_option -frequency 500.000000
 set_option -srs_instrumentation 1
 
 # mapper_options
@@ -51,10 +52,10 @@ set_option -low_power_ram_decomp 0
 set_option -seqshift_to_uram 1
 set_option -disable_io_insertion 0
 set_option -opcond COMTC
-set_option -retiming 0
+set_option -retiming 1
 set_option -report_path 4000
 set_option -update_models_cp 0
-set_option -preserve_registers 0
+set_option -preserve_registers 1
 set_option -disable_ramindex 0
 set_option -rep_clkint_driver 1
 set_option -microsemi_enhanced_flow 1
