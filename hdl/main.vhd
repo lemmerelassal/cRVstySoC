@@ -7,19 +7,21 @@ entity main is
   Port (
     rst, clk : in std_logic;
 
+    gpio : out std_logic_vector(31 downto 0)
+
     -- Instruction memory bus
-    inst_width : out std_logic_vector(1 downto 0); -- "00" -> 1 byte, "01" -> 2 bytes, "10" -> 4 bytes, "11" -> invalid / 8 bytes for RV64
-    inst_addr : out std_logic_vector(31 downto 0);
-    inst_rdata : in std_logic_vector(31 downto 0);
-    inst_re : out std_logic;
-    inst_rdy : in std_logic;
+    -- inst_width : out std_logic_vector(1 downto 0); -- "00" -> 1 byte, "01" -> 2 bytes, "10" -> 4 bytes, "11" -> invalid / 8 bytes for RV64
+    -- inst_addr : out std_logic_vector(31 downto 0);
+    -- inst_rdata : in std_logic_vector(31 downto 0);
+    -- inst_re : out std_logic;
+    -- inst_rdy : in std_logic;
 
     -- Data memory bus
-    data_width : out std_logic_vector(1 downto 0); -- "00" -> 1 byte, "01" -> 2 bytes, "10" -> 4 bytes, "11" -> invalid / 8 bytes for RV64
-    data_addr, data_wdata : out std_logic_vector(31 downto 0);
-    data_rdata : in std_logic_vector(31 downto 0);
-    data_re, data_we : out std_logic;
-    data_rdy, data_wack : in std_logic
+    -- data_width : out std_logic_vector(1 downto 0); -- "00" -> 1 byte, "01" -> 2 bytes, "10" -> 4 bytes, "11" -> invalid / 8 bytes for RV64
+    -- data_addr, data_wdata : out std_logic_vector(31 downto 0);
+    -- data_rdata : in std_logic_vector(31 downto 0);
+    -- data_re, data_we : out std_logic;
+    -- data_rdy, data_wack : in std_logic
 
   );
 end main;
@@ -112,18 +114,44 @@ architecture behavioural of main is
           registerfile_register_selected : in std_logic_vector(4 downto 0);
           registerfile_wdata : out std_logic_vector(32 downto 0);
           registerfile_rdata : in std_logic_vector(32 downto 0);
-          registerfile_we : out std_logic --;
+          registerfile_we : out std_logic;
+
+          err : out std_logic
               
           --interrupt_error, exec_done : out std_logic
         );
       end component;
 
+      component block_ram PORT ( 
+        clk : in std_logic;
+        data_in : in std_logic_vector(31 downto 0);
+        data_addr : in std_logic_vector(9 downto 0);
+        inst_addr : in std_logic_vector(9 downto 0);
+        we : in std_logic;
+        instr_out : out std_logic_vector(31 downto 0);
+        data_out : out std_logic_vector(31 downto 0)
+    );
+    end component;
+
 signal register_selection_0, register_selected_0 : std_logic_vector(4 downto 0);
 signal data_out_0, data_in_0 : std_logic_vector(32 downto 0);
-signal we_0 : std_logic;
+signal we_0, data_we, data_re, inst_re, inst_rdy, data_rdy, data_wack : std_logic;
 
+signal data_wdata, data_addr, inst_addr, inst_rdata, data_rdata : std_logic_vector(31 downto 0);
+
+signal inst_width, data_width : std_logic_vector(1 downto 0);
 
 begin
+
+  inst_rdy <= '1';
+  data_rdy <= '1';
+  data_wack <= '1';
+
+  gpio <= data_wdata;
+
+    ram: block_ram PORT MAP (
+      clk => clk, data_in => data_wdata, data_addr => data_addr(9 downto 0), inst_addr => inst_addr(9 downto 0), we => data_we, instr_out => inst_rdata, data_out => data_rdata
+    );
 
     cpu0: cpu PORT MAP (
         rst => rst, clk => clk,
