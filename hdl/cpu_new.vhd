@@ -93,6 +93,8 @@ architecture behavioural of cpu is
     signal dwe : std_logic_vector(127 downto 0) := (others => '0'); -- data_we
     signal selected : std_logic_vector(127 downto 0) := (others => '0'); -- data_we
 
+    signal shift_rs1_left, shift_rs1_right_arithmetic, shift_rs1_right_logical, update_rs1_from_rd : std_logic_vector(127 downto 0) := (others => '0');
+
 
     type word_t is array (natural range <>) of std_logic_vector(31 downto 0);
     signal next_pc : word_t(127 downto 0) := (others => (others => '0'));
@@ -100,6 +102,7 @@ architecture behavioural of cpu is
     signal imm : word_t(127 downto 0) := (others => (others => '0'));
     signal wdata : word_t(127 downto 0) := (others => (others => '0'));
     signal daddr : word_t(127 downto 0) := (others => (others => '0'));
+
 
 begin
 
@@ -208,7 +211,7 @@ begin
 
             when WRITEBACK =>
                 registerfile_register_selection <= rd;
-                registerfile_wdata <= '0' & result_r; --result(to_integer(unsigned(opcode)));
+                registerfile_wdata <= '0' & result(to_integer(unsigned(opcode)));
                 registerfile_we <= '1';
                 if (registerfile_register_selected = rd) and (registerfile_rdata(32) = '0') and (registerfile_rdata(31 downto 0) = result(to_integer(unsigned(opcode)))) then
                     n_state <= INCREMENT_PC;
@@ -256,6 +259,22 @@ begin
                 reg_rs1 <= registerfile_rdata(31 downto 0);
             end if;
 
+            if update_rs1_from_rd(to_integer(unsigned(opcode))) = '1' then
+                reg_rs1 <= result(to_integer(unsigned(opcode)));
+            end if;
+
+            -- if shift_rs1_left(to_integer(unsigned(opcode))) = '1' then
+            --     reg_rs1 <= reg_rs1(30 downto 0) & '0';
+            -- end if;
+
+            -- if shift_rs1_right_arithmetic(to_integer(unsigned(opcode))) = '1' then
+            --     reg_rs1 <= reg_rs1(31) & reg_rs1(31 downto 1);
+            -- end if;
+
+            -- if shift_rs1_right_logical(to_integer(unsigned(opcode))) = '1' then
+            --     reg_rs1 <= '0' & reg_rs1(31 downto 1);
+            -- end if;
+
             if set_rs2 = '1' then
                 reg_rs2 <= registerfile_rdata(31 downto 0);
             end if;
@@ -273,7 +292,7 @@ begin
         result(to_integer(unsigned(S_TYPE))) <= imm_s;
         use_rs1(to_integer(unsigned(S_TYPE))) <= '1';
         use_rs2(to_integer(unsigned(S_TYPE))) <= '1';
-        next_pc(to_integer(unsigned(S_TYPE))) <= pc + X"00000001";
+        next_pc(to_integer(unsigned(S_TYPE))) <= pc + X"00000004";
         execution_done(to_integer(unsigned(S_TYPE))) <= data_wack;
         decode_error(to_integer(unsigned(S_TYPE))) <= '0';
 
@@ -289,7 +308,7 @@ begin
         use_rs1(to_integer(unsigned(I_TYPE_LOAD))) <= '1';
         use_rd(to_integer(unsigned(I_TYPE_LOAD))) <= '1';
 
-        next_pc(to_integer(unsigned(I_TYPE_LOAD))) <= pc + X"00000001";
+        next_pc(to_integer(unsigned(I_TYPE_LOAD))) <= pc + X"00000004";
         execution_done(to_integer(unsigned(I_TYPE_LOAD))) <= data_rdy;
         decode_error(to_integer(unsigned(I_TYPE_LOAD))) <= '0';
 
@@ -320,7 +339,7 @@ begin
         imm(to_integer(unsigned(U_TYPE_LUI))) <= imm_u;
         result(to_integer(unsigned(U_TYPE_LUI))) <= imm_u;
         use_rd(to_integer(unsigned(U_TYPE_LUI))) <= '1';
-        next_pc(to_integer(unsigned(U_TYPE_LUI))) <= pc + X"00000001";
+        next_pc(to_integer(unsigned(U_TYPE_LUI))) <= pc + X"00000004";
         execution_done(to_integer(unsigned(U_TYPE_LUI))) <= '1';
         decode_error(to_integer(unsigned(U_TYPE_LUI))) <= '0';
     end process;
@@ -330,7 +349,7 @@ begin
         imm(to_integer(unsigned(U_TYPE_AUIPC))) <= imm_u;
         use_rd(to_integer(unsigned(U_TYPE_AUIPC))) <= '1';
         result(to_integer(unsigned(U_TYPE_AUIPC))) <= pc + imm_u;
-        next_pc(to_integer(unsigned(U_TYPE_AUIPC))) <= pc + ("00" & imm_u(31 downto 2));
+        next_pc(to_integer(unsigned(U_TYPE_AUIPC))) <= pc + imm_u;
         execution_done(to_integer(unsigned(U_TYPE_AUIPC))) <= '1';
         decode_error(to_integer(unsigned(U_TYPE_AUIPC))) <= '0';
     end process;
@@ -339,8 +358,8 @@ begin
     begin
         imm(to_integer(unsigned(J_TYPE_JAL))) <= imm_j;
         use_rd(to_integer(unsigned(J_TYPE_JAL))) <= '1';
-        result(to_integer(unsigned(J_TYPE_JAL))) <= pc + X"00000001";
-        next_pc(to_integer(unsigned(J_TYPE_JAL))) <= pc + ("00" & imm_j(31 downto 2));
+        result(to_integer(unsigned(J_TYPE_JAL))) <= pc + X"00000004";
+        next_pc(to_integer(unsigned(J_TYPE_JAL))) <= pc + imm_j;
         execution_done(to_integer(unsigned(J_TYPE_JAL))) <= '1';
         decode_error(to_integer(unsigned(J_TYPE_JAL))) <= '0';
     end process;
@@ -350,7 +369,7 @@ begin
         imm(to_integer(unsigned(J_TYPE_JALR))) <= imm_j;
         use_rd(to_integer(unsigned(J_TYPE_JALR))) <= '1';
         use_rs1(to_integer(unsigned(J_TYPE_JALR))) <= '1';
-        result(to_integer(unsigned(J_TYPE_JALR))) <= pc + X"00000001";
+        result(to_integer(unsigned(J_TYPE_JALR))) <= pc + X"00000004";
         next_pc(to_integer(unsigned(J_TYPE_JALR))) <= (pc + reg_rs1) and X"FFFFFFFE";
         execution_done(to_integer(unsigned(J_TYPE_JALR))) <= '1';
         decode_error(to_integer(unsigned(J_TYPE_JALR))) <= '0';
@@ -364,7 +383,7 @@ begin
         result(to_integer(unsigned(B_TYPE))) <= (others => '0');
         use_rs1(to_integer(unsigned(B_TYPE))) <= '1';
         use_rs2(to_integer(unsigned(B_TYPE))) <= '1';
-        next_pc(to_integer(unsigned(B_TYPE))) <= pc + X"00000001";
+        next_pc(to_integer(unsigned(B_TYPE))) <= pc + X"00000004";
 
         decode_error(to_integer(unsigned(B_TYPE))) <= '0';
         execution_done(to_integer(unsigned(B_TYPE))) <= '1';
@@ -400,18 +419,23 @@ begin
     end process;
 
 
-    decode_r_type: process(selected(to_integer(unsigned(R_TYPE))), funct3, funct7, reg_rs1, reg_rs2, counter, pc) --clk, pc)
+    decode_r_type: process(selected(to_integer(unsigned(R_TYPE))), funct3, funct7, reg_rs1, reg_rs2, counter, pc, set_counter) --clk, pc)
     begin
         use_rs1(to_integer(unsigned(R_TYPE))) <= '1'; 
         use_rs2(to_integer(unsigned(R_TYPE))) <= '1'; 
         use_rd(to_integer(unsigned(R_TYPE))) <= '1';
-        next_pc(to_integer(unsigned(R_TYPE))) <= pc + X"00000001";
+        next_pc(to_integer(unsigned(R_TYPE))) <= pc + X"00000004";
         decode_error(to_integer(unsigned(R_TYPE))) <= '0';
         result(to_integer(unsigned(R_TYPE))) <= (others => '0');
 
 
         imm(to_integer(unsigned(R_TYPE))) <= reg_rs2;
 
+        update_rs1_from_rd(to_integer(unsigned(R_TYPE))) <= '0';
+
+        -- shift_rs1_left(to_integer(unsigned(R_TYPE))) <= '0';
+        -- shift_rs1_right_arithmetic(to_integer(unsigned(R_TYPE))) <= '0';
+        -- shift_rs1_right_logical(to_integer(unsigned(R_TYPE))) <= '0';
 
         --if selected(to_integer(unsigned(R_TYPE))) = '0' then
         --    execution_done(to_integer(unsigned(R_TYPE))) <= '0';
@@ -435,24 +459,18 @@ begin
 
                 when "001" => -- SLL
                     execution_done(to_integer(unsigned(R_TYPE))) <= '0';
+                    result(to_integer(unsigned(R_TYPE))) <= reg_rs1;
 
                     if counter = X"00000000" then
                         execution_done(to_integer(unsigned(R_TYPE))) <= '1';
-                    else
+                    elsif set_counter = '0' then
                         dec_counter(to_integer(unsigned(R_TYPE))) <= '1';
+                        --shift_rs1_left(to_integer(unsigned(R_TYPE))) <= '1';
+                        update_rs1_from_rd(to_integer(unsigned(R_TYPE))) <= '1';
+                        result(to_integer(unsigned(R_TYPE))) <= reg_rs1(30 downto 0) & '0';
                     end if;
-                    result(to_integer(unsigned(R_TYPE))) <= reg_rs1(30 downto 0) & '0';
 
---                    if instruction_details_array(to_integer(unsigned(R_TYPE))).counter = X"00000000" then
---                        result(to_integer(unsigned(R_TYPE))) <= reg_rs1;
---                    elsif instruction_details_array(to_integer(unsigned(R_TYPE))).counter < reg_rs2 then
---                        result(to_integer(unsigned(R_TYPE))) <= reg_rs1(30 downto 0) & '0';
---                        instruction_details_array(to_integer(unsigned(R_TYPE))).counter <= instruction_details_array(to_integer(unsigned(R_TYPE))).counter + X"00000001";
---                    end if;
 
---                    if instruction_details_array(to_integer(unsigned(R_TYPE))).counter = reg_rs2 then
---                        execution_done(to_integer(unsigned(R_TYPE))) <= '1';
---                    end if;
                     
                 when "010" => -- SLT
                     if signed(reg_rs1) < signed(reg_rs2) then
@@ -480,48 +498,30 @@ begin
                     case funct7 is
                         when "0000000" => -- SRL
                             execution_done(to_integer(unsigned(R_TYPE))) <= '0';
+                            result(to_integer(unsigned(R_TYPE))) <= reg_rs1;
 
                             if counter = X"00000000" then
                                 execution_done(to_integer(unsigned(R_TYPE))) <= '1';
-                            else
+                            elsif set_counter = '0' then
                                 dec_counter(to_integer(unsigned(R_TYPE))) <= '1';
+                                --shift_rs1_right_logical(to_integer(unsigned(R_TYPE))) <= '1';
+                                update_rs1_from_rd(to_integer(unsigned(R_TYPE))) <= '1';
+                                result(to_integer(unsigned(R_TYPE))) <= '0' & reg_rs1(31 downto 1);
                             end if;
-                            
-                            if counter = imm(to_integer(unsigned(R_TYPE))) then
-                                result(to_integer(unsigned(R_TYPE))) <= reg_rs1;
-                            else
-                                result(to_integer(unsigned(R_TYPE))) <=  '0' & result_r(31 downto 1);
-                            end if;
-
-                            --if unsigned(instruction_details_array(to_integer(unsigned(R_TYPE))).counter) < unsigned(reg_rs2) then
-                            --    result(to_integer(unsigned(R_TYPE))) <=  '0' & reg_rs1(31 downto 1);
-                            --    instruction_details_array(to_integer(unsigned(R_TYPE))).counter <= instruction_details_array(to_integer(unsigned(R_TYPE))).counter + X"00000001";
-                            --end if;
-        
-                            --if unsigned(instruction_details_array(to_integer(unsigned(R_TYPE))).counter) = unsigned(reg_rs2) then
-                            --    execution_done(to_integer(unsigned(R_TYPE))) <= '1';
-                            --end if;
 
                         when "0100000" => -- SRA
                             execution_done(to_integer(unsigned(R_TYPE))) <= '0';
 
                             if counter = X"00000000" then
                                 execution_done(to_integer(unsigned(R_TYPE))) <= '1';
-                            else
+                            elsif set_counter = '0' then
                                 dec_counter(to_integer(unsigned(R_TYPE))) <= '1';
+                                --shift_rs1_right_arithmetic(to_integer(unsigned(R_TYPE))) <= '1';
+                                update_rs1_from_rd(to_integer(unsigned(R_TYPE))) <= '1';
+                                result(to_integer(unsigned(R_TYPE))) <= reg_rs1(31) & reg_rs1(31 downto 1);
                             end if;
-                            result(to_integer(unsigned(R_TYPE))) <=  reg_rs1(31) & reg_rs1(31 downto 1);
+                            result(to_integer(unsigned(R_TYPE))) <=  reg_rs1;
 
-
-
-                            --if signed(instruction_details_array(to_integer(unsigned(R_TYPE))).counter) < signed(reg_rs2) then
-                            --    result(to_integer(unsigned(R_TYPE))) <=  '0' & reg_rs1(31 downto 1);
-                            --    instruction_details_array(to_integer(unsigned(R_TYPE))).counter <= instruction_details_array(to_integer(unsigned(R_TYPE))).counter + X"00000001";
-                            --end if;
-        
-                            --if signed(instruction_details_array(to_integer(unsigned(R_TYPE))).counter) = signed(reg_rs2) then
-                            --    execution_done(to_integer(unsigned(R_TYPE))) <= '1';
-                            --end if;
                         when others =>
                             decode_error(to_integer(unsigned(R_TYPE))) <= '1';
                     end case;
@@ -537,13 +537,13 @@ begin
         --end if;
     end process;
 
-    decode_i_type: process(selected(to_integer(unsigned(I_TYPE))), imm_i, funct3, funct7, counter, reg_rs1, pc) --clk, pc)
+    decode_i_type: process(selected(to_integer(unsigned(I_TYPE))), imm_i, funct3, funct7, counter, reg_rs1, pc, set_counter) --clk, pc)
     begin
         imm(to_integer(unsigned(I_TYPE))) <= imm_i;
 
         decode_error(to_integer(unsigned(I_TYPE))) <= '0';
         execution_done(to_integer(unsigned(I_TYPE))) <= '1';
-        next_pc(to_integer(unsigned(I_TYPE))) <= pc + X"00000001";
+        next_pc(to_integer(unsigned(I_TYPE))) <= pc + X"00000004";
 
         use_rs1(to_integer(unsigned(I_TYPE))) <= '1'; 
         use_rs2(to_integer(unsigned(I_TYPE))) <= '1'; 
@@ -553,6 +553,11 @@ begin
 
         dec_counter(to_integer(unsigned(I_TYPE))) <= '0';
 
+        -- shift_rs1_left(to_integer(unsigned(I_TYPE))) <= '0';
+        -- shift_rs1_right_arithmetic(to_integer(unsigned(I_TYPE))) <= '0';
+        -- shift_rs1_right_logical(to_integer(unsigned(I_TYPE))) <= '0';
+
+        update_rs1_from_rd(to_integer(unsigned(I_TYPE))) <= '0';
 
         -- if selected(to_integer(unsigned(I_TYPE))) = '0' then
         --     execution_done(to_integer(unsigned(I_TYPE))) <= '0';
@@ -571,21 +576,12 @@ begin
 
                             if counter = X"00000000" then
                                 execution_done(to_integer(unsigned(I_TYPE))) <= '1';
-                            else
+                            elsif set_counter = '0' then
+                                shift_rs1_left(to_integer(unsigned(I_TYPE))) <= '1';
                                 dec_counter(to_integer(unsigned(I_TYPE))) <= '1';
                             end if;
-                            result(to_integer(unsigned(I_TYPE))) <=  reg_rs1(30 downto 0) & '0';
+                            result(to_integer(unsigned(I_TYPE))) <=  reg_rs1;
 
-                            --if instruction_details_array(to_integer(unsigned(I_TYPE))).counter = X"00000000" then
-                            --    result(to_integer(unsigned(I_TYPE))) <= reg_rs1;
-                            --elsif instruction_details_array(to_integer(unsigned(I_TYPE))).counter < imm_i then
-                            --    result(to_integer(unsigned(I_TYPE))) <= reg_rs1(30 downto 0) & '0';
-                            --    instruction_details_array(to_integer(unsigned(I_TYPE))).counter <= instruction_details_array(to_integer(unsigned(I_TYPE))).counter + X"00000001";
-                            --end if;
-
-                            --if instruction_details_array(to_integer(unsigned(I_TYPE))).counter = imm_i then
-                            --    execution_done(to_integer(unsigned(I_TYPE))) <= '1';
-                            --end if;
                         when others =>
                             decode_error(to_integer(unsigned(I_TYPE))) <= '1';
                     end case;
@@ -616,42 +612,33 @@ begin
                         when "0000000" => -- SRLI
 
                             execution_done(to_integer(unsigned(I_TYPE))) <= '0';
+                            result(to_integer(unsigned(I_TYPE))) <=  reg_rs1;
 
                             if counter = X"00000000" then
                                 execution_done(to_integer(unsigned(I_TYPE))) <= '1';
-                            else
+                            elsif set_counter = '0' then
                                 dec_counter(to_integer(unsigned(I_TYPE))) <= '1';
+                                update_rs1_from_rd(to_integer(unsigned(I_TYPE))) <= '1';
+                                --shift_rs1_right_logical(to_integer(unsigned(I_TYPE))) <= '1';
+                                result(to_integer(unsigned(I_TYPE))) <= '0' & reg_rs1(31 downto 1);
                             end if;
-                            result(to_integer(unsigned(I_TYPE))) <=  '0' & reg_rs1(31 downto 1);
 
-                            --if unsigned(instruction_details_array(to_integer(unsigned(I_TYPE))).counter) < unsigned(imm_i) then
-                            --    result(to_integer(unsigned(I_TYPE))) <=  '0' & reg_rs1(31 downto 1);
-                            --    instruction_details_array(to_integer(unsigned(I_TYPE))).counter <= instruction_details_array(to_integer(unsigned(I_TYPE))).counter + X"00000001";
-                            --end if;
-
-                            --if unsigned(instruction_details_array(to_integer(unsigned(I_TYPE))).counter) = unsigned(imm_i) then
-                            --    execution_done(to_integer(unsigned(I_TYPE))) <= '1';
-                            --end if;
 
                         when "0100000" => -- SRAI
 
                             execution_done(to_integer(unsigned(I_TYPE))) <= '0';
+                            result(to_integer(unsigned(I_TYPE))) <=  reg_rs1;
 
                             if counter = X"00000000" then
                                 execution_done(to_integer(unsigned(I_TYPE))) <= '1';
-                            else
+                            elsif set_counter = '0' then
                                 dec_counter(to_integer(unsigned(I_TYPE))) <= '1';
+                                update_rs1_from_rd(to_integer(unsigned(I_TYPE))) <= '1';
+                                result(to_integer(unsigned(I_TYPE))) <= reg_rs1(31) & reg_rs1(31 downto 1);
+                                --shift_rs1_right_arithmetic(to_integer(unsigned(I_TYPE))) <= '1';
                             end if;
-                            result(to_integer(unsigned(I_TYPE))) <=  reg_rs1(31) & reg_rs1(31 downto 1);
+                            
 
-                            --if signed(instruction_details_array(to_integer(unsigned(I_TYPE))).counter) < signed(imm_i) then
-                            --    result(to_integer(unsigned(I_TYPE))) <=  '0' & reg_rs1(31 downto 1);
-                            --    instruction_details_array(to_integer(unsigned(I_TYPE))).counter <= instruction_details_array(to_integer(unsigned(I_TYPE))).counter + X"00000001";
-                            --end if;
-
-                            --if signed(instruction_details_array(to_integer(unsigned(I_TYPE))).counter) = signed(imm_i) then
-                            --    execution_done(to_integer(unsigned(I_TYPE))) <= '1';
-                            --end if;
                         when others =>
                             decode_error(to_integer(unsigned(I_TYPE))) <= '1';
                     end case;

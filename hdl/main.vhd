@@ -150,7 +150,7 @@ begin
   gpio <= data_wdata;
 
     ram: block_ram PORT MAP (
-      clk => clk, data_in => data_wdata, data_addr => data_addr(9 downto 0), inst_addr => inst_addr(9 downto 0), we => data_we, instr_out => inst_rdata, data_out => data_rdata
+      clk => clk, data_in => data_wdata, data_addr => data_addr(11 downto 2), inst_addr => inst_addr(11 downto 2), we => data_we, instr_out => inst_rdata, data_out => data_rdata
     );
 
     cpu0: cpu PORT MAP (
