@@ -34,7 +34,10 @@ entity cpu is
     registerfile_rdata : in std_logic_vector(32 downto 0);
     registerfile_we : out std_logic;
 
-    err : out std_logic
+    err : out std_logic --;
+
+    -- state_out : out std_logic_vector(2 downto 0);
+    -- instr_out : out std_logic_vector(31 downto 0)
         
     --interrupt_error, exec_done : out std_logic
   );
@@ -88,10 +91,10 @@ architecture behavioural of cpu is
     signal use_rs1 : std_logic_vector(127 downto 0) := (others => '0');
     signal use_rs2 : std_logic_vector(127 downto 0) := (others => '0');
     signal use_rd : std_logic_vector(127 downto 0) := (others => '0');
-    signal execution_done : std_logic_vector(127 downto 0) := (others => '0');
+    signal execution_done : std_logic_vector(127 downto 0) := (others => '1');
     signal dec_counter : std_logic_vector(127 downto 0) := (others => '0');
     signal dwe : std_logic_vector(127 downto 0) := (others => '0'); -- data_we
-    signal selected : std_logic_vector(127 downto 0) := (others => '0'); -- data_we
+    signal selected : std_logic_vector(127 downto 0) := (others => '0');
 
     signal shift_rs1_left, shift_rs1_right_arithmetic, shift_rs1_right_logical, update_rs1_from_rd : std_logic_vector(127 downto 0) := (others => '0');
 
@@ -103,8 +106,46 @@ architecture behavioural of cpu is
     signal wdata : word_t(127 downto 0) := (others => (others => '0'));
     signal daddr : word_t(127 downto 0) := (others => (others => '0'));
 
+    signal state_out : std_logic_vector(2 downto 0);
+
+    signal i_inst_addr, i_data_wdata, i_data_addr : std_logic_vector(31 downto 0);
+    signal i_data_we, i_data_re : std_logic;
+
+    component ila_0 PORT (
+      clk : in std_logic;
+      probe2, probe3, probe4, probe5, probe6, probe7, probe8 : in std_logic_vector(31 downto 0);
+      probe0, probe9, probe10 : in std_logic;
+      probe1 : in std_logic_vector(2 downto 0);
+      probe11, probe12 : in std_logic_vector(127 downto 0)
+    );
+    end component;
 
 begin
+    i_inst_addr <= pc;
+    inst_addr <= i_inst_addr;
+    data_wdata <= i_data_wdata;
+    data_re <= i_data_re;
+    data_we <= i_data_we;
+    data_addr <= i_data_addr;
+
+    ila: ila_0 PORT MAP(
+      clk => clk,
+      probe0 => rst,
+      probe1 => state_out,
+      probe2 => pc,
+      probe3 => i_inst_addr,
+      probe4 => inst_rdata,
+      probe5 => instruction,
+      probe6 => counter,
+      probe7 => i_data_wdata,
+      probe8 => i_data_addr,
+      probe9 => i_data_we,
+      probe10 => i_data_re,
+      probe11 => selected,
+      probe12 => execution_done
+    );
+
+
 
     funct7 <= instruction(31 downto 25);
     rs2 <= instruction(24 downto 20);
@@ -114,13 +155,13 @@ begin
     opcode <= instruction(6 downto 0);
 
     data_width <= instruction_details_array(to_integer(unsigned(opcode))).data_width;
-    data_addr <= daddr(to_integer(unsigned(opcode)));
-    data_wdata <= wdata(to_integer(unsigned(opcode)));
-    data_re <= instruction_details_array(to_integer(unsigned(opcode))).data_re;
-    data_we <= dwe(to_integer(unsigned(opcode)));
+    i_data_addr <= daddr(to_integer(unsigned(opcode)));
+    i_data_wdata <= wdata(to_integer(unsigned(opcode)));
+    i_data_re <= instruction_details_array(to_integer(unsigned(opcode))).data_re;
+    i_data_we <= dwe(to_integer(unsigned(opcode)));
 
 
-   
+
     fsm: process(state, instruction_details_array, pc, inst_rdy, opcode, rd, rs1, rs2, registerfile_register_selected, registerfile_rdata, decode_error, use_rs1, use_rs2, use_rd, execution_done, next_pc, result)
     begin
         n_state <= state;
@@ -131,7 +172,6 @@ begin
         registerfile_register_selection <= (others => '0');
         inst_width <= "10";
         inst_re <= '0';
-        inst_addr <= (others => '0');
         set_rs1 <= '0';
         set_rs2 <= '0';
         reset_instruction <= '0';
@@ -142,12 +182,11 @@ begin
 
         set_counter <= '0';
 
+        state_out <= "000";
         selected <= (others => '0');
-
 
         case state is
             when FETCH_INSTRUCTION =>
-                inst_addr <= pc;
                 inst_width <= "10";
                 set_instruction <= '1';
                 if inst_rdy = '1' then
@@ -155,6 +194,7 @@ begin
                     n_state <= WAIT_UNTIL_RD_UNLOCKED;
                 end if;
             when WAIT_UNTIL_RD_UNLOCKED =>
+                state_out <= "001";
                 set_counter <= '1';
                 if use_rd(to_integer(unsigned(opcode))) = '1' then
                     registerfile_register_selection <= rd;
@@ -178,6 +218,7 @@ begin
                 end if;
 
             when FETCH_RS1 =>
+                state_out <= "010";
                 registerfile_register_selection <= rs1;
                 set_rs1 <= '1';
 
@@ -190,6 +231,7 @@ begin
                 end if;
 
             when FETCH_RS2 =>
+                state_out <= "011";
                 registerfile_register_selection <= rs2;
                 if (registerfile_register_selected = rs2) and (registerfile_rdata(32) = '0') then
                     set_rs2 <= '1';
@@ -197,6 +239,7 @@ begin
                 end if;
             
             when EXECUTE =>
+                state_out <= "100";
                 selected(to_integer(unsigned(opcode))) <= '1';
 
                 if execution_done(to_integer(unsigned(opcode))) = '1' then
@@ -210,6 +253,7 @@ begin
                 end if;
 
             when WRITEBACK =>
+                state_out <= "101";
                 registerfile_register_selection <= rd;
                 registerfile_wdata <= '0' & result(to_integer(unsigned(opcode)));
                 registerfile_we <= '1';
@@ -218,10 +262,12 @@ begin
                 end if;
 
             when INCREMENT_PC =>
+                state_out <= "110";
                 reset_instruction <= '1';
                 n_pc <= next_pc(to_integer(unsigned(opcode)));
                 n_state <= FETCH_INSTRUCTION;
             when PANIC =>
+                state_out <= "111";
                 err <= '1';
             when others =>
                 n_state <= FETCH_INSTRUCTION;
@@ -286,7 +332,7 @@ begin
     n_counter <= imm(to_integer(unsigned(opcode))) when set_counter = '1' else counter - X"00000001" when decrement_counter = '1' else counter;
 
 
-    decode_store: process(imm_s, pc, reg_rs1, reg_rs2, data_wack, funct3, selected)
+    decode_store: process(imm_s, pc, reg_rs1, reg_rs2, data_wack, funct3, selected(to_integer(unsigned(S_TYPE))))
     begin
         imm(to_integer(unsigned(S_TYPE))) <= imm_s;
         result(to_integer(unsigned(S_TYPE))) <= imm_s;
@@ -334,13 +380,14 @@ begin
 
     end process;
 
+    execution_done(55) <= '1';
     decode_lui: process(imm_u, pc)
     begin
         imm(to_integer(unsigned(U_TYPE_LUI))) <= imm_u;
         result(to_integer(unsigned(U_TYPE_LUI))) <= imm_u;
         use_rd(to_integer(unsigned(U_TYPE_LUI))) <= '1';
         next_pc(to_integer(unsigned(U_TYPE_LUI))) <= pc + X"00000004";
-        execution_done(to_integer(unsigned(U_TYPE_LUI))) <= '1';
+        --execution_done(to_integer(unsigned(U_TYPE_LUI))) <= '1';
         decode_error(to_integer(unsigned(U_TYPE_LUI))) <= '0';
     end process;
 
@@ -354,13 +401,14 @@ begin
         decode_error(to_integer(unsigned(U_TYPE_AUIPC))) <= '0';
     end process;
 
+    execution_done(111) <= '1';
     decode_jal: process(imm_j, pc)
     begin
         imm(to_integer(unsigned(J_TYPE_JAL))) <= imm_j;
         use_rd(to_integer(unsigned(J_TYPE_JAL))) <= '1';
         result(to_integer(unsigned(J_TYPE_JAL))) <= pc + X"00000004";
         next_pc(to_integer(unsigned(J_TYPE_JAL))) <= pc + imm_j;
-        execution_done(to_integer(unsigned(J_TYPE_JAL))) <= '1';
+        --execution_done(to_integer(unsigned(J_TYPE_JAL))) <= '1';
         decode_error(to_integer(unsigned(J_TYPE_JAL))) <= '0';
     end process;
 
