@@ -4,6 +4,8 @@ use IEEE.NUMERIC_STD.ALL;
 use IEEE.std_logic_unsigned.all;
 
 entity cpu is
+    generic (entry_point : std_logic_vector(31 downto 0) := X"80000800");
+
   Port (
     rst, clk : in std_logic;
 
@@ -69,7 +71,7 @@ architecture behavioural of cpu is
     signal funct3 : std_logic_vector(2 downto 0);
 
 
-    signal imm_i, imm_s, imm_b, imm_u, imm_j : std_logic_vector(31 downto 0);
+    signal imm_i, imm_s, imm_b, imm_u, imm_j, imm_jalr : std_logic_vector(31 downto 0);
 
     constant R_TYPE         : std_logic_vector(6 downto 0) := "0110011"; -- Register/Register (ADD, ...)
     constant I_TYPE         : std_logic_vector(6 downto 0) := "0010011"; -- Register/Immediate (ADDI, ...)
@@ -281,7 +283,7 @@ begin
             instruction <= (others => '0');
             reg_rs1 <= (others => '0');
             reg_rs2 <= (others => '0');
-            pc <= (others => '0');
+            pc <= entry_point;
             counter <= (others => '0');
             result_r <= (others => '0');
         elsif rising_edge(clk) then
@@ -396,7 +398,7 @@ begin
         imm(to_integer(unsigned(U_TYPE_AUIPC))) <= imm_u;
         use_rd(to_integer(unsigned(U_TYPE_AUIPC))) <= '1';
         result(to_integer(unsigned(U_TYPE_AUIPC))) <= pc + imm_u;
-        next_pc(to_integer(unsigned(U_TYPE_AUIPC))) <= pc + imm_u;
+        next_pc(to_integer(unsigned(U_TYPE_AUIPC))) <= pc + X"00000004";
         execution_done(to_integer(unsigned(U_TYPE_AUIPC))) <= '1';
         decode_error(to_integer(unsigned(U_TYPE_AUIPC))) <= '0';
     end process;
@@ -412,13 +414,13 @@ begin
         decode_error(to_integer(unsigned(J_TYPE_JAL))) <= '0';
     end process;
 
-    decode_jalr: process(reg_rs1, pc, imm_j)
+    decode_jalr: process(reg_rs1, pc, imm_jalr)
     begin
-        imm(to_integer(unsigned(J_TYPE_JALR))) <= imm_j;
+        imm(to_integer(unsigned(J_TYPE_JALR))) <= imm_jalr;
         use_rd(to_integer(unsigned(J_TYPE_JALR))) <= '1';
         use_rs1(to_integer(unsigned(J_TYPE_JALR))) <= '1';
         result(to_integer(unsigned(J_TYPE_JALR))) <= pc + X"00000004";
-        next_pc(to_integer(unsigned(J_TYPE_JALR))) <= (pc + reg_rs1) and X"FFFFFFFE";
+        next_pc(to_integer(unsigned(J_TYPE_JALR))) <= (imm_jalr + reg_rs1) and X"FFFFFFFE"; --(pc + reg_rs1) and X"FFFFFFFE";
         execution_done(to_integer(unsigned(J_TYPE_JALR))) <= '1';
         decode_error(to_integer(unsigned(J_TYPE_JALR))) <= '0';
     end process;
@@ -740,6 +742,10 @@ begin
         imm_j(10 downto 5) <= instruction(30 downto 25);
         imm_j(4 downto 1) <= instruction(24 downto 21);
         imm_j(0) <= '0';
+
+        -- JALR
+        imm_jalr <= (others => '0');
+        imm_jalr(11 downto 0) <= instruction(31 downto 20);
 
     end process;
 
