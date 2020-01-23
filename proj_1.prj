@@ -1,11 +1,18 @@
 #--  Synopsys, Inc.
 #--  Version O-2018.09M-SP1-1
 #--  Project file D:\FPGA\H13D\proj_1.prj
-#--  Written on Tue Dec 10 16:05:14 2019
+#--  Written on Wed Jan 22 17:14:30 2020
 
 
 #project files
 add_file -vhdl -lib work "hdl/cpu_new.vhd"
+add_file -vhdl -lib work "hdl/gpio.vhd"
+add_file -vhdl -lib work "hdl/main.vhd"
+add_file -vhdl -lib work "hdl/ram.vhd"
+add_file -vhdl -lib work "hdl/rom.vhd"
+add_file -vhdl -lib work "hdl/registerfile.vhd"
+add_file -vhdl -lib work "hdl/timebase.vhd"
+add_file -vhdl -lib work "hdl/uart.vhd"
 
 
 
@@ -26,7 +33,7 @@ set_option -speed_grade STD
 set_option -part_companion ""
 
 #compilation/mapping options
-set_option -use_fsm_explorer 0
+set_option -use_fsm_explorer 1
 
 # hdl_compiler_options
 set_option -distributed_compile 0

@@ -111,6 +111,7 @@ begin
                 mem_rdy <= 'Z';
                 mem_wack <= 'Z';
                 if (mem_we = '1' or mem_re = '1') and (address_valid = '1') then
+                    n_rdata <= (others => '0');
                     mem_rdy <= '0';
                     mem_wack <= '0';
                     start_fsm <= '1';

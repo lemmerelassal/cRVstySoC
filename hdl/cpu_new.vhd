@@ -156,14 +156,6 @@ begin
     rd <= instruction(11 downto 7);
     opcode <= instruction(6 downto 0);
 
-    data_width <= instruction_details_array(to_integer(unsigned(opcode))).data_width;
-    i_data_addr <= daddr(to_integer(unsigned(opcode)));
-    i_data_wdata <= wdata(to_integer(unsigned(opcode)));
-    i_data_re <= instruction_details_array(to_integer(unsigned(opcode))).data_re;
-    i_data_we <= dwe(to_integer(unsigned(opcode)));
-
-
-
     fsm: process(state, instruction_details_array, pc, inst_rdy, opcode, rd, rs1, rs2, registerfile_register_selected, registerfile_rdata, decode_error, use_rs1, use_rs2, use_rd, execution_done, next_pc, result)
     begin
         n_state <= state;
@@ -186,6 +178,13 @@ begin
 
         state_out <= "000";
         selected <= (others => '0');
+
+
+        data_width <= (others => '0');
+        i_data_addr <= (others => '0');
+        i_data_wdata <= (others => '0');
+        i_data_re <= '0';
+        i_data_we <= '0';
 
         case state is
             when FETCH_INSTRUCTION =>
@@ -241,6 +240,13 @@ begin
                 end if;
             
             when EXECUTE =>
+
+                data_width <= instruction_details_array(to_integer(unsigned(opcode))).data_width;
+                i_data_addr <= daddr(to_integer(unsigned(opcode)));
+                i_data_wdata <= wdata(to_integer(unsigned(opcode)));
+                i_data_re <= instruction_details_array(to_integer(unsigned(opcode))).data_re;
+                i_data_we <= dwe(to_integer(unsigned(opcode)));
+
                 state_out <= "100";
                 selected(to_integer(unsigned(opcode))) <= '1';
 
@@ -255,6 +261,14 @@ begin
                 end if;
 
             when WRITEBACK =>
+
+            data_width <= instruction_details_array(to_integer(unsigned(opcode))).data_width;
+            i_data_addr <= daddr(to_integer(unsigned(opcode)));
+            i_data_wdata <= wdata(to_integer(unsigned(opcode)));
+            i_data_re <= instruction_details_array(to_integer(unsigned(opcode))).data_re;
+            i_data_we <= dwe(to_integer(unsigned(opcode)));
+
+
                 state_out <= "101";
                 registerfile_register_selection <= rd;
                 registerfile_wdata <= '0' & result(to_integer(unsigned(opcode)));
@@ -361,9 +375,17 @@ begin
         decode_error(to_integer(unsigned(I_TYPE_LOAD))) <= '0';
 
         daddr(to_integer(unsigned(I_TYPE_LOAD))) <= reg_rs1 + imm_i;
-        instruction_details_array(to_integer(unsigned(I_TYPE_LOAD))).data_re <= '1';
+        --if state = EXECUTE then
+            instruction_details_array(to_integer(unsigned(I_TYPE_LOAD))).data_re <= '1';
+        --else
+        --    instruction_details_array(to_integer(unsigned(I_TYPE_LOAD))).data_re <= '0';
+        --end if;
 
         result(to_integer(unsigned(I_TYPE_LOAD))) <= data_rdata;
+
+        instruction_details_array(to_integer(unsigned(I_TYPE_LOAD))).data_width <= funct3(1 downto 0);
+
+
         if(funct3(2) = '0') then
             case funct3(1 downto 0) is
                 when "00" =>

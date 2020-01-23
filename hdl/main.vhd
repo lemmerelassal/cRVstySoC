@@ -155,6 +155,15 @@ architecture behavioural of main is
     );
     end component; 
 
+    component timebase PORT (
+        rst, clk : in std_logic;
+        mem_addr, mem_wdata : in std_logic_vector(31 downto 0);
+        mem_rdata : out std_logic_vector(31 downto 0);
+        mem_we, mem_re : in std_logic;
+        mem_wack, mem_rdy : out std_logic
+      );
+    end component;
+
 
     component rom PORT (
       rst, clk : in std_logic;
@@ -216,6 +225,21 @@ begin
       mem_wack => mem_wack, mem_rdy => mem_rdy
     );
 
+    i_timebase: timebase PORT MAP (
+      rst => rst, clk => clk,
+      mem_addr => mem_addr, mem_wdata => mem_wdata,
+      mem_rdata => mem_rdata,
+      mem_we => mem_we, mem_re => mem_re,
+      mem_wack => mem_wack, mem_rdy => mem_rdy
+    );
+
+    mem_addr <= (others => 'L');
+    mem_wdata <= (others => 'L');
+    mem_rdata <= (others => 'L');
+    mem_we <= 'L';
+    mem_re <= 'L';
+    mem_wack <= 'L';
+    mem_rdy <= 'L';
 
 --    ram: block_ram PORT MAP (
 --      clk => clk, data_in => data_wdata, data_addr => data_addr(11 downto 2), inst_addr => inst_addr(11 downto 2), we => ram_we, 
