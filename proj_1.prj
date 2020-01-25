@@ -1,18 +1,18 @@
 #--  Synopsys, Inc.
 #--  Version O-2018.09M-SP1-1
 #--  Project file D:\FPGA\H13D\proj_1.prj
-#--  Written on Wed Jan 22 17:14:30 2020
+#--  Written on Sat Jan 25 14:45:07 2020
 
 
 #project files
 add_file -vhdl -lib work "hdl/cpu_new.vhd"
 add_file -vhdl -lib work "hdl/gpio.vhd"
-add_file -vhdl -lib work "hdl/main.vhd"
 add_file -vhdl -lib work "hdl/ram.vhd"
 add_file -vhdl -lib work "hdl/rom.vhd"
 add_file -vhdl -lib work "hdl/registerfile.vhd"
 add_file -vhdl -lib work "hdl/timebase.vhd"
 add_file -vhdl -lib work "hdl/uart.vhd"
+add_file -vhdl -lib work "hdl/main.vhd"
 
 
 

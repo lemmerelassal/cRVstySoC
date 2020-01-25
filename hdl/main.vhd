@@ -3,6 +3,8 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 use IEEE.std_logic_unsigned.all;
 
+use work.mylibrary.all;
+
 entity main is
   Port (
     --rst, clk : in std_logic;
@@ -192,11 +194,32 @@ signal data_wdata, data_addr, inst_addr, inst_rdata, data_rdata : std_logic_vect
 
 signal inst_width, mem_width : std_logic_vector(1 downto 0);
 
-signal ce_ram, ce_gpio, ram_we, rst, clk, i_clk : std_logic;
+signal rst, clk : std_logic;
 
 signal mem_addr, mem_wdata, mem_rdata, int_gpio : std_logic_vector(31 downto 0);
 signal mem_rdy, mem_wack, mem_we, mem_re : std_logic;
 
+---------------------------------------------------------------------------
+-- Peripherals
+---------------------------------------------------------------------------
+
+constant PERIPHERAL_RAM : integer := 0;
+constant PERIPHERAL_TIMEBASE : integer := 1;
+constant PERIPHERAL_UART : integer := 2;
+constant PERIPHERAL_GPIO : integer := 3;
+constant PERIPHERAL_MAX : integer := 4;
+
+signal i_mem_rdy, i_mem_wack : std_logic_vector(PERIPHERAL_MAX-1 downto 0);
+type mem_rdata_t is array (natural range <>) of std_logic_vector(31 downto 0);
+type addr_t is array (natural range <>) of std_logic_vector(19 downto 0);
+
+signal i_mem_rdata : mem_rdata_t(PERIPHERAL_MAX-1 downto 0) := (others => (others => '0'));
+signal addr : addr_t(PERIPHERAL_MAX-1 downto 0) := (
+  PERIPHERAL_RAM => X"80000",
+  PERIPHERAL_TIMEBASE => X"C0000",
+  PERIPHERAL_UART => X"C0001",
+  PERIPHERAL_GPIO => X"C0002",
+  others => (others => '0'));
 
 begin
 
@@ -220,26 +243,19 @@ begin
       rst => rst, clk => clk,
       txd => uart_rxd_out,
       mem_addr => mem_addr, mem_wdata => mem_wdata,
-      mem_rdata => mem_rdata,
+      mem_rdata => i_mem_rdata(PERIPHERAL_UART),
       mem_we => mem_we, mem_re => mem_re,
-      mem_wack => mem_wack, mem_rdy => mem_rdy
+      mem_wack => i_mem_wack(PERIPHERAL_UART), mem_rdy => i_mem_rdy(PERIPHERAL_UART)
     );
 
     i_timebase: timebase PORT MAP (
       rst => rst, clk => clk,
       mem_addr => mem_addr, mem_wdata => mem_wdata,
-      mem_rdata => mem_rdata,
+      mem_rdata => i_mem_rdata(PERIPHERAL_TIMEBASE),
       mem_we => mem_we, mem_re => mem_re,
-      mem_wack => mem_wack, mem_rdy => mem_rdy
+      mem_wack => i_mem_wack(PERIPHERAL_TIMEBASE), mem_rdy => i_mem_rdy(PERIPHERAL_TIMEBASE)
     );
 
-    mem_addr <= (others => 'L');
-    mem_wdata <= (others => 'L');
-    mem_rdata <= (others => 'L');
-    mem_we <= 'L';
-    mem_re <= 'L';
-    mem_wack <= 'L';
-    mem_rdy <= 'L';
 
 --    ram: block_ram PORT MAP (
 --      clk => clk, data_in => data_wdata, data_addr => data_addr(11 downto 2), inst_addr => inst_addr(11 downto 2), we => ram_we, 
@@ -250,10 +266,10 @@ begin
     ram: block_ram PORT MAP(
       rst => rst, clk => clk,
       mem_addr => mem_addr, mem_wdata => mem_wdata,
-      mem_rdata => mem_rdata,
-      mem_we => mem_we, mem_re => mem_re,
       mem_width => mem_width,
-      mem_rdy => mem_rdy, mem_wack => mem_wack
+      mem_rdata => i_mem_rdata(PERIPHERAL_RAM),
+      mem_we => mem_we, mem_re => mem_re,
+      mem_wack => i_mem_wack(PERIPHERAL_RAM), mem_rdy => i_mem_rdy(PERIPHERAL_RAM)
     );
 
     myrom: rom PORT MAP( 
@@ -364,14 +380,14 @@ begin
       -- end process;
 
 
-      process(rst, CLK100MHZ)
-      begin
-        if rst = '1' then
-          i_clk <= '0';
-        elsif rising_edge(CLK100MHZ) then
-          i_clk <= not i_clk;
-        end if;
-      end process;
+      -- process(rst, CLK100MHZ)
+      -- begin
+      --   if rst = '1' then
+      --     i_clk <= '0';
+      --   elsif rising_edge(CLK100MHZ) then
+      --     i_clk <= not i_clk;
+      --   end if;
+      -- end process;
 
       --process(rst, i_clk)
       --begin
@@ -385,5 +401,21 @@ begin
       clk <= CLK100MHZ;
 
 led(3 downto 0) <= int_gpio(3 downto 0);
+
+process(mem_addr, addr, i_mem_rdata, i_mem_rdy, i_mem_wack)
+begin
+  mem_rdata <= (others => '0');
+  mem_rdy <= '0';
+  mem_wack <= '0';
+  for i in PERIPHERAL_MAX-1 downto 0 loop
+    if mem_addr(31 downto 12) = addr(i) then
+      mem_rdata <= i_mem_rdata(i);
+      mem_rdy <= i_mem_rdy(i);
+      mem_wack <= i_mem_wack(i);
+    end if;
+  end loop;
+end process;
+
+
 
 end behavioural;

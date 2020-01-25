@@ -3,7 +3,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.std_logic_unsigned.all;
 
 entity gpio is
-  generic (base_address : std_logic_vector(31 downto 0) := X"C0000008");
+  generic (base_address : std_logic_vector(31 downto 0) := X"C0002000");
   Port (
     rst, clk : in std_logic;
     mem_addr, mem_wdata : in std_logic_vector(31 downto 0);

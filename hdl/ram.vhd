@@ -12,7 +12,7 @@ use IEEE.NUMERIC_STD.ALL; -- for unsigned()
 entity block_ram is
 	generic (
         base_address : std_logic_vector(31 downto 0) := X"80000000";
-		ram_size : std_logic_vector(31 downto 0) := X"00000800";
+		ram_size : std_logic_vector(31 downto 0) := X"00001000";
 		ram_file : string := "RAM.txt"
 	);
     port ( 

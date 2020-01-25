@@ -10,7 +10,7 @@ use std.textio.all;
 
 entity rom is
     generic (
-        base_address : std_logic_vector(31 downto 0) := X"80000800";
+        base_address : std_logic_vector(31 downto 0) := X"80001000";
 		rom_size : std_logic_vector(31 downto 0) := X"00020000";
 		rom_file : string := "ROM.txt"
 	);

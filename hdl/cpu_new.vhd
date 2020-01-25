@@ -4,7 +4,7 @@ use IEEE.NUMERIC_STD.ALL;
 use IEEE.std_logic_unsigned.all;
 
 entity cpu is
-    generic (entry_point : std_logic_vector(31 downto 0) := X"80000800");
+    generic (entry_point : std_logic_vector(31 downto 0) := X"80001000");
 
   Port (
     rst, clk : in std_logic;
@@ -122,6 +122,36 @@ architecture behavioural of cpu is
     );
     end component;
 
+
+    impure function DoShift (
+        value, shamt : std_logic_vector(31 downto 0); 
+        arithmetic_shift : boolean; 
+        shleft : boolean
+    ) return std_logic_vector is
+        variable result : std_logic_vector(31 downto 0);
+        variable appendbit : std_logic;
+        variable shamtint : integer range 0 to 32;
+    begin
+        result := value;
+        shamtint := to_integer(unsigned(shamt));
+        if arithmetic_shift = true then
+            appendbit := value(31);
+        else
+            appendbit := '0';
+        end if;
+
+        --while shamtint > 0 loop
+        for i in shamtint downto 0 loop
+            if shleft = true then
+                result := result(30 downto 0) & '0';
+            else
+                result := appendbit & result(31 downto 1);
+            end if;
+            --shamtint := shamtint - 1;
+        end loop;
+        return result;
+    end function;
+
 begin
     i_inst_addr <= pc;
     inst_addr <= i_inst_addr;
@@ -156,7 +186,7 @@ begin
     rd <= instruction(11 downto 7);
     opcode <= instruction(6 downto 0);
 
-    fsm: process(state, instruction_details_array, pc, inst_rdy, opcode, rd, rs1, rs2, registerfile_register_selected, registerfile_rdata, decode_error, use_rs1, use_rs2, use_rd, execution_done, next_pc, result)
+    fsm: process(state, instruction_details_array, pc, inst_rdy, opcode, rd, rs1, rs2, registerfile_register_selected, registerfile_rdata, decode_error, use_rs1, use_rs2, use_rd, execution_done, next_pc, result,daddr)
     begin
         n_state <= state;
         n_pc <= pc;
@@ -271,9 +301,9 @@ begin
 
                 state_out <= "101";
                 registerfile_register_selection <= rd;
-                registerfile_wdata <= '0' & result(to_integer(unsigned(opcode)));
+                registerfile_wdata <= '0' & result_r; --result(to_integer(unsigned(opcode)));
                 registerfile_we <= '1';
-                if (registerfile_register_selected = rd) and (registerfile_rdata(32) = '0') and (registerfile_rdata(31 downto 0) = result(to_integer(unsigned(opcode)))) then
+                if (registerfile_register_selected = rd) and (registerfile_rdata(32) = '0') and (registerfile_rdata(31 downto 0) = result_r) then --result(to_integer(unsigned(opcode)))) then
                     n_state <= INCREMENT_PC;
                 end if;
 
@@ -305,7 +335,9 @@ begin
 
             counter <= n_counter;
 
-            result_r <= result(to_integer(unsigned(opcode)));
+            if (execution_done(to_integer(unsigned(opcode))) = '1') and (state = EXECUTE) then
+                result_r <= result(to_integer(unsigned(opcode)));
+            end if;
 
             if set_instruction = '1' then
                 instruction <= inst_rdata;
@@ -415,13 +447,14 @@ begin
         decode_error(to_integer(unsigned(U_TYPE_LUI))) <= '0';
     end process;
 
+    execution_done(23) <= '1';
     decode_auipc: process(imm_u, pc)
     begin
         imm(to_integer(unsigned(U_TYPE_AUIPC))) <= imm_u;
         use_rd(to_integer(unsigned(U_TYPE_AUIPC))) <= '1';
         result(to_integer(unsigned(U_TYPE_AUIPC))) <= pc + imm_u;
         next_pc(to_integer(unsigned(U_TYPE_AUIPC))) <= pc + X"00000004";
-        execution_done(to_integer(unsigned(U_TYPE_AUIPC))) <= '1';
+        --execution_done(to_integer(unsigned(U_TYPE_AUIPC))) <= '1';
         decode_error(to_integer(unsigned(U_TYPE_AUIPC))) <= '0';
     end process;
 
@@ -436,6 +469,7 @@ begin
         decode_error(to_integer(unsigned(J_TYPE_JAL))) <= '0';
     end process;
 
+    execution_done(103) <= '1';
     decode_jalr: process(reg_rs1, pc, imm_jalr)
     begin
         imm(to_integer(unsigned(J_TYPE_JALR))) <= imm_jalr;
@@ -443,11 +477,11 @@ begin
         use_rs1(to_integer(unsigned(J_TYPE_JALR))) <= '1';
         result(to_integer(unsigned(J_TYPE_JALR))) <= pc + X"00000004";
         next_pc(to_integer(unsigned(J_TYPE_JALR))) <= (imm_jalr + reg_rs1) and X"FFFFFFFE"; --(pc + reg_rs1) and X"FFFFFFFE";
-        execution_done(to_integer(unsigned(J_TYPE_JALR))) <= '1';
+        --execution_done(to_integer(unsigned(J_TYPE_JALR))) <= '1';
         decode_error(to_integer(unsigned(J_TYPE_JALR))) <= '0';
     end process;
 
-    
+    execution_done(99) <= '1';
     decode_b_type: process(funct3, reg_rs1, reg_rs2, imm_b, pc)
     begin
         imm(to_integer(unsigned(B_TYPE))) <= imm_b;
@@ -458,7 +492,7 @@ begin
         next_pc(to_integer(unsigned(B_TYPE))) <= pc + X"00000004";
 
         decode_error(to_integer(unsigned(B_TYPE))) <= '0';
-        execution_done(to_integer(unsigned(B_TYPE))) <= '1';
+        --execution_done(to_integer(unsigned(B_TYPE))) <= '1';
 
         case funct3 is
             when "000" => -- BEQ
@@ -644,15 +678,17 @@ begin
                 when "001" =>
                     case funct7 is
                         when "0000000" => -- SLLI
-                            execution_done(to_integer(unsigned(I_TYPE))) <= '0';
+                            execution_done(to_integer(unsigned(I_TYPE))) <= '1';
 
-                            if counter = X"00000000" then
-                                execution_done(to_integer(unsigned(I_TYPE))) <= '1';
-                            elsif set_counter = '0' then
-                                shift_rs1_left(to_integer(unsigned(I_TYPE))) <= '1';
-                                dec_counter(to_integer(unsigned(I_TYPE))) <= '1';
-                            end if;
-                            result(to_integer(unsigned(I_TYPE))) <=  reg_rs1;
+                            -- if counter = X"00000000" then
+                            --     execution_done(to_integer(unsigned(I_TYPE))) <= '1';
+                            -- elsif set_counter = '0' then
+                            --     shift_rs1_left(to_integer(unsigned(I_TYPE))) <= '1';
+                            --     dec_counter(to_integer(unsigned(I_TYPE))) <= '1';
+                            -- end if;
+                            result(to_integer(unsigned(I_TYPE))) <= (others => '0'); --result(to_integer(unsigned(I_TYPE))) <=  DoShift(reg_rs1, imm_i, false, true);
+                            
+                            --reg_rs1;
 
                         when others =>
                             decode_error(to_integer(unsigned(I_TYPE))) <= '1';
