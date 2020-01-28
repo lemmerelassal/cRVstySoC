@@ -1,0 +1,71 @@
+
+Copyright (C) 1994-2019 Synopsys, Inc.
+This Synopsys software and all associated documentation are proprietary to Synopsys, Inc.
+and may only be used pursuant to the terms and conditions of a written license agreement
+with Synopsys, Inc. All other use, reproduction, modification, or distribution of the
+Synopsys software or the associated documentation is strictly prohibited.
+Tool: Synplify Pro (R)
+Build: O-2018.09M-SP1-1
+Install: C:\Microsemi\Libero_SoC_v12.2\SynplifyPro
+OS: Windows 6.2
+
+Hostname: DESKTOP-JOJSDSF
+
+Implementation : rev_1
+Synopsys HDL compiler and linker, Version comp2018q4p1, Build 221R, Built Apr 25 2019 09:13:02
+
+Modified Files: 10
+FID:  path (prevtimestamp, timestamp)
+16       C:\Microsemi\Libero_SoC_v12.2\SynplifyPro\lib\vhd\std_logic_textio.vhd (N/A, 2019-07-02 15:54:10)
+13       C:\Microsemi\Libero_SoC_v12.2\SynplifyPro\lib\vhd\std_textio.vhd (N/A, 2019-07-02 15:54:10)
+12       D:\FPGA\H13D\hdl\cpu_new.vhd (2020-01-27 19:28:12, 2020-01-28 12:55:01)
+27       D:\FPGA\H13D\hdl\gpio.vhd (N/A, 2020-01-25 14:52:38)
+9        D:\FPGA\H13D\hdl\main.vhd (N/A, 2020-01-25 17:57:41)
+14       D:\FPGA\H13D\hdl\ram.vhd (N/A, 2020-01-25 19:00:51)
+10       D:\FPGA\H13D\hdl\registerfile.vhd (N/A, 2019-12-13 14:08:49)
+17       D:\FPGA\H13D\hdl\rom.vhd (N/A, 2020-01-25 17:21:47)
+26       D:\FPGA\H13D\hdl\timebase.vhd (N/A, 2020-01-22 16:47:00)
+18       D:\FPGA\H13D\hdl\uart.vhd (N/A, 2020-01-26 17:53:48)
+
+*******************************************************************
+Modules that may have changed as a result of file changes: 8
+MID:  lib.cell.view
+6        work.block_ram.behavioral may have changed because the following files changed:
+                        D:\FPGA\H13D\hdl\main.vhd (N/A, 2020-01-25 17:57:41) <-- (may instantiate this module)
+                        D:\FPGA\H13D\hdl\ram.vhd (N/A, 2020-01-25 19:00:51) <-- (architecture and entity definition)
+0        work.cpu.behavioural may have changed because the following files changed:
+                        D:\FPGA\H13D\hdl\cpu_new.vhd (2020-01-27 19:28:12, 2020-01-28 12:55:01) <-- (architecture and entity definition)
+                        D:\FPGA\H13D\hdl\main.vhd (N/A, 2020-01-25 17:57:41) <-- (may instantiate this module)
+16       work.gpio.behavioural may have changed because the following files changed:
+                        D:\FPGA\H13D\hdl\gpio.vhd (N/A, 2020-01-25 14:52:38) <-- (architecture and entity definition)
+4        work.main.behavioural may have changed because the following files changed:
+                        D:\FPGA\H13D\hdl\main.vhd (N/A, 2020-01-25 17:57:41) <-- (architecture and entity definition)
+2        work.registerfile.behavioural may have changed because the following files changed:
+                        D:\FPGA\H13D\hdl\main.vhd (N/A, 2020-01-25 17:57:41) <-- (may instantiate this module)
+                        D:\FPGA\H13D\hdl\registerfile.vhd (N/A, 2019-12-13 14:08:49) <-- (architecture and entity definition)
+8        work.rom.behavioral may have changed because the following files changed:
+                        D:\FPGA\H13D\hdl\main.vhd (N/A, 2020-01-25 17:57:41) <-- (may instantiate this module)
+                        D:\FPGA\H13D\hdl\rom.vhd (N/A, 2020-01-25 17:21:47) <-- (architecture and entity definition)
+14       work.timebase.behavioural may have changed because the following files changed:
+                        D:\FPGA\H13D\hdl\main.vhd (N/A, 2020-01-25 17:57:41) <-- (may instantiate this module)
+                        D:\FPGA\H13D\hdl\timebase.vhd (N/A, 2020-01-22 16:47:00) <-- (architecture and entity definition)
+10       work.uart.behavioral may have changed because the following files changed:
+                        D:\FPGA\H13D\hdl\main.vhd (N/A, 2020-01-25 17:57:41) <-- (may instantiate this module)
+                        D:\FPGA\H13D\hdl\uart.vhd (N/A, 2020-01-26 17:53:48) <-- (architecture and entity definition)
+
+*******************************************************************
+Unmodified files: 9
+FID:  path (timestamp)
+0        C:\Microsemi\Libero_SoC_v12.2\SynplifyPro\lib\vhd\arith.vhd (2019-07-02 15:54:10)
+1        C:\Microsemi\Libero_SoC_v12.2\SynplifyPro\lib\vhd\hyperents.vhd (2019-07-02 15:54:10)
+2        C:\Microsemi\Libero_SoC_v12.2\SynplifyPro\lib\vhd\location.map (2019-07-02 15:54:10)
+3        C:\Microsemi\Libero_SoC_v12.2\SynplifyPro\lib\vhd\numeric.vhd (2019-07-02 15:54:10)
+4        C:\Microsemi\Libero_SoC_v12.2\SynplifyPro\lib\vhd\snps_haps_pkg.vhd (2019-07-02 15:54:10)
+5        C:\Microsemi\Libero_SoC_v12.2\SynplifyPro\lib\vhd\std.vhd (2019-07-02 15:54:10)
+6        C:\Microsemi\Libero_SoC_v12.2\SynplifyPro\lib\vhd\std1164.vhd (2019-07-02 15:54:10)
+7        C:\Microsemi\Libero_SoC_v12.2\SynplifyPro\lib\vhd\umr_capim.vhd (2019-07-02 15:54:10)
+8        C:\Microsemi\Libero_SoC_v12.2\SynplifyPro\lib\vhd\unsigned.vhd (2019-07-02 15:54:10)
+
+*******************************************************************
+Unchanged modules: 0
+MID:  lib.cell.view

@@ -1,0 +1,160 @@
+
+Copyright (C) 1994-2019 Synopsys, Inc.
+This Synopsys software and all associated documentation are proprietary to Synopsys, Inc.
+and may only be used pursuant to the terms and conditions of a written license agreement
+with Synopsys, Inc. All other use, reproduction, modification, or distribution of the
+Synopsys software or the associated documentation is strictly prohibited.
+Tool: Synplify Pro (R)
+Build: O-2018.09M-SP1-1
+Install: C:\Microsemi\Libero_SoC_v12.2\SynplifyPro
+OS: Windows 6.2
+
+Hostname: DESKTOP-JOJSDSF
+
+Implementation : rev_1
+Synopsys HDL Compiler, Version comp2018q4p1, Build 221R, Built Apr 25 2019 09:13:02
+
+@N|Running in 64-bit mode
+###########################################################[
+
+Copyright (C) 1994-2019 Synopsys, Inc.
+This Synopsys software and all associated documentation are proprietary to Synopsys, Inc.
+and may only be used pursuant to the terms and conditions of a written license agreement
+with Synopsys, Inc. All other use, reproduction, modification, or distribution of the
+Synopsys software or the associated documentation is strictly prohibited.
+Tool: Synplify Pro (R)
+Build: O-2018.09M-SP1-1
+Install: C:\Microsemi\Libero_SoC_v12.2\SynplifyPro
+OS: Windows 6.2
+
+Hostname: DESKTOP-JOJSDSF
+
+Implementation : rev_1
+Synopsys VHDL Compiler, Version comp2018q4p1, Build 221R, Built Apr 25 2019 09:13:02
+
+@N|Running in 64-bit mode
+@N:"D:\FPGA\printf\hdl\printf.vhd":10:7:10:9|Top entity is set to fsm.
+File C:\Microsemi\Libero_SoC_v12.2\SynplifyPro\lib\vhd\std_logic_textio.vhd changed - recompiling
+File C:\Microsemi\Libero_SoC_v12.2\SynplifyPro\lib\vhd\std_textio.vhd changed - recompiling
+File D:\FPGA\printf\hdl\initialRAMByte.txt changed - recompiling
+@W: CD266 :"C:\Microsemi\Libero_SoC_v12.2\SynplifyPro\lib\vhd\std_textio.vhd":208:6:208:9|good is not readable.  This may cause a simulation mismatch.
+VHDL syntax check successful!
+@N: CD233 :"C:\Microsemi\Libero_SoC_v12.2\SynplifyPro\lib\vhd\std_logic_textio.vhd":79:15:79:16|Using sequential encoding for type mvl9plus.
+@N: CD630 :"D:\FPGA\printf\hdl\printf.vhd":10:7:10:9|Synthesizing work.fsm.behavioural.
+@W: CD638 :"D:\FPGA\printf\hdl\printf.vhd":30:7:30:16|Signal i_mem_addr is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\printf\hdl\printf.vhd":30:19:30:28|Signal n_mem_addr is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\printf\hdl\printf.vhd":30:31:30:41|Signal i_mem_wdata is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\printf\hdl\printf.vhd":30:44:30:54|Signal n_mem_wdata is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\printf\hdl\printf.vhd":30:57:30:58|Signal pc is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\printf\hdl\printf.vhd":30:61:30:64|Signal n_pc is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\printf\hdl\printf.vhd":30:67:30:70|Signal reg1 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\printf\hdl\printf.vhd":30:73:30:78|Signal n_reg1 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\printf\hdl\printf.vhd":30:81:30:84|Signal reg2 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\printf\hdl\printf.vhd":30:87:30:92|Signal n_reg2 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\printf\hdl\printf.vhd":30:95:30:98|Signal reg6 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\printf\hdl\printf.vhd":30:101:30:106|Signal n_reg6 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\printf\hdl\printf.vhd":30:109:30:112|Signal reg8 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\printf\hdl\printf.vhd":30:115:30:120|Signal n_reg8 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\printf\hdl\printf.vhd":30:123:30:126|Signal reg9 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\printf\hdl\printf.vhd":30:129:30:134|Signal n_reg9 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\printf\hdl\printf.vhd":30:137:30:141|Signal reg10 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\printf\hdl\printf.vhd":30:144:30:150|Signal n_reg10 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\printf\hdl\printf.vhd":30:153:30:157|Signal reg11 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\printf\hdl\printf.vhd":30:160:30:166|Signal n_reg11 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\printf\hdl\printf.vhd":30:169:30:173|Signal reg12 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\printf\hdl\printf.vhd":30:176:30:182|Signal n_reg12 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\printf\hdl\printf.vhd":30:185:30:189|Signal reg13 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\printf\hdl\printf.vhd":30:192:30:198|Signal n_reg13 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\printf\hdl\printf.vhd":30:201:30:205|Signal reg14 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\printf\hdl\printf.vhd":30:208:30:214|Signal n_reg14 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\printf\hdl\printf.vhd":30:217:30:221|Signal reg15 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\printf\hdl\printf.vhd":30:224:30:230|Signal n_reg15 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\printf\hdl\printf.vhd":30:233:30:237|Signal reg16 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\printf\hdl\printf.vhd":30:240:30:246|Signal n_reg16 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\printf\hdl\printf.vhd":30:249:30:253|Signal reg17 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\printf\hdl\printf.vhd":30:256:30:262|Signal n_reg17 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\printf\hdl\printf.vhd":30:265:30:269|Signal reg18 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\printf\hdl\printf.vhd":30:272:30:278|Signal n_reg18 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\printf\hdl\printf.vhd":30:281:30:285|Signal reg19 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\printf\hdl\printf.vhd":30:288:30:294|Signal n_reg19 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\printf\hdl\printf.vhd":30:297:30:301|Signal reg20 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\printf\hdl\printf.vhd":30:304:30:310|Signal n_reg20 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\printf\hdl\printf.vhd":30:313:30:317|Signal reg21 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\printf\hdl\printf.vhd":30:320:30:326|Signal n_reg21 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\printf\hdl\printf.vhd":30:329:30:333|Signal reg22 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\printf\hdl\printf.vhd":30:336:30:342|Signal n_reg22 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\printf\hdl\printf.vhd":30:345:30:349|Signal reg23 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\printf\hdl\printf.vhd":30:352:30:358|Signal n_reg23 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\printf\hdl\printf.vhd":30:361:30:365|Signal reg24 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\printf\hdl\printf.vhd":30:368:30:374|Signal n_reg24 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\printf\hdl\printf.vhd":30:377:30:381|Signal reg25 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\printf\hdl\printf.vhd":30:384:30:390|Signal n_reg25 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\printf\hdl\printf.vhd":30:393:30:397|Signal reg26 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\printf\hdl\printf.vhd":30:400:30:406|Signal n_reg26 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\printf\hdl\printf.vhd":30:409:30:413|Signal reg27 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\printf\hdl\printf.vhd":30:416:30:422|Signal n_reg27 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\printf\hdl\printf.vhd":30:425:30:429|Signal reg28 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\printf\hdl\printf.vhd":30:432:30:438|Signal n_reg28 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\printf\hdl\printf.vhd":52:7:52:14|Signal data_out is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\printf\hdl\printf.vhd":52:17:52:27|Signal i_mem_rdata is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\printf\hdl\printf.vhd":54:7:54:17|Signal n_mem_width is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\printf\hdl\printf.vhd":55:7:55:14|Signal n_mem_we is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\printf\hdl\printf.vhd":55:17:55:26|Signal i_mem_wack is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\printf\hdl\printf.vhd":55:29:55:37|Signal i_mem_rdy is undriven. Either assign the signal a value or remove the signal declaration.
+Post processing for work.fsm.behavioural
+Running optimization stage 1 on fsm .......
+@W: CL240 :"D:\FPGA\printf\hdl\printf.vhd":55:7:55:14|Signal n_mem_we is floating; a simulation mismatch is possible.
+@W: CL252 :"D:\FPGA\printf\hdl\printf.vhd":54:7:54:17|Bit 0 of signal n_mem_width is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\printf\hdl\printf.vhd":54:7:54:17|Bit 1 of signal n_mem_width is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\printf\hdl\printf.vhd":30:19:30:28|Bit 0 of signal n_mem_addr is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\printf\hdl\printf.vhd":30:19:30:28|Bit 1 of signal n_mem_addr is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\printf\hdl\printf.vhd":30:19:30:28|Bit 2 of signal n_mem_addr is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\printf\hdl\printf.vhd":30:19:30:28|Bit 3 of signal n_mem_addr is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\printf\hdl\printf.vhd":30:19:30:28|Bit 4 of signal n_mem_addr is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\printf\hdl\printf.vhd":30:19:30:28|Bit 5 of signal n_mem_addr is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\printf\hdl\printf.vhd":30:19:30:28|Bit 6 of signal n_mem_addr is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\printf\hdl\printf.vhd":30:19:30:28|Bit 7 of signal n_mem_addr is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\printf\hdl\printf.vhd":30:19:30:28|Bit 8 of signal n_mem_addr is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\printf\hdl\printf.vhd":30:19:30:28|Bit 9 of signal n_mem_addr is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\printf\hdl\printf.vhd":30:19:30:28|Bit 10 of signal n_mem_addr is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\printf\hdl\printf.vhd":30:19:30:28|Bit 11 of signal n_mem_addr is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\printf\hdl\printf.vhd":30:19:30:28|Bit 12 of signal n_mem_addr is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\printf\hdl\printf.vhd":30:19:30:28|Bit 13 of signal n_mem_addr is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\printf\hdl\printf.vhd":30:19:30:28|Bit 14 of signal n_mem_addr is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\printf\hdl\printf.vhd":30:19:30:28|Bit 15 of signal n_mem_addr is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\printf\hdl\printf.vhd":30:19:30:28|Bit 16 of signal n_mem_addr is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\printf\hdl\printf.vhd":30:19:30:28|Bit 17 of signal n_mem_addr is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\printf\hdl\printf.vhd":30:19:30:28|Bit 18 of signal n_mem_addr is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\printf\hdl\printf.vhd":30:19:30:28|Bit 19 of signal n_mem_addr is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\printf\hdl\printf.vhd":30:19:30:28|Bit 20 of signal n_mem_addr is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\printf\hdl\printf.vhd":30:19:30:28|Bit 21 of signal n_mem_addr is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\printf\hdl\printf.vhd":30:19:30:28|Bit 22 of signal n_mem_addr is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\printf\hdl\printf.vhd":30:19:30:28|Bit 23 of signal n_mem_addr is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\printf\hdl\printf.vhd":30:19:30:28|Bit 24 of signal n_mem_addr is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\printf\hdl\printf.vhd":30:19:30:28|Bit 25 of signal n_mem_addr is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\printf\hdl\printf.vhd":30:19:30:28|Bit 26 of signal n_mem_addr is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\printf\hdl\printf.vhd":30:19:30:28|Bit 27 of signal n_mem_addr is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\printf\hdl\printf.vhd":30:19:30:28|Bit 28 of signal n_mem_addr is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\printf\hdl\printf.vhd":30:19:30:28|Bit 29 of signal n_mem_addr is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\printf\hdl\printf.vhd":30:19:30:28|Bit 30 of signal n_mem_addr is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\printf\hdl\printf.vhd":30:19:30:28|Bit 31 of signal n_mem_addr is floating -- simulation mismatch possible.
+@W: CL240 :"D:\FPGA\printf\hdl\printf.vhd":23:0:23:5|Signal mem_re is floating; a simulation mismatch is possible.
+
+At c_vhdl Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 103MB peak: 110MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+
+Process completed successfully.
+# Thu Jan 16 19:29:33 2020
+
+###########################################################]
+@END
+
+At c_hdl Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 3MB peak: 4MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+
+Process completed successfully.
+# Thu Jan 16 19:29:33 2020
+
+###########################################################]

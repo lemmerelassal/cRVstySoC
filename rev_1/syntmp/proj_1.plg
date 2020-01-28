@@ -1,0 +1,12 @@
+@P:  Worst Slack : -7.851
+@P:  main|CLK100MHZ - Estimated Frequency : 101.5 MHz
+@P:  main|CLK100MHZ - Requested Frequency : 500.0 MHz
+@P:  main|CLK100MHZ - Estimated Period : 9.851
+@P:  main|CLK100MHZ - Requested Period : 2.000
+@P:  main|CLK100MHZ - Slack : -7.851
+@P: main Part : mpf300tfcg1152std
+@P: main Register bits  : 1042 
+@P: main DSP Blocks  : 0
+@P: main I/O primitives : 10
+@P: main RAM64x12 :  259
+@P:  CPU Time : 0h:02m:46s

@@ -1,0 +1,146 @@
+# Tue Jan 28 13:47:23 2020
+
+
+Copyright (C) 1994-2019 Synopsys, Inc.
+This Synopsys software and all associated documentation are proprietary to Synopsys, Inc.
+and may only be used pursuant to the terms and conditions of a written license agreement
+with Synopsys, Inc. All other use, reproduction, modification, or distribution of the
+Synopsys software or the associated documentation is strictly prohibited.
+Tool: Synplify Pro (R)
+Build: O-2018.09M-SP1-1
+Install: C:\Microsemi\Libero_SoC_v12.2\SynplifyPro
+OS: Windows 6.2
+
+Hostname: DESKTOP-JOJSDSF
+
+Implementation : rev_1
+Synopsys Generic Technology Pre-mapping, Version mapact2018q4p1, Build 026R, Built Apr 25 2019 10:01:09
+
+
+Mapper Startup Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 98MB peak: 99MB)
+
+Reading constraint file: D:\FPGA\H13D\rev_1\proj_1_fsm.sdc
+@N: MF284 |Setting synthesis effort to medium for the design
+@L: D:\FPGA\H13D\rev_1\proj_1_scck.rpt 
+Printing clock  summary report in "D:\FPGA\H13D\rev_1\proj_1_scck.rpt" file 
+@N: MF916 |Option synthesis_strategy=base is enabled. 
+@N: MF248 |Running in 64-bit mode.
+@N: MF667 |Clock conversion disabled. (Command "set_option -fix_gated_and_generated_clocks 0" in the project file.)
+
+Design Input Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 106MB peak: 108MB)
+
+
+Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 106MB peak: 108MB)
+
+
+Start loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 107MB peak: 108MB)
+
+
+Finished loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 107MB peak: 110MB)
+
+@N: MF284 |Setting synthesis effort to medium for the design
+@W: BN132 :"d:\fpga\h13d\hdl\ram.vhd":66:8:66:9|Removing sequential instance ram.i_rdata_cl_9[31] because it is equivalent to instance ram.i_rdata_cl_8[31]. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: BN132 :"d:\fpga\h13d\hdl\ram.vhd":66:8:66:9|Removing sequential instance ram.i_rdata_cl_18[31] because it is equivalent to instance ram.i_rdata_cl_8[31]. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: BN132 :"d:\fpga\h13d\hdl\ram.vhd":66:8:66:9|Removing sequential instance ram.i_rdata_cl_19[31] because it is equivalent to instance ram.i_rdata_cl_8[31]. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: BN132 :"d:\fpga\h13d\hdl\ram.vhd":66:8:66:9|Removing sequential instance ram.i_rdata_cl_20[31] because it is equivalent to instance ram.i_rdata_cl_8[31]. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: BN132 :"d:\fpga\h13d\hdl\ram.vhd":66:8:66:9|Removing sequential instance ram.i_rdata_cl_28[31] because it is equivalent to instance ram.i_rdata_cl_8[31]. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: BN132 :"d:\fpga\h13d\hdl\ram.vhd":66:8:66:9|Removing sequential instance ram.i_rdata_cl_29[31] because it is equivalent to instance ram.i_rdata_cl_8[31]. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: BN132 :"d:\fpga\h13d\hdl\ram.vhd":66:8:66:9|Removing sequential instance ram.i_rdata_cl_30[31] because it is equivalent to instance ram.i_rdata_cl_8[31]. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: BN132 :"d:\fpga\h13d\hdl\ram.vhd":66:8:66:9|Removing sequential instance ram.i_rdata_cl_17[31] because it is equivalent to instance ram.i_rdata_cl_16[31]. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: BN132 :"d:\fpga\h13d\hdl\ram.vhd":66:8:66:9|Removing sequential instance ram.i_rdata_cl_16[31] because it is equivalent to instance ram.i_rdata_cl_15[31]. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: BN132 :"d:\fpga\h13d\hdl\ram.vhd":66:8:66:9|Removing sequential instance ram.i_rdata_cl_15[31] because it is equivalent to instance ram.i_rdata_cl_14[31]. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: BN132 :"d:\fpga\h13d\hdl\ram.vhd":66:8:66:9|Removing sequential instance ram.i_rdata_cl_14[31] because it is equivalent to instance ram.i_rdata_cl_13[31]. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: BN132 :"d:\fpga\h13d\hdl\ram.vhd":66:8:66:9|Removing sequential instance ram.i_rdata_cl_6[31] because it is equivalent to instance ram.i_rdata_cl_13[31]. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: BN132 :"d:\fpga\h13d\hdl\ram.vhd":66:8:66:9|Removing sequential instance ram.i_rdata_cl_5[31] because it is equivalent to instance ram.i_rdata_cl_13[31]. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: BN132 :"d:\fpga\h13d\hdl\ram.vhd":66:8:66:9|Removing sequential instance ram.i_rdata_cl_3[31] because it is equivalent to instance ram.i_rdata_cl_13[31]. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: BN132 :"d:\fpga\h13d\hdl\ram.vhd":66:8:66:9|Removing sequential instance ram.i_rdata_cl_27[31] because it is equivalent to instance ram.i_rdata_cl_26[31]. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: BN132 :"d:\fpga\h13d\hdl\ram.vhd":66:8:66:9|Removing sequential instance ram.i_rdata_cl_26[31] because it is equivalent to instance ram.i_rdata_cl_12[31]. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: BN132 :"d:\fpga\h13d\hdl\ram.vhd":66:8:66:9|Removing sequential instance ram.i_rdata_cl_7[31] because it is equivalent to instance ram.i_rdata_cl_12[31]. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: BN132 :"d:\fpga\h13d\hdl\ram.vhd":66:8:66:9|Removing sequential instance ram.i_rdata_cl_4[31] because it is equivalent to instance ram.i_rdata_cl_12[31]. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: BN132 :"d:\fpga\h13d\hdl\ram.vhd":66:8:66:9|Removing sequential instance ram.i_rdata_cl_2[31] because it is equivalent to instance ram.i_rdata_cl_12[31]. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: BN132 :"d:\fpga\h13d\hdl\ram.vhd":66:8:66:9|Removing sequential instance ram.i_rdata_cl_1[31] because it is equivalent to instance ram.i_rdata_cl_12[31]. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: BN132 :"d:\fpga\h13d\hdl\ram.vhd":66:8:66:9|Removing sequential instance ram.i_rdata_cl_12[31] because it is equivalent to instance ram.i_rdata_cl[31]. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: BN132 :"d:\fpga\h13d\hdl\ram.vhd":66:8:66:9|Removing sequential instance ram.i_rdata_cl_31[31] because it is equivalent to instance ram.i_rdata_cl_25[31]. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: BN132 :"d:\fpga\h13d\hdl\ram.vhd":66:8:66:9|Removing sequential instance ram.i_rdata_cl_25[31] because it is equivalent to instance ram.i_rdata_cl_24[31]. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: BN132 :"d:\fpga\h13d\hdl\ram.vhd":66:8:66:9|Removing sequential instance ram.i_rdata_cl_24[31] because it is equivalent to instance ram.i_rdata_cl_23[31]. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: BN132 :"d:\fpga\h13d\hdl\ram.vhd":66:8:66:9|Removing sequential instance ram.i_rdata_cl_23[31] because it is equivalent to instance ram.i_rdata_cl_22[31]. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: BN132 :"d:\fpga\h13d\hdl\ram.vhd":66:8:66:9|Removing sequential instance ram.i_rdata_cl_22[31] because it is equivalent to instance ram.i_rdata_cl_21[31]. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: BN132 :"d:\fpga\h13d\hdl\ram.vhd":66:8:66:9|Removing sequential instance ram.i_rdata_cl_21[31] because it is equivalent to instance ram.i_rdata_cl_11[31]. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@W: BN132 :"d:\fpga\h13d\hdl\ram.vhd":66:8:66:9|Removing sequential instance ram.i_rdata_cl_11[31] because it is equivalent to instance ram.i_rdata_cl_10[31]. To keep the instance, apply constraint syn_preserve=1 on the instance.
+@N: MH105 |UMR3 is only supported for HAPS-80.
+@N: MH105 |UMR3 is only supported for HAPS-80.
+@N: BN362 :"d:\fpga\h13d\hdl\registerfile.vhd":66:11:66:19|Removing sequential instance registers_1[32:0] (in view: work.registerFile(behavioural)) of type view:PrimLib.ram1(prim) because it does not drive other instances.
+@N: BN362 :"d:\fpga\h13d\hdl\registerfile.vhd":66:11:66:19|Removing sequential instance registers_2[32:0] (in view: work.registerFile(behavioural)) of type view:PrimLib.ram1(prim) because it does not drive other instances.
+@N: BN362 :"d:\fpga\h13d\hdl\registerfile.vhd":66:11:66:19|Removing sequential instance registers_3[32:0] (in view: work.registerFile(behavioural)) of type view:PrimLib.ram1(prim) because it does not drive other instances.
+@N: BN362 :"d:\fpga\h13d\hdl\registerfile.vhd":66:11:66:19|Removing sequential instance registers_4[32:0] (in view: work.registerFile(behavioural)) of type view:PrimLib.ram1(prim) because it does not drive other instances.
+@N: BN362 :"d:\fpga\h13d\hdl\registerfile.vhd":66:11:66:19|Removing sequential instance registers_5[32:0] (in view: work.registerFile(behavioural)) of type view:PrimLib.ram1(prim) because it does not drive other instances.
+@N: BN362 :"d:\fpga\h13d\hdl\registerfile.vhd":66:11:66:19|Removing sequential instance registers_6[32:0] (in view: work.registerFile(behavioural)) of type view:PrimLib.ram1(prim) because it does not drive other instances.
+@N: BN362 :"d:\fpga\h13d\hdl\registerfile.vhd":66:11:66:19|Removing sequential instance registers_7[32:0] (in view: work.registerFile(behavioural)) of type view:PrimLib.ram1(prim) because it does not drive other instances.
+syn_allowed_resources : blockrams=952  set on top level netlist main
+
+Finished netlist restructuring (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 139MB peak: 140MB)
+
+
+
+Clock Summary
+******************
+
+          Start              Requested     Requested     Clock        Clock                   Clock
+Level     Clock              Frequency     Period        Type         Group                   Load 
+---------------------------------------------------------------------------------------------------
+0 -       main|CLK100MHZ     500.0 MHz     2.000         inferred     Inferred_clkgroup_0     490  
+===================================================================================================
+
+
+
+Clock Load Summary
+***********************
+
+                   Clock     Source              Clock Pin                                Non-clock Pin     Non-clock Pin
+Clock              Load      Pin                 Seq Example                              Seq Example       Comb Example 
+-------------------------------------------------------------------------------------------------------------------------
+main|CLK100MHZ     490       CLK100MHZ(port)     regfile.register_selection_0r[4:0].C     -                 -            
+=========================================================================================================================
+
+@W: MT530 :"d:\fpga\h13d\hdl\uart.vhd":36:8:36:9|Found inferred clock main|CLK100MHZ which controls 490 sequential elements including i_uart.counter[31:0]. This clock has no specified timing constraint which may adversely impact design performance. 
+
+@N: FX1143 |Skipping assigning INTERNAL_VREF to iobanks, because the table of mapping from pin to iobank is not initialized.
+Finished Pre Mapping Phase.
+@N: BN225 |Writing default property annotation file D:\FPGA\H13D\rev_1\proj_1.sap.
+
+Starting constraint checker (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 140MB peak: 141MB)
+
+Encoding state machine state[0:5] (in view: work.block_ram(behavioral))
+original code -> new code
+   000 -> 000001
+   001 -> 000010
+   010 -> 000100
+   011 -> 001000
+   100 -> 010000
+   101 -> 100000
+Encoding state machine state[0:7] (in view: work.cpu(behavioural))
+original code -> new code
+   000 -> 00000001
+   001 -> 00000010
+   010 -> 00000100
+   011 -> 00001000
+   100 -> 00010000
+   101 -> 00100000
+   110 -> 01000000
+   111 -> 10000000
+
+Finished constraint checker preprocessing (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 141MB peak: 141MB)
+
+None
+None
+
+Finished constraint checker (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 141MB peak: 143MB)
+
+Pre-mapping successful!
+
+At Mapper Exit (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 56MB peak: 143MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+# Tue Jan 28 13:47:24 2020
+
+###########################################################]

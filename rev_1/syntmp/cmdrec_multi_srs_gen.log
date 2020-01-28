@@ -1,0 +1,7 @@
+C:\Microsemi\Libero_SoC_v12.2\SynplifyPro\bin64\syn_nfilter.exe  -link  -multisrs  D:\FPGA\H13D\rev_1\synwork\proj_1_comp.srs  -osyn  D:\FPGA\H13D\rev_1\synwork\proj_1_mult.srs  -log  D:\FPGA\H13D\rev_1\synlog\proj_1_multi_srs_gen.srr 
+relcom:C:\Microsemi\Libero_SoC_v12.2\SynplifyPro\bin64\syn_nfilter.exe -link -multisrs ..\synwork\proj_1_comp.srs -osyn ..\synwork\proj_1_mult.srs -log ..\synlog\proj_1_multi_srs_gen.srr
+rc:0 success:1 runtime:1
+file:..\synwork\proj_1_comp.srs|io:i|time:1580215641|size:158109|exec:0|csum:5D5FCE2024244D4C3FBCC2833ED72215
+file:..\synwork\proj_1_mult.srs|io:o|time:1580215643|size:7942|exec:0|csum:
+file:..\synlog\proj_1_multi_srs_gen.srr|io:o|time:1580215643|size:1346|exec:0|csum:
+file:C:\Microsemi\Libero_SoC_v12.2\SynplifyPro\bin64\syn_nfilter.exe|io:i|time:1562075633|size:8810496|exec:1|csum:20DB59B568B25441B8251D61083745CC

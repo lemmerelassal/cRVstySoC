@@ -1,0 +1,2 @@
+@E: CD385 :"D:\FPGA\H13D\hdl\cpu_new.vhd":144:40:144:40|aggregate with others must be in a constrained context
+

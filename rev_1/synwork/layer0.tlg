@@ -1,0 +1,244 @@
+@N: CD233 :"C:\Microsemi\Libero_SoC_v12.2\SynplifyPro\lib\vhd\std_logic_textio.vhd":79:15:79:16|Using sequential encoding for type mvl9plus.
+@N: CD630 :"D:\FPGA\H13D\hdl\main.vhd":8:7:8:10|Synthesizing work.main.behavioural.
+@W: CD326 :"D:\FPGA\H13D\hdl\main.vhd":281:4:281:7|Port err of entity work.cpu is unconnected. If a port needs to remain unconnected, use the keyword open.
+@W: CD326 :"D:\FPGA\H13D\hdl\main.vhd":301:4:301:10|Port data_out_7 of entity work.registerfile is unconnected. If a port needs to remain unconnected, use the keyword open.
+@W: CD326 :"D:\FPGA\H13D\hdl\main.vhd":301:4:301:10|Port register_selected_7 of entity work.registerfile is unconnected. If a port needs to remain unconnected, use the keyword open.
+@W: CD326 :"D:\FPGA\H13D\hdl\main.vhd":301:4:301:10|Port data_out_6 of entity work.registerfile is unconnected. If a port needs to remain unconnected, use the keyword open.
+@W: CD326 :"D:\FPGA\H13D\hdl\main.vhd":301:4:301:10|Port register_selected_6 of entity work.registerfile is unconnected. If a port needs to remain unconnected, use the keyword open.
+@W: CD326 :"D:\FPGA\H13D\hdl\main.vhd":301:4:301:10|Port data_out_5 of entity work.registerfile is unconnected. If a port needs to remain unconnected, use the keyword open.
+@W: CD326 :"D:\FPGA\H13D\hdl\main.vhd":301:4:301:10|Port register_selected_5 of entity work.registerfile is unconnected. If a port needs to remain unconnected, use the keyword open.
+@W: CD326 :"D:\FPGA\H13D\hdl\main.vhd":301:4:301:10|Port data_out_4 of entity work.registerfile is unconnected. If a port needs to remain unconnected, use the keyword open.
+@W: CD326 :"D:\FPGA\H13D\hdl\main.vhd":301:4:301:10|Port register_selected_4 of entity work.registerfile is unconnected. If a port needs to remain unconnected, use the keyword open.
+@W: CD326 :"D:\FPGA\H13D\hdl\main.vhd":301:4:301:10|Port data_out_3 of entity work.registerfile is unconnected. If a port needs to remain unconnected, use the keyword open.
+@W: CD326 :"D:\FPGA\H13D\hdl\main.vhd":301:4:301:10|Port register_selected_3 of entity work.registerfile is unconnected. If a port needs to remain unconnected, use the keyword open.
+@W: CD326 :"D:\FPGA\H13D\hdl\main.vhd":301:4:301:10|Port data_out_2 of entity work.registerfile is unconnected. If a port needs to remain unconnected, use the keyword open.
+@W: CD326 :"D:\FPGA\H13D\hdl\main.vhd":301:4:301:10|Port register_selected_2 of entity work.registerfile is unconnected. If a port needs to remain unconnected, use the keyword open.
+@W: CD326 :"D:\FPGA\H13D\hdl\main.vhd":301:4:301:10|Port data_out_1 of entity work.registerfile is unconnected. If a port needs to remain unconnected, use the keyword open.
+@W: CD326 :"D:\FPGA\H13D\hdl\main.vhd":301:4:301:10|Port register_selected_1 of entity work.registerfile is unconnected. If a port needs to remain unconnected, use the keyword open.
+@W: CD326 :"D:\FPGA\H13D\hdl\main.vhd":301:4:301:10|Port access_grant of entity work.registerfile is unconnected. If a port needs to remain unconnected, use the keyword open.
+@W: CD638 :"D:\FPGA\H13D\hdl\main.vhd":191:13:191:19|Signal data_we is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\main.vhd":191:22:191:28|Signal data_re is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\main.vhd":191:50:191:57|Signal data_rdy is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\main.vhd":191:60:191:68|Signal data_wack is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\main.vhd":193:7:193:16|Signal data_wdata is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\main.vhd":193:19:193:27|Signal data_addr is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\main.vhd":193:53:193:62|Signal data_rdata is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\main.vhd":199:39:199:46|Signal int_gpio is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD796 :"D:\FPGA\H13D\hdl\main.vhd":212:7:212:15|Bit 3 of signal i_mem_rdy is undriven. Possible simulation mismatch as initial value or default value is ignored. To avoid simulation mismatches, explicitly drive this bit. 
+@W: CD796 :"D:\FPGA\H13D\hdl\main.vhd":212:18:212:27|Bit 3 of signal i_mem_wack is undriven. Possible simulation mismatch as initial value or default value is ignored. To avoid simulation mismatches, explicitly drive this bit. 
+@W: CD638 :"D:\FPGA\H13D\hdl\main.vhd":216:7:216:17|Signal i_mem_rdata_3_ is undriven. Either assign the signal a value or remove the signal declaration.
+@N: CD630 :"D:\FPGA\H13D\hdl\registerfile.vhd":6:7:6:18|Synthesizing work.registerfile.behavioural.
+Post processing for work.registerfile.behavioural
+Running optimization stage 1 on registerFile .......
+@N: CL134 :"D:\FPGA\H13D\hdl\registerfile.vhd":66:11:66:19|Found RAM registers, depth=32, width=33
+@N: CL134 :"D:\FPGA\H13D\hdl\registerfile.vhd":66:11:66:19|Found RAM registers, depth=32, width=33
+@N: CL134 :"D:\FPGA\H13D\hdl\registerfile.vhd":66:11:66:19|Found RAM registers, depth=32, width=33
+@N: CL134 :"D:\FPGA\H13D\hdl\registerfile.vhd":66:11:66:19|Found RAM registers, depth=32, width=33
+@N: CL134 :"D:\FPGA\H13D\hdl\registerfile.vhd":66:11:66:19|Found RAM registers, depth=32, width=33
+@N: CL134 :"D:\FPGA\H13D\hdl\registerfile.vhd":66:11:66:19|Found RAM registers, depth=32, width=33
+@N: CL134 :"D:\FPGA\H13D\hdl\registerfile.vhd":66:11:66:19|Found RAM registers, depth=32, width=33
+@N: CL134 :"D:\FPGA\H13D\hdl\registerfile.vhd":66:11:66:19|Found RAM registers, depth=32, width=33
+@N: CD630 :"D:\FPGA\H13D\hdl\cpu_new.vhd":6:7:6:9|Synthesizing work.cpu.behavioural.
+@N: CD233 :"D:\FPGA\H13D\hdl\cpu_new.vhd":87:17:87:18|Using sequential encoding for type state_t.
+@W: CD280 :"D:\FPGA\H13D\hdl\cpu_new.vhd":116:14:116:18|Unbound component ila_0 mapped to black box
+@N: CD604 :"D:\FPGA\H13D\hdl\cpu_new.vhd":349:12:349:25|OTHERS clause is not synthesized.
+@N: CD604 :"D:\FPGA\H13D\hdl\cpu_new.vhd":677:16:677:29|OTHERS clause is not synthesized.
+@W: CD434 :"D:\FPGA\H13D\hdl\cpu_new.vhd":559:27:559:34|Signal selected in the sensitivity list is not used in the process. Make sure all variables in the sensitivity list are referenced in the process.
+@N: CD604 :"D:\FPGA\H13D\hdl\cpu_new.vhd":796:16:796:29|OTHERS clause is not synthesized.
+@W: CD434 :"D:\FPGA\H13D\hdl\cpu_new.vhd":683:27:683:34|Signal selected in the sensitivity list is not used in the process. Make sure all variables in the sensitivity list are referenced in the process.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_127_.data_we is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_127_.data_re is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_127_.data_wdata is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_127_.data_addr is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_127_.data_width is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_127_.imm is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_127_.next_pc is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_127_.result is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_127_.decrement_counter is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_127_.use_rd is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_127_.use_rs2 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_127_.use_rs1 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_127_.execution_done is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_127_.decode_error is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_127_.selected is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_126_.data_we is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_126_.data_re is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_126_.data_wdata is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_126_.data_addr is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_126_.data_width is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_126_.imm is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_126_.next_pc is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_126_.result is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_126_.decrement_counter is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_126_.use_rd is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_126_.use_rs2 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_126_.use_rs1 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_126_.execution_done is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_126_.decode_error is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_126_.selected is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_125_.data_we is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_125_.data_re is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_125_.data_wdata is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_125_.data_addr is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_125_.data_width is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_125_.imm is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_125_.next_pc is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_125_.result is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_125_.decrement_counter is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_125_.use_rd is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_125_.use_rs2 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_125_.use_rs1 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_125_.execution_done is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_125_.decode_error is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_125_.selected is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_124_.data_we is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_124_.data_re is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_124_.data_wdata is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_124_.data_addr is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_124_.data_width is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_124_.imm is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_124_.next_pc is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_124_.result is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_124_.decrement_counter is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_124_.use_rd is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_124_.use_rs2 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_124_.use_rs1 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_124_.execution_done is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_124_.decode_error is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_124_.selected is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_123_.data_we is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_123_.data_re is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_123_.data_wdata is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_123_.data_addr is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_123_.data_width is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_123_.imm is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_123_.next_pc is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_123_.result is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_123_.decrement_counter is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_123_.use_rd is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_123_.use_rs2 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_123_.use_rs1 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_123_.execution_done is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_123_.decode_error is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_123_.selected is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_122_.data_we is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_122_.data_re is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_122_.data_wdata is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_122_.data_addr is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_122_.data_width is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_122_.imm is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_122_.next_pc is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_122_.result is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_122_.decrement_counter is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_122_.use_rd is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_122_.use_rs2 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_122_.use_rs1 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_122_.execution_done is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_122_.decode_error is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_122_.selected is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"D:\FPGA\H13D\hdl\cpu_new.vhd":63:11:63:35|Signal instruction_details_array_121_.data_we is undriven. Either assign the signal a value or remove the signal declaration.
+
+Only the first 100 messages of id 'CD638' are reported. To see all messages use 'report_messages -log D:\FPGA\H13D\rev_1\synlog\proj_1_compiler.srr -id CD638' in the Tcl shell. To see all messages in future runs, use the command 'message_override -limit {CD638} -count unlimited' in the Tcl shell.
+@N: CD630 :"D:\FPGA\H13D\hdl\cpu_new.vhd":116:14:116:18|Synthesizing work.ila_0.syn_black_box.
+Post processing for work.ila_0.syn_black_box
+Running optimization stage 1 on ila_0 .......
+Post processing for work.cpu.behavioural
+Running optimization stage 1 on cpu .......
+@W: CL168 :"D:\FPGA\H13D\hdl\cpu_new.vhd":194:4:194:6|Removing instance ila because it does not drive other instances. To preserve this instance, use the syn_noprune synthesis directive.
+@N: CD630 :"D:\FPGA\H13D\hdl\rom.vhd":11:7:11:9|Synthesizing work.rom.behavioral.
+Post processing for work.rom.behavioral
+Running optimization stage 1 on rom .......
+@N: CD630 :"D:\FPGA\H13D\hdl\ram.vhd":12:7:12:15|Synthesizing work.block_ram.behavioral.
+@N: CD233 :"D:\FPGA\H13D\hdl\ram.vhd":52:17:52:18|Using sequential encoding for type state_t.
+Post processing for work.block_ram.behavioral
+Running optimization stage 1 on block_ram .......
+@N: CL134 :"D:\FPGA\H13D\hdl\ram.vhd":48:11:48:16|Found RAM memory, depth=4096, width=8
+@N: CL134 :"D:\FPGA\H13D\hdl\ram.vhd":48:11:48:16|Found RAM memory, depth=4096, width=8
+@N: CL134 :"D:\FPGA\H13D\hdl\ram.vhd":48:11:48:16|Found RAM memory, depth=4096, width=8
+@N: CL134 :"D:\FPGA\H13D\hdl\ram.vhd":48:11:48:16|Found RAM memory, depth=4096, width=8
+@N: CD630 :"D:\FPGA\H13D\hdl\timebase.vhd":6:7:6:14|Synthesizing work.timebase.behavioural.
+Post processing for work.timebase.behavioural
+Running optimization stage 1 on timebase .......
+@N: CD630 :"D:\FPGA\H13D\hdl\uart.vhd":5:7:5:10|Synthesizing work.uart.behavioral.
+@W: CD796 :"D:\FPGA\H13D\hdl\uart.vhd":26:7:26:16|Bit 1 of signal reg_status is undriven. Possible simulation mismatch as initial value or default value is ignored. To avoid simulation mismatches, explicitly drive this bit. 
+@W: CD796 :"D:\FPGA\H13D\hdl\uart.vhd":26:7:26:16|Bit 2 of signal reg_status is undriven. Possible simulation mismatch as initial value or default value is ignored. To avoid simulation mismatches, explicitly drive this bit. 
+@W: CD796 :"D:\FPGA\H13D\hdl\uart.vhd":26:7:26:16|Bit 3 of signal reg_status is undriven. Possible simulation mismatch as initial value or default value is ignored. To avoid simulation mismatches, explicitly drive this bit. 
+@W: CD796 :"D:\FPGA\H13D\hdl\uart.vhd":26:7:26:16|Bit 4 of signal reg_status is undriven. Possible simulation mismatch as initial value or default value is ignored. To avoid simulation mismatches, explicitly drive this bit. 
+@W: CD796 :"D:\FPGA\H13D\hdl\uart.vhd":26:7:26:16|Bit 5 of signal reg_status is undriven. Possible simulation mismatch as initial value or default value is ignored. To avoid simulation mismatches, explicitly drive this bit. 
+@W: CD796 :"D:\FPGA\H13D\hdl\uart.vhd":26:7:26:16|Bit 6 of signal reg_status is undriven. Possible simulation mismatch as initial value or default value is ignored. To avoid simulation mismatches, explicitly drive this bit. 
+@W: CD796 :"D:\FPGA\H13D\hdl\uart.vhd":26:7:26:16|Bit 7 of signal reg_status is undriven. Possible simulation mismatch as initial value or default value is ignored. To avoid simulation mismatches, explicitly drive this bit. 
+Post processing for work.uart.behavioral
+Running optimization stage 1 on uart .......
+Post processing for work.main.behavioural
+Running optimization stage 1 on main .......
+@W: CL252 :"D:\FPGA\H13D\hdl\main.vhd":199:39:199:46|Bit 0 of signal int_gpio is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\H13D\hdl\main.vhd":199:39:199:46|Bit 1 of signal int_gpio is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\H13D\hdl\main.vhd":199:39:199:46|Bit 2 of signal int_gpio is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\H13D\hdl\main.vhd":199:39:199:46|Bit 3 of signal int_gpio is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\H13D\hdl\main.vhd":199:39:199:46|Bit 4 of signal int_gpio is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\H13D\hdl\main.vhd":199:39:199:46|Bit 5 of signal int_gpio is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\H13D\hdl\main.vhd":199:39:199:46|Bit 6 of signal int_gpio is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\H13D\hdl\main.vhd":199:39:199:46|Bit 7 of signal int_gpio is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\H13D\hdl\main.vhd":199:39:199:46|Bit 8 of signal int_gpio is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\H13D\hdl\main.vhd":199:39:199:46|Bit 9 of signal int_gpio is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\H13D\hdl\main.vhd":199:39:199:46|Bit 10 of signal int_gpio is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\H13D\hdl\main.vhd":199:39:199:46|Bit 11 of signal int_gpio is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\H13D\hdl\main.vhd":199:39:199:46|Bit 12 of signal int_gpio is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\H13D\hdl\main.vhd":199:39:199:46|Bit 13 of signal int_gpio is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\H13D\hdl\main.vhd":199:39:199:46|Bit 14 of signal int_gpio is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\H13D\hdl\main.vhd":199:39:199:46|Bit 15 of signal int_gpio is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\H13D\hdl\main.vhd":199:39:199:46|Bit 16 of signal int_gpio is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\H13D\hdl\main.vhd":199:39:199:46|Bit 17 of signal int_gpio is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\H13D\hdl\main.vhd":199:39:199:46|Bit 18 of signal int_gpio is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\H13D\hdl\main.vhd":199:39:199:46|Bit 19 of signal int_gpio is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\H13D\hdl\main.vhd":199:39:199:46|Bit 20 of signal int_gpio is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\H13D\hdl\main.vhd":199:39:199:46|Bit 21 of signal int_gpio is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\H13D\hdl\main.vhd":199:39:199:46|Bit 22 of signal int_gpio is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\H13D\hdl\main.vhd":199:39:199:46|Bit 23 of signal int_gpio is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\H13D\hdl\main.vhd":199:39:199:46|Bit 24 of signal int_gpio is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\H13D\hdl\main.vhd":199:39:199:46|Bit 25 of signal int_gpio is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\H13D\hdl\main.vhd":199:39:199:46|Bit 26 of signal int_gpio is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\H13D\hdl\main.vhd":199:39:199:46|Bit 27 of signal int_gpio is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\H13D\hdl\main.vhd":199:39:199:46|Bit 28 of signal int_gpio is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\H13D\hdl\main.vhd":199:39:199:46|Bit 29 of signal int_gpio is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\H13D\hdl\main.vhd":199:39:199:46|Bit 30 of signal int_gpio is floating -- simulation mismatch possible.
+@W: CL252 :"D:\FPGA\H13D\hdl\main.vhd":199:39:199:46|Bit 31 of signal int_gpio is floating -- simulation mismatch possible.
+Running optimization stage 2 on uart .......
+@W: CL246 :"D:\FPGA\H13D\hdl\uart.vhd":13:21:13:29|Input port bits 31 to 8 of mem_wdata(31 downto 0) are unused. Assign logic for all port bits or change the input port size.
+@N: CL159 :"D:\FPGA\H13D\hdl\uart.vhd":15:19:15:24|Input mem_re is unused.
+Running optimization stage 2 on timebase .......
+@N: CL159 :"D:\FPGA\H13D\hdl\timebase.vhd":12:12:12:17|Input mem_re is unused.
+Running optimization stage 2 on block_ram .......
+@N: CL201 :"D:\FPGA\H13D\hdl\ram.vhd":66:8:66:9|Trying to extract state machine for register state.
+Extracted state machine for register state
+State machine has 6 reachable states with original encodings of:
+   000
+   001
+   010
+   011
+   100
+   101
+Running optimization stage 2 on rom .......
+@W: CL246 :"D:\FPGA\H13D\hdl\rom.vhd":19:8:19:11|Input port bits 31 to 17 of addr(31 downto 0) are unused. Assign logic for all port bits or change the input port size.
+@N: CL159 :"D:\FPGA\H13D\hdl\rom.vhd":18:8:18:10|Input rst is unused.
+@N: CL159 :"D:\FPGA\H13D\hdl\rom.vhd":18:13:18:15|Input clk is unused.
+Running optimization stage 2 on ila_0 .......
+Running optimization stage 2 on cpu .......
+@N: CL201 :"D:\FPGA\H13D\hdl\cpu_new.vhd":356:8:356:9|Trying to extract state machine for register state.
+Extracted state machine for register state
+State machine has 8 reachable states with original encodings of:
+   000
+   001
+   010
+   011
+   100
+   101
+   110
+   111
+Running optimization stage 2 on registerFile .......
+Running optimization stage 2 on main .......
+
+For a summary of runtime and memory usage per design unit, please see file:
+==========================================================
+@L: D:\FPGA\H13D\rev_1\synwork\layer0.rt.csv
+

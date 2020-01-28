@@ -1,0 +1,207 @@
+
+Copyright (C) 1994-2019 Synopsys, Inc.
+This Synopsys software and all associated documentation are proprietary to Synopsys, Inc.
+and may only be used pursuant to the terms and conditions of a written license agreement
+with Synopsys, Inc. All other use, reproduction, modification, or distribution of the
+Synopsys software or the associated documentation is strictly prohibited.
+Tool: Synplify Pro (R)
+Build: O-2018.09M-SP1-1
+Install: C:\Microsemi\Libero_SoC_v12.2\SynplifyPro
+OS: Windows 6.2
+
+Hostname: DESKTOP-JOJSDSF
+
+Implementation : rev_1
+
+#### START OF AREA REPORT #####[
+
+Part:			MPF300TFCG1152STD (Microsemi)
+
+--------------------------------------------------------------------
+########   Utilization report for  Top level view:   main   ########
+====================================================================
+
+SEQUENTIAL ELEMENTS
+Name     Total elements     Utilization     Notes
+-------------------------------------------------
+SLE      1042               100 %                
+=================================================
+Total SEQUENTIAL ELEMENTS in the block main:	1042 (13.71 % Utilization)
+
+
+COMBINATIONAL LOGIC
+Name     Total elements     Utilization     Notes
+-------------------------------------------------
+CFG      3593               100 %                
+ARI1     2679               100 %                
+=================================================
+Total COMBINATIONAL LOGIC in the block main:	6272 (82.54 % Utilization)
+
+
+MEMORY ELEMENTS
+Name         Total elements     Utilization     Notes
+-----------------------------------------------------
+RAM64X12     259                100 %                
+=====================================================
+Total MEMORY ELEMENTS in the block main:	259 (3.41 % Utilization)
+
+
+GLOBAL BUFFERS
+Name       Total elements     Utilization     Notes
+---------------------------------------------------
+GLOBAL     2                  100 %                
+===================================================
+Total GLOBAL BUFFERS in the block main:	2 (0.03 % Utilization)
+
+
+IO PADS
+Name     Total elements     Utilization     Notes
+-------------------------------------------------
+IO       10                 100 %                
+=================================================
+Total IO PADS in the block main:	10 (0.13 % Utilization)
+
+---------------------------------------------------------------
+########   Utilization report for  cell:   block_ram   ########
+Instance path:   main.block_ram                                
+===============================================================
+
+SEQUENTIAL ELEMENTS
+Name     Total elements     Utilization     Notes
+-------------------------------------------------
+SLE      90                 8.64 %               
+=================================================
+Total SEQUENTIAL ELEMENTS in the block main.block_ram:	90 (1.18 % Utilization)
+
+
+COMBINATIONAL LOGIC
+Name     Total elements     Utilization     Notes
+-------------------------------------------------
+CFG      443                12.3 %               
+ARI1     1507               56.3 %               
+=================================================
+Total COMBINATIONAL LOGIC in the block main.block_ram:	1950 (25.66 % Utilization)
+
+
+MEMORY ELEMENTS
+Name         Total elements     Utilization     Notes
+-----------------------------------------------------
+RAM64X12     256                98.8 %               
+=====================================================
+Total MEMORY ELEMENTS in the block main.block_ram:	256 (3.37 % Utilization)
+
+---------------------------------------------------------
+########   Utilization report for  cell:   cpu   ########
+Instance path:   main.cpu                                
+=========================================================
+
+SEQUENTIAL ELEMENTS
+Name     Total elements     Utilization     Notes
+-------------------------------------------------
+SLE      632                60.7 %               
+=================================================
+Total SEQUENTIAL ELEMENTS in the block main.cpu:	632 (8.32 % Utilization)
+
+
+COMBINATIONAL LOGIC
+Name     Total elements     Utilization     Notes
+-------------------------------------------------
+CFG      1856               51.7 %               
+ARI1     464                17.3 %               
+=================================================
+Total COMBINATIONAL LOGIC in the block main.cpu:	2320 (30.53 % Utilization)
+
+------------------------------------------------------------------
+########   Utilization report for  cell:   registerFile   ########
+Instance path:   main.registerFile                                
+==================================================================
+
+SEQUENTIAL ELEMENTS
+Name     Total elements     Utilization     Notes
+-------------------------------------------------
+SLE      58                 5.57 %               
+=================================================
+Total SEQUENTIAL ELEMENTS in the block main.registerFile:	58 (0.76 % Utilization)
+
+
+COMBINATIONAL LOGIC
+Name     Total elements     Utilization     Notes
+-------------------------------------------------
+CFG      94                 2.62 %               
+=================================================
+Total COMBINATIONAL LOGIC in the block main.registerFile:	94 (1.24 % Utilization)
+
+
+MEMORY ELEMENTS
+Name         Total elements     Utilization     Notes
+-----------------------------------------------------
+RAM64X12     3                  1.16 %               
+=====================================================
+Total MEMORY ELEMENTS in the block main.registerFile:	3 (0.04 % Utilization)
+
+---------------------------------------------------------
+########   Utilization report for  cell:   rom   ########
+Instance path:   main.rom                                
+=========================================================
+
+SEQUENTIAL ELEMENTS
+Name     Total elements     Utilization     Notes
+-------------------------------------------------
+SLE      52                 4.99 %               
+=================================================
+Total SEQUENTIAL ELEMENTS in the block main.rom:	52 (0.68 % Utilization)
+
+
+COMBINATIONAL LOGIC
+Name     Total elements     Utilization     Notes
+-------------------------------------------------
+CFG      1022               28.4 %               
+ARI1     612                22.8 %               
+=================================================
+Total COMBINATIONAL LOGIC in the block main.rom:	1634 (21.50 % Utilization)
+
+--------------------------------------------------------------
+########   Utilization report for  cell:   timebase   ########
+Instance path:   main.timebase                                
+==============================================================
+
+SEQUENTIAL ELEMENTS
+Name     Total elements     Utilization     Notes
+-------------------------------------------------
+SLE      130                12.5 %               
+=================================================
+Total SEQUENTIAL ELEMENTS in the block main.timebase:	130 (1.71 % Utilization)
+
+
+COMBINATIONAL LOGIC
+Name     Total elements     Utilization     Notes
+-------------------------------------------------
+CFG      107                2.98 %               
+ARI1     64                 2.39 %               
+=================================================
+Total COMBINATIONAL LOGIC in the block main.timebase:	171 (2.25 % Utilization)
+
+----------------------------------------------------------
+########   Utilization report for  cell:   uart   ########
+Instance path:   main.uart                                
+==========================================================
+
+SEQUENTIAL ELEMENTS
+Name     Total elements     Utilization     Notes
+-------------------------------------------------
+SLE      79                 7.58 %               
+=================================================
+Total SEQUENTIAL ELEMENTS in the block main.uart:	79 (1.04 % Utilization)
+
+
+COMBINATIONAL LOGIC
+Name     Total elements     Utilization     Notes
+-------------------------------------------------
+CFG      68                 1.89 %               
+ARI1     32                 1.19 %               
+=================================================
+Total COMBINATIONAL LOGIC in the block main.uart:	100 (1.32 % Utilization)
+
+
+##### END OF AREA REPORT #####]
+

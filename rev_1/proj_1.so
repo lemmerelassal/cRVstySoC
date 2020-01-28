@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<SynplifyOutput>
+	<result>Success</result>
+	<design>main</design>
+	<target_verilog>D:\FPGA\H13D\rev_1\proj_1.vm</target_verilog>
+</SynplifyOutput>

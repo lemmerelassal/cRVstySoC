@@ -5,7 +5,8 @@ use IEEE.std_logic_unsigned.all;
 entity uart is
     generic (base_address : std_logic_vector(31 downto 0) := X"C0001000";
             baud_rate : integer := 115200;
-            clk_freq : integer := 100000000
+            clk_freq : integer := 100000000;
+            initial_data : std_logic_vector(7 downto 0) := X"0A"
             );
     Port ( rst, clk : in STD_LOGIC;
            txd : out STD_LOGIC;
@@ -21,7 +22,7 @@ constant COUNTER_MAX : integer := (clk_freq/baud_rate)-1;
 constant TX_BUSY : integer := 0;
 
 signal counter : integer := COUNTER_MAX; -- 115207 bps
-signal charToBeSent : std_logic_vector(14 downto 0) := "001000010111000"; -- '!'
+signal charToBeSent : std_logic_vector(14 downto 0) := initial_data & "0111000"; -- '\n'
 signal reg_status : std_logic_vector(7 downto 0);
 signal is_shifting : std_logic;
 
@@ -34,7 +35,7 @@ begin
     begin
         if rst = '1' then
             counter <= COUNTER_MAX;
-            charToBeSent <= "001000010111000";
+            charToBeSent <= initial_data & "0111000";
         elsif rising_edge(clk) then
             if (mem_we = '1') and (mem_addr = (base_address+X"00000001")) then
                 counter <= COUNTER_MAX;

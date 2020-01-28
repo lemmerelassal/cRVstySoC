@@ -1,0 +1,3 @@
+
+: 0 work.gpio "D:\FPGA\H13D\hdl\gpio.vhd" 5 7 
+: 0 work.main "D:\FPGA\H13D\hdl\main.vhd" 8 7 work.registerFile work.cpu work.rom work.block_ram work.timebase work.uart 

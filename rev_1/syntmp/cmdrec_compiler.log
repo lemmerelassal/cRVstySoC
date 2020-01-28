@@ -1,0 +1,14 @@
+C:\Microsemi\Libero_SoC_v12.2\SynplifyPro\bin64\c_hdl.exe  -osyn  D:\FPGA\H13D\rev_1\synwork\proj_1_comp.srs  -hdllog  D:\FPGA\H13D\rev_1\synlog\proj_1_compiler.srr  -encrypt  -mp  4  -verification_mode 0  -vhdl  -prodtype  synplify_pro   -infer_seqShift -primux -dspmac -pqdpadd -fixsmult -sdff_counter -preserve_registers -divnmod -nram  -encrypt  -pro  -dmgen  D:\FPGA\H13D\rev_1\dm  -lite -ui -fid2 -ram -sharing on -ll 2000 -autosm  -ignore_undefined_lib  -lib work D:\FPGA\H13D\hdl\cpu_new.vhd -lib work D:\FPGA\H13D\hdl\gpio.vhd -lib work D:\FPGA\H13D\hdl\ram.vhd -lib work D:\FPGA\H13D\hdl\rom.vhd -lib work D:\FPGA\H13D\hdl\registerfile.vhd -lib work D:\FPGA\H13D\hdl\timebase.vhd -lib work D:\FPGA\H13D\hdl\uart.vhd -lib work D:\FPGA\H13D\hdl\main.vhd  -jobname  "compiler" 
+relcom:C:\Microsemi\Libero_SoC_v12.2\SynplifyPro\bin64\c_hdl.exe -osyn ..\synwork\proj_1_comp.srs -hdllog ..\synlog\proj_1_compiler.srr -encrypt -mp 4 -verification_mode 0 -vhdl -prodtype synplify_pro -infer_seqShift -primux -dspmac -pqdpadd -fixsmult -sdff_counter -preserve_registers -divnmod -nram -encrypt -pro -dmgen ..\dm -lite -ui -fid2 -ram -sharing on -ll 2000 -autosm -ignore_undefined_lib -lib work ..\..\hdl\cpu_new.vhd -lib work ..\..\hdl\gpio.vhd -lib work ..\..\hdl\ram.vhd -lib work ..\..\hdl\rom.vhd -lib work ..\..\hdl\registerfile.vhd -lib work ..\..\hdl\timebase.vhd -lib work ..\..\hdl\uart.vhd -lib work ..\..\hdl\main.vhd -jobname "compiler"
+rc:0 success:1 runtime:14
+file:..\synwork\proj_1_comp.srs|io:o|time:1580215641|size:158109|exec:0|csum:
+file:..\synlog\proj_1_compiler.srr|io:o|time:1580215641|size:36579|exec:0|csum:
+file:..\..\hdl\cpu_new.vhd|io:i|time:1580212501|size:36660|exec:0|csum:34311A5349A430B18E2863ACABC1B52C
+file:..\..\hdl\gpio.vhd|io:i|time:1579960358|size:1664|exec:0|csum:1E7680F47BC58D2FB23E68CE1389DB95
+file:..\..\hdl\ram.vhd|io:i|time:1579975251|size:5306|exec:0|csum:9F95208763976CEE5D333B20C94EE56A
+file:..\..\hdl\rom.vhd|io:i|time:1579969307|size:1889|exec:0|csum:831F504ECD20066D8949DEDED6D311D2
+file:..\..\hdl\registerfile.vhd|io:i|time:1576242529|size:10842|exec:0|csum:72F542B9721017C84B60DADB9AD36D3E
+file:..\..\hdl\timebase.vhd|io:i|time:1579708020|size:1660|exec:0|csum:9F0242249D096421CF1CEE9D13A296D5
+file:..\..\hdl\uart.vhd|io:i|time:1580057628|size:2317|exec:0|csum:0D9869797EEA1B750843C21CC8CE612C
+file:..\..\hdl\main.vhd|io:i|time:1579971461|size:14798|exec:0|csum:C0CC7C1C9B31CA88C046F18AD1D1B214
+file:C:\Microsemi\Libero_SoC_v12.2\SynplifyPro\bin64\c_hdl.exe|io:i|time:1562075633|size:5681152|exec:1|csum:D2A8CE1F5D32BE4D29515E5A625B0E39

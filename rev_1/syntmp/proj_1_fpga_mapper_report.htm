@@ -1,0 +1,1384 @@
+<html><body><samp><pre>
+<!@TC:0>
+# Sat Dec 21 16:02:09 2019
+
+
+Copyright (C) 1994-2019 Synopsys, Inc.
+This Synopsys software and all associated documentation are proprietary to Synopsys, Inc.
+and may only be used pursuant to the terms and conditions of a written license agreement
+with Synopsys, Inc. All other use, reproduction, modification, or distribution of the
+Synopsys software or the associated documentation is strictly prohibited.
+Tool: Synplify Pro (R)
+Build: O-2018.09M-SP1-1
+Install: C:\Microsemi\Libero_SoC_v12.2\SynplifyPro
+OS: Windows 6.2
+
+Hostname: DESKTOP-JOJSDSF
+
+Implementation : rev_1
+<a name=mapperReport76></a>Synopsys Generic Technology Mapper, Version mapact2018q4p1, Build 026R, Built Apr 25 2019 10:01:09</a>
+
+
+Mapper Startup Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 99MB peak: 99MB)
+
+@N:<a href="@N:MF284:@XP_HELP">MF284</a> : <!@TM:0> | Setting synthesis effort to medium for the design 
+@N:<a href="@N:MF916:@XP_HELP">MF916</a> : <!@TM:0> | Option synthesis_strategy=base is enabled.  
+@N:<a href="@N:MF248:@XP_HELP">MF248</a> : <!@TM:0> | Running in 64-bit mode. 
+@N:<a href="@N:MF667:@XP_HELP">MF667</a> : <!@TM:0> | Clock conversion disabled. (Command "set_option -fix_gated_and_generated_clocks 0" in the project file.) 
+
+Design Input Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 98MB peak: 100MB)
+
+
+Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 98MB peak: 100MB)
+
+
+Start loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 100MB peak: 101MB)
+
+
+Finished loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 101MB peak: 103MB)
+
+@N:<a href="@N:MF284:@XP_HELP">MF284</a> : <!@TM:0> | Setting synthesis effort to medium for the design 
+
+
+Starting Optimization and Mapping (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 134MB peak: 136MB)
+
+
+Available hyper_sources - for debug and ip models
+	None Found
+
+<font color=#A52A2A>@W:<a href="@W:FX1172:@XP_HELP">FX1172</a> : <a href="d:\fpga\h13d\hdl\main.vhd:256:8:256:10:@W:FX1172:@XP_MSG">main.vhd(256)</a><!@TM:0> | User-specified initial value defined for instance gpio[11:8] is being ignored due to limitations in architecture. </font>
+
+Finished RTL optimizations (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 139MB peak: 144MB)
+
+@N:<a href="@N:FX702:@XP_HELP">FX702</a> : <a href="d:\fpga\h13d\hdl\registerfile.vhd:66:11:66:20:@N:FX702:@XP_MSG">registerfile.vhd(66)</a><!@TM:0> | Found startup values on RAM instance regfile.registers[31:0] (in view: work.main(behavioural)).
+@N:<a href="@N:FX702:@XP_HELP">FX702</a> : <a href="d:\fpga\h13d\hdl\registerfile.vhd:66:11:66:20:@N:FX702:@XP_MSG">registerfile.vhd(66)</a><!@TM:0> | Found startup values on RAM instance regfile.registers[31:0]
+<font color=#A52A2A>@W:<a href="@W:FX107:@XP_HELP">FX107</a> : <a href="d:\fpga\h13d\hdl\ram.vhd:53:11:53:17:@W:FX107:@XP_MSG">ram.vhd(53)</a><!@TM:0> | RAM ram.memory_1[31:0] (in view: work.main(behavioural)) does not have a read/write conflict check. Possible simulation mismatch. To resolve a read/write conflict, either set syn_ramstyle = rw_check, or enable the "Read Write Check on RAM" Implementation Option. For more information, search for "read/write conflict check" in Online Help.</font>
+@N:<a href="@N:FX702:@XP_HELP">FX702</a> : <a href="d:\fpga\h13d\hdl\ram.vhd:53:11:53:17:@N:FX702:@XP_MSG">ram.vhd(53)</a><!@TM:0> | Found startup values on RAM instance ram.memory_1[31:0] (in view: work.main(behavioural)).
+@N:<a href="@N:FX702:@XP_HELP">FX702</a> : <a href="d:\fpga\h13d\hdl\ram.vhd:53:11:53:17:@N:FX702:@XP_MSG">ram.vhd(53)</a><!@TM:0> | Found startup values on RAM instance ram.memory_1[31:0]
+<font color=#A52A2A>@W:<a href="@W:FX107:@XP_HELP">FX107</a> : <a href="d:\fpga\h13d\hdl\ram.vhd:53:11:53:17:@W:FX107:@XP_MSG">ram.vhd(53)</a><!@TM:0> | RAM ram.memory[31:0] (in view: work.main(behavioural)) does not have a read/write conflict check. Possible simulation mismatch. To resolve a read/write conflict, either set syn_ramstyle = rw_check, or enable the "Read Write Check on RAM" Implementation Option. For more information, search for "read/write conflict check" in Online Help.</font>
+@N:<a href="@N:FX702:@XP_HELP">FX702</a> : <a href="d:\fpga\h13d\hdl\ram.vhd:53:11:53:17:@N:FX702:@XP_MSG">ram.vhd(53)</a><!@TM:0> | Found startup values on RAM instance ram.memory[31:0] (in view: work.main(behavioural)).
+@N:<a href="@N:FX702:@XP_HELP">FX702</a> : <a href="d:\fpga\h13d\hdl\ram.vhd:53:11:53:17:@N:FX702:@XP_MSG">ram.vhd(53)</a><!@TM:0> | Found startup values on RAM instance ram.memory[31:0]
+@N:<a href="@N:MO231:@XP_HELP">MO231</a> : <a href="d:\fpga\h13d\hdl\cpu_new.vhd:233:8:233:10:@N:MO231:@XP_MSG">cpu_new.vhd(233)</a><!@TM:0> | Found counter in view:work.cpu(behavioural) instance counter[31:0] 
+@N:<a href="@N:MF179:@XP_HELP">MF179</a> : <a href="d:\fpga\h13d\hdl\cpu_new.vhd:216:97:216:168:@N:MF179:@XP_MSG">cpu_new.vhd(216)</a><!@TM:0> | Found 32 by 32 bit equality operator ('==') fsm\.un24_registerfile_register_selected (in view: work.cpu(behavioural))
+@N:<a href="@N:MF179:@XP_HELP">MF179</a> : <a href="d:\fpga\h13d\hdl\cpu_new.vhd:393:19:393:43:@N:MF179:@XP_MSG">cpu_new.vhd(393)</a><!@TM:0> | Found 32 by 32 bit equality operator ('==') decode_b_type\.next_pc_99_2 (in view: work.cpu(behavioural))
+
+Starting factoring (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:02s; Memory used current: 147MB peak: 176MB)
+
+
+Finished factoring (Real Time elapsed 0h:00m:04s; CPU Time elapsed 0h:00m:04s; Memory used current: 169MB peak: 176MB)
+
+
+Starting gated-clock and generated-clock conversion (Real Time elapsed 0h:00m:04s; CPU Time elapsed 0h:00m:04s; Memory used current: 171MB peak: 176MB)
+
+
+Finished gated-clock and generated-clock conversion (Real Time elapsed 0h:00m:04s; CPU Time elapsed 0h:00m:04s; Memory used current: 171MB peak: 176MB)
+
+
+Finished generic timing optimizations - Pass 1 (Real Time elapsed 0h:00m:05s; CPU Time elapsed 0h:00m:05s; Memory used current: 175MB peak: 211MB)
+
+
+Starting Early Timing Optimization (Real Time elapsed 0h:00m:07s; CPU Time elapsed 0h:00m:07s; Memory used current: 178MB peak: 211MB)
+
+
+Finished Early Timing Optimization (Real Time elapsed 0h:00m:10s; CPU Time elapsed 0h:00m:10s; Memory used current: 180MB peak: 211MB)
+
+
+Finished generic timing optimizations - Pass 2 (Real Time elapsed 0h:00m:10s; CPU Time elapsed 0h:00m:10s; Memory used current: 179MB peak: 211MB)
+
+@N:<a href="@N:MO106:@XP_HELP">MO106</a> : <a href="d:\fpga\h13d\hdl\cpu_new.vhd:162:27:162:34:@N:MO106:@XP_MSG">cpu_new.vhd(162)</a><!@TM:0> | Found ROM cpu0.fsm\.un13_use_rd_00[2:0] (in view: work.main(behavioural)) with 64 words by 3 bits.
+@N:<a href="@N:MO106:@XP_HELP">MO106</a> : <a href="d:\fpga\h13d\hdl\cpu_new.vhd:162:27:162:34:@N:MO106:@XP_MSG">cpu_new.vhd(162)</a><!@TM:0> | Found ROM cpu0.fsm\.un13_use_rd_00_0[2:0] (in view: work.main(behavioural)) with 64 words by 3 bits.
+@N:<a href="@N:BN362:@XP_HELP">BN362</a> : <a href="d:\fpga\h13d\hdl\cpu_new.vhd:162:27:162:34:@N:BN362:@XP_MSG">cpu_new.vhd(162)</a><!@TM:0> | Removing sequential instance G_211 (in view: work.main(behavioural)) because it does not drive other instances.
+@N:<a href="@N:BN362:@XP_HELP">BN362</a> : <a href="d:\fpga\h13d\hdl\cpu_new.vhd:162:27:162:34:@N:BN362:@XP_MSG">cpu_new.vhd(162)</a><!@TM:0> | Removing sequential instance cpu0.fsm\.un13_use_rd_00_0_dreg[2:0] (in view: work.main(behavioural)) of type view:PrimLib.dff(prim) because it does not drive other instances.
+@N:<a href="@N:BN362:@XP_HELP">BN362</a> : <a href="d:\fpga\h13d\hdl\cpu_new.vhd:162:27:162:34:@N:BN362:@XP_MSG">cpu_new.vhd(162)</a><!@TM:0> | Removing sequential instance cpu0.fsm\.un13_use_rd_00_dreg[2:0] (in view: work.main(behavioural)) of type view:PrimLib.dff(prim) because it does not drive other instances.
+
+Finished preparing to map (Real Time elapsed 0h:00m:12s; CPU Time elapsed 0h:00m:12s; Memory used current: 179MB peak: 211MB)
+
+
+Finished technology mapping (Real Time elapsed 0h:00m:13s; CPU Time elapsed 0h:00m:13s; Memory used current: 203MB peak: 211MB)
+
+Pass		 CPU time		Worst Slack		Luts / Registers
+------------------------------------------------------------
+   1		0h:00m:13s		   -11.36ns		2372 /       357
+   2		0h:00m:14s		   -11.36ns		2268 /       437
+@N:<a href="@N:FX271:@XP_HELP">FX271</a> : <a href="d:\fpga\h13d\hdl\cpu_new.vhd:233:8:233:10:@N:FX271:@XP_MSG">cpu_new.vhd(233)</a><!@TM:0> | Replicating instance cpu0.instruction[21] (in view: work.main(behavioural)) with 12 loads 1 time to improve timing.
+@N:<a href="@N:FX271:@XP_HELP">FX271</a> : <a href="d:\fpga\h13d\hdl\cpu_new.vhd:233:8:233:10:@N:FX271:@XP_MSG">cpu_new.vhd(233)</a><!@TM:0> | Replicating instance cpu0.instruction[22] (in view: work.main(behavioural)) with 12 loads 1 time to improve timing.
+@N:<a href="@N:FX271:@XP_HELP">FX271</a> : <a href="d:\fpga\h13d\hdl\cpu_new.vhd:233:8:233:10:@N:FX271:@XP_MSG">cpu_new.vhd(233)</a><!@TM:0> | Replicating instance cpu0.instruction[23] (in view: work.main(behavioural)) with 12 loads 1 time to improve timing.
+@N:<a href="@N:FX271:@XP_HELP">FX271</a> : <a href="d:\fpga\h13d\hdl\cpu_new.vhd:233:8:233:10:@N:FX271:@XP_MSG">cpu_new.vhd(233)</a><!@TM:0> | Replicating instance cpu0.instruction[31] (in view: work.main(behavioural)) with 76 loads 3 times to improve timing.
+@N:<a href="@N:FX271:@XP_HELP">FX271</a> : <a href="d:\fpga\h13d\hdl\cpu_new.vhd:233:8:233:10:@N:FX271:@XP_MSG">cpu_new.vhd(233)</a><!@TM:0> | Replicating instance cpu0.instruction[24] (in view: work.main(behavioural)) with 12 loads 1 time to improve timing.
+@N:<a href="@N:FX271:@XP_HELP">FX271</a> : <a href="d:\fpga\h13d\hdl\cpu_new.vhd:233:8:233:10:@N:FX271:@XP_MSG">cpu_new.vhd(233)</a><!@TM:0> | Replicating instance cpu0.instruction[25] (in view: work.main(behavioural)) with 14 loads 1 time to improve timing.
+@N:<a href="@N:FX271:@XP_HELP">FX271</a> : <a href="d:\fpga\h13d\hdl\cpu_new.vhd:233:8:233:10:@N:FX271:@XP_MSG">cpu_new.vhd(233)</a><!@TM:0> | Replicating instance cpu0.instruction[26] (in view: work.main(behavioural)) with 14 loads 1 time to improve timing.
+@N:<a href="@N:FX271:@XP_HELP">FX271</a> : <a href="d:\fpga\h13d\hdl\cpu_new.vhd:233:8:233:10:@N:FX271:@XP_MSG">cpu_new.vhd(233)</a><!@TM:0> | Replicating instance cpu0.instruction[27] (in view: work.main(behavioural)) with 14 loads 1 time to improve timing.
+@N:<a href="@N:FX271:@XP_HELP">FX271</a> : <a href="d:\fpga\h13d\hdl\cpu_new.vhd:233:8:233:10:@N:FX271:@XP_MSG">cpu_new.vhd(233)</a><!@TM:0> | Replicating instance cpu0.instruction[28] (in view: work.main(behavioural)) with 14 loads 1 time to improve timing.
+@N:<a href="@N:FX271:@XP_HELP">FX271</a> : <a href="d:\fpga\h13d\hdl\cpu_new.vhd:233:8:233:10:@N:FX271:@XP_MSG">cpu_new.vhd(233)</a><!@TM:0> | Replicating instance cpu0.instruction[29] (in view: work.main(behavioural)) with 14 loads 1 time to improve timing.
+@N:<a href="@N:FX271:@XP_HELP">FX271</a> : <a href="d:\fpga\h13d\hdl\cpu_new.vhd:233:8:233:10:@N:FX271:@XP_MSG">cpu_new.vhd(233)</a><!@TM:0> | Replicating instance cpu0.instruction[30] (in view: work.main(behavioural)) with 14 loads 1 time to improve timing.
+@N:<a href="@N:FX271:@XP_HELP">FX271</a> : <a href="d:\fpga\h13d\hdl\cpu_new.vhd:233:8:233:10:@N:FX271:@XP_MSG">cpu_new.vhd(233)</a><!@TM:0> | Replicating instance cpu0.reg_rs1_1_sqmuxa_i (in view: work.main(behavioural)) with 52 loads 3 times to improve timing.
+@N:<a href="@N:FX271:@XP_HELP">FX271</a> : <a href="d:\fpga\h13d\hdl\cpu_new.vhd:233:8:233:10:@N:FX271:@XP_MSG">cpu_new.vhd(233)</a><!@TM:0> | Replicating instance cpu0.instruction[20] (in view: work.main(behavioural)) with 14 loads 1 time to improve timing.
+@N:<a href="@N:FX271:@XP_HELP">FX271</a> : <a href="d:\fpga\h13d\hdl\main.vhd:244:8:244:12:@N:FX271:@XP_MSG">main.vhd(244)</a><!@TM:0> | Replicating instance cpu0.ram_we (in view: work.main(behavioural)) with 384 loads 3 times to improve timing.
+@N:<a href="@N:FX271:@XP_HELP">FX271</a> : <a href="d:\fpga\h13d\hdl\registerfile.vhd:66:11:66:20:@N:FX271:@XP_MSG">registerfile.vhd(66)</a><!@TM:0> | Replicating instance regfile.data_out_0[25] (in view: work.main(behavioural)) with 3 loads 2 time(s) to improve timing.
+@N:<a href="@N:FX271:@XP_HELP">FX271</a> : <a href="d:\fpga\h13d\hdl\registerfile.vhd:66:11:66:20:@N:FX271:@XP_MSG">registerfile.vhd(66)</a><!@TM:0> | Replicating instance regfile.data_out_0[20] (in view: work.main(behavioural)) with 3 loads 2 time(s) to improve timing.
+@N:<a href="@N:FX271:@XP_HELP">FX271</a> : <a href="d:\fpga\h13d\hdl\registerfile.vhd:66:11:66:20:@N:FX271:@XP_MSG">registerfile.vhd(66)</a><!@TM:0> | Replicating instance regfile.data_out_0[22] (in view: work.main(behavioural)) with 3 loads 2 time(s) to improve timing.
+@N:<a href="@N:FX271:@XP_HELP">FX271</a> : <a href="d:\fpga\h13d\hdl\registerfile.vhd:66:11:66:20:@N:FX271:@XP_MSG">registerfile.vhd(66)</a><!@TM:0> | Replicating instance regfile.data_out_0[24] (in view: work.main(behavioural)) with 3 loads 2 time(s) to improve timing.
+@N:<a href="@N:FX271:@XP_HELP">FX271</a> : <a href="d:\fpga\h13d\hdl\registerfile.vhd:66:11:66:20:@N:FX271:@XP_MSG">registerfile.vhd(66)</a><!@TM:0> | Replicating instance regfile.data_out_0[29] (in view: work.main(behavioural)) with 3 loads 2 time(s) to improve timing.
+@N:<a href="@N:FX271:@XP_HELP">FX271</a> : <a href="d:\fpga\h13d\hdl\registerfile.vhd:66:11:66:20:@N:FX271:@XP_MSG">registerfile.vhd(66)</a><!@TM:0> | Replicating instance regfile.data_out_0[26] (in view: work.main(behavioural)) with 3 loads 2 time(s) to improve timing.
+@N:<a href="@N:FX271:@XP_HELP">FX271</a> : <a href="d:\fpga\h13d\hdl\registerfile.vhd:66:11:66:20:@N:FX271:@XP_MSG">registerfile.vhd(66)</a><!@TM:0> | Replicating instance regfile.data_out_0[27] (in view: work.main(behavioural)) with 3 loads 2 time(s) to improve timing.
+@N:<a href="@N:FX271:@XP_HELP">FX271</a> : <a href="d:\fpga\h13d\hdl\registerfile.vhd:66:11:66:20:@N:FX271:@XP_MSG">registerfile.vhd(66)</a><!@TM:0> | Replicating instance regfile.data_out_0[28] (in view: work.main(behavioural)) with 3 loads 2 time(s) to improve timing.
+@N:<a href="@N:FX271:@XP_HELP">FX271</a> : <a href="d:\fpga\h13d\hdl\registerfile.vhd:66:11:66:20:@N:FX271:@XP_MSG">registerfile.vhd(66)</a><!@TM:0> | Replicating instance regfile.g0 (in view: work.main(behavioural)) with 3 loads 2 time(s) to improve timing.
+@N:<a href="@N:FX271:@XP_HELP">FX271</a> : <a href="d:\fpga\h13d\hdl\registerfile.vhd:66:11:66:20:@N:FX271:@XP_MSG">registerfile.vhd(66)</a><!@TM:0> | Replicating instance regfile.data_out_0[31] (in view: work.main(behavioural)) with 3 loads 2 time(s) to improve timing.
+@N:<a href="@N:FX271:@XP_HELP">FX271</a> : <a href="d:\fpga\h13d\hdl\cpu_new.vhd:214:44:214:50:@N:FX271:@XP_MSG">cpu_new.vhd(214)</a><!@TM:0> | Replicating instance cpu0.fsm\.registerfile_wdata_2_0_iv[22] (in view: work.main(behavioural)) with 2 loads 1 time(s) to improve timing.
+@N:<a href="@N:FX271:@XP_HELP">FX271</a> : <a href="d:\fpga\h13d\hdl\cpu_new.vhd:214:44:214:50:@N:FX271:@XP_MSG">cpu_new.vhd(214)</a><!@TM:0> | Replicating instance cpu0.fsm\.registerfile_wdata_2_0_iv[26] (in view: work.main(behavioural)) with 2 loads 1 time(s) to improve timing.
+@N:<a href="@N:FX271:@XP_HELP">FX271</a> : <a href="d:\fpga\h13d\hdl\cpu_new.vhd:214:44:214:50:@N:FX271:@XP_MSG">cpu_new.vhd(214)</a><!@TM:0> | Replicating instance cpu0.fsm\.registerfile_wdata_2_0_iv[20] (in view: work.main(behavioural)) with 2 loads 1 time(s) to improve timing.
+@N:<a href="@N:FX271:@XP_HELP">FX271</a> : <a href="d:\fpga\h13d\hdl\cpu_new.vhd:214:44:214:50:@N:FX271:@XP_MSG">cpu_new.vhd(214)</a><!@TM:0> | Replicating instance cpu0.fsm\.registerfile_wdata_2_0_iv[16] (in view: work.main(behavioural)) with 2 loads 1 time(s) to improve timing.
+@N:<a href="@N:FX271:@XP_HELP">FX271</a> : <a href="d:\fpga\h13d\hdl\cpu_new.vhd:214:44:214:50:@N:FX271:@XP_MSG">cpu_new.vhd(214)</a><!@TM:0> | Replicating instance cpu0.fsm\.registerfile_wdata_2_0_iv[27] (in view: work.main(behavioural)) with 2 loads 1 time(s) to improve timing.
+@N:<a href="@N:FX271:@XP_HELP">FX271</a> : <a href="d:\fpga\h13d\hdl\cpu_new.vhd:214:44:214:50:@N:FX271:@XP_MSG">cpu_new.vhd(214)</a><!@TM:0> | Replicating instance cpu0.fsm\.registerfile_wdata_2_0_iv[25] (in view: work.main(behavioural)) with 2 loads 1 time(s) to improve timing.
+@N:<a href="@N:FX271:@XP_HELP">FX271</a> : <a href="d:\fpga\h13d\hdl\cpu_new.vhd:214:44:214:50:@N:FX271:@XP_MSG">cpu_new.vhd(214)</a><!@TM:0> | Replicating instance cpu0.fsm\.registerfile_wdata_2_0_iv[24] (in view: work.main(behavioural)) with 2 loads 1 time(s) to improve timing.
+@N:<a href="@N:FX271:@XP_HELP">FX271</a> : <a href="d:\fpga\h13d\hdl\cpu_new.vhd:214:44:214:50:@N:FX271:@XP_MSG">cpu_new.vhd(214)</a><!@TM:0> | Replicating instance cpu0.fsm\.registerfile_wdata_2_0_iv[29] (in view: work.main(behavioural)) with 2 loads 1 time(s) to improve timing.
+@N:<a href="@N:FX271:@XP_HELP">FX271</a> : <a href="d:\fpga\h13d\hdl\cpu_new.vhd:214:44:214:50:@N:FX271:@XP_MSG">cpu_new.vhd(214)</a><!@TM:0> | Replicating instance cpu0.fsm\.registerfile_wdata_2_0_iv[28] (in view: work.main(behavioural)) with 2 loads 1 time(s) to improve timing.
+Timing driven replication report
+Added 14 Registers via timing driven replication
+Added 40 LUTs via timing driven replication
+
+   3		0h:00m:17s		   -10.04ns		2311 /       662
+   4		0h:00m:17s		    -9.66ns		2314 /       672
+   5		0h:00m:18s		    -9.45ns		2319 /       672
+@N:<a href="@N:FX271:@XP_HELP">FX271</a> : <a href="d:\fpga\h13d\hdl\cpu_new.vhd:233:8:233:10:@N:FX271:@XP_MSG">cpu_new.vhd(233)</a><!@TM:0> | Replicating instance cpu0.reg_rs1[1] (in view: work.main(behavioural)) with 21 loads 1 time to improve timing.
+@N:<a href="@N:FX271:@XP_HELP">FX271</a> : <a href="d:\fpga\h13d\hdl\cpu_new.vhd:233:8:233:10:@N:FX271:@XP_MSG">cpu_new.vhd(233)</a><!@TM:0> | Replicating instance cpu0.reg_rs1[2] (in view: work.main(behavioural)) with 19 loads 1 time to improve timing.
+@N:<a href="@N:FX271:@XP_HELP">FX271</a> : <a href="d:\fpga\h13d\hdl\cpu_new.vhd:233:8:233:10:@N:FX271:@XP_MSG">cpu_new.vhd(233)</a><!@TM:0> | Replicating instance cpu0.reg_rs1[3] (in view: work.main(behavioural)) with 18 loads 1 time to improve timing.
+@N:<a href="@N:FX271:@XP_HELP">FX271</a> : <a href="d:\fpga\h13d\hdl\cpu_new.vhd:233:8:233:10:@N:FX271:@XP_MSG">cpu_new.vhd(233)</a><!@TM:0> | Replicating instance cpu0.reg_rs1[4] (in view: work.main(behavioural)) with 18 loads 1 time to improve timing.
+@N:<a href="@N:FX271:@XP_HELP">FX271</a> : <a href="d:\fpga\h13d\hdl\cpu_new.vhd:233:8:233:10:@N:FX271:@XP_MSG">cpu_new.vhd(233)</a><!@TM:0> | Replicating instance cpu0.reg_rs1[5] (in view: work.main(behavioural)) with 18 loads 1 time to improve timing.
+@N:<a href="@N:FX271:@XP_HELP">FX271</a> : <a href="d:\fpga\h13d\hdl\cpu_new.vhd:233:8:233:10:@N:FX271:@XP_MSG">cpu_new.vhd(233)</a><!@TM:0> | Replicating instance cpu0.reg_rs1[6] (in view: work.main(behavioural)) with 18 loads 1 time to improve timing.
+@N:<a href="@N:FX271:@XP_HELP">FX271</a> : <a href="d:\fpga\h13d\hdl\cpu_new.vhd:233:8:233:10:@N:FX271:@XP_MSG">cpu_new.vhd(233)</a><!@TM:0> | Replicating instance cpu0.reg_rs1[7] (in view: work.main(behavioural)) with 18 loads 1 time to improve timing.
+@N:<a href="@N:FX271:@XP_HELP">FX271</a> : <a href="d:\fpga\h13d\hdl\cpu_new.vhd:262:15:262:33:@N:FX271:@XP_MSG">cpu_new.vhd(262)</a><!@TM:0> | Replicating instance cpu0.synchronous\.un3_update_rs1_from_rd_u (in view: work.main(behavioural)) with 43 loads 3 times to improve timing.
+@N:<a href="@N:FX271:@XP_HELP">FX271</a> : <a href="d:\fpga\h13d\hdl\main.vhd:244:8:244:12:@N:FX271:@XP_MSG">main.vhd(244)</a><!@TM:0> | Replicating instance cpu0.ram_we_rep1 (in view: work.main(behavioural)) with 96 loads 3 times to improve timing.
+@N:<a href="@N:FX271:@XP_HELP">FX271</a> : <a href="d:\fpga\h13d\hdl\main.vhd:244:8:244:12:@N:FX271:@XP_MSG">main.vhd(244)</a><!@TM:0> | Replicating instance cpu0.ram_we (in view: work.main(behavioural)) with 96 loads 3 times to improve timing.
+@N:<a href="@N:FX271:@XP_HELP">FX271</a> : <a href="d:\fpga\h13d\hdl\main.vhd:244:8:244:12:@N:FX271:@XP_MSG">main.vhd(244)</a><!@TM:0> | Replicating instance cpu0.ram_we_fast (in view: work.main(behavioural)) with 96 loads 3 times to improve timing.
+@N:<a href="@N:FX271:@XP_HELP">FX271</a> : <a href="d:\fpga\h13d\hdl\main.vhd:244:8:244:12:@N:FX271:@XP_MSG">main.vhd(244)</a><!@TM:0> | Replicating instance cpu0.ram_we_rep2 (in view: work.main(behavioural)) with 96 loads 3 times to improve timing.
+Timing driven replication report
+Added 7 Registers via timing driven replication
+Added 22 LUTs via timing driven replication
+
+@N:<a href="@N:FX271:@XP_HELP">FX271</a> : <a href="d:\fpga\h13d\hdl\cpu_new.vhd:222:24:222:31:@N:FX271:@XP_MSG">cpu_new.vhd(222)</a><!@TM:0> | Replicating instance cpu0.n_pc_2_sn_N_6_mux_i_i_a2 (in view: work.main(behavioural)) with 38 loads 3 times to improve timing.
+Timing driven replication report
+Added 0 Registers via timing driven replication
+Added 3 LUTs via timing driven replication
+
+   6		0h:00m:18s		    -9.27ns		2345 /       679
+   7		0h:00m:18s		    -9.10ns		2345 /       698
+   8		0h:00m:19s		    -8.89ns		2360 /       712
+   9		0h:00m:20s		    -8.70ns		2372 /       712
+  10		0h:00m:21s		    -8.60ns		2379 /       712
+  11		0h:00m:21s		    -8.60ns		2387 /       712
+@N:<a href="@N:MF322:@XP_HELP">MF322</a> : <!@TM:0> | Retiming summary: 101 registers retimed to 578  
+
+		#####  BEGIN RETIMING REPORT  #####
+
+Retiming summary : 101 registers retimed to 578
+
+Original and Pipelined registers replaced by retiming :
+		cpu0.instruction[12]
+		cpu0.instruction[13]
+		cpu0.instruction[14]
+		cpu0.instruction[15]
+		cpu0.instruction[16]
+		cpu0.instruction[17]
+		cpu0.instruction[18]
+		cpu0.instruction[19]
+		cpu0.pc[1]
+		cpu0.pc[2]
+		cpu0.pc[3]
+		cpu0.pc[4]
+		cpu0.pc[5]
+		cpu0.pc[6]
+		cpu0.pc[7]
+		cpu0.pc[8]
+		cpu0.pc[9]
+		cpu0.pc[10]
+		cpu0.pc[11]
+		cpu0.pc[12]
+		cpu0.pc[13]
+		cpu0.pc[14]
+		cpu0.pc[15]
+		cpu0.pc[16]
+		cpu0.pc[17]
+		cpu0.pc[18]
+		cpu0.pc[19]
+		cpu0.pc[20]
+		cpu0.pc[21]
+		cpu0.pc[22]
+		cpu0.pc[23]
+		cpu0.pc[24]
+		cpu0.pc[25]
+		cpu0.pc[26]
+		cpu0.pc[27]
+		cpu0.pc[28]
+		cpu0.pc[29]
+		cpu0.pc[30]
+		cpu0.pc[31]
+		cpu0.reg_rs1[1]
+		cpu0.reg_rs1[2]
+		cpu0.reg_rs1[3]
+		cpu0.reg_rs1[4]
+		cpu0.reg_rs1[5]
+		cpu0.reg_rs1[6]
+		cpu0.reg_rs1[7]
+		cpu0.reg_rs1[16]
+		cpu0.reg_rs1[20]
+		cpu0.reg_rs1[22]
+		cpu0.reg_rs1[24]
+		cpu0.reg_rs1[25]
+		cpu0.reg_rs1[26]
+		cpu0.reg_rs1[27]
+		cpu0.reg_rs1[28]
+		cpu0.reg_rs1[29]
+		cpu0.reg_rs1[31]
+		cpu0.reg_rs2[16]
+		cpu0.reg_rs2[20]
+		cpu0.reg_rs2[22]
+		cpu0.reg_rs2[24]
+		cpu0.reg_rs2[25]
+		cpu0.reg_rs2[26]
+		cpu0.reg_rs2[27]
+		cpu0.reg_rs2[28]
+		cpu0.reg_rs2[29]
+		cpu0.state[0]
+		cpu0.state[1]
+		cpu0.state[2]
+		regfile.data_in_r[0]
+		regfile.data_in_r[1]
+		regfile.data_in_r[2]
+		regfile.data_in_r[3]
+		regfile.data_in_r[4]
+		regfile.data_in_r[5]
+		regfile.data_in_r[6]
+		regfile.data_in_r[7]
+		regfile.data_in_r[8]
+		regfile.data_in_r[9]
+		regfile.data_in_r[10]
+		regfile.data_in_r[11]
+		regfile.data_in_r[12]
+		regfile.data_in_r[13]
+		regfile.data_in_r[14]
+		regfile.data_in_r[15]
+		regfile.data_in_r[16]
+		regfile.data_in_r[17]
+		regfile.data_in_r[18]
+		regfile.data_in_r[19]
+		regfile.data_in_r[20]
+		regfile.data_in_r[21]
+		regfile.data_in_r[22]
+		regfile.data_in_r[23]
+		regfile.data_in_r[24]
+		regfile.data_in_r[25]
+		regfile.data_in_r[26]
+		regfile.data_in_r[27]
+		regfile.data_in_r[28]
+		regfile.data_in_r[29]
+		regfile.data_in_r[30]
+		regfile.data_in_r[31]
+		regfile.state
+
+New registers created by retiming :
+		cpu0.counter_ret
+		cpu0.counter_ret_1
+		cpu0.counter_ret_2
+		cpu0.counter_ret_3
+		cpu0.counter_ret_5
+		cpu0.counter_ret_6
+		cpu0.counter_ret_7
+		cpu0.data_in_r_ret
+		cpu0.data_in_r_ret_1
+		cpu0.data_in_r_ret_2
+		cpu0.data_in_r_ret_3
+		cpu0.data_in_r_ret_4
+		cpu0.data_in_r_ret_5
+		cpu0.data_in_r_ret_6
+		cpu0.data_in_r_ret_7
+		cpu0.data_in_r_ret_8
+		cpu0.data_in_r_ret_9
+		cpu0.data_in_r_ret_10
+		cpu0.data_in_r_ret_11
+		cpu0.data_in_r_ret_12
+		cpu0.data_in_r_ret_13
+		cpu0.data_in_r_ret_14
+		cpu0.data_in_r_ret_15
+		cpu0.data_in_r_ret_16
+		cpu0.data_in_r_ret_17
+		cpu0.data_in_r_ret_18
+		cpu0.data_in_r_ret_19
+		cpu0.data_in_r_ret_20
+		cpu0.data_in_r_ret_21
+		cpu0.data_in_r_ret_22
+		cpu0.data_in_r_ret_23
+		cpu0.data_in_r_ret_24
+		cpu0.data_in_r_ret_25
+		cpu0.data_in_r_ret_26
+		cpu0.data_in_r_ret_27
+		cpu0.data_in_r_ret_28
+		cpu0.data_in_r_ret_29
+		cpu0.data_in_r_ret_30
+		cpu0.data_in_r_ret_31
+		cpu0.data_in_r_ret_32
+		cpu0.data_in_r_ret_33
+		cpu0.data_in_r_ret_34
+		cpu0.data_in_r_ret_35
+		cpu0.data_in_r_ret_36
+		cpu0.data_in_r_ret_37
+		cpu0.data_in_r_ret_38
+		cpu0.data_in_r_ret_39
+		cpu0.data_in_r_ret_40
+		cpu0.data_in_r_ret_41
+		cpu0.data_in_r_ret_42
+		cpu0.data_in_r_ret_43
+		cpu0.data_in_r_ret_44
+		cpu0.data_in_r_ret_45
+		cpu0.data_in_r_ret_46
+		cpu0.data_in_r_ret_47
+		cpu0.data_in_r_ret_48
+		cpu0.data_in_r_ret_49
+		cpu0.data_in_r_ret_50
+		cpu0.data_in_r_ret_51
+		cpu0.data_in_r_ret_52
+		cpu0.data_in_r_ret_53
+		cpu0.data_in_r_ret_54
+		cpu0.instruction_ret
+		cpu0.instruction_ret_0
+		cpu0.instruction_ret_1
+		cpu0.instruction_ret_2
+		cpu0.instruction_ret_3
+		cpu0.instruction_ret_6
+		cpu0.instruction_ret_7
+		cpu0.instruction_ret_8
+		cpu0.instruction_ret_9
+		cpu0.instruction_ret_10
+		cpu0.instruction_ret_11
+		cpu0.instruction_ret_13
+		cpu0.instruction_ret_14
+		cpu0.instruction_ret_15
+		cpu0.instruction_ret_17
+		cpu0.instruction_ret_18
+		cpu0.instruction_ret_19
+		cpu0.instruction_ret_21
+		cpu0.instruction_ret_22
+		cpu0.instruction_ret_23
+		cpu0.instruction_ret_25
+		cpu0.instruction_ret_26
+		cpu0.instruction_ret_27
+		cpu0.instruction_ret_29
+		cpu0.instruction_ret_30
+		cpu0.instruction_ret_31
+		cpu0.instruction_ret_33
+		cpu0.instruction_ret_34
+		cpu0.instruction_ret_36
+		cpu0.instruction_ret_37
+		cpu0.instruction_ret_39
+		cpu0.instruction_ret_40
+		cpu0.instruction_ret_42
+		cpu0.instruction_ret_45
+		cpu0.instruction_ret_46
+		cpu0.instruction_ret_49
+		cpu0.instruction_ret_50
+		cpu0.instruction_ret_53
+		cpu0.instruction_ret_54
+		cpu0.instruction_ret_57
+		cpu0.instruction_ret_58
+		cpu0.instruction_ret_61
+		cpu0.instruction_ret_62
+		cpu0.instruction_ret_65
+		cpu0.instruction_ret_66
+		cpu0.instruction_ret_69
+		cpu0.instruction_ret_70
+		cpu0.instruction_ret_73
+		cpu0.instruction_ret_75
+		cpu0.instruction_ret_78
+		cpu0.instruction_ret_81
+		cpu0.instruction_ret_84
+		cpu0.instruction_ret_87
+		cpu0.instruction_ret_90
+		cpu0.instruction_ret_93
+		cpu0.instruction_ret_96
+		cpu0.instruction_ret_99
+		cpu0.instruction_ret_103
+		cpu0.instruction_ret_104
+		cpu0.instruction_ret_105
+		cpu0.instruction_ret_106
+		cpu0.instruction_ret_107
+		cpu0.instruction_ret_108
+		cpu0.instruction_ret_109
+		cpu0.instruction_ret_110
+		cpu0.instruction_ret_111
+		cpu0.instruction_ret_112
+		cpu0.instruction_ret_113
+		cpu0.instruction_ret_114
+		cpu0.instruction_ret_115
+		cpu0.instruction_ret_116
+		cpu0.instruction_ret_117
+		cpu0.instruction_ret_118
+		cpu0.instruction_ret_119
+		cpu0.instruction_ret_120
+		cpu0.instruction_ret_121
+		cpu0.instruction_ret_122
+		cpu0.instruction_ret_123
+		cpu0.instruction_ret_124
+		cpu0.instruction_ret_125
+		cpu0.instruction_ret_126
+		cpu0.instruction_ret_127
+		cpu0.instruction_ret_128
+		cpu0.instruction_ret_129
+		cpu0.instruction_ret_130
+		cpu0.instruction_ret_131
+		cpu0.instruction_ret_132
+		cpu0.instruction_ret_133
+		cpu0.instruction_ret_134
+		cpu0.instruction_ret_135
+		cpu0.instruction_ret_136
+		cpu0.instruction_ret_137
+		cpu0.instruction_ret_138
+		cpu0.instruction_ret_139
+		cpu0.instruction_ret_140
+		cpu0.instruction_ret_141
+		cpu0.instruction_ret_142
+		cpu0.instruction_ret_143
+		cpu0.instruction_ret_144
+		cpu0.instruction_ret_145
+		cpu0.instruction_ret_146
+		cpu0.instruction_ret_147
+		cpu0.instruction_ret_148
+		cpu0.instruction_ret_149
+		cpu0.instruction_ret_150
+		cpu0.instruction_ret_151
+		cpu0.instruction_ret_152
+		cpu0.instruction_ret_153
+		cpu0.instruction_ret_154
+		cpu0.instruction_ret_155
+		cpu0.instruction_ret_156
+		cpu0.instruction_ret_157
+		cpu0.instruction_ret_158
+		cpu0.instruction_ret_159
+		cpu0.instruction_ret_160
+		cpu0.instruction_ret_161
+		cpu0.instruction_ret_162
+		cpu0.instruction_ret_163
+		cpu0.instruction_ret_164
+		cpu0.instruction_ret_165
+		cpu0.instruction_ret_166
+		cpu0.instruction_ret_167
+		cpu0.instruction_ret_168
+		cpu0.instruction_ret_169
+		cpu0.instruction_ret_170
+		cpu0.instruction_ret_171
+		cpu0.instruction_ret_172
+		cpu0.instruction_ret_173
+		cpu0.instruction_ret_174
+		cpu0.instruction_ret_175
+		cpu0.instruction_ret_176
+		cpu0.instruction_ret_177
+		cpu0.instruction_ret_178
+		cpu0.instruction_ret_179
+		cpu0.instruction_ret_180
+		cpu0.instruction_ret_181
+		cpu0.instruction_ret_182
+		cpu0.instruction_ret_183
+		cpu0.instruction_ret_184
+		cpu0.instruction_ret_185
+		cpu0.instruction_ret_186
+		cpu0.instruction_ret_187
+		cpu0.instruction_ret_188
+		cpu0.instruction_ret_189
+		cpu0.instruction_ret_190
+		cpu0.instruction_ret_191
+		cpu0.instruction_ret_192
+		cpu0.instruction_ret_193
+		cpu0.instruction_ret_194
+		cpu0.instruction_ret_195
+		cpu0.instruction_ret_196
+		cpu0.instruction_ret_197
+		cpu0.instruction_ret_198
+		cpu0.instruction_ret_199
+		cpu0.instruction_ret_200
+		cpu0.instruction_ret_201
+		cpu0.pc_ret
+		cpu0.pc_ret[0]
+		cpu0.pc_ret[1]
+		cpu0.pc_ret[2]
+		cpu0.pc_ret[3]
+		cpu0.pc_ret[4]
+		cpu0.pc_ret[5]
+		cpu0.pc_ret[6]
+		cpu0.pc_ret[7]
+		cpu0.pc_ret[8]
+		cpu0.pc_ret[9]
+		cpu0.pc_ret[10]
+		cpu0.pc_ret[11]
+		cpu0.pc_ret[12]
+		cpu0.pc_ret[13]
+		cpu0.pc_ret[14]
+		cpu0.pc_ret[15]
+		cpu0.pc_ret[16]
+		cpu0.pc_ret[17]
+		cpu0.pc_ret[18]
+		cpu0.pc_ret[19]
+		cpu0.pc_ret[20]
+		cpu0.pc_ret[21]
+		cpu0.pc_ret[22]
+		cpu0.pc_ret[23]
+		cpu0.pc_ret[24]
+		cpu0.pc_ret[25]
+		cpu0.pc_ret[26]
+		cpu0.pc_ret[27]
+		cpu0.pc_ret[28]
+		cpu0.pc_ret[29]
+		cpu0.pc_ret[30]
+		cpu0.pc_ret_0[0]
+		cpu0.pc_ret_0[1]
+		cpu0.pc_ret_0[2]
+		cpu0.pc_ret_0[3]
+		cpu0.pc_ret_0[4]
+		cpu0.pc_ret_0[5]
+		cpu0.pc_ret_0[6]
+		cpu0.pc_ret_0[7]
+		cpu0.pc_ret_0[8]
+		cpu0.pc_ret_0[9]
+		cpu0.pc_ret_0[10]
+		cpu0.pc_ret_1
+		cpu0.pc_ret_2
+		cpu0.pc_ret_11[0]
+		cpu0.pc_ret_11[1]
+		cpu0.pc_ret_11[2]
+		cpu0.pc_ret_11[3]
+		cpu0.pc_ret_11[4]
+		cpu0.pc_ret_11[5]
+		cpu0.pc_ret_11[6]
+		cpu0.pc_ret_11[7]
+		cpu0.pc_ret_11[8]
+		cpu0.pc_ret_11[9]
+		cpu0.pc_ret_11[10]
+		cpu0.pc_ret_11[11]
+		cpu0.pc_ret_11[12]
+		cpu0.pc_ret_11[13]
+		cpu0.pc_ret_11[14]
+		cpu0.pc_ret_11[15]
+		cpu0.pc_ret_11[16]
+		cpu0.pc_ret_11[17]
+		cpu0.pc_ret_11[18]
+		cpu0.pc_ret_11[19]
+		cpu0.pc_ret_11[20]
+		cpu0.pc_ret_11[21]
+		cpu0.pc_ret_11[22]
+		cpu0.pc_ret_11[23]
+		cpu0.pc_ret_11[24]
+		cpu0.pc_ret_11[25]
+		cpu0.pc_ret_11[26]
+		cpu0.pc_ret_11[27]
+		cpu0.pc_ret_11[28]
+		cpu0.pc_ret_11[29]
+		cpu0.pc_ret_42[0]
+		cpu0.pc_ret_42[1]
+		cpu0.pc_ret_42[2]
+		cpu0.pc_ret_42[3]
+		cpu0.pc_ret_42[4]
+		cpu0.pc_ret_42[5]
+		cpu0.pc_ret_42[6]
+		cpu0.pc_ret_42[7]
+		cpu0.pc_ret_42[8]
+		cpu0.pc_ret_42[9]
+		cpu0.pc_ret_42[10]
+		cpu0.pc_ret_42[11]
+		cpu0.pc_ret_42[12]
+		cpu0.pc_ret_42[13]
+		cpu0.pc_ret_42[14]
+		cpu0.pc_ret_42[15]
+		cpu0.pc_ret_42[16]
+		cpu0.pc_ret_42[17]
+		cpu0.pc_ret_42[18]
+		cpu0.pc_ret_42[19]
+		cpu0.pc_ret_94[0]
+		cpu0.pc_ret_94[1]
+		cpu0.pc_ret_94[2]
+		cpu0.pc_ret_94[3]
+		cpu0.pc_ret_94[4]
+		cpu0.pc_ret_94[5]
+		cpu0.pc_ret_94[6]
+		cpu0.pc_ret_94[7]
+		cpu0.pc_ret_94[8]
+		cpu0.pc_ret_94[9]
+		cpu0.pc_ret_94[10]
+		cpu0.pc_ret_94[11]
+		cpu0.pc_ret_94[12]
+		cpu0.pc_ret_94[13]
+		cpu0.pc_ret_94[14]
+		cpu0.pc_ret_94[15]
+		cpu0.pc_ret_94[16]
+		cpu0.pc_ret_94[17]
+		cpu0.pc_ret_94[18]
+		cpu0.pc_ret_94[19]
+		cpu0.pc_ret_94[20]
+		cpu0.pc_ret_94[21]
+		cpu0.pc_ret_94[22]
+		cpu0.pc_ret_94[23]
+		cpu0.pc_ret_94[24]
+		cpu0.pc_ret_94[25]
+		cpu0.pc_ret_94[26]
+		cpu0.pc_ret_94[27]
+		cpu0.pc_ret_94[28]
+		cpu0.pc_ret_94[29]
+		cpu0.pc_ret_94[30]
+		cpu0.pc_ret_126
+		cpu0.pc_ret_127
+		cpu0.pc_ret_179[0]
+		cpu0.pc_ret_179[1]
+		cpu0.pc_ret_179[2]
+		cpu0.pc_ret_179[3]
+		cpu0.pc_ret_179[4]
+		cpu0.pc_ret_179[5]
+		cpu0.pc_ret_179[6]
+		cpu0.pc_ret_179[7]
+		cpu0.pc_ret_179[8]
+		cpu0.pc_ret_179[9]
+		cpu0.pc_ret_179[10]
+		cpu0.pc_ret_179[11]
+		cpu0.pc_ret_179[12]
+		cpu0.pc_ret_179[13]
+		cpu0.pc_ret_179[14]
+		cpu0.pc_ret_179[15]
+		cpu0.pc_ret_179[16]
+		cpu0.pc_ret_179[17]
+		cpu0.pc_ret_179[18]
+		cpu0.pc_ret_179[19]
+		cpu0.pc_ret_179[20]
+		cpu0.pc_ret_179[21]
+		cpu0.pc_ret_179[22]
+		cpu0.pc_ret_179[23]
+		cpu0.pc_ret_179[24]
+		cpu0.pc_ret_179[25]
+		cpu0.pc_ret_179[26]
+		cpu0.pc_ret_179[27]
+		cpu0.pc_ret_179[28]
+		cpu0.pc_ret_179[29]
+		cpu0.pc_ret_179[30]
+		cpu0.pc_ret_210
+		cpu0.reg_rs1_ret
+		cpu0.reg_rs1_ret_0
+		cpu0.reg_rs1_ret_1
+		cpu0.reg_rs1_ret_2
+		cpu0.reg_rs1_ret_3
+		cpu0.reg_rs1_ret_4
+		cpu0.reg_rs1_ret_5
+		cpu0.reg_rs1_ret_6
+		cpu0.reg_rs1_ret_7
+		cpu0.reg_rs1_ret_8
+		cpu0.reg_rs1_ret_9
+		cpu0.reg_rs1_ret_10
+		cpu0.reg_rs1_ret_11
+		cpu0.reg_rs1_ret_12
+		cpu0.reg_rs1_ret_13
+		cpu0.reg_rs1_ret_14
+		cpu0.reg_rs1_ret_15
+		cpu0.reg_rs1_ret_16
+		cpu0.reg_rs1_ret_17
+		cpu0.reg_rs1_ret_18
+		cpu0.reg_rs1_ret_19
+		cpu0.reg_rs1_ret_20
+		cpu0.reg_rs1_ret_21
+		cpu0.reg_rs1_ret_22
+		cpu0.reg_rs1_ret_23
+		cpu0.reg_rs1_ret_24
+		cpu0.reg_rs1_ret_25
+		cpu0.reg_rs1_ret_26
+		cpu0.reg_rs1_ret_27
+		cpu0.reg_rs1_ret_28
+		cpu0.reg_rs1_ret_29
+		cpu0.reg_rs1_ret_30
+		cpu0.reg_rs1_ret_31
+		cpu0.reg_rs1_ret_32
+		cpu0.reg_rs1_ret_33
+		cpu0.reg_rs1_ret_34
+		cpu0.reg_rs1_ret_35
+		cpu0.reg_rs1_ret_36
+		cpu0.reg_rs1_ret_37
+		cpu0.reg_rs1_ret_38
+		cpu0.reg_rs2_ret
+		cpu0.reg_rs2_ret_1
+		cpu0.reg_rs2_ret_2
+		cpu0.reg_rs2_ret_3
+		cpu0.reg_rs2_ret_4
+		cpu0.reg_rs2_ret_5
+		cpu0.reg_rs2_ret_6
+		cpu0.reg_rs2_ret_7
+		cpu0.reg_rs2_ret_8
+		cpu0.reg_rs2_ret_9
+		cpu0.state_ret
+		cpu0.state_ret_0
+		cpu0.state_ret_1
+		cpu0.state_ret_2
+		cpu0.state_ret_3
+		cpu0.state_ret_4
+		cpu0.state_ret_5
+		cpu0.state_ret_5[0]
+		cpu0.state_ret_5[1]
+		cpu0.state_ret_6
+		cpu0.state_ret_7
+		cpu0.state_ret_8
+		cpu0.state_ret_9
+		cpu0.state_ret_10
+		cpu0.state_ret_11
+		cpu0.state_ret_12
+		cpu0.state_ret_13
+		cpu0.state_ret_14
+		cpu0.state_ret_15
+		cpu0.state_ret_16
+		cpu0.state_ret_17
+		cpu0.state_ret_18
+		cpu0.state_ret_19
+		cpu0.state_ret_20
+		cpu0.state_ret_21
+		cpu0.state_ret_22
+		cpu0.state_ret_23
+		cpu0.state_ret_24
+		cpu0.state_ret_25
+		cpu0.state_ret_26
+		cpu0.state_ret_27
+		cpu0.state_ret_28
+		cpu0.state_ret_29
+		cpu0.state_ret_30
+		cpu0.state_ret_31
+		cpu0.state_ret_32
+		cpu0.state_ret_33
+		cpu0.state_ret_34
+		cpu0.state_ret_35
+		cpu0.state_ret_36
+		cpu0.state_ret_37
+		cpu0.state_ret_38
+		cpu0.state_ret_39
+		cpu0.state_ret_40
+		cpu0.state_ret_41
+		cpu0.state_ret_42
+		cpu0.state_ret_43
+		cpu0.state_ret_44
+		cpu0.state_ret_45
+		cpu0.state_ret_46
+		cpu0.state_ret_47
+		cpu0.state_ret_48
+		cpu0.state_ret_49
+		cpu0.state_ret_50
+		cpu0.state_ret_51
+		cpu0.state_ret_52
+		cpu0.state_ret_53
+		cpu0.state_ret_54
+		cpu0.state_ret_55
+		cpu0.state_ret_56
+		cpu0.state_ret_57
+		cpu0.state_ret_58
+		cpu0.state_ret_59
+		cpu0.state_ret_60
+		cpu0.state_ret_61
+		cpu0.state_ret_62
+		cpu0.state_ret_63
+		cpu0.state_ret_64
+		cpu0.state_ret_65
+		cpu0.state_ret_66
+		cpu0.state_ret_67
+		cpu0.state_ret_68
+		cpu0.state_ret_69
+		cpu0.state_ret_70
+		cpu0.state_ret_71
+		regfile.data_in_r_ret
+		regfile.data_in_r_ret_1
+		regfile.data_in_r_ret_2
+		regfile.data_in_r_ret_3
+		regfile.data_in_r_ret_4
+		regfile.data_in_r_ret_5
+		regfile.data_in_r_ret_6
+		regfile.data_in_r_ret_7
+		regfile.data_in_r_ret_8
+		regfile.data_in_r_ret_9
+		regfile.data_in_r_ret_10
+		regfile.data_in_r_ret_11
+		regfile.data_in_r_ret_12
+		regfile.data_in_r_ret_13
+		regfile.data_in_r_ret_14
+		regfile.data_in_r_ret_15
+		regfile.data_in_r_ret_16
+		regfile.data_in_r_ret_17
+		regfile.data_in_r_ret_18
+		regfile.data_in_r_ret_19
+		regfile.data_in_r_ret_20
+		regfile.data_in_r_ret_21
+		regfile.data_in_r_ret_22
+		regfile.data_in_r_ret_23
+		regfile.data_in_r_ret_24
+		regfile.data_in_r_ret_25
+		regfile.data_in_r_ret_26
+		regfile.data_in_r_ret_27
+		regfile.data_in_r_ret_28
+		regfile.data_in_r_ret_29
+		regfile.data_in_r_ret_30
+		regfile.data_in_r_ret_31
+		regfile.reg_rs1_ret_3
+		regfile.reg_rs1_ret_6
+		regfile.reg_rs1_ret_7
+		regfile.reg_rs1_ret_8
+		regfile.reg_rs1_ret_9
+		regfile.reg_rs1_ret_10
+		regfile.reg_rs1_ret_11
+		regfile.reg_rs1_ret_12
+		regfile.reg_rs1_ret_13
+		regfile.reg_rs1_ret_14
+		regfile.reg_rs1_ret_15
+		regfile.reg_rs1_ret_16
+		regfile.reg_rs1_ret_17
+		regfile.reg_rs1_ret_18
+		regfile.reg_rs1_ret_19
+		regfile.reg_rs1_ret_20
+		regfile.reg_rs1_ret_21
+		regfile.reg_rs1_ret_22
+		regfile.reg_rs1_ret_23
+		regfile.reg_rs1_ret_24
+		regfile.reg_rs1_ret_25
+		regfile.reg_rs2_ret
+		regfile.reg_rs2_ret_1
+		regfile.reg_rs2_ret_2
+		regfile.reg_rs2_ret_3
+		regfile.reg_rs2_ret_4
+		regfile.reg_rs2_ret_5
+		regfile.reg_rs2_ret_6
+		regfile.reg_rs2_ret_7
+		regfile.reg_rs2_ret_8
+		regfile.reg_rs2_ret_9
+		regfile.reg_rs2_ret_10
+		regfile.reg_rs2_ret_11
+		regfile.reg_rs2_ret_12
+		regfile.reg_rs2_ret_13
+		regfile.reg_rs2_ret_14
+		regfile.reg_rs2_ret_15
+		regfile.reg_rs2_ret_16
+		regfile.reg_rs2_ret_17
+		regfile.state_ret
+		regfile.state_ret_1
+		regfile.state_ret_2
+		regfile.state_ret_3
+
+
+		#####   END RETIMING REPORT  #####
+
+@N:<a href="@N:FP130:@XP_HELP">FP130</a> : <!@TM:0> | Promoting Net CLK100MHZ_c on CLKINT  I_975  
+
+Added 0 Buffers
+Added 0 Cells via replication
+	Added 0 Sequential Cells via replication
+	Added 0 Combinational Cells via replication
+
+Finished technology timing optimizations and critical path resynthesis (Real Time elapsed 0h:00m:29s; CPU Time elapsed 0h:00m:29s; Memory used current: 210MB peak: 214MB)
+
+
+Finished restoring hierarchy (Real Time elapsed 0h:00m:29s; CPU Time elapsed 0h:00m:29s; Memory used current: 211MB peak: 214MB)
+
+
+
+@S |Clock Optimization Summary
+
+
+<a name=clockReport77></a>#### START OF CLOCK OPTIMIZATION REPORT #####[</a>
+
+Clock optimization not enabled
+1 non-gated/non-generated clock tree(s) driving 811 clock pin(s) of sequential element(s)
+0 gated/generated clock tree(s) driving 0 clock pin(s) of sequential element(s)
+0 instances converted, 0 sequential instances remain driven by gated/generated clocks
+
+=========================== Non-Gated/Non-Generated Clocks ============================
+Clock Tree ID     Driving Element     Drive Element Type     Fanout     Sample Instance
+---------------------------------------------------------------------------------------
+<a href="@|S:CLK100MHZ@|E:gpio[10]@|F:@syn_sample_clock_path==CKID0001@|M:ClockId0001  @XP_NAMES_BY_PROP">ClockId0001 </a>       CLK100MHZ           port                   811        gpio[10]       
+=======================================================================================
+
+
+##### END OF CLOCK OPTIMIZATION REPORT ######]
+
+
+Start Writing Netlists (Real Time elapsed 0h:00m:30s; CPU Time elapsed 0h:00m:30s; Memory used current: 170MB peak: 214MB)
+
+Writing Analyst data base D:\FPGA\H13D\rev_1\synwork\proj_1_m.srm
+
+Finished Writing Netlist Databases (Real Time elapsed 0h:00m:30s; CPU Time elapsed 0h:00m:30s; Memory used current: 199MB peak: 214MB)
+
+Writing Verilog Simulation files
+@N:<a href="@N:BW103:@XP_HELP">BW103</a> : <!@TM:0> | The default time unit for the Synopsys Constraint File (SDC or FDC) is 1ns. 
+@N:<a href="@N:BW107:@XP_HELP">BW107</a> : <!@TM:0> | Synopsys Constraint File capacitance units using default value of 1pF  
+
+Finished Writing Verilog Simulation files (Real Time elapsed 0h:00m:31s; CPU Time elapsed 0h:00m:31s; Memory used current: 198MB peak: 214MB)
+
+
+Start final timing analysis (Real Time elapsed 0h:00m:31s; CPU Time elapsed 0h:00m:31s; Memory used current: 198MB peak: 214MB)
+
+<font color=#A52A2A>@W:<a href="@W:MT420:@XP_HELP">MT420</a> : <!@TM:0> | Found inferred clock main|CLK100MHZ with period 2.00ns. Please declare a user-defined clock on port CLK100MHZ.</font> 
+
+
+<a name=timingReport78></a>##### START OF TIMING REPORT #####[</a>
+# Timing report written on Sat Dec 21 16:02:41 2019
+#
+
+
+Top view:               main
+Requested Frequency:    500.0 MHz
+Wire load mode:         top
+Paths requested:        5
+Constraint File(s):    
+@N:<a href="@N:MT320:@XP_HELP">MT320</a> : <!@TM:0> | This timing report is an estimate of place and route data. For final timing results, use the FPGA vendor place and route report. 
+
+@N:<a href="@N:MT322:@XP_HELP">MT322</a> : <!@TM:0> | Clock constraints include only register-to-register paths associated with each individual clock. 
+
+
+
+<a name=performanceSummary79></a>Performance Summary</a>
+*******************
+
+
+Worst slack in design: -8.380
+
+                   Requested     Estimated     Requested     Estimated                Clock        Clock              
+Starting Clock     Frequency     Frequency     Period        Period        Slack      Type         Group              
+----------------------------------------------------------------------------------------------------------------------
+main|CLK100MHZ     500.0 MHz     96.3 MHz      2.000         10.380        -8.380     inferred     Inferred_clkgroup_0
+======================================================================================================================
+
+
+
+
+
+<a name=clockRelationships80></a>Clock Relationships</a>
+*******************
+
+Clocks                          |    rise  to  rise    |    fall  to  fall   |    rise  to  fall   |    fall  to  rise 
+-----------------------------------------------------------------------------------------------------------------------
+Starting        Ending          |  constraint  slack   |  constraint  slack  |  constraint  slack  |  constraint  slack
+-----------------------------------------------------------------------------------------------------------------------
+main|CLK100MHZ  main|CLK100MHZ  |  2.000       -8.380  |  No paths    -      |  No paths    -      |  No paths    -    
+=======================================================================================================================
+ Note: 'No paths' indicates there are no paths in the design for that pair of clock edges.
+       'Diff grp' indicates that paths exist but the starting clock and ending clock are in different clock groups.
+
+
+
+<a name=interfaceInfo81></a>Interface Information </a>
+*********************
+
+No IO constraint found
+
+
+
+====================================
+<a name=clockReport82></a>Detailed Report for Clock: main|CLK100MHZ</a>
+====================================
+
+
+
+<a name=startingSlack83></a>Starting Points with Worst Slack</a>
+********************************
+
+                           Starting                                                               Arrival           
+Instance                   Reference          Type     Pin     Net                                Time        Slack 
+                           Clock                                                                                    
+--------------------------------------------------------------------------------------------------------------------
+cpu0.instruction_ret_1     main|CLK100MHZ     SLE      Q       N_27_mux                           0.144       -8.380
+cpu0.instruction[5]        main|CLK100MHZ     SLE      Q       instruction[5]                     0.202       -8.265
+cpu0.reg_rs1[0]            main|CLK100MHZ     SLE      Q       reg_rs1[0]                         0.202       -8.115
+cpu0.state_ret_5[1]        main|CLK100MHZ     SLE      Q       state_o[2]                         0.202       -8.030
+cpu0.state_ret_70          main|CLK100MHZ     SLE      Q       data_out_0_reto[0]                 0.202       -8.003
+cpu0.state_ret_4           main|CLK100MHZ     SLE      Q       state_o[0]                         0.202       -7.997
+cpu0.state_ret_66          main|CLK100MHZ     SLE      Q       data_out_0_reto[2]                 0.202       -7.988
+cpu0.state_ret_62          main|CLK100MHZ     SLE      Q       data_out_0_reto[4]                 0.202       -7.973
+cpu0.state_ret_58          main|CLK100MHZ     SLE      Q       data_out_0_reto[6]                 0.202       -7.957
+cpu0.state_ret_69          main|CLK100MHZ     SLE      Q       registerfile_wdata_2_reto_0[1]     0.202       -7.955
+====================================================================================================================
+
+
+<a name=endingSlack84></a>Ending Points with Worst Slack</a>
+******************************
+
+                          Starting                                                   Required           
+Instance                  Reference          Type     Pin     Net                    Time         Slack 
+                          Clock                                                                         
+--------------------------------------------------------------------------------------------------------
+regfile.reg_rs1_ret_7     main|CLK100MHZ     SLE      D       data_out_0[20]         2.000        -8.380
+regfile.reg_rs1_ret_8     main|CLK100MHZ     SLE      D       data_out_0[24]         2.000        -8.380
+cpu0.state_ret_14         main|CLK100MHZ     SLE      D       data_out_0_28_rep2     2.000        -8.380
+cpu0.state_ret_15         main|CLK100MHZ     SLE      D       data_out_0_29_rep2     2.000        -8.380
+cpu0.state_ret_18         main|CLK100MHZ     SLE      D       data_out_0_26_rep2     2.000        -8.380
+cpu0.state_ret_19         main|CLK100MHZ     SLE      D       data_out_0_27_rep2     2.000        -8.380
+cpu0.state_ret_22         main|CLK100MHZ     SLE      D       data_out_0_24_rep2     2.000        -8.380
+cpu0.state_ret_23         main|CLK100MHZ     SLE      D       data_out_0_25_rep2     2.000        -8.380
+cpu0.state_ret_30         main|CLK100MHZ     SLE      D       data_out_0_20_rep2     2.000        -8.380
+cpu0.reg_rs1[15]          main|CLK100MHZ     SLE      D       reg_rs1_4[15]          2.000        -8.269
+========================================================================================================
+
+
+
+<a name=worstPaths85></a>Worst Path Information</a>
+<a href="d:/FPGA/H13D/rev_1/synlog/proj_1_fpga_mapper.srr:srsfD:\FPGA\H13D\rev_1\proj_1.srs:fp:41274:45522:@XP_NAMES_GATE">View Worst Path in Analyst</a>
+***********************
+
+
+Path information for path number 1: 
+      Requested Period:                      2.000
+    - Setup time:                            0.000
+    + Clock delay at ending point:           0.000 (ideal)
+    = Required time:                         2.000
+
+    - Propagation time:                      10.380
+    - Clock delay at starting point:         0.000 (ideal)
+    = Slack (critical) :                     -8.380
+
+    Number of logic level(s):                11
+    Starting point:                          cpu0.instruction_ret_1 / Q
+    Ending point:                            regfile.reg_rs1_ret_7 / D
+    The start point is clocked by            main|CLK100MHZ [rising] on pin CLK
+    The end   point is clocked by            main|CLK100MHZ [rising] on pin CLK
+
+Instance / Net                                                Pin           Pin               Arrival     No. of    
+Name                                             Type         Name          Dir     Delay     Time        Fan Out(s)
+--------------------------------------------------------------------------------------------------------------------
+cpu0.instruction_ret_1                           SLE          Q             Out     0.144     0.144       -         
+N_27_mux                                         Net          -             -       0.818     -           9         
+cpu0.instruction_ret_0_RNIOF6S                   CFG3         C             In      -         0.962       -         
+cpu0.instruction_ret_0_RNIOF6S                   CFG3         Y             Out     0.296     1.258       -         
+N_232_0                                          Net          -             -       1.290     -           99        
+cpu0.data_addr[2]                                CFG4         B             In      -         2.548       -         
+cpu0.data_addr[2]                                CFG4         Y             Out     0.201     2.748       -         
+data_addr[2]                                     Net          -             -       1.861     -           144       
+ram.memory_memory_8_1                            RAM64x12     R_ADDR[0]     In      -         4.609       -         
+ram.memory_memory_8_1                            RAM64x12     R_DATA[3]     Out     1.085     5.694       -         
+memory_out_bus8[15]                              Net          -             -       0.039     -           1         
+ram.memory_DOUT_7_1_1_wmux[15]                   ARI1         D             In      -         5.734       -         
+ram.memory_DOUT_7_1_1_wmux[15]                   ARI1         Y             Out     0.428     6.162       -         
+memory_DOUT_7_1_1_y0[15]                         Net          -             -       0.039     -           1         
+ram.memory_DOUT_7_1_1_wmux_0[15]                 ARI1         A             In      -         6.201       -         
+ram.memory_DOUT_7_1_1_wmux_0[15]                 ARI1         Y             Out     0.148     6.349       -         
+memory_DOUT_7_1_1_wmux_0_Y[15]                   Net          -             -       0.251     -           2         
+ram.memory_DOUT_15_sx[15]                        CFG4         D             In      -         6.600       -         
+ram.memory_DOUT_15_sx[15]                        CFG4         Y             Out     0.364     6.964       -         
+memory_DOUT_15_sx[15]                            Net          -             -       0.039     -           1         
+ram.memory_DOUT_15[15]                           CFG3         C             In      -         7.003       -         
+ram.memory_DOUT_15[15]                           CFG3         Y             Out     0.223     7.226       -         
+data_rdata[15]                                   Net          -             -       0.411     -           3         
+cpu0.decode_load\.result_3__7_1                  CFG3         B             In      -         7.638       -         
+cpu0.decode_load\.result_3__7_1                  CFG3         Y             Out     0.200     7.838       -         
+result_3__7_1                                    Net          -             -       0.927     -           18        
+cpu0.decode_load\.result_3__7_1_RNIGDDI1[20]     CFG4         D             In      -         8.765       -         
+cpu0.decode_load\.result_3__7_1_RNIGDDI1[20]     CFG4         Y             Out     0.364     9.129       -         
+registerfile_wdata_2_0_iv_5_1[20]                Net          -             -       0.039     -           1         
+cpu0.fsm\.inst_addr8_RNITV2E8                    CFG4         D             In      -         9.168       -         
+cpu0.fsm\.inst_addr8_RNITV2E8                    CFG4         Y             Out     0.346     9.513       -         
+data_in_0[20]                                    Net          -             -       0.532     -           4         
+regfile.reg_rs1_ret_7_RNO                        CFG3         C             In      -         10.045      -         
+regfile.reg_rs1_ret_7_RNO                        CFG3         Y             Out     0.296     10.341      -         
+data_out_0[20]                                   Net          -             -       0.039     -           1         
+regfile.reg_rs1_ret_7                            SLE          D             In      -         10.380      -         
+====================================================================================================================
+Total path delay (propagation time + setup) of 10.380 is 4.095(39.4%) logic and 6.286(60.6%) route.
+Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
+
+
+Path information for path number 2: 
+      Requested Period:                      2.000
+    - Setup time:                            0.000
+    + Clock delay at ending point:           0.000 (ideal)
+    = Required time:                         2.000
+
+    - Propagation time:                      10.380
+    - Clock delay at starting point:         0.000 (ideal)
+    = Slack (critical) :                     -8.380
+
+    Number of logic level(s):                11
+    Starting point:                          cpu0.instruction_ret_1 / Q
+    Ending point:                            regfile.reg_rs1_ret_7 / D
+    The start point is clocked by            main|CLK100MHZ [rising] on pin CLK
+    The end   point is clocked by            main|CLK100MHZ [rising] on pin CLK
+
+Instance / Net                                                Pin           Pin               Arrival     No. of    
+Name                                             Type         Name          Dir     Delay     Time        Fan Out(s)
+--------------------------------------------------------------------------------------------------------------------
+cpu0.instruction_ret_1                           SLE          Q             Out     0.144     0.144       -         
+N_27_mux                                         Net          -             -       0.818     -           9         
+cpu0.instruction_ret_0_RNIOF6S                   CFG3         C             In      -         0.962       -         
+cpu0.instruction_ret_0_RNIOF6S                   CFG3         Y             Out     0.296     1.258       -         
+N_232_0                                          Net          -             -       1.290     -           99        
+cpu0.data_addr[3]                                CFG4         B             In      -         2.548       -         
+cpu0.data_addr[3]                                CFG4         Y             Out     0.201     2.748       -         
+data_addr[3]                                     Net          -             -       1.861     -           144       
+ram.memory_memory_8_1                            RAM64x12     R_ADDR[1]     In      -         4.609       -         
+ram.memory_memory_8_1                            RAM64x12     R_DATA[3]     Out     1.085     5.694       -         
+memory_out_bus8[15]                              Net          -             -       0.039     -           1         
+ram.memory_DOUT_7_1_1_wmux[15]                   ARI1         D             In      -         5.734       -         
+ram.memory_DOUT_7_1_1_wmux[15]                   ARI1         Y             Out     0.428     6.162       -         
+memory_DOUT_7_1_1_y0[15]                         Net          -             -       0.039     -           1         
+ram.memory_DOUT_7_1_1_wmux_0[15]                 ARI1         A             In      -         6.201       -         
+ram.memory_DOUT_7_1_1_wmux_0[15]                 ARI1         Y             Out     0.148     6.349       -         
+memory_DOUT_7_1_1_wmux_0_Y[15]                   Net          -             -       0.251     -           2         
+ram.memory_DOUT_15_sx[15]                        CFG4         D             In      -         6.600       -         
+ram.memory_DOUT_15_sx[15]                        CFG4         Y             Out     0.364     6.964       -         
+memory_DOUT_15_sx[15]                            Net          -             -       0.039     -           1         
+ram.memory_DOUT_15[15]                           CFG3         C             In      -         7.003       -         
+ram.memory_DOUT_15[15]                           CFG3         Y             Out     0.223     7.226       -         
+data_rdata[15]                                   Net          -             -       0.411     -           3         
+cpu0.decode_load\.result_3__7_1                  CFG3         B             In      -         7.638       -         
+cpu0.decode_load\.result_3__7_1                  CFG3         Y             Out     0.200     7.838       -         
+result_3__7_1                                    Net          -             -       0.927     -           18        
+cpu0.decode_load\.result_3__7_1_RNIGDDI1[20]     CFG4         D             In      -         8.765       -         
+cpu0.decode_load\.result_3__7_1_RNIGDDI1[20]     CFG4         Y             Out     0.364     9.129       -         
+registerfile_wdata_2_0_iv_5_1[20]                Net          -             -       0.039     -           1         
+cpu0.fsm\.inst_addr8_RNITV2E8                    CFG4         D             In      -         9.168       -         
+cpu0.fsm\.inst_addr8_RNITV2E8                    CFG4         Y             Out     0.346     9.513       -         
+data_in_0[20]                                    Net          -             -       0.532     -           4         
+regfile.reg_rs1_ret_7_RNO                        CFG3         C             In      -         10.045      -         
+regfile.reg_rs1_ret_7_RNO                        CFG3         Y             Out     0.296     10.341      -         
+data_out_0[20]                                   Net          -             -       0.039     -           1         
+regfile.reg_rs1_ret_7                            SLE          D             In      -         10.380      -         
+====================================================================================================================
+Total path delay (propagation time + setup) of 10.380 is 4.095(39.4%) logic and 6.286(60.6%) route.
+Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
+
+
+Path information for path number 3: 
+      Requested Period:                      2.000
+    - Setup time:                            0.000
+    + Clock delay at ending point:           0.000 (ideal)
+    = Required time:                         2.000
+
+    - Propagation time:                      10.380
+    - Clock delay at starting point:         0.000 (ideal)
+    = Slack (critical) :                     -8.380
+
+    Number of logic level(s):                11
+    Starting point:                          cpu0.instruction_ret_1 / Q
+    Ending point:                            regfile.reg_rs1_ret_7 / D
+    The start point is clocked by            main|CLK100MHZ [rising] on pin CLK
+    The end   point is clocked by            main|CLK100MHZ [rising] on pin CLK
+
+Instance / Net                                                Pin           Pin               Arrival     No. of    
+Name                                             Type         Name          Dir     Delay     Time        Fan Out(s)
+--------------------------------------------------------------------------------------------------------------------
+cpu0.instruction_ret_1                           SLE          Q             Out     0.144     0.144       -         
+N_27_mux                                         Net          -             -       0.818     -           9         
+cpu0.instruction_ret_0_RNIOF6S                   CFG3         C             In      -         0.962       -         
+cpu0.instruction_ret_0_RNIOF6S                   CFG3         Y             Out     0.296     1.258       -         
+N_232_0                                          Net          -             -       1.290     -           99        
+cpu0.data_addr[4]                                CFG4         B             In      -         2.548       -         
+cpu0.data_addr[4]                                CFG4         Y             Out     0.201     2.748       -         
+data_addr[4]                                     Net          -             -       1.861     -           144       
+ram.memory_memory_8_1                            RAM64x12     R_ADDR[2]     In      -         4.609       -         
+ram.memory_memory_8_1                            RAM64x12     R_DATA[3]     Out     1.085     5.694       -         
+memory_out_bus8[15]                              Net          -             -       0.039     -           1         
+ram.memory_DOUT_7_1_1_wmux[15]                   ARI1         D             In      -         5.734       -         
+ram.memory_DOUT_7_1_1_wmux[15]                   ARI1         Y             Out     0.428     6.162       -         
+memory_DOUT_7_1_1_y0[15]                         Net          -             -       0.039     -           1         
+ram.memory_DOUT_7_1_1_wmux_0[15]                 ARI1         A             In      -         6.201       -         
+ram.memory_DOUT_7_1_1_wmux_0[15]                 ARI1         Y             Out     0.148     6.349       -         
+memory_DOUT_7_1_1_wmux_0_Y[15]                   Net          -             -       0.251     -           2         
+ram.memory_DOUT_15_sx[15]                        CFG4         D             In      -         6.600       -         
+ram.memory_DOUT_15_sx[15]                        CFG4         Y             Out     0.364     6.964       -         
+memory_DOUT_15_sx[15]                            Net          -             -       0.039     -           1         
+ram.memory_DOUT_15[15]                           CFG3         C             In      -         7.003       -         
+ram.memory_DOUT_15[15]                           CFG3         Y             Out     0.223     7.226       -         
+data_rdata[15]                                   Net          -             -       0.411     -           3         
+cpu0.decode_load\.result_3__7_1                  CFG3         B             In      -         7.638       -         
+cpu0.decode_load\.result_3__7_1                  CFG3         Y             Out     0.200     7.838       -         
+result_3__7_1                                    Net          -             -       0.927     -           18        
+cpu0.decode_load\.result_3__7_1_RNIGDDI1[20]     CFG4         D             In      -         8.765       -         
+cpu0.decode_load\.result_3__7_1_RNIGDDI1[20]     CFG4         Y             Out     0.364     9.129       -         
+registerfile_wdata_2_0_iv_5_1[20]                Net          -             -       0.039     -           1         
+cpu0.fsm\.inst_addr8_RNITV2E8                    CFG4         D             In      -         9.168       -         
+cpu0.fsm\.inst_addr8_RNITV2E8                    CFG4         Y             Out     0.346     9.513       -         
+data_in_0[20]                                    Net          -             -       0.532     -           4         
+regfile.reg_rs1_ret_7_RNO                        CFG3         C             In      -         10.045      -         
+regfile.reg_rs1_ret_7_RNO                        CFG3         Y             Out     0.296     10.341      -         
+data_out_0[20]                                   Net          -             -       0.039     -           1         
+regfile.reg_rs1_ret_7                            SLE          D             In      -         10.380      -         
+====================================================================================================================
+Total path delay (propagation time + setup) of 10.380 is 4.095(39.4%) logic and 6.286(60.6%) route.
+Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
+
+
+Path information for path number 4: 
+      Requested Period:                      2.000
+    - Setup time:                            0.000
+    + Clock delay at ending point:           0.000 (ideal)
+    = Required time:                         2.000
+
+    - Propagation time:                      10.380
+    - Clock delay at starting point:         0.000 (ideal)
+    = Slack (critical) :                     -8.380
+
+    Number of logic level(s):                11
+    Starting point:                          cpu0.instruction_ret_1 / Q
+    Ending point:                            regfile.reg_rs1_ret_7 / D
+    The start point is clocked by            main|CLK100MHZ [rising] on pin CLK
+    The end   point is clocked by            main|CLK100MHZ [rising] on pin CLK
+
+Instance / Net                                                Pin           Pin               Arrival     No. of    
+Name                                             Type         Name          Dir     Delay     Time        Fan Out(s)
+--------------------------------------------------------------------------------------------------------------------
+cpu0.instruction_ret_1                           SLE          Q             Out     0.144     0.144       -         
+N_27_mux                                         Net          -             -       0.818     -           9         
+cpu0.instruction_ret_0_RNIOF6S                   CFG3         C             In      -         0.962       -         
+cpu0.instruction_ret_0_RNIOF6S                   CFG3         Y             Out     0.296     1.258       -         
+N_232_0                                          Net          -             -       1.290     -           99        
+cpu0.data_addr[5]                                CFG4         B             In      -         2.548       -         
+cpu0.data_addr[5]                                CFG4         Y             Out     0.201     2.748       -         
+data_addr[5]                                     Net          -             -       1.861     -           144       
+ram.memory_memory_8_1                            RAM64x12     R_ADDR[3]     In      -         4.609       -         
+ram.memory_memory_8_1                            RAM64x12     R_DATA[3]     Out     1.085     5.694       -         
+memory_out_bus8[15]                              Net          -             -       0.039     -           1         
+ram.memory_DOUT_7_1_1_wmux[15]                   ARI1         D             In      -         5.734       -         
+ram.memory_DOUT_7_1_1_wmux[15]                   ARI1         Y             Out     0.428     6.162       -         
+memory_DOUT_7_1_1_y0[15]                         Net          -             -       0.039     -           1         
+ram.memory_DOUT_7_1_1_wmux_0[15]                 ARI1         A             In      -         6.201       -         
+ram.memory_DOUT_7_1_1_wmux_0[15]                 ARI1         Y             Out     0.148     6.349       -         
+memory_DOUT_7_1_1_wmux_0_Y[15]                   Net          -             -       0.251     -           2         
+ram.memory_DOUT_15_sx[15]                        CFG4         D             In      -         6.600       -         
+ram.memory_DOUT_15_sx[15]                        CFG4         Y             Out     0.364     6.964       -         
+memory_DOUT_15_sx[15]                            Net          -             -       0.039     -           1         
+ram.memory_DOUT_15[15]                           CFG3         C             In      -         7.003       -         
+ram.memory_DOUT_15[15]                           CFG3         Y             Out     0.223     7.226       -         
+data_rdata[15]                                   Net          -             -       0.411     -           3         
+cpu0.decode_load\.result_3__7_1                  CFG3         B             In      -         7.638       -         
+cpu0.decode_load\.result_3__7_1                  CFG3         Y             Out     0.200     7.838       -         
+result_3__7_1                                    Net          -             -       0.927     -           18        
+cpu0.decode_load\.result_3__7_1_RNIGDDI1[20]     CFG4         D             In      -         8.765       -         
+cpu0.decode_load\.result_3__7_1_RNIGDDI1[20]     CFG4         Y             Out     0.364     9.129       -         
+registerfile_wdata_2_0_iv_5_1[20]                Net          -             -       0.039     -           1         
+cpu0.fsm\.inst_addr8_RNITV2E8                    CFG4         D             In      -         9.168       -         
+cpu0.fsm\.inst_addr8_RNITV2E8                    CFG4         Y             Out     0.346     9.513       -         
+data_in_0[20]                                    Net          -             -       0.532     -           4         
+regfile.reg_rs1_ret_7_RNO                        CFG3         C             In      -         10.045      -         
+regfile.reg_rs1_ret_7_RNO                        CFG3         Y             Out     0.296     10.341      -         
+data_out_0[20]                                   Net          -             -       0.039     -           1         
+regfile.reg_rs1_ret_7                            SLE          D             In      -         10.380      -         
+====================================================================================================================
+Total path delay (propagation time + setup) of 10.380 is 4.095(39.4%) logic and 6.286(60.6%) route.
+Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
+
+
+Path information for path number 5: 
+      Requested Period:                      2.000
+    - Setup time:                            0.000
+    + Clock delay at ending point:           0.000 (ideal)
+    = Required time:                         2.000
+
+    - Propagation time:                      10.380
+    - Clock delay at starting point:         0.000 (ideal)
+    = Slack (critical) :                     -8.380
+
+    Number of logic level(s):                11
+    Starting point:                          cpu0.instruction_ret_1 / Q
+    Ending point:                            regfile.reg_rs1_ret_7 / D
+    The start point is clocked by            main|CLK100MHZ [rising] on pin CLK
+    The end   point is clocked by            main|CLK100MHZ [rising] on pin CLK
+
+Instance / Net                                                Pin           Pin               Arrival     No. of    
+Name                                             Type         Name          Dir     Delay     Time        Fan Out(s)
+--------------------------------------------------------------------------------------------------------------------
+cpu0.instruction_ret_1                           SLE          Q             Out     0.144     0.144       -         
+N_27_mux                                         Net          -             -       0.818     -           9         
+cpu0.instruction_ret_0_RNIOF6S                   CFG3         C             In      -         0.962       -         
+cpu0.instruction_ret_0_RNIOF6S                   CFG3         Y             Out     0.296     1.258       -         
+N_232_0                                          Net          -             -       1.290     -           99        
+cpu0.data_addr[6]                                CFG4         B             In      -         2.548       -         
+cpu0.data_addr[6]                                CFG4         Y             Out     0.201     2.748       -         
+data_addr[6]                                     Net          -             -       1.861     -           144       
+ram.memory_memory_8_1                            RAM64x12     R_ADDR[4]     In      -         4.609       -         
+ram.memory_memory_8_1                            RAM64x12     R_DATA[3]     Out     1.085     5.694       -         
+memory_out_bus8[15]                              Net          -             -       0.039     -           1         
+ram.memory_DOUT_7_1_1_wmux[15]                   ARI1         D             In      -         5.734       -         
+ram.memory_DOUT_7_1_1_wmux[15]                   ARI1         Y             Out     0.428     6.162       -         
+memory_DOUT_7_1_1_y0[15]                         Net          -             -       0.039     -           1         
+ram.memory_DOUT_7_1_1_wmux_0[15]                 ARI1         A             In      -         6.201       -         
+ram.memory_DOUT_7_1_1_wmux_0[15]                 ARI1         Y             Out     0.148     6.349       -         
+memory_DOUT_7_1_1_wmux_0_Y[15]                   Net          -             -       0.251     -           2         
+ram.memory_DOUT_15_sx[15]                        CFG4         D             In      -         6.600       -         
+ram.memory_DOUT_15_sx[15]                        CFG4         Y             Out     0.364     6.964       -         
+memory_DOUT_15_sx[15]                            Net          -             -       0.039     -           1         
+ram.memory_DOUT_15[15]                           CFG3         C             In      -         7.003       -         
+ram.memory_DOUT_15[15]                           CFG3         Y             Out     0.223     7.226       -         
+data_rdata[15]                                   Net          -             -       0.411     -           3         
+cpu0.decode_load\.result_3__7_1                  CFG3         B             In      -         7.638       -         
+cpu0.decode_load\.result_3__7_1                  CFG3         Y             Out     0.200     7.838       -         
+result_3__7_1                                    Net          -             -       0.927     -           18        
+cpu0.decode_load\.result_3__7_1_RNIGDDI1[20]     CFG4         D             In      -         8.765       -         
+cpu0.decode_load\.result_3__7_1_RNIGDDI1[20]     CFG4         Y             Out     0.364     9.129       -         
+registerfile_wdata_2_0_iv_5_1[20]                Net          -             -       0.039     -           1         
+cpu0.fsm\.inst_addr8_RNITV2E8                    CFG4         D             In      -         9.168       -         
+cpu0.fsm\.inst_addr8_RNITV2E8                    CFG4         Y             Out     0.346     9.513       -         
+data_in_0[20]                                    Net          -             -       0.532     -           4         
+regfile.reg_rs1_ret_7_RNO                        CFG3         C             In      -         10.045      -         
+regfile.reg_rs1_ret_7_RNO                        CFG3         Y             Out     0.296     10.341      -         
+data_out_0[20]                                   Net          -             -       0.039     -           1         
+regfile.reg_rs1_ret_7                            SLE          D             In      -         10.380      -         
+====================================================================================================================
+Total path delay (propagation time + setup) of 10.380 is 4.095(39.4%) logic and 6.286(60.6%) route.
+Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
+
+
+
+##### END OF TIMING REPORT #####]
+
+Timing exceptions that could not be applied
+None
+
+Finished final timing analysis (Real Time elapsed 0h:00m:31s; CPU Time elapsed 0h:00m:31s; Memory used current: 199MB peak: 214MB)
+
+
+Finished timing report (Real Time elapsed 0h:00m:31s; CPU Time elapsed 0h:00m:31s; Memory used current: 199MB peak: 214MB)
+
+---------------------------------------
+<a name=resourceUsage86></a>Resource Usage Report for main </a>
+
+Mapping to part: mpf300tfcg1152std
+Cell usage:
+CLKINT          1 use
+CFG1           12 uses
+CFG2           226 uses
+CFG3           383 uses
+CFG4           931 uses
+
+Carry cells:
+ARI1            432 uses - used for arithmetic functions
+ARI1            534 uses - used for Wide-Mux implementation
+Total ARI1      966 uses
+
+
+Sequential Cells: 
+SLE            712 uses
+
+DSP Blocks:    0 of 924 (0%)
+
+I/O ports: 9
+I/O primitives: 9
+INBUF          5 uses
+OUTBUF         4 uses
+
+
+Global Clock Buffers: 1
+
+RAM/ROM usage summary
+Total Block RAMs (RAM64x12) : 99 of 2772 (3%)
+
+Total LUTs:    2518
+
+Extra resources required for RAM and MACC_PA interface logic during P&R:
+
+RAM64X12 Interface Logic : SLEs = 1188; LUTs = 1188;
+RAM1K20  Interface Logic : SLEs = 0; LUTs = 0;
+MACC_PA     Interface Logic : SLEs = 0; LUTs = 0;
+MACC_PA_BC_ROM     Interface Logic : SLEs = 0; LUTs = 0;
+
+Total number of SLEs after P&R:  712 + 1188 + 0 + 0 = 1900;
+Total number of LUTs after P&R:  2518 + 1188 + 0 + 0 = 3706;
+
+Mapper successful!
+
+At Mapper Exit (Real Time elapsed 0h:00m:32s; CPU Time elapsed 0h:00m:31s; Memory used current: 43MB peak: 214MB)
+
+Process took 0h:00m:32s realtime, 0h:00m:31s cputime
+# Sat Dec 21 16:02:41 2019
+
+###########################################################]
+
+</pre></samp></body></html>

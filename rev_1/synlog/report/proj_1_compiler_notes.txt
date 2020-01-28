@@ -1,0 +1,39 @@
+@N|Running in 64-bit mode
+@N|Running in 64-bit mode
+@N:"D:\FPGA\H13D\hdl\main.vhd":8:7:8:10|Top entity is set to main.
+@N: CD233 :"C:\Microsemi\Libero_SoC_v12.2\SynplifyPro\lib\vhd\std_logic_textio.vhd":79:15:79:16|Using sequential encoding for type mvl9plus.
+@N: CD630 :"D:\FPGA\H13D\hdl\main.vhd":8:7:8:10|Synthesizing work.main.behavioural.
+@N: CD630 :"D:\FPGA\H13D\hdl\registerfile.vhd":6:7:6:18|Synthesizing work.registerfile.behavioural.
+@N: CL134 :"D:\FPGA\H13D\hdl\registerfile.vhd":66:11:66:19|Found RAM registers, depth=32, width=33
+@N: CL134 :"D:\FPGA\H13D\hdl\registerfile.vhd":66:11:66:19|Found RAM registers, depth=32, width=33
+@N: CL134 :"D:\FPGA\H13D\hdl\registerfile.vhd":66:11:66:19|Found RAM registers, depth=32, width=33
+@N: CL134 :"D:\FPGA\H13D\hdl\registerfile.vhd":66:11:66:19|Found RAM registers, depth=32, width=33
+@N: CL134 :"D:\FPGA\H13D\hdl\registerfile.vhd":66:11:66:19|Found RAM registers, depth=32, width=33
+@N: CL134 :"D:\FPGA\H13D\hdl\registerfile.vhd":66:11:66:19|Found RAM registers, depth=32, width=33
+@N: CL134 :"D:\FPGA\H13D\hdl\registerfile.vhd":66:11:66:19|Found RAM registers, depth=32, width=33
+@N: CL134 :"D:\FPGA\H13D\hdl\registerfile.vhd":66:11:66:19|Found RAM registers, depth=32, width=33
+@N: CD630 :"D:\FPGA\H13D\hdl\cpu_new.vhd":6:7:6:9|Synthesizing work.cpu.behavioural.
+@N: CD233 :"D:\FPGA\H13D\hdl\cpu_new.vhd":87:17:87:18|Using sequential encoding for type state_t.
+@N: CD604 :"D:\FPGA\H13D\hdl\cpu_new.vhd":349:12:349:25|OTHERS clause is not synthesized.
+@N: CD604 :"D:\FPGA\H13D\hdl\cpu_new.vhd":677:16:677:29|OTHERS clause is not synthesized.
+@N: CD604 :"D:\FPGA\H13D\hdl\cpu_new.vhd":796:16:796:29|OTHERS clause is not synthesized.
+@N: CD630 :"D:\FPGA\H13D\hdl\cpu_new.vhd":116:14:116:18|Synthesizing work.ila_0.syn_black_box.
+@N: CD630 :"D:\FPGA\H13D\hdl\rom.vhd":11:7:11:9|Synthesizing work.rom.behavioral.
+@N: CD630 :"D:\FPGA\H13D\hdl\ram.vhd":12:7:12:15|Synthesizing work.block_ram.behavioral.
+@N: CD233 :"D:\FPGA\H13D\hdl\ram.vhd":52:17:52:18|Using sequential encoding for type state_t.
+@N: CL134 :"D:\FPGA\H13D\hdl\ram.vhd":48:11:48:16|Found RAM memory, depth=4096, width=8
+@N: CL134 :"D:\FPGA\H13D\hdl\ram.vhd":48:11:48:16|Found RAM memory, depth=4096, width=8
+@N: CL134 :"D:\FPGA\H13D\hdl\ram.vhd":48:11:48:16|Found RAM memory, depth=4096, width=8
+@N: CL134 :"D:\FPGA\H13D\hdl\ram.vhd":48:11:48:16|Found RAM memory, depth=4096, width=8
+@N: CD630 :"D:\FPGA\H13D\hdl\timebase.vhd":6:7:6:14|Synthesizing work.timebase.behavioural.
+@N: CD630 :"D:\FPGA\H13D\hdl\uart.vhd":5:7:5:10|Synthesizing work.uart.behavioral.
+@N: CL159 :"D:\FPGA\H13D\hdl\uart.vhd":15:19:15:24|Input mem_re is unused.
+@N: CL159 :"D:\FPGA\H13D\hdl\timebase.vhd":12:12:12:17|Input mem_re is unused.
+@N: CL201 :"D:\FPGA\H13D\hdl\ram.vhd":66:8:66:9|Trying to extract state machine for register state.
+@N: CL159 :"D:\FPGA\H13D\hdl\rom.vhd":18:8:18:10|Input rst is unused.
+@N: CL159 :"D:\FPGA\H13D\hdl\rom.vhd":18:13:18:15|Input clk is unused.
+@N: CL201 :"D:\FPGA\H13D\hdl\cpu_new.vhd":356:8:356:9|Trying to extract state machine for register state.
+@N|Running in 64-bit mode
+@N: NF107 :"d:\fpga\h13d\hdl\main.vhd":8:7:8:10|Selected library: work cell: main view behavioural as top level
+@N: NF107 :"d:\fpga\h13d\hdl\main.vhd":8:7:8:10|Selected library: work cell: main view behavioural as top level
+

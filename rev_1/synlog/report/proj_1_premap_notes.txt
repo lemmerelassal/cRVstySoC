@@ -1,0 +1,16 @@
+@N: MF284 |Setting synthesis effort to medium for the design
+@N: MF916 |Option synthesis_strategy=base is enabled. 
+@N: MF248 |Running in 64-bit mode.
+@N: MF667 |Clock conversion disabled. (Command "set_option -fix_gated_and_generated_clocks 0" in the project file.)
+@N: MF284 |Setting synthesis effort to medium for the design
+@N: MH105 |UMR3 is only supported for HAPS-80.
+@N: MH105 |UMR3 is only supported for HAPS-80.
+@N: BN362 :"d:\fpga\h13d\hdl\registerfile.vhd":66:11:66:19|Removing sequential instance registers_1[32:0] (in view: work.registerFile(behavioural)) of type view:PrimLib.ram1(prim) because it does not drive other instances.
+@N: BN362 :"d:\fpga\h13d\hdl\registerfile.vhd":66:11:66:19|Removing sequential instance registers_2[32:0] (in view: work.registerFile(behavioural)) of type view:PrimLib.ram1(prim) because it does not drive other instances.
+@N: BN362 :"d:\fpga\h13d\hdl\registerfile.vhd":66:11:66:19|Removing sequential instance registers_3[32:0] (in view: work.registerFile(behavioural)) of type view:PrimLib.ram1(prim) because it does not drive other instances.
+@N: BN362 :"d:\fpga\h13d\hdl\registerfile.vhd":66:11:66:19|Removing sequential instance registers_4[32:0] (in view: work.registerFile(behavioural)) of type view:PrimLib.ram1(prim) because it does not drive other instances.
+@N: BN362 :"d:\fpga\h13d\hdl\registerfile.vhd":66:11:66:19|Removing sequential instance registers_5[32:0] (in view: work.registerFile(behavioural)) of type view:PrimLib.ram1(prim) because it does not drive other instances.
+@N: BN362 :"d:\fpga\h13d\hdl\registerfile.vhd":66:11:66:19|Removing sequential instance registers_6[32:0] (in view: work.registerFile(behavioural)) of type view:PrimLib.ram1(prim) because it does not drive other instances.
+@N: BN362 :"d:\fpga\h13d\hdl\registerfile.vhd":66:11:66:19|Removing sequential instance registers_7[32:0] (in view: work.registerFile(behavioural)) of type view:PrimLib.ram1(prim) because it does not drive other instances.
+@N: FX1143 |Skipping assigning INTERNAL_VREF to iobanks, because the table of mapping from pin to iobank is not initialized.
+@N: BN225 |Writing default property annotation file D:\FPGA\H13D\rev_1\proj_1.sap.

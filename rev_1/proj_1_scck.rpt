@@ -1,0 +1,47 @@
+
+Copyright (C) 1994-2019 Synopsys, Inc.
+This Synopsys software and all associated documentation are proprietary to Synopsys, Inc.
+and may only be used pursuant to the terms and conditions of a written license agreement
+with Synopsys, Inc. All other use, reproduction, modification, or distribution of the
+Synopsys software or the associated documentation is strictly prohibited.
+Tool: Synplify Pro (R)
+Build: O-2018.09M-SP1-1
+Install: C:\Microsemi\Libero_SoC_v12.2\SynplifyPro
+OS: Windows 6.2
+
+Hostname: DESKTOP-JOJSDSF
+
+Implementation : rev_1
+
+# Written on Tue Jan 28 13:47:23 2020
+
+##### FILES SYNTAX CHECKED ##############################################
+Constraint File(s):      "D:\FPGA\H13D\rev_1\proj_1_fsm.sdc"
+
+#Run constraint checker to find more issues with constraints.
+#########################################################################
+
+
+
+No issues found in constraint syntax.
+
+
+
+Clock Summary
+*************
+
+          Start              Requested     Requested     Clock        Clock                   Clock
+Level     Clock              Frequency     Period        Type         Group                   Load 
+---------------------------------------------------------------------------------------------------
+0 -       main|CLK100MHZ     500.0 MHz     2.000         inferred     Inferred_clkgroup_0     490  
+===================================================================================================
+
+
+Clock Load Summary
+******************
+
+                   Clock     Source              Clock Pin                                Non-clock Pin     Non-clock Pin
+Clock              Load      Pin                 Seq Example                              Seq Example       Comb Example 
+-------------------------------------------------------------------------------------------------------------------------
+main|CLK100MHZ     490       CLK100MHZ(port)     regfile.register_selection_0r[4:0].C     -                 -            
+=========================================================================================================================
