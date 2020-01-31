@@ -4,7 +4,7 @@ use IEEE.NUMERIC_STD.ALL;
 use IEEE.std_logic_unsigned.all;
 
 entity cpu is
-    generic (entry_point : std_logic_vector(31 downto 0) := X"80001000");
+    generic (entry_point : std_logic_vector(31 downto 0) := X"80010000");
 
   Port (
     rst, clk : in std_logic;
@@ -124,44 +124,43 @@ architecture behavioural of cpu is
 
 
     impure function DoShift (
-        value, shamt : std_logic_vector(31 downto 0); 
+        value : std_logic_vector(31 downto 0); 
+        shamt : integer range 0 to 31;
         arithmetic_shift : boolean; 
         shleft : boolean
     ) return std_logic_vector is
         variable result : std_logic_vector(31 downto 0);
         variable appendbit : std_logic;
-        variable shamtint : integer range 0 to 32;
     begin
-        shamtint := to_integer(unsigned(shamt));
         if arithmetic_shift = true then
             appendbit := value(31);
         else
             appendbit := '0';
         end if;
 
-        if shamtint > 31 then
+        if shamt > 31 then
             result := (others => appendbit);
             return result;
-        elsif shamtint = 0 then
+        elsif shamt = 0 then
             return value;
         end if;
 
         if shleft = true then
             result := (others => '0');
-            result(31 downto shamtint) := value(31-shamtint downto 0);
+            result(31 downto shamt) := value(31-shamt downto 0);
         else
             result := (others => appendbit);
-            result(31-shamtint downto 0) := value(31 downto shamtint);
+            result(31-shamt downto 0) := value(31 downto shamt);
         end if;
 
-        --while shamtint > 0 loop
-        --for i in shamtint downto 0 loop
+        --while shamt > 0 loop
+        --for i in shamt downto 0 loop
         --    if shleft = true then
         --        result := result(30 downto 0) & '0';
         --    else
         --        result := appendbit & result(31 downto 1);
         --    end if;
-            --shamtint := shamtint - 1;
+            --shamt := shamt - 1;
         --end loop;
         return result;
     end function;
@@ -636,7 +635,7 @@ begin
                         when "0000000" => -- SRL
 
                             execution_done(to_integer(unsigned(R_TYPE))) <= '1';
-                            result(to_integer(unsigned(R_TYPE))) <=  DoShift(reg_rs1, reg_rs2, false, false);
+                            result(to_integer(unsigned(R_TYPE))) <=  DoShift(reg_rs1, to_integer(unsigned(reg_rs2(4 downto 0))), false, false);
 
                             -- execution_done(to_integer(unsigned(R_TYPE))) <= '0';
                             -- result(to_integer(unsigned(R_TYPE))) <= reg_rs1;
@@ -652,7 +651,7 @@ begin
 
                         when "0100000" => -- SRA
                             execution_done(to_integer(unsigned(R_TYPE))) <= '1';
-                            result(to_integer(unsigned(R_TYPE))) <=  DoShift(reg_rs1, reg_rs2, true, false);
+                            result(to_integer(unsigned(R_TYPE))) <=  DoShift(reg_rs1, to_integer(unsigned(reg_rs2(4 downto 0))), true, false);
 
 
                             -- if counter = X"00000000" then
@@ -723,7 +722,7 @@ begin
                             --     shift_rs1_left(to_integer(unsigned(I_TYPE))) <= '1';
                             --     dec_counter(to_integer(unsigned(I_TYPE))) <= '1';
                             -- end if;
-                            result(to_integer(unsigned(I_TYPE))) <=  DoShift(reg_rs1, imm_i, false, true);
+                            result(to_integer(unsigned(I_TYPE))) <=  DoShift(reg_rs1, to_integer(unsigned(imm_i(4 downto 0))), false, true);
                             
                             --reg_rs1;
 
@@ -756,7 +755,7 @@ begin
                     case funct7 is
                         when "0000000" => -- SRLI
                             execution_done(to_integer(unsigned(I_TYPE))) <= '1';
-                            result(to_integer(unsigned(I_TYPE))) <=  DoShift(reg_rs1, imm_i, false, false);
+                            result(to_integer(unsigned(I_TYPE))) <=  DoShift(reg_rs1, to_integer(unsigned(imm_i(4 downto 0))), false, false);
                             -- execution_done(to_integer(unsigned(I_TYPE))) <= '0';
                             -- result(to_integer(unsigned(I_TYPE))) <=  reg_rs1;
 
@@ -772,7 +771,7 @@ begin
 
                         when "0100000" => -- SRAI
                             execution_done(to_integer(unsigned(I_TYPE))) <= '1';
-                            result(to_integer(unsigned(I_TYPE))) <=  DoShift(reg_rs1, imm_i, true, false);
+                            result(to_integer(unsigned(I_TYPE))) <=  DoShift(reg_rs1, to_integer(unsigned(imm_i(4 downto 0))), true, false);
                             -- execution_done(to_integer(unsigned(I_TYPE))) <= '0';
                             -- result(to_integer(unsigned(I_TYPE))) <=  reg_rs1;
 

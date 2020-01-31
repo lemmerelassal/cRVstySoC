@@ -203,11 +203,14 @@ signal mem_rdy, mem_wack, mem_we, mem_re : std_logic;
 -- Peripherals
 ---------------------------------------------------------------------------
 
-constant PERIPHERAL_RAM : integer := 0;
-constant PERIPHERAL_TIMEBASE : integer := 1;
-constant PERIPHERAL_UART : integer := 2;
-constant PERIPHERAL_GPIO : integer := 3;
-constant PERIPHERAL_MAX : integer := 4;
+constant PERIPHERAL_RAM0 : integer := 0;
+constant PERIPHERAL_RAM1 : integer := 1;
+constant PERIPHERAL_RAM2 : integer := 2;
+
+constant PERIPHERAL_TIMEBASE : integer := 3;
+constant PERIPHERAL_UART : integer := 4;
+constant PERIPHERAL_GPIO : integer := 5;
+constant PERIPHERAL_MAX : integer := 6;
 
 signal i_mem_rdy, i_mem_wack : std_logic_vector(PERIPHERAL_MAX-1 downto 0);
 type mem_rdata_t is array (natural range <>) of std_logic_vector(31 downto 0);
@@ -215,7 +218,9 @@ type addr_t is array (natural range <>) of std_logic_vector(19 downto 0);
 
 signal i_mem_rdata : mem_rdata_t(PERIPHERAL_MAX-1 downto 0) := (others => (others => '0'));
 signal addr : addr_t(PERIPHERAL_MAX-1 downto 0) := (
-  PERIPHERAL_RAM => X"80000",
+  PERIPHERAL_RAM0 => X"80000",
+  PERIPHERAL_RAM1 => X"80001",
+  PERIPHERAL_RAM2 => X"80002",
   PERIPHERAL_TIMEBASE => X"C0000",
   PERIPHERAL_UART => X"C0001",
   PERIPHERAL_GPIO => X"C0002",
@@ -243,17 +248,19 @@ begin
       rst => rst, clk => clk,
       txd => uart_rxd_out,
       mem_addr => mem_addr, mem_wdata => mem_wdata,
-      mem_rdata => i_mem_rdata(PERIPHERAL_UART),
+      mem_rdata => mem_rdata, --i_mem_rdata(PERIPHERAL_UART),
       mem_we => mem_we, mem_re => mem_re,
-      mem_wack => i_mem_wack(PERIPHERAL_UART), mem_rdy => i_mem_rdy(PERIPHERAL_UART)
+      mem_wack => mem_wack, --i_mem_wack(PERIPHERAL_UART), 
+      mem_rdy => mem_rdy --i_mem_rdy(PERIPHERAL_UART)
     );
 
     i_timebase: timebase PORT MAP (
       rst => rst, clk => clk,
       mem_addr => mem_addr, mem_wdata => mem_wdata,
-      mem_rdata => i_mem_rdata(PERIPHERAL_TIMEBASE),
+      mem_rdata => mem_rdata, --i_mem_rdata(PERIPHERAL_TIMEBASE),
       mem_we => mem_we, mem_re => mem_re,
-      mem_wack => i_mem_wack(PERIPHERAL_TIMEBASE), mem_rdy => i_mem_rdy(PERIPHERAL_TIMEBASE)
+      mem_wack => mem_wack, --i_mem_wack(PERIPHERAL_TIMEBASE), 
+      mem_rdy => mem_rdy --i_mem_rdy(PERIPHERAL_TIMEBASE)
     );
 
 
@@ -267,9 +274,10 @@ begin
       rst => rst, clk => clk,
       mem_addr => mem_addr, mem_wdata => mem_wdata,
       mem_width => mem_width,
-      mem_rdata => i_mem_rdata(PERIPHERAL_RAM),
+      mem_rdata => mem_rdata, --i_mem_rdata(PERIPHERAL_RAM),
       mem_we => mem_we, mem_re => mem_re,
-      mem_wack => i_mem_wack(PERIPHERAL_RAM), mem_rdy => i_mem_rdy(PERIPHERAL_RAM)
+      mem_wack => mem_wack, --i_mem_wack(PERIPHERAL_RAM), 
+      mem_rdy => mem_rdy --i_mem_rdy(PERIPHERAL_RAM)
     );
 
     myrom: rom PORT MAP( 
@@ -402,19 +410,19 @@ begin
 
 led(3 downto 0) <= int_gpio(3 downto 0);
 
-process(mem_addr, addr, i_mem_rdata, i_mem_rdy, i_mem_wack)
-begin
-  mem_rdata <= (others => '0');
-  mem_rdy <= '0';
-  mem_wack <= '0';
-  for i in PERIPHERAL_MAX-1 downto 0 loop
-    if mem_addr(31 downto 12) = addr(i) then
-      mem_rdata <= i_mem_rdata(i);
-      mem_rdy <= i_mem_rdy(i);
-      mem_wack <= i_mem_wack(i);
-    end if;
-  end loop;
-end process;
+-- process(mem_addr, addr, i_mem_rdata, i_mem_rdy, i_mem_wack)
+-- begin
+--   mem_rdata <= (others => '0');
+--   mem_rdy <= '0';
+--   mem_wack <= '0';
+--   for i in PERIPHERAL_MAX-1 downto 0 loop
+--     if mem_addr(31 downto 12) = addr(i) then
+--       mem_rdata <= i_mem_rdata(i);
+--       mem_rdy <= i_mem_rdy(i);
+--       mem_wack <= i_mem_wack(i);
+--     end if;
+--   end loop;
+-- end process;
 
 
 
