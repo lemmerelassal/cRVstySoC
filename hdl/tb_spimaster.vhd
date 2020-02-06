@@ -75,7 +75,7 @@ rst <= '0' after 100 ns;
         wait for 100 ns;
         
         mem_addr <= X"C0003001"; -- divider
-        mem_wdata <= X"000000FF"; -- 390 kHz
+        mem_wdata <= X"00000000"; -- 390 kHz
         mem_we <= '1';
         wait for 40 ns;
         mem_we <= '0';

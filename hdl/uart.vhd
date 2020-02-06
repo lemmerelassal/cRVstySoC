@@ -13,7 +13,9 @@ entity uart is
            mem_addr, mem_wdata : in std_logic_vector(31 downto 0);
            mem_rdata : out std_logic_vector(31 downto 0);
            mem_we, mem_re : in std_logic;
-           mem_wack, mem_rdy : out std_logic
+           mem_wack, mem_rdy : out std_logic;
+
+           address_valid : out std_logic
            );
 end uart;
 
@@ -82,6 +84,7 @@ begin
     begin
         mem_rdy <= '1';
         mem_wack <= '1';
+        address_valid <= '1';
         case mem_addr is
             when base_address => -- status
                 mem_rdata <= X"000000" & reg_status;
@@ -91,6 +94,7 @@ begin
                 mem_rdy <= 'Z';
                 mem_wack <= 'Z';
                 mem_rdata <= (others => 'Z');
+                address_valid <= '0';
         end case;
     end process;
 

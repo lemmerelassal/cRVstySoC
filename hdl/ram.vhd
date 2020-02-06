@@ -21,7 +21,9 @@ entity block_ram is
         mem_rdata : out std_logic_vector(31 downto 0);
         mem_we, mem_re : in std_logic;
         mem_width : in std_logic_vector(1 downto 0);
-        mem_rdy, mem_wack : out std_logic
+        mem_rdy, mem_wack : out std_logic;
+
+        address_valid : out std_logic
 
     );
     end block_ram;
@@ -46,7 +48,7 @@ architecture Behavioral of block_ram is
     end function;
 	
     signal memory : memory_t := InitRamFromFile(ram_file);
-    signal address_valid, i_we, i_re, start_fsm : std_logic;
+    signal i_address_valid, i_we, i_re, start_fsm : std_logic;
     signal i_addr, i_mem_addr : integer range 0 to to_integer(unsigned(ram_size))-1 := 0;
 
     type state_t is (IDLE, READ_OR_WRITE_B0, READ_OR_WRITE_B1, READ_OR_WRITE_B2, READ_OR_WRITE_B3, READ_OR_WRITE_B4, DONE);
@@ -104,7 +106,7 @@ begin
         end if;
     end process;
 
-    process(state, i_rdata, mem_we, mem_re, address_valid, i_addr, i_width, i_re, i_we, mem_wdata)
+    process(state, i_rdata, mem_we, mem_re, i_address_valid, i_addr, i_width, i_re, i_we, mem_wdata)
     begin
         n_state <= state;
         n_rdata <= i_rdata;
@@ -127,7 +129,7 @@ begin
             when IDLE =>
                 mem_wack <= 'Z';
                 mem_rdy <= 'Z';
-                if (mem_we = '1' or mem_re = '1') and (address_valid = '1') then
+                if (mem_we = '1' or mem_re = '1') and (i_address_valid = '1') then
                     mem_wack <= '0';
                     mem_rdy <= '0';
                     start_fsm <= '1';
@@ -200,24 +202,25 @@ begin
 
     process(mem_addr, mem_width)
     begin
-        address_valid <= '0';
+        i_address_valid <= '0';
         if (mem_addr >= base_address) and (mem_addr < (base_address + ram_size)) then
             case mem_width is
                 when "00" =>
-                    address_valid <= '1';
+                    i_address_valid <= '1';
                 when "01" => -- halfword access
                     if mem_addr < (base_address + ram_size - X"00000001") then
-                        address_valid <= '1';
+                        i_address_valid <= '1';
                     end if;
                 when "10" => -- word access
                     if mem_addr < (base_address + ram_size - X"00000003") then
-                        address_valid <= '1';
+                        i_address_valid <= '1';
                     end if;
                 when others =>
             end case;
         end if;
     end process;
 
-mem_rdata <= i_rdata when address_valid = '1' else (others => 'Z');
+mem_rdata <= i_rdata when i_address_valid = '1' else (others => 'Z');
+address_valid <= i_address_valid;
 
 end Behavioral;

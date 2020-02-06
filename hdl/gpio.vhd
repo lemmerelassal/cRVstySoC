@@ -10,7 +10,8 @@ entity gpio is
     mem_rdata : out std_logic_vector(31 downto 0);
     mem_we, mem_re : in std_logic;
     mem_wack, mem_rdy : out std_logic;
-
+    address_valid : out std_logic;
+    
     gpio : inout std_logic_vector(31 downto 0)
 
   );
@@ -45,12 +46,14 @@ process(mem_addr, gpio_dir, gpio)
 begin
   mem_rdy <= '1';
   mem_wack <= '1';
+  address_valid <= '1';
   case mem_addr is
     when base_address => -- direction values
       mem_rdata <= gpio_dir;
     when base_address + X"00000004" => -- gpio state
       mem_rdata <= gpio;
     when others =>
+      address_valid <= '0';
       mem_rdy <= 'Z';
       mem_wack <= 'Z';
       mem_rdata <= (others => 'Z');
@@ -61,9 +64,9 @@ process(gpio_dir, gpio_value)
 begin
     for i in 0 to 31 loop
         if gpio_dir(i) = '1' then -- set as output
-            gpio_value(i) <= gpio_value(i);
+            gpio(i) <= gpio_value(i);
         else
-            gpio_value(i) <= 'Z';
+            gpio(i) <= 'Z';
         end if;
     end loop;
 end process;

@@ -43,7 +43,7 @@ architecture Behavioral of rom is
         end loop;
         return ROM;
     end function;
-    signal memory : memory_t := InitRomFromFile(rom_file);
+    constant memory : memory_t := InitRomFromFile(rom_file);
 
     signal addr_valid : std_logic;
     signal idx : integer range 0 to 32767;
