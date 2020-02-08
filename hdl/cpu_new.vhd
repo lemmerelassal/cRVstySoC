@@ -113,14 +113,14 @@ architecture behavioural of cpu is
     signal i_inst_addr, i_data_wdata, i_data_addr : std_logic_vector(31 downto 0);
     signal i_data_we, i_data_re : std_logic;
 
-    component ila_0 PORT (
-      clk : in std_logic;
-      probe2, probe3, probe4, probe5, probe6, probe7, probe8 : in std_logic_vector(31 downto 0);
-      probe0, probe9, probe10 : in std_logic;
-      probe1 : in std_logic_vector(2 downto 0);
-      probe11, probe12 : in std_logic_vector(127 downto 0)
-    );
-    end component;
+    -- component ila_0 PORT (
+    --   clk : in std_logic;
+    --   probe2, probe3, probe4, probe5, probe6, probe7, probe8 : in std_logic_vector(31 downto 0);
+    --   probe0, probe9, probe10 : in std_logic;
+    --   probe1 : in std_logic_vector(2 downto 0);
+    --   probe11, probe12 : in std_logic_vector(127 downto 0)
+    -- );
+    -- end component;
 
 
     impure function DoShift (
@@ -190,22 +190,22 @@ begin
     data_we <= i_data_we;
     data_addr <= i_data_addr;
 
-    ila: ila_0 PORT MAP(
-      clk => clk,
-      probe0 => rst,
-      probe1 => state_out,
-      probe2 => pc,
-      probe3 => i_inst_addr,
-      probe4 => inst_rdata,
-      probe5 => instruction,
-      probe6 => data_rdata,
-      probe7 => i_data_wdata,
-      probe8 => i_data_addr,
-      probe9 => i_data_we,
-      probe10 => i_data_re,
-      probe11 => selected,
-      probe12 => execution_done
-    );
+    -- ila: ila_0 PORT MAP(
+    --   clk => clk,
+    --   probe0 => rst,
+    --   probe1 => state_out,
+    --   probe2 => pc,
+    --   probe3 => i_inst_addr,
+    --   probe4 => inst_rdata,
+    --   probe5 => instruction,
+    --   probe6 => data_rdata,
+    --   probe7 => i_data_wdata,
+    --   probe8 => i_data_addr,
+    --   probe9 => i_data_we,
+    --   probe10 => i_data_re,
+    --   probe11 => selected,
+    --   probe12 => execution_done
+    -- );
 
 
 

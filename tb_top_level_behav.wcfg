@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_top_level_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="mylibrary" />
+            <top_module name="tb_top_level" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="1000000001fs"></ZoomEndTime>
+      <Cursor1Time time="104938272fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="145"></NameColumnWidth>
+      <ValueColumnWidth column_width="68"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="17" />
+   <wvobject fp_name="/tb_top_level/sim/rst" type="logic">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top_level/sim/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top_level/sim/sck" type="logic">
+      <obj_property name="ElementShortName">sck</obj_property>
+      <obj_property name="ObjectShortName">sck</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top_level/sim/mosi" type="logic">
+      <obj_property name="ElementShortName">mosi</obj_property>
+      <obj_property name="ObjectShortName">mosi</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top_level/sim/miso" type="logic">
+      <obj_property name="ElementShortName">miso</obj_property>
+      <obj_property name="ObjectShortName">miso</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top_level/sim/data_addr" type="array">
+      <obj_property name="ElementShortName">data_addr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">data_addr[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top_level/sim/data_wdata" type="array">
+      <obj_property name="ElementShortName">data_wdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">data_wdata[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top_level/sim/cpu0/pc" type="array">
+      <obj_property name="ElementShortName">pc[31:0]</obj_property>
+      <obj_property name="ObjectShortName">pc[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top_level/sim/cpu0/data_rdata" type="array">
+      <obj_property name="ElementShortName">data_rdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">data_rdata[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top_level/sim/i_uart/txd" type="logic">
+      <obj_property name="ElementShortName">txd</obj_property>
+      <obj_property name="ObjectShortName">txd</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top_level/sim/i_gpio/gpio[0]" type="logic">
+      <obj_property name="ElementShortName">[0]</obj_property>
+      <obj_property name="ObjectShortName">[0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top_level/sim/i_gpio/gpio[31]" type="logic">
+      <obj_property name="ElementShortName">[31]</obj_property>
+      <obj_property name="ObjectShortName">[31]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top_level/sim/i_gpio/gpio_value" type="array">
+      <obj_property name="ElementShortName">gpio_value[31:0]</obj_property>
+      <obj_property name="ObjectShortName">gpio_value[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top_level/sim/i_gpio/gpio_dir" type="array">
+      <obj_property name="ElementShortName">gpio_dir[31:0]</obj_property>
+      <obj_property name="ObjectShortName">gpio_dir[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top_level/sim/mem_rdy" type="logic">
+      <obj_property name="ElementShortName">mem_rdy</obj_property>
+      <obj_property name="ObjectShortName">mem_rdy</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top_level/sim/i_mem_rdy[4]" type="logic">
+      <obj_property name="ElementShortName">[4]</obj_property>
+      <obj_property name="ObjectShortName">[4]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top_level/sim/i_address_valid" type="array">
+      <obj_property name="ElementShortName">i_address_valid[6:0]</obj_property>
+      <obj_property name="ObjectShortName">i_address_valid[6:0]</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+   </wvobject>
+</wave_config>

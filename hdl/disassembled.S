@@ -140,7 +140,7 @@ Disassembly of section .text:
 80010208:	dfc10113          	addi	sp,sp,-516 # 80010000 <__stack_top>
 8001020c:	00000097          	auipc	ra,0x0
 80010210:	00c08093          	addi	ra,ra,12 # 80010218 <exec_done>
-80010214:	25c0006f          	j	80010470 <main>
+80010214:	4ac0006f          	j	800106c0 <main>
 
 80010218 <exec_done>:
 80010218:	0000006f          	j	80010218 <exec_done>
@@ -148,24 +148,24 @@ Disassembly of section .text:
 
 80010284 <HAL_SPI_WriteByte>:
 80010284:	c00037b7          	lui	a5,0xc0003
-80010288:	00a78023          	sb	a0,0(a5) # c0003000 <__modsi3+0x3fff27e0>
+80010288:	00a78023          	sb	a0,0(a5) # c0003000 <__modsi3+0x3fff25e0>
 8001028c:	00008067          	ret
 
 80010290 <HAL_SPI_ReadByte>:
 80010290:	c00037b7          	lui	a5,0xc0003
-80010294:	0007c503          	lbu	a0,0(a5) # c0003000 <__modsi3+0x3fff27e0>
+80010294:	0007c503          	lbu	a0,0(a5) # c0003000 <__modsi3+0x3fff25e0>
 80010298:	0ff57513          	andi	a0,a0,255
 8001029c:	00008067          	ret
 
 800102a0 <HAL_SPI_ReadByteWithAck>:
 800102a0:	c00037b7          	lui	a5,0xc0003
-800102a4:	0037c503          	lbu	a0,3(a5) # c0003003 <__modsi3+0x3fff27e3>
+800102a4:	0037c503          	lbu	a0,3(a5) # c0003003 <__modsi3+0x3fff25e3>
 800102a8:	0ff57513          	andi	a0,a0,255
 800102ac:	00008067          	ret
 
 800102b0 <HAL_SPI_SetDivider>:
 800102b0:	c00037b7          	lui	a5,0xc0003
-800102b4:	00a780a3          	sb	a0,1(a5) # c0003001 <__modsi3+0x3fff27e1>
+800102b4:	00a780a3          	sb	a0,1(a5) # c0003001 <__modsi3+0x3fff25e1>
 800102b8:	00008067          	ret
 
 800102bc <HAL_SPI_SetConfig>:
@@ -184,7 +184,7 @@ Disassembly of section .text:
 800102ec:	00571713          	slli	a4,a4,0x5
 800102f0:	00e56533          	or	a0,a0,a4
 800102f4:	c00037b7          	lui	a5,0xc0003
-800102f8:	00a78123          	sb	a0,2(a5) # c0003002 <__modsi3+0x3fff27e2>
+800102f8:	00a78123          	sb	a0,2(a5) # c0003002 <__modsi3+0x3fff25e2>
 800102fc:	00008067          	ret
 
 80010300 <HAL_UART_WriteBuffer>:
@@ -192,7 +192,7 @@ Disassembly of section .text:
 80010304:	c00016b7          	lui	a3,0xc0001
 80010308:	00b79463          	bne	a5,a1,80010310 <HAL_UART_WriteBuffer+0x10>
 8001030c:	00008067          	ret
-80010310:	0006c703          	lbu	a4,0(a3) # c0001000 <__modsi3+0x3fff07e0>
+80010310:	0006c703          	lbu	a4,0(a3) # c0001000 <__modsi3+0x3fff05e0>
 80010314:	00177713          	andi	a4,a4,1
 80010318:	fe071ce3          	bnez	a4,80010310 <HAL_UART_WriteBuffer+0x10>
 8001031c:	00f50733          	add	a4,a0,a5
@@ -203,7 +203,7 @@ Disassembly of section .text:
 
 80010330 <HAL_UART_PutChar>:
 80010330:	c0001737          	lui	a4,0xc0001
-80010334:	00074783          	lbu	a5,0(a4) # c0001000 <__modsi3+0x3fff07e0>
+80010334:	00074783          	lbu	a5,0(a4) # c0001000 <__modsi3+0x3fff05e0>
 80010338:	0017f793          	andi	a5,a5,1
 8001033c:	fe079ce3          	bnez	a5,80010334 <HAL_UART_PutChar+0x4>
 80010340:	00a700a3          	sb	a0,1(a4)
@@ -226,17 +226,17 @@ Disassembly of section .text:
 
 8001037c <HAL_GPIO_SetDirections>:
 8001037c:	c00027b7          	lui	a5,0xc0002
-80010380:	00a7a023          	sw	a0,0(a5) # c0002000 <__modsi3+0x3fff17e0>
+80010380:	00a7a023          	sw	a0,0(a5) # c0002000 <__modsi3+0x3fff15e0>
 80010384:	00008067          	ret
 
 80010388 <HAL_GPIO_SetOutputs>:
 80010388:	c00027b7          	lui	a5,0xc0002
-8001038c:	00a7a223          	sw	a0,4(a5) # c0002004 <__modsi3+0x3fff17e4>
+8001038c:	00a7a223          	sw	a0,4(a5) # c0002004 <__modsi3+0x3fff15e4>
 80010390:	00008067          	ret
 
 80010394 <HAL_GPIO_GetInputs>:
 80010394:	c00027b7          	lui	a5,0xc0002
-80010398:	0047a503          	lw	a0,4(a5) # c0002004 <__modsi3+0x3fff17e4>
+80010398:	0047a503          	lw	a0,4(a5) # c0002004 <__modsi3+0x3fff15e4>
 8001039c:	00008067          	ret
 
 800103a0 <printf>:
@@ -254,7 +254,7 @@ Disassembly of section .text:
 800103cc:	13012c23          	sw	a6,312(sp)
 800103d0:	13112e23          	sw	a7,316(sp)
 800103d4:	00d12623          	sw	a3,12(sp)
-800103d8:	114000ef          	jal	ra,800104ec <vsnprintf>
+800103d8:	314000ef          	jal	ra,800106ec <vsnprintf>
 800103dc:	01010513          	addi	a0,sp,16
 800103e0:	f69ff0ef          	jal	ra,80010348 <HAL_UART_PutLine>
 800103e4:	11c12083          	lw	ra,284(sp)
@@ -276,289 +276,425 @@ Disassembly of section .text:
 8001040c:	00178793          	addi	a5,a5,1
 80010410:	fedff06f          	j	800103fc <memset+0x4>
 
-80010414 <SD_SendCMD>:
-80010414:	01f57513          	andi	a0,a0,31
-80010418:	ff010113          	addi	sp,sp,-16
-8001041c:	04056513          	ori	a0,a0,64
-80010420:	00112623          	sw	ra,12(sp)
-80010424:	00812423          	sw	s0,8(sp)
-80010428:	00058413          	mv	s0,a1
-8001042c:	e59ff0ef          	jal	ra,80010284 <HAL_SPI_WriteByte>
-80010430:	01845513          	srli	a0,s0,0x18
-80010434:	e51ff0ef          	jal	ra,80010284 <HAL_SPI_WriteByte>
-80010438:	01045513          	srli	a0,s0,0x10
-8001043c:	0ff57513          	andi	a0,a0,255
-80010440:	e45ff0ef          	jal	ra,80010284 <HAL_SPI_WriteByte>
-80010444:	00845513          	srli	a0,s0,0x8
-80010448:	0ff57513          	andi	a0,a0,255
-8001044c:	e39ff0ef          	jal	ra,80010284 <HAL_SPI_WriteByte>
-80010450:	0ff47513          	andi	a0,s0,255
-80010454:	e31ff0ef          	jal	ra,80010284 <HAL_SPI_WriteByte>
-80010458:	09500513          	li	a0,149
-8001045c:	e29ff0ef          	jal	ra,80010284 <HAL_SPI_WriteByte>
-80010460:	00812403          	lw	s0,8(sp)
-80010464:	00c12083          	lw	ra,12(sp)
-80010468:	01010113          	addi	sp,sp,16
-8001046c:	e35ff06f          	j	800102a0 <HAL_SPI_ReadByteWithAck>
+80010414 <GenerateCRCTable>:
+80010414:	800007b7          	lui	a5,0x80000
+80010418:	0507c503          	lbu	a0,80(a5) # 80000050 <__modsi3+0xfffef630>
+8001041c:	800006b7          	lui	a3,0x80000
+80010420:	05468693          	addi	a3,a3,84 # 80000054 <__modsi3+0xfffef634>
+80010424:	01851893          	slli	a7,a0,0x18
+80010428:	4188d893          	srai	a7,a7,0x18
+8001042c:	00000713          	li	a4,0
+80010430:	10000813          	li	a6,256
+80010434:	08077613          	andi	a2,a4,128
+80010438:	0ff77793          	andi	a5,a4,255
+8001043c:	00060663          	beqz	a2,80010448 <GenerateCRCTable+0x34>
+80010440:	00e8c7b3          	xor	a5,a7,a4
+80010444:	0ff7f793          	andi	a5,a5,255
+80010448:	00700593          	li	a1,7
+8001044c:	00179613          	slli	a2,a5,0x1
+80010450:	0ff67793          	andi	a5,a2,255
+80010454:	01861613          	slli	a2,a2,0x18
+80010458:	41865613          	srai	a2,a2,0x18
+8001045c:	00065463          	bgez	a2,80010464 <GenerateCRCTable+0x50>
+80010460:	00f547b3          	xor	a5,a0,a5
+80010464:	fff58593          	addi	a1,a1,-1
+80010468:	fe0592e3          	bnez	a1,8001044c <GenerateCRCTable+0x38>
+8001046c:	00f68023          	sb	a5,0(a3)
+80010470:	00170713          	addi	a4,a4,1
+80010474:	00168693          	addi	a3,a3,1
+80010478:	fb071ee3          	bne	a4,a6,80010434 <GenerateCRCTable+0x20>
+8001047c:	00008067          	ret
 
-80010470 <main>:
-80010470:	ff010113          	addi	sp,sp,-16
-80010474:	00100513          	li	a0,1
-80010478:	00112623          	sw	ra,12(sp)
-8001047c:	00812423          	sw	s0,8(sp)
-80010480:	efdff0ef          	jal	ra,8001037c <HAL_GPIO_SetDirections>
-80010484:	00100513          	li	a0,1
-80010488:	f01ff0ef          	jal	ra,80010388 <HAL_GPIO_SetOutputs>
-8001048c:	00000713          	li	a4,0
-80010490:	00100693          	li	a3,1
-80010494:	00000613          	li	a2,0
-80010498:	00000593          	li	a1,0
-8001049c:	00000513          	li	a0,0
-800104a0:	e1dff0ef          	jal	ra,800102bc <HAL_SPI_SetConfig>
-800104a4:	0ff00513          	li	a0,255
-800104a8:	e09ff0ef          	jal	ra,800102b0 <HAL_SPI_SetDivider>
-800104ac:	00a00413          	li	s0,10
-800104b0:	fff40413          	addi	s0,s0,-1
-800104b4:	0ff00513          	li	a0,255
-800104b8:	0ff47413          	andi	s0,s0,255
-800104bc:	dc9ff0ef          	jal	ra,80010284 <HAL_SPI_WriteByte>
-800104c0:	fe0418e3          	bnez	s0,800104b0 <main+0x40>
-800104c4:	00000513          	li	a0,0
-800104c8:	ec1ff0ef          	jal	ra,80010388 <HAL_GPIO_SetOutputs>
-800104cc:	80000437          	lui	s0,0x80000
-800104d0:	00000593          	li	a1,0
-800104d4:	00000513          	li	a0,0
-800104d8:	f3dff0ef          	jal	ra,80010414 <SD_SendCMD>
-800104dc:	00050593          	mv	a1,a0
-800104e0:	00040513          	mv	a0,s0
-800104e4:	ebdff0ef          	jal	ra,800103a0 <printf>
-800104e8:	fe9ff06f          	j	800104d0 <main+0x60>
+80010480 <CRCAdd>:
+80010480:	800007b7          	lui	a5,0x80000
+80010484:	00151513          	slli	a0,a0,0x1
+80010488:	00b54533          	xor	a0,a0,a1
+8001048c:	05478793          	addi	a5,a5,84 # 80000054 <__modsi3+0xfffef634>
+80010490:	00a787b3          	add	a5,a5,a0
+80010494:	0007c503          	lbu	a0,0(a5)
+80010498:	00008067          	ret
 
-800104ec <vsnprintf>:
-800104ec:	fb010113          	addi	sp,sp,-80
-800104f0:	04812423          	sw	s0,72(sp)
-800104f4:	04912223          	sw	s1,68(sp)
-800104f8:	05212023          	sw	s2,64(sp)
-800104fc:	03312e23          	sw	s3,60(sp)
-80010500:	03412c23          	sw	s4,56(sp)
-80010504:	03512a23          	sw	s5,52(sp)
-80010508:	03912223          	sw	s9,36(sp)
-8001050c:	03a12023          	sw	s10,32(sp)
-80010510:	00058a13          	mv	s4,a1
-80010514:	04112623          	sw	ra,76(sp)
-80010518:	03612823          	sw	s6,48(sp)
-8001051c:	03712623          	sw	s7,44(sp)
-80010520:	03812423          	sw	s8,40(sp)
-80010524:	01b12e23          	sw	s11,28(sp)
-80010528:	00050a93          	mv	s5,a0
-8001052c:	00060413          	mv	s0,a2
-80010530:	00000993          	li	s3,0
-80010534:	00000593          	li	a1,0
-80010538:	07000493          	li	s1,112
-8001053c:	07800913          	li	s2,120
-80010540:	06c00c93          	li	s9,108
-80010544:	06300d13          	li	s10,99
-80010548:	00044603          	lbu	a2,0(s0) # 80000000 <__modsi3+0xfffef7e0>
-8001054c:	04061863          	bnez	a2,8001059c <vsnprintf+0xb0>
-80010550:	2149f463          	bgeu	s3,s4,80010758 <vsnprintf+0x26c>
-80010554:	013a8733          	add	a4,s5,s3
-80010558:	00070023          	sb	zero,0(a4)
-8001055c:	04c12083          	lw	ra,76(sp)
-80010560:	04812403          	lw	s0,72(sp)
-80010564:	04412483          	lw	s1,68(sp)
-80010568:	04012903          	lw	s2,64(sp)
-8001056c:	03812a03          	lw	s4,56(sp)
-80010570:	03412a83          	lw	s5,52(sp)
-80010574:	03012b03          	lw	s6,48(sp)
-80010578:	02c12b83          	lw	s7,44(sp)
-8001057c:	02812c03          	lw	s8,40(sp)
-80010580:	02412c83          	lw	s9,36(sp)
-80010584:	02012d03          	lw	s10,32(sp)
-80010588:	01c12d83          	lw	s11,28(sp)
-8001058c:	00098513          	mv	a0,s3
-80010590:	03c12983          	lw	s3,60(sp)
-80010594:	05010113          	addi	sp,sp,80
-80010598:	00008067          	ret
-8001059c:	18058a63          	beqz	a1,80010730 <vsnprintf+0x244>
-800105a0:	08960063          	beq	a2,s1,80010620 <vsnprintf+0x134>
-800105a4:	00c4ee63          	bltu	s1,a2,800105c0 <vsnprintf+0xd4>
-800105a8:	06400793          	li	a5,100
-800105ac:	08f60e63          	beq	a2,a5,80010648 <vsnprintf+0x15c>
-800105b0:	01960463          	beq	a2,s9,800105b8 <vsnprintf+0xcc>
-800105b4:	17a60063          	beq	a2,s10,80010714 <vsnprintf+0x228>
-800105b8:	00140413          	addi	s0,s0,1
-800105bc:	f8dff06f          	j	80010548 <vsnprintf+0x5c>
-800105c0:	07300793          	li	a5,115
-800105c4:	10f60a63          	beq	a2,a5,800106d8 <vsnprintf+0x1ec>
-800105c8:	ff2618e3          	bne	a2,s2,800105b8 <vsnprintf+0xcc>
-800105cc:	0006a883          	lw	a7,0(a3)
-800105d0:	00098513          	mv	a0,s3
-800105d4:	00468693          	addi	a3,a3,4
-800105d8:	00700593          	li	a1,7
-800105dc:	00150513          	addi	a0,a0,1
-800105e0:	03457463          	bgeu	a0,s4,80010608 <vsnprintf+0x11c>
-800105e4:	00259613          	slli	a2,a1,0x2
-800105e8:	40c8d633          	sra	a2,a7,a2
-800105ec:	00f67e13          	andi	t3,a2,15
-800105f0:	00900793          	li	a5,9
-800105f4:	057e0313          	addi	t1,t3,87
-800105f8:	01c7c463          	blt	a5,t3,80010600 <vsnprintf+0x114>
-800105fc:	030e0313          	addi	t1,t3,48
-80010600:	00aa8633          	add	a2,s5,a0
-80010604:	fe660fa3          	sb	t1,-1(a2)
-80010608:	fff58593          	addi	a1,a1,-1
-8001060c:	fff00793          	li	a5,-1
-80010610:	fcf596e3          	bne	a1,a5,800105dc <vsnprintf+0xf0>
-80010614:	00898993          	addi	s3,s3,8
-80010618:	00000593          	li	a1,0
-8001061c:	f9dff06f          	j	800105b8 <vsnprintf+0xcc>
-80010620:	00198613          	addi	a2,s3,1
-80010624:	01467863          	bgeu	a2,s4,80010634 <vsnprintf+0x148>
-80010628:	013a85b3          	add	a1,s5,s3
-8001062c:	03000793          	li	a5,48
-80010630:	00f58023          	sb	a5,0(a1)
-80010634:	00298993          	addi	s3,s3,2
-80010638:	f949fae3          	bgeu	s3,s4,800105cc <vsnprintf+0xe0>
-8001063c:	00ca8633          	add	a2,s5,a2
-80010640:	01260023          	sb	s2,0(a2)
-80010644:	f89ff06f          	j	800105cc <vsnprintf+0xe0>
-80010648:	0006ac03          	lw	s8,0(a3)
-8001064c:	00468d93          	addi	s11,a3,4
-80010650:	00098b93          	mv	s7,s3
-80010654:	000c5e63          	bgez	s8,80010670 <vsnprintf+0x184>
-80010658:	00198b93          	addi	s7,s3,1
-8001065c:	41800c33          	neg	s8,s8
-80010660:	014bf863          	bgeu	s7,s4,80010670 <vsnprintf+0x184>
-80010664:	013a87b3          	add	a5,s5,s3
-80010668:	02d00713          	li	a4,45
-8001066c:	00e78023          	sb	a4,0(a5)
-80010670:	000c0513          	mv	a0,s8
-80010674:	00100993          	li	s3,1
-80010678:	00a00593          	li	a1,10
-8001067c:	120000ef          	jal	ra,8001079c <__divsi3>
-80010680:	04051863          	bnez	a0,800106d0 <vsnprintf+0x1e4>
-80010684:	017989b3          	add	s3,s3,s7
-80010688:	00098b13          	mv	s6,s3
-8001068c:	034b7263          	bgeu	s6,s4,800106b0 <vsnprintf+0x1c4>
-80010690:	016a8333          	add	t1,s5,s6
-80010694:	00a00593          	li	a1,10
-80010698:	000c0513          	mv	a0,s8
-8001069c:	00612623          	sw	t1,12(sp)
-800106a0:	180000ef          	jal	ra,80010820 <__modsi3>
-800106a4:	00c12303          	lw	t1,12(sp)
-800106a8:	03050513          	addi	a0,a0,48
-800106ac:	fea30fa3          	sb	a0,-1(t1)
-800106b0:	000c0513          	mv	a0,s8
-800106b4:	00a00593          	li	a1,10
-800106b8:	0e4000ef          	jal	ra,8001079c <__divsi3>
-800106bc:	fffb0b13          	addi	s6,s6,-1
-800106c0:	00050c13          	mv	s8,a0
-800106c4:	fd6b94e3          	bne	s7,s6,8001068c <vsnprintf+0x1a0>
-800106c8:	000d8693          	mv	a3,s11
-800106cc:	f4dff06f          	j	80010618 <vsnprintf+0x12c>
-800106d0:	00198993          	addi	s3,s3,1
-800106d4:	fa5ff06f          	j	80010678 <vsnprintf+0x18c>
-800106d8:	0006a503          	lw	a0,0(a3)
-800106dc:	00468593          	addi	a1,a3,4
-800106e0:	00098613          	mv	a2,s3
-800106e4:	413606b3          	sub	a3,a2,s3
-800106e8:	00d506b3          	add	a3,a0,a3
-800106ec:	0006c683          	lbu	a3,0(a3)
-800106f0:	00069863          	bnez	a3,80010700 <vsnprintf+0x214>
-800106f4:	00058693          	mv	a3,a1
-800106f8:	00060993          	mv	s3,a2
-800106fc:	f1dff06f          	j	80010618 <vsnprintf+0x12c>
-80010700:	00160613          	addi	a2,a2,1
-80010704:	ff4670e3          	bgeu	a2,s4,800106e4 <vsnprintf+0x1f8>
-80010708:	00ca88b3          	add	a7,s5,a2
-8001070c:	fed88fa3          	sb	a3,-1(a7)
-80010710:	fd5ff06f          	j	800106e4 <vsnprintf+0x1f8>
-80010714:	00198613          	addi	a2,s3,1
-80010718:	ff4670e3          	bgeu	a2,s4,800106f8 <vsnprintf+0x20c>
-8001071c:	0006a583          	lw	a1,0(a3)
-80010720:	013a87b3          	add	a5,s5,s3
-80010724:	00468693          	addi	a3,a3,4
-80010728:	00b78023          	sb	a1,0(a5)
-8001072c:	fcdff06f          	j	800106f8 <vsnprintf+0x20c>
-80010730:	02500793          	li	a5,37
-80010734:	00f60e63          	beq	a2,a5,80010750 <vsnprintf+0x264>
-80010738:	00198893          	addi	a7,s3,1
-8001073c:	0148f663          	bgeu	a7,s4,80010748 <vsnprintf+0x25c>
-80010740:	013a87b3          	add	a5,s5,s3
-80010744:	00c78023          	sb	a2,0(a5)
-80010748:	00088993          	mv	s3,a7
-8001074c:	e6dff06f          	j	800105b8 <vsnprintf+0xcc>
-80010750:	00100593          	li	a1,1
-80010754:	e65ff06f          	j	800105b8 <vsnprintf+0xcc>
-80010758:	e00a02e3          	beqz	s4,8001055c <vsnprintf+0x70>
-8001075c:	014a8733          	add	a4,s5,s4
-80010760:	fe070fa3          	sb	zero,-1(a4)
-80010764:	df9ff06f          	j	8001055c <vsnprintf+0x70>
+8001049c <getCRC>:
+8001049c:	80000837          	lui	a6,0x80000
+800104a0:	00050613          	mv	a2,a0
+800104a4:	00000693          	li	a3,0
+800104a8:	00000513          	li	a0,0
+800104ac:	05480813          	addi	a6,a6,84 # 80000054 <__modsi3+0xfffef634>
+800104b0:	00b6c463          	blt	a3,a1,800104b8 <getCRC+0x1c>
+800104b4:	00008067          	ret
+800104b8:	00d607b3          	add	a5,a2,a3
+800104bc:	0007c703          	lbu	a4,0(a5)
+800104c0:	00151793          	slli	a5,a0,0x1
+800104c4:	00168693          	addi	a3,a3,1
+800104c8:	00f747b3          	xor	a5,a4,a5
+800104cc:	00f807b3          	add	a5,a6,a5
+800104d0:	0007c503          	lbu	a0,0(a5)
+800104d4:	fddff06f          	j	800104b0 <getCRC+0x14>
 
-80010768 <snprintf>:
-80010768:	fc010113          	addi	sp,sp,-64
-8001076c:	02d12623          	sw	a3,44(sp)
-80010770:	02c10693          	addi	a3,sp,44
-80010774:	00112e23          	sw	ra,28(sp)
-80010778:	02e12823          	sw	a4,48(sp)
-8001077c:	02f12a23          	sw	a5,52(sp)
-80010780:	03012c23          	sw	a6,56(sp)
-80010784:	03112e23          	sw	a7,60(sp)
-80010788:	00d12623          	sw	a3,12(sp)
-8001078c:	d61ff0ef          	jal	ra,800104ec <vsnprintf>
-80010790:	01c12083          	lw	ra,28(sp)
-80010794:	04010113          	addi	sp,sp,64
+800104d8 <SD_SendCMD>:
+800104d8:	01f57513          	andi	a0,a0,31
+800104dc:	fe010113          	addi	sp,sp,-32
+800104e0:	04056513          	ori	a0,a0,64
+800104e4:	00112e23          	sw	ra,28(sp)
+800104e8:	00812c23          	sw	s0,24(sp)
+800104ec:	00912a23          	sw	s1,20(sp)
+800104f0:	00058413          	mv	s0,a1
+800104f4:	00060493          	mv	s1,a2
+800104f8:	01312623          	sw	s3,12(sp)
+800104fc:	01412423          	sw	s4,8(sp)
+80010500:	00068993          	mv	s3,a3
+80010504:	01212823          	sw	s2,16(sp)
+80010508:	d7dff0ef          	jal	ra,80010284 <HAL_SPI_WriteByte>
+8001050c:	01845513          	srli	a0,s0,0x18
+80010510:	d75ff0ef          	jal	ra,80010284 <HAL_SPI_WriteByte>
+80010514:	01045513          	srli	a0,s0,0x10
+80010518:	0ff57513          	andi	a0,a0,255
+8001051c:	d69ff0ef          	jal	ra,80010284 <HAL_SPI_WriteByte>
+80010520:	00845513          	srli	a0,s0,0x8
+80010524:	0ff57513          	andi	a0,a0,255
+80010528:	d5dff0ef          	jal	ra,80010284 <HAL_SPI_WriteByte>
+8001052c:	0ff47513          	andi	a0,s0,255
+80010530:	d55ff0ef          	jal	ra,80010284 <HAL_SPI_WriteByte>
+80010534:	00048513          	mv	a0,s1
+80010538:	d4dff0ef          	jal	ra,80010284 <HAL_SPI_WriteByte>
+8001053c:	d65ff0ef          	jal	ra,800102a0 <HAL_SPI_ReadByteWithAck>
+80010540:	00050a13          	mv	s4,a0
+80010544:	02098e63          	beqz	s3,80010580 <SD_SendCMD+0xa8>
+80010548:	d49ff0ef          	jal	ra,80010290 <HAL_SPI_ReadByte>
+8001054c:	00050413          	mv	s0,a0
+80010550:	d41ff0ef          	jal	ra,80010290 <HAL_SPI_ReadByte>
+80010554:	00050913          	mv	s2,a0
+80010558:	01841413          	slli	s0,s0,0x18
+8001055c:	d35ff0ef          	jal	ra,80010290 <HAL_SPI_ReadByte>
+80010560:	01091913          	slli	s2,s2,0x10
+80010564:	00050493          	mv	s1,a0
+80010568:	01246433          	or	s0,s0,s2
+8001056c:	d25ff0ef          	jal	ra,80010290 <HAL_SPI_ReadByte>
+80010570:	00a46433          	or	s0,s0,a0
+80010574:	00849493          	slli	s1,s1,0x8
+80010578:	00946433          	or	s0,s0,s1
+8001057c:	0089a023          	sw	s0,0(s3)
+80010580:	01c12083          	lw	ra,28(sp)
+80010584:	01812403          	lw	s0,24(sp)
+80010588:	01412483          	lw	s1,20(sp)
+8001058c:	01012903          	lw	s2,16(sp)
+80010590:	00c12983          	lw	s3,12(sp)
+80010594:	000a0513          	mv	a0,s4
+80010598:	00812a03          	lw	s4,8(sp)
+8001059c:	02010113          	addi	sp,sp,32
+800105a0:	00008067          	ret
+
+800105a4 <SD_Initialize>:
+800105a4:	fe010113          	addi	sp,sp,-32
+800105a8:	00100513          	li	a0,1
+800105ac:	00112e23          	sw	ra,28(sp)
+800105b0:	00812c23          	sw	s0,24(sp)
+800105b4:	dc9ff0ef          	jal	ra,8001037c <HAL_GPIO_SetDirections>
+800105b8:	00100513          	li	a0,1
+800105bc:	dcdff0ef          	jal	ra,80010388 <HAL_GPIO_SetOutputs>
+800105c0:	00000713          	li	a4,0
+800105c4:	00100693          	li	a3,1
+800105c8:	00000613          	li	a2,0
+800105cc:	00000593          	li	a1,0
+800105d0:	00000513          	li	a0,0
+800105d4:	ce9ff0ef          	jal	ra,800102bc <HAL_SPI_SetConfig>
+800105d8:	0ff00513          	li	a0,255
+800105dc:	cd5ff0ef          	jal	ra,800102b0 <HAL_SPI_SetDivider>
+800105e0:	00a00413          	li	s0,10
+800105e4:	fff40413          	addi	s0,s0,-1
+800105e8:	0ff00513          	li	a0,255
+800105ec:	0ff47413          	andi	s0,s0,255
+800105f0:	c95ff0ef          	jal	ra,80010284 <HAL_SPI_WriteByte>
+800105f4:	fe0418e3          	bnez	s0,800105e4 <SD_Initialize+0x40>
+800105f8:	00000513          	li	a0,0
+800105fc:	d8dff0ef          	jal	ra,80010388 <HAL_GPIO_SetOutputs>
+80010600:	00000693          	li	a3,0
+80010604:	09500613          	li	a2,149
+80010608:	00000593          	li	a1,0
+8001060c:	00000513          	li	a0,0
+80010610:	ec9ff0ef          	jal	ra,800104d8 <SD_SendCMD>
+80010614:	00100793          	li	a5,1
+80010618:	00f50863          	beq	a0,a5,80010628 <SD_Initialize+0x84>
+8001061c:	80000537          	lui	a0,0x80000
+80010620:	00050513          	mv	a0,a0
+80010624:	d7dff0ef          	jal	ra,800103a0 <printf>
+80010628:	1aa00593          	li	a1,426
+8001062c:	00810693          	addi	a3,sp,8
+80010630:	08700613          	li	a2,135
+80010634:	00800513          	li	a0,8
+80010638:	ea1ff0ef          	jal	ra,800104d8 <SD_SendCMD>
+8001063c:	00812583          	lw	a1,8(sp)
+80010640:	80000537          	lui	a0,0x80000
+80010644:	02c50513          	addi	a0,a0,44 # 8000002c <__modsi3+0xfffef60c>
+80010648:	d59ff0ef          	jal	ra,800103a0 <printf>
+8001064c:	00000693          	li	a3,0
+80010650:	06500613          	li	a2,101
+80010654:	00000593          	li	a1,0
+80010658:	03700513          	li	a0,55
+8001065c:	e7dff0ef          	jal	ra,800104d8 <SD_SendCMD>
+80010660:	00000693          	li	a3,0
+80010664:	07700613          	li	a2,119
+80010668:	400005b7          	lui	a1,0x40000
+8001066c:	02900513          	li	a0,41
+80010670:	e69ff0ef          	jal	ra,800104d8 <SD_SendCMD>
+80010674:	fc051ce3          	bnez	a0,8001064c <SD_Initialize+0xa8>
+80010678:	00c10693          	addi	a3,sp,12
+8001067c:	0fd00613          	li	a2,253
+80010680:	00000593          	li	a1,0
+80010684:	03a00513          	li	a0,58
+80010688:	e51ff0ef          	jal	ra,800104d8 <SD_SendCMD>
+8001068c:	00c12583          	lw	a1,12(sp)
+80010690:	80000537          	lui	a0,0x80000
+80010694:	04850513          	addi	a0,a0,72 # 80000048 <__modsi3+0xfffef628>
+80010698:	d09ff0ef          	jal	ra,800103a0 <printf>
+8001069c:	00000693          	li	a3,0
+800106a0:	01500613          	li	a2,21
+800106a4:	20000593          	li	a1,512
+800106a8:	01000513          	li	a0,16
+800106ac:	e2dff0ef          	jal	ra,800104d8 <SD_SendCMD>
+800106b0:	01c12083          	lw	ra,28(sp)
+800106b4:	01812403          	lw	s0,24(sp)
+800106b8:	02010113          	addi	sp,sp,32
+800106bc:	00008067          	ret
+
+800106c0 <main>:
+800106c0:	ff010113          	addi	sp,sp,-16
+800106c4:	00112623          	sw	ra,12(sp)
+800106c8:	eddff0ef          	jal	ra,800105a4 <SD_Initialize>
+800106cc:	00000693          	li	a3,0
+800106d0:	05500613          	li	a2,85
+800106d4:	00000593          	li	a1,0
+800106d8:	01100513          	li	a0,17
+800106dc:	dfdff0ef          	jal	ra,800104d8 <SD_SendCMD>
+800106e0:	bb1ff0ef          	jal	ra,80010290 <HAL_SPI_ReadByte>
+800106e4:	c4dff0ef          	jal	ra,80010330 <HAL_UART_PutChar>
+800106e8:	ff9ff06f          	j	800106e0 <main+0x20>
+
+800106ec <vsnprintf>:
+800106ec:	fb010113          	addi	sp,sp,-80
+800106f0:	04812423          	sw	s0,72(sp)
+800106f4:	04912223          	sw	s1,68(sp)
+800106f8:	05212023          	sw	s2,64(sp)
+800106fc:	03312e23          	sw	s3,60(sp)
+80010700:	03412c23          	sw	s4,56(sp)
+80010704:	03512a23          	sw	s5,52(sp)
+80010708:	03912223          	sw	s9,36(sp)
+8001070c:	03a12023          	sw	s10,32(sp)
+80010710:	00058a13          	mv	s4,a1
+80010714:	04112623          	sw	ra,76(sp)
+80010718:	03612823          	sw	s6,48(sp)
+8001071c:	03712623          	sw	s7,44(sp)
+80010720:	03812423          	sw	s8,40(sp)
+80010724:	01b12e23          	sw	s11,28(sp)
+80010728:	00050a93          	mv	s5,a0
+8001072c:	00060413          	mv	s0,a2
+80010730:	00000993          	li	s3,0
+80010734:	00000593          	li	a1,0
+80010738:	07000493          	li	s1,112
+8001073c:	07800913          	li	s2,120
+80010740:	06c00c93          	li	s9,108
+80010744:	06300d13          	li	s10,99
+80010748:	00044603          	lbu	a2,0(s0)
+8001074c:	04061863          	bnez	a2,8001079c <vsnprintf+0xb0>
+80010750:	2149f463          	bgeu	s3,s4,80010958 <vsnprintf+0x26c>
+80010754:	013a8733          	add	a4,s5,s3
+80010758:	00070023          	sb	zero,0(a4)
+8001075c:	04c12083          	lw	ra,76(sp)
+80010760:	04812403          	lw	s0,72(sp)
+80010764:	04412483          	lw	s1,68(sp)
+80010768:	04012903          	lw	s2,64(sp)
+8001076c:	03812a03          	lw	s4,56(sp)
+80010770:	03412a83          	lw	s5,52(sp)
+80010774:	03012b03          	lw	s6,48(sp)
+80010778:	02c12b83          	lw	s7,44(sp)
+8001077c:	02812c03          	lw	s8,40(sp)
+80010780:	02412c83          	lw	s9,36(sp)
+80010784:	02012d03          	lw	s10,32(sp)
+80010788:	01c12d83          	lw	s11,28(sp)
+8001078c:	00098513          	mv	a0,s3
+80010790:	03c12983          	lw	s3,60(sp)
+80010794:	05010113          	addi	sp,sp,80
 80010798:	00008067          	ret
+8001079c:	18058a63          	beqz	a1,80010930 <vsnprintf+0x244>
+800107a0:	08960063          	beq	a2,s1,80010820 <vsnprintf+0x134>
+800107a4:	00c4ee63          	bltu	s1,a2,800107c0 <vsnprintf+0xd4>
+800107a8:	06400793          	li	a5,100
+800107ac:	08f60e63          	beq	a2,a5,80010848 <vsnprintf+0x15c>
+800107b0:	01960463          	beq	a2,s9,800107b8 <vsnprintf+0xcc>
+800107b4:	17a60063          	beq	a2,s10,80010914 <vsnprintf+0x228>
+800107b8:	00140413          	addi	s0,s0,1
+800107bc:	f8dff06f          	j	80010748 <vsnprintf+0x5c>
+800107c0:	07300793          	li	a5,115
+800107c4:	10f60a63          	beq	a2,a5,800108d8 <vsnprintf+0x1ec>
+800107c8:	ff2618e3          	bne	a2,s2,800107b8 <vsnprintf+0xcc>
+800107cc:	0006a883          	lw	a7,0(a3)
+800107d0:	00098513          	mv	a0,s3
+800107d4:	00468693          	addi	a3,a3,4
+800107d8:	00700593          	li	a1,7
+800107dc:	00150513          	addi	a0,a0,1
+800107e0:	03457463          	bgeu	a0,s4,80010808 <vsnprintf+0x11c>
+800107e4:	00259613          	slli	a2,a1,0x2
+800107e8:	40c8d633          	sra	a2,a7,a2
+800107ec:	00f67e13          	andi	t3,a2,15
+800107f0:	00900793          	li	a5,9
+800107f4:	057e0313          	addi	t1,t3,87
+800107f8:	01c7c463          	blt	a5,t3,80010800 <vsnprintf+0x114>
+800107fc:	030e0313          	addi	t1,t3,48
+80010800:	00aa8633          	add	a2,s5,a0
+80010804:	fe660fa3          	sb	t1,-1(a2)
+80010808:	fff58593          	addi	a1,a1,-1 # 3fffffff <CRCPoly-0x40000051>
+8001080c:	fff00793          	li	a5,-1
+80010810:	fcf596e3          	bne	a1,a5,800107dc <vsnprintf+0xf0>
+80010814:	00898993          	addi	s3,s3,8
+80010818:	00000593          	li	a1,0
+8001081c:	f9dff06f          	j	800107b8 <vsnprintf+0xcc>
+80010820:	00198613          	addi	a2,s3,1
+80010824:	01467863          	bgeu	a2,s4,80010834 <vsnprintf+0x148>
+80010828:	013a85b3          	add	a1,s5,s3
+8001082c:	03000793          	li	a5,48
+80010830:	00f58023          	sb	a5,0(a1)
+80010834:	00298993          	addi	s3,s3,2
+80010838:	f949fae3          	bgeu	s3,s4,800107cc <vsnprintf+0xe0>
+8001083c:	00ca8633          	add	a2,s5,a2
+80010840:	01260023          	sb	s2,0(a2)
+80010844:	f89ff06f          	j	800107cc <vsnprintf+0xe0>
+80010848:	0006ac03          	lw	s8,0(a3)
+8001084c:	00468d93          	addi	s11,a3,4
+80010850:	00098b93          	mv	s7,s3
+80010854:	000c5e63          	bgez	s8,80010870 <vsnprintf+0x184>
+80010858:	00198b93          	addi	s7,s3,1
+8001085c:	41800c33          	neg	s8,s8
+80010860:	014bf863          	bgeu	s7,s4,80010870 <vsnprintf+0x184>
+80010864:	013a87b3          	add	a5,s5,s3
+80010868:	02d00713          	li	a4,45
+8001086c:	00e78023          	sb	a4,0(a5)
+80010870:	000c0513          	mv	a0,s8
+80010874:	00100993          	li	s3,1
+80010878:	00a00593          	li	a1,10
+8001087c:	120000ef          	jal	ra,8001099c <__divsi3>
+80010880:	04051863          	bnez	a0,800108d0 <vsnprintf+0x1e4>
+80010884:	017989b3          	add	s3,s3,s7
+80010888:	00098b13          	mv	s6,s3
+8001088c:	034b7263          	bgeu	s6,s4,800108b0 <vsnprintf+0x1c4>
+80010890:	016a8333          	add	t1,s5,s6
+80010894:	00a00593          	li	a1,10
+80010898:	000c0513          	mv	a0,s8
+8001089c:	00612623          	sw	t1,12(sp)
+800108a0:	180000ef          	jal	ra,80010a20 <__modsi3>
+800108a4:	00c12303          	lw	t1,12(sp)
+800108a8:	03050513          	addi	a0,a0,48
+800108ac:	fea30fa3          	sb	a0,-1(t1)
+800108b0:	000c0513          	mv	a0,s8
+800108b4:	00a00593          	li	a1,10
+800108b8:	0e4000ef          	jal	ra,8001099c <__divsi3>
+800108bc:	fffb0b13          	addi	s6,s6,-1
+800108c0:	00050c13          	mv	s8,a0
+800108c4:	fd6b94e3          	bne	s7,s6,8001088c <vsnprintf+0x1a0>
+800108c8:	000d8693          	mv	a3,s11
+800108cc:	f4dff06f          	j	80010818 <vsnprintf+0x12c>
+800108d0:	00198993          	addi	s3,s3,1
+800108d4:	fa5ff06f          	j	80010878 <vsnprintf+0x18c>
+800108d8:	0006a503          	lw	a0,0(a3)
+800108dc:	00468593          	addi	a1,a3,4
+800108e0:	00098613          	mv	a2,s3
+800108e4:	413606b3          	sub	a3,a2,s3
+800108e8:	00d506b3          	add	a3,a0,a3
+800108ec:	0006c683          	lbu	a3,0(a3)
+800108f0:	00069863          	bnez	a3,80010900 <vsnprintf+0x214>
+800108f4:	00058693          	mv	a3,a1
+800108f8:	00060993          	mv	s3,a2
+800108fc:	f1dff06f          	j	80010818 <vsnprintf+0x12c>
+80010900:	00160613          	addi	a2,a2,1
+80010904:	ff4670e3          	bgeu	a2,s4,800108e4 <vsnprintf+0x1f8>
+80010908:	00ca88b3          	add	a7,s5,a2
+8001090c:	fed88fa3          	sb	a3,-1(a7)
+80010910:	fd5ff06f          	j	800108e4 <vsnprintf+0x1f8>
+80010914:	00198613          	addi	a2,s3,1
+80010918:	ff4670e3          	bgeu	a2,s4,800108f8 <vsnprintf+0x20c>
+8001091c:	0006a583          	lw	a1,0(a3)
+80010920:	013a87b3          	add	a5,s5,s3
+80010924:	00468693          	addi	a3,a3,4
+80010928:	00b78023          	sb	a1,0(a5)
+8001092c:	fcdff06f          	j	800108f8 <vsnprintf+0x20c>
+80010930:	02500793          	li	a5,37
+80010934:	00f60e63          	beq	a2,a5,80010950 <vsnprintf+0x264>
+80010938:	00198893          	addi	a7,s3,1
+8001093c:	0148f663          	bgeu	a7,s4,80010948 <vsnprintf+0x25c>
+80010940:	013a87b3          	add	a5,s5,s3
+80010944:	00c78023          	sb	a2,0(a5)
+80010948:	00088993          	mv	s3,a7
+8001094c:	e6dff06f          	j	800107b8 <vsnprintf+0xcc>
+80010950:	00100593          	li	a1,1
+80010954:	e65ff06f          	j	800107b8 <vsnprintf+0xcc>
+80010958:	e00a02e3          	beqz	s4,8001075c <vsnprintf+0x70>
+8001095c:	014a8733          	add	a4,s5,s4
+80010960:	fe070fa3          	sb	zero,-1(a4)
+80010964:	df9ff06f          	j	8001075c <vsnprintf+0x70>
 
-8001079c <__divsi3>:
-8001079c:	06054063          	bltz	a0,800107fc <__umodsi3+0x10>
-800107a0:	0605c663          	bltz	a1,8001080c <__umodsi3+0x20>
+80010968 <snprintf>:
+80010968:	fc010113          	addi	sp,sp,-64
+8001096c:	02d12623          	sw	a3,44(sp)
+80010970:	02c10693          	addi	a3,sp,44
+80010974:	00112e23          	sw	ra,28(sp)
+80010978:	02e12823          	sw	a4,48(sp)
+8001097c:	02f12a23          	sw	a5,52(sp)
+80010980:	03012c23          	sw	a6,56(sp)
+80010984:	03112e23          	sw	a7,60(sp)
+80010988:	00d12623          	sw	a3,12(sp)
+8001098c:	d61ff0ef          	jal	ra,800106ec <vsnprintf>
+80010990:	01c12083          	lw	ra,28(sp)
+80010994:	04010113          	addi	sp,sp,64
+80010998:	00008067          	ret
 
-800107a4 <__udivsi3>:
-800107a4:	00058613          	mv	a2,a1
-800107a8:	00050593          	mv	a1,a0
-800107ac:	fff00513          	li	a0,-1
-800107b0:	02060c63          	beqz	a2,800107e8 <__udivsi3+0x44>
-800107b4:	00100693          	li	a3,1
-800107b8:	00b67a63          	bgeu	a2,a1,800107cc <__udivsi3+0x28>
-800107bc:	00c05863          	blez	a2,800107cc <__udivsi3+0x28>
-800107c0:	00161613          	slli	a2,a2,0x1
-800107c4:	00169693          	slli	a3,a3,0x1
-800107c8:	feb66ae3          	bltu	a2,a1,800107bc <__udivsi3+0x18>
-800107cc:	00000513          	li	a0,0
-800107d0:	00c5e663          	bltu	a1,a2,800107dc <__udivsi3+0x38>
-800107d4:	40c585b3          	sub	a1,a1,a2
-800107d8:	00d56533          	or	a0,a0,a3
-800107dc:	0016d693          	srli	a3,a3,0x1
-800107e0:	00165613          	srli	a2,a2,0x1
-800107e4:	fe0696e3          	bnez	a3,800107d0 <__udivsi3+0x2c>
-800107e8:	00008067          	ret
+8001099c <__divsi3>:
+8001099c:	06054063          	bltz	a0,800109fc <__umodsi3+0x10>
+800109a0:	0605c663          	bltz	a1,80010a0c <__umodsi3+0x20>
 
-800107ec <__umodsi3>:
-800107ec:	00008293          	mv	t0,ra
-800107f0:	fb5ff0ef          	jal	ra,800107a4 <__udivsi3>
-800107f4:	00058513          	mv	a0,a1
-800107f8:	00028067          	jr	t0
-800107fc:	40a00533          	neg	a0,a0
-80010800:	0005d863          	bgez	a1,80010810 <__umodsi3+0x24>
-80010804:	40b005b3          	neg	a1,a1
-80010808:	f9dff06f          	j	800107a4 <__udivsi3>
-8001080c:	40b005b3          	neg	a1,a1
-80010810:	00008293          	mv	t0,ra
-80010814:	f91ff0ef          	jal	ra,800107a4 <__udivsi3>
-80010818:	40a00533          	neg	a0,a0
-8001081c:	00028067          	jr	t0
+800109a4 <__udivsi3>:
+800109a4:	00058613          	mv	a2,a1
+800109a8:	00050593          	mv	a1,a0
+800109ac:	fff00513          	li	a0,-1
+800109b0:	02060c63          	beqz	a2,800109e8 <__udivsi3+0x44>
+800109b4:	00100693          	li	a3,1
+800109b8:	00b67a63          	bgeu	a2,a1,800109cc <__udivsi3+0x28>
+800109bc:	00c05863          	blez	a2,800109cc <__udivsi3+0x28>
+800109c0:	00161613          	slli	a2,a2,0x1
+800109c4:	00169693          	slli	a3,a3,0x1
+800109c8:	feb66ae3          	bltu	a2,a1,800109bc <__udivsi3+0x18>
+800109cc:	00000513          	li	a0,0
+800109d0:	00c5e663          	bltu	a1,a2,800109dc <__udivsi3+0x38>
+800109d4:	40c585b3          	sub	a1,a1,a2
+800109d8:	00d56533          	or	a0,a0,a3
+800109dc:	0016d693          	srli	a3,a3,0x1
+800109e0:	00165613          	srli	a2,a2,0x1
+800109e4:	fe0696e3          	bnez	a3,800109d0 <__udivsi3+0x2c>
+800109e8:	00008067          	ret
 
-80010820 <__modsi3>:
-80010820:	00008293          	mv	t0,ra
-80010824:	0005ca63          	bltz	a1,80010838 <__modsi3+0x18>
-80010828:	00054c63          	bltz	a0,80010840 <__modsi3+0x20>
-8001082c:	f79ff0ef          	jal	ra,800107a4 <__udivsi3>
-80010830:	00058513          	mv	a0,a1
-80010834:	00028067          	jr	t0
-80010838:	40b005b3          	neg	a1,a1
-8001083c:	fe0558e3          	bgez	a0,8001082c <__modsi3+0xc>
-80010840:	40a00533          	neg	a0,a0
-80010844:	f61ff0ef          	jal	ra,800107a4 <__udivsi3>
-80010848:	40b00533          	neg	a0,a1
-8001084c:	00028067          	jr	t0
+800109ec <__umodsi3>:
+800109ec:	00008293          	mv	t0,ra
+800109f0:	fb5ff0ef          	jal	ra,800109a4 <__udivsi3>
+800109f4:	00058513          	mv	a0,a1
+800109f8:	00028067          	jr	t0
+800109fc:	40a00533          	neg	a0,a0
+80010a00:	0005d863          	bgez	a1,80010a10 <__umodsi3+0x24>
+80010a04:	40b005b3          	neg	a1,a1
+80010a08:	f9dff06f          	j	800109a4 <__udivsi3>
+80010a0c:	40b005b3          	neg	a1,a1
+80010a10:	00008293          	mv	t0,ra
+80010a14:	f91ff0ef          	jal	ra,800109a4 <__udivsi3>
+80010a18:	40a00533          	neg	a0,a0
+80010a1c:	00028067          	jr	t0
+
+80010a20 <__modsi3>:
+80010a20:	00008293          	mv	t0,ra
+80010a24:	0005ca63          	bltz	a1,80010a38 <__modsi3+0x18>
+80010a28:	00054c63          	bltz	a0,80010a40 <__modsi3+0x20>
+80010a2c:	f79ff0ef          	jal	ra,800109a4 <__udivsi3>
+80010a30:	00058513          	mv	a0,a1
+80010a34:	00028067          	jr	t0
+80010a38:	40b005b3          	neg	a1,a1
+80010a3c:	fe0558e3          	bgez	a0,80010a2c <__modsi3+0xc>
+80010a40:	40a00533          	neg	a0,a0
+80010a44:	f61ff0ef          	jal	ra,800109a4 <__udivsi3>
+80010a48:	40b00533          	neg	a0,a1
+80010a4c:	00028067          	jr	t0

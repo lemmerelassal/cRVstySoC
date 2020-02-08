@@ -243,11 +243,11 @@ signal i_mem_rdata : mem_rdata_t(PERIPHERAL_MAX-1 downto 0) := (others => (other
 
 --- ILA
 
--- component ila_1 PORT (
---     clk : in std_logic;
---     probe0, probe1, probe2, probe3 : in std_logic
---   );
---   end component;
+component ila_1 PORT (
+    clk : in std_logic;
+    probe0, probe1, probe2, probe3 : in std_logic
+  );
+  end component;
 
 begin
 
@@ -427,13 +427,13 @@ miso <= SD_DAT0;
 SD_CLK <= sck;
 
 
-    -- ila: ila_1 PORT MAP(
-    --     clk => clk,
-    --     probe0 => int_gpio(0),
-    --     probe1 => sck,
-    --     probe2 => mosi,
-    --     probe3 => miso
-    --   );
+    ila: ila_1 PORT MAP(
+        clk => clk,
+        probe0 => int_gpio(0),
+        probe1 => sck,
+        probe2 => mosi,
+        probe3 => miso
+      );
 
 
 end behavioural;
