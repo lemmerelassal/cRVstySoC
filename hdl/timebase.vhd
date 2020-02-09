@@ -54,6 +54,7 @@ begin
   mem_rdy <= '1';
   mem_wack <= '1';
   address_valid <= '1';
+  n_counter <= counter;
 
   n_time_ns <= time_ns + X"0000000A";
   n_time_s <= time_s;
