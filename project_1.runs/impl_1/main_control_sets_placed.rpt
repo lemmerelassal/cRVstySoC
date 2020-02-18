@@ -1,0 +1,107 @@
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
+| Date         : Tue Feb 18 16:35:59 2020
+| Host         : DESKTOP-7PUGGAC running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file main_control_sets_placed.rpt
+| Design       : main
+| Device       : xc7s50
+------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Total control sets                                       |    29 |
+|    Minimum number of control sets                        |    29 |
+|    Addition due to synthesis replication                 |     0 |
+|    Addition due to physical synthesis replication        |     0 |
+| Unused register locations in slices containing registers |    37 |
++----------------------------------------------------------+-------+
+* Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
+** Run report_qor_suggestions for automated merging and remapping suggestions
+
+
+2. Histogram
+------------
+
++--------------------+-------+
+|       Fanout       | Count |
++--------------------+-------+
+| Total control sets |    29 |
+| >= 0 to < 4        |     1 |
+| >= 4 to < 6        |     3 |
+| >= 6 to < 8        |     1 |
+| >= 8 to < 10       |    10 |
+| >= 10 to < 12      |     0 |
+| >= 12 to < 14      |     0 |
+| >= 14 to < 16      |     0 |
+| >= 16              |    14 |
++--------------------+-------+
+* Control sets can be remapped at either synth_design or opt_design
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |              65 |           26 |
+| No           | No                    | Yes                    |             134 |           52 |
+| No           | Yes                   | No                     |               0 |            0 |
+| Yes          | No                    | No                     |               0 |            0 |
+| Yes          | No                    | Yes                    |             572 |          331 |
+| Yes          | Yes                   | No                     |               0 |            0 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++----------------------+-------------------------------------+------------------+------------------+----------------+
+|     Clock Signal     |            Enable Signal            | Set/Reset Signal | Slice Load Count | Bel Load Count |
++----------------------+-------------------------------------+------------------+------------------+----------------+
+|  CLK100MHZ_IBUF_BUFG |                                     |                  |                1 |              1 |
+|  CLK100MHZ_IBUF_BUFG | i_uart/state[3]_i_1__0_n_1          | cpu0/rst         |                1 |              4 |
+|  CLK100MHZ_IBUF_BUFG | i_i2cmaster/n_state                 | cpu0/rst         |                2 |              5 |
+|  CLK100MHZ_IBUF_BUFG | i_spimaster/n_state                 | cpu0/rst         |                2 |              5 |
+|  CLK100MHZ_IBUF_BUFG | cpu0/FSM_onehot_state[6]_i_1_n_1    | cpu0/rst         |                3 |              7 |
+|  CLK100MHZ_IBUF_BUFG | cpu0/charToBeSent[7]_i_5_0          | cpu0/rst         |                2 |              8 |
+|  CLK100MHZ_IBUF_BUFG | cpu0/E[0]                           | cpu0/rst         |                2 |              8 |
+|  CLK100MHZ_IBUF_BUFG | cpu0/instruction_reg[5]_9[0]        | cpu0/rst         |                3 |              8 |
+|  CLK100MHZ_IBUF_BUFG | ram/p_0_in[16]                      | cpu0/rst         |                6 |              8 |
+|  CLK100MHZ_IBUF_BUFG | ram/p_0_in[24]                      | cpu0/rst         |                3 |              8 |
+|  CLK100MHZ_IBUF_BUFG | ram/p_0_in[8]                       | cpu0/rst         |                4 |              8 |
+|  CLK100MHZ_IBUF_BUFG | ram/p_0_in[2]                       | cpu0/rst         |                4 |              8 |
+|  CLK100MHZ_IBUF_BUFG | i_i2cmaster/n_i2c_data              | cpu0/rst         |                4 |              8 |
+|  CLK100MHZ_IBUF_BUFG | regfile/select_next                 | cpu0/rst         |                3 |              8 |
+|  CLK100MHZ_IBUF_BUFG | i_spimaster/n_spi_data              | cpu0/rst         |                4 |              8 |
+|  CLK100MHZ_IBUF_BUFG | i_i2cmaster/clk_divider[15]_i_1_n_1 | cpu0/rst         |                8 |             16 |
+|  CLK100MHZ_IBUF_BUFG | ram/start_fsm                       | cpu0/rst         |                9 |             20 |
+|  CLK100MHZ_IBUF_BUFG | cpu0/FSM_onehot_state_reg[6]_0[0]   | cpu0/rst         |               19 |             31 |
+|  CLK100MHZ_IBUF_BUFG | cpu0/result_r0                      | cpu0/rst         |               22 |             32 |
+|  CLK100MHZ_IBUF_BUFG | cpu0/counter0                       | cpu0/rst         |                8 |             32 |
+|  CLK100MHZ_IBUF_BUFG | cpu0/gpio_dir0                      | cpu0/rst         |               19 |             32 |
+|  CLK100MHZ_IBUF_BUFG | cpu0/state_reg[0]                   | cpu0/rst         |                8 |             32 |
+|  CLK100MHZ_IBUF_BUFG | cpu0/FSM_onehot_state_reg[5]_0[0]   | cpu0/rst         |               15 |             32 |
+|  CLK100MHZ_IBUF_BUFG | regfile/instruction_reg[22][0]      | cpu0/rst         |               14 |             32 |
+|  CLK100MHZ_IBUF_BUFG | cpu0/instruction_reg[5]_14[0]       | cpu0/rst         |               24 |             41 |
+|  CLK100MHZ_IBUF_BUFG | regfile/p_0_in__0                   |                  |                6 |             48 |
+|  n_0_10816_BUFG      |                                     |                  |               25 |             64 |
+|  CLK100MHZ_IBUF_BUFG |                                     | cpu0/rst         |               52 |            134 |
+|  CLK100MHZ_IBUF_BUFG | cpu0/reset_instruction              | cpu0/rst         |              142 |            171 |
++----------------------+-------------------------------------+------------------+------------------+----------------+
+
+

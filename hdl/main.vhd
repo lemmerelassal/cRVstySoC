@@ -14,8 +14,12 @@ entity main is
     led : out std_logic_vector(3 downto 0);
     uart_rxd_out : out std_logic;
 
-    SD_DAT3, SD_CMD, SD_CLK : out std_logic;
-    SD_DAT0 : in std_logic := '0'
+    --SD_DAT3, SD_CMD, SD_CLK : out std_logic;
+    --SD_DAT0 : in std_logic := '0'
+
+    OLED_CS, OLED_MOSI, OLED_SCK, OLED_DC, OLED_RES, OLED_VCCEN, OLED_PMODEN : out std_logic;
+
+    ck_scl, ck_sda : inout std_logic
 
     -- Instruction memory bus
     -- inst_width : out std_logic_vector(1 downto 0); -- "00" -> 1 byte, "01" -> 2 bytes, "10" -> 4 bytes, "11" -> invalid / 8 bytes for RV64
@@ -193,6 +197,17 @@ architecture behavioural of main is
         address_valid : out std_logic
     );
     end component;
+
+    component i2cmaster PORT ( 
+      rst, clk : in std_logic;
+      scl, sda : inout std_logic;
+      mem_addr, mem_wdata : in std_logic_vector(31 downto 0);
+      mem_rdata : out std_logic_vector(31 downto 0);
+      mem_we, mem_re : in std_logic;
+      mem_wack, mem_rdy : out std_logic;
+      address_valid : out std_logic
+  );
+  end component;
     
     signal miso, mosi, sck : std_logic;
     
@@ -230,8 +245,9 @@ constant PERIPHERAL_TIMEBASE : integer := 3;
 constant PERIPHERAL_UART : integer := 4;
 constant PERIPHERAL_GPIO : integer := 5;
 constant PERIPHERAL_SPIMASTER : integer := 6;
+constant PERIPHERAL_I2CMASTER : integer := 7;
 
-constant PERIPHERAL_MAX : integer := 7;
+constant PERIPHERAL_MAX : integer := 8;
 
 signal i_mem_rdy, i_mem_wack, i_address_valid : std_logic_vector(PERIPHERAL_MAX-1 downto 0);
 type mem_rdata_t is array (natural range <>) of std_logic_vector(31 downto 0);
@@ -245,7 +261,7 @@ signal i_mem_rdata : mem_rdata_t(PERIPHERAL_MAX-1 downto 0) := (others => (other
 
 component ila_1 PORT (
     clk : in std_logic;
-    probe0, probe1, probe2, probe3 : in std_logic
+    probe0, probe1, probe2, probe3, probe4, probe5, probe6 : in std_logic
   );
   end component;
 
@@ -315,6 +331,16 @@ begin
         mem_rdy => i_mem_rdy(PERIPHERAL_SPIMASTER), mem_wack => i_mem_wack(PERIPHERAL_SPIMASTER),
         address_valid => i_address_valid(PERIPHERAL_SPIMASTER)
     );
+
+    i_i2cmaster: i2cmaster PORT MAP (
+      rst => rst, clk => clk,
+      scl => ck_scl, sda => ck_sda,
+      mem_addr => mem_addr, mem_wdata => mem_wdata,
+      mem_rdata => i_mem_rdata(PERIPHERAL_I2CMASTER),
+      mem_we => mem_we, mem_re => mem_re,
+      mem_rdy => i_mem_rdy(PERIPHERAL_I2CMASTER), mem_wack => i_mem_wack(PERIPHERAL_I2CMASTER),
+      address_valid => i_address_valid(PERIPHERAL_I2CMASTER)
+  );
 
     myrom: rom PORT MAP( 
           rst => rst, clk => clk,
@@ -414,26 +440,31 @@ begin
   end loop;
 end process;
 
---jd <= (others => 'Z');
 
--- jd(0) <= int_gpio(0); --SD_DAT3 <= int_gpio(0);
--- jd(1) <= mosi; --SD_CMD <= mosi;
--- miso <= jd(2); --miso <= SD_DAT0;
--- jd(3) <= sck; --SD_CLK <= sck;
-
-SD_DAT3 <= int_gpio(0);
-SD_CMD <= mosi;
-miso <= SD_DAT0;
-SD_CLK <= sck;
+--SD_DAT3 <= int_gpio(0);
+--SD_CMD <= mosi;
+--miso <= SD_DAT0;
+--SD_CLK <= sck;
 
 
-    ila: ila_1 PORT MAP(
-        clk => clk,
-        probe0 => int_gpio(0),
-        probe1 => sck,
-        probe2 => mosi,
-        probe3 => miso
-      );
+    -- ila: ila_1 PORT MAP(
+    --     clk => clk,
+    --     probe0 => int_gpio(0), -- OLED_CS
+    --     probe1 => sck,
+    --     probe2 => mosi,
+    --     probe3 => int_gpio(1),
+    --     probe4 => int_gpio(2),
+    --     probe5 => int_gpio(3),
+    --     probe6 => int_gpio(4)
+        
+    --   );
 
+OLED_CS <= int_gpio(0);
+OLED_MOSI <= mosi;
+OLED_SCK <= sck;
+OLED_DC <= int_gpio(1);
+OLED_RES <= int_gpio(2);
+OLED_VCCEN <= int_gpio(3);
+OLED_PMODEN <= int_gpio(4);
 
 end behavioural;

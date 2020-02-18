@@ -23,9 +23,8 @@ architecture Behavioural of timebase is
   time_ns, n_time_ns, time_s, n_time_s : std_logic_vector(31 downto 0);
 
   constant ADDR_TIMEBASE_NANOS : std_logic_vector(31 downto 0) := base_address + X"00000000";
-  constant ADDR_TIMEBASE_SEC : std_logic_vector(31 downto 0) := base_address + X"00000001";
-  constant ADDR_TIMEBASE_DELAY_NS : std_logic_vector(31 downto 0) := base_address + X"00000002";
-  constant ADDR_TIMEBASE_DELAY_S : std_logic_vector(31 downto 0) := base_address + X"00000003";
+  constant ADDR_TIMEBASE_SEC : std_logic_vector(31 downto 0) := base_address + X"00000004";
+  constant ADDR_TIMEBASE_DELAY_NS : std_logic_vector(31 downto 0) := base_address + X"00000008";
 
   signal state, n_state : integer range 0 to 1 := 0;
 

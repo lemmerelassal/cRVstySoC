@@ -1,0 +1,859 @@
+#-----------------------------------------------------------
+# Vivado v2019.2 (64-bit)
+# SW Build 2708876 on Wed Nov  6 21:40:23 MST 2019
+# IP Build 2700528 on Thu Nov  7 00:09:20 MST 2019
+# Start of session at: Tue Feb 18 16:22:28 2020
+# Process ID: 1548
+# Current directory: D:/FPGA/H13D/project_1.runs/synth_1
+# Command line: vivado.exe -log main.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source main.tcl
+# Log file: D:/FPGA/H13D/project_1.runs/synth_1/main.vds
+# Journal file: D:/FPGA/H13D/project_1.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source main.tcl -notrace
+Command: synth_design -top main -part xc7s50csga324-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7s50'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7s50'
+INFO: [Device 21-403] Loading part xc7s50csga324-1
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 7140 
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 936.602 ; gain = 234.215
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'main' [D:/FPGA/H13D/hdl/main.vhd:42]
+INFO: [Synth 8-3491] module 'gpio' declared at 'D:/FPGA/H13D/hdl/gpio.vhd:5' bound to instance 'i_gpio' of component 'gpio' [D:/FPGA/H13D/hdl/main.vhd:276]
+INFO: [Synth 8-638] synthesizing module 'gpio' [D:/FPGA/H13D/hdl/gpio.vhd:21]
+	Parameter base_address bound to: 32'b11000000000000000010000000000000 
+INFO: [Synth 8-256] done synthesizing module 'gpio' (1#1) [D:/FPGA/H13D/hdl/gpio.vhd:21]
+INFO: [Synth 8-3491] module 'uart' declared at 'D:/FPGA/H13D/hdl/uart.vhd:5' bound to instance 'i_uart' of component 'uart' [D:/FPGA/H13D/hdl/main.vhd:286]
+INFO: [Synth 8-638] synthesizing module 'uart' [D:/FPGA/H13D/hdl/uart.vhd:22]
+	Parameter base_address bound to: 32'b11000000000000000001000000000000 
+	Parameter baud_rate bound to: 115200 - type: integer 
+	Parameter clk_freq bound to: 100000000 - type: integer 
+	Parameter initial_data bound to: 8'b00100001 
+INFO: [Synth 8-256] done synthesizing module 'uart' (2#1) [D:/FPGA/H13D/hdl/uart.vhd:22]
+INFO: [Synth 8-3491] module 'timebase' declared at 'D:/FPGA/H13D/hdl/timebase.vhd:6' bound to instance 'i_timebase' of component 'timebase' [D:/FPGA/H13D/hdl/main.vhd:297]
+INFO: [Synth 8-638] synthesizing module 'timebase' [D:/FPGA/H13D/hdl/timebase.vhd:20]
+	Parameter base_address bound to: 32'b11000000000000000000000000000000 
+INFO: [Synth 8-226] default block is never used [D:/FPGA/H13D/hdl/timebase.vhd:65]
+INFO: [Synth 8-256] done synthesizing module 'timebase' (3#1) [D:/FPGA/H13D/hdl/timebase.vhd:20]
+INFO: [Synth 8-3491] module 'block_ram' declared at 'D:/FPGA/H13D/hdl/ram.vhd:12' bound to instance 'ram' of component 'block_ram' [D:/FPGA/H13D/hdl/main.vhd:314]
+INFO: [Synth 8-638] synthesizing module 'block_ram' [D:/FPGA/H13D/hdl/ram.vhd:31]
+	Parameter base_address bound to: 32'b10000000000000000000000000000000 
+	Parameter ram_size bound to: 32'b00000000000000010000000000000000 
+	Parameter ram_file bound to: RAM.txt - type: string 
+WARNING: [Synth 8-614] signal 'blockram_rdata' is read in the process but is not in the sensitivity list [D:/FPGA/H13D/hdl/ram.vhd:109]
+INFO: [Synth 8-256] done synthesizing module 'block_ram' (4#1) [D:/FPGA/H13D/hdl/ram.vhd:31]
+INFO: [Synth 8-3491] module 'spimaster' declared at 'D:/FPGA/H13D/hdl/spimaster.vhd:5' bound to instance 'i_spimaster' of component 'spimaster' [D:/FPGA/H13D/hdl/main.vhd:325]
+INFO: [Synth 8-638] synthesizing module 'spimaster' [D:/FPGA/H13D/hdl/spimaster.vhd:19]
+	Parameter base_address bound to: 32'b11000000000000000011000000000000 
+INFO: [Synth 8-256] done synthesizing module 'spimaster' (5#1) [D:/FPGA/H13D/hdl/spimaster.vhd:19]
+INFO: [Synth 8-3491] module 'i2cmaster' declared at 'D:/FPGA/H13D/hdl/i2cmaster.vhd:5' bound to instance 'i_i2cmaster' of component 'i2cmaster' [D:/FPGA/H13D/hdl/main.vhd:335]
+INFO: [Synth 8-638] synthesizing module 'i2cmaster' [D:/FPGA/H13D/hdl/i2cmaster.vhd:19]
+	Parameter base_address bound to: 32'b11000000000000000100000000000000 
+INFO: [Synth 8-256] done synthesizing module 'i2cmaster' (6#1) [D:/FPGA/H13D/hdl/i2cmaster.vhd:19]
+INFO: [Synth 8-3491] module 'rom' declared at 'D:/FPGA/H13D/hdl/rom.vhd:11' bound to instance 'myrom' of component 'rom' [D:/FPGA/H13D/hdl/main.vhd:345]
+INFO: [Synth 8-638] synthesizing module 'rom' [D:/FPGA/H13D/hdl/rom.vhd:24]
+	Parameter base_address bound to: 32'b10000000000000010000000000000000 
+	Parameter rom_size bound to: 32'b00000000000000100000000000000000 
+	Parameter rom_file bound to: ROM.txt - type: string 
+INFO: [Synth 8-256] done synthesizing module 'rom' (7#1) [D:/FPGA/H13D/hdl/rom.vhd:24]
+INFO: [Synth 8-3491] module 'cpu' declared at 'D:/FPGA/H13D/hdl/cpu_new.vhd:6' bound to instance 'cpu0' of component 'cpu' [D:/FPGA/H13D/hdl/main.vhd:351]
+INFO: [Synth 8-638] synthesizing module 'cpu' [D:/FPGA/H13D/hdl/cpu_new.vhd:48]
+	Parameter entry_point bound to: 32'b10000000000000010000000000000000 
+INFO: [Synth 8-226] default block is never used [D:/FPGA/H13D/hdl/cpu_new.vhd:246]
+WARNING: [Synth 8-614] signal 'wdata' is read in the process but is not in the sensitivity list [D:/FPGA/H13D/hdl/cpu_new.vhd:219]
+INFO: [Synth 8-226] default block is never used [D:/FPGA/H13D/hdl/cpu_new.vhd:544]
+INFO: [Synth 8-6054] Found Dynamic range expression with variable size [D:/FPGA/H13D/hdl/cpu_new.vhd:544]
+INFO: [Synth 8-6054] Found Dynamic range expression with variable size [D:/FPGA/H13D/hdl/cpu_new.vhd:544]
+INFO: [Synth 8-6054] Found Dynamic range expression with variable size [D:/FPGA/H13D/hdl/cpu_new.vhd:544]
+INFO: [Synth 8-226] default block is never used [D:/FPGA/H13D/hdl/cpu_new.vhd:624]
+INFO: [Synth 8-6054] Found Dynamic range expression with variable size [D:/FPGA/H13D/hdl/cpu_new.vhd:624]
+INFO: [Synth 8-6054] Found Dynamic range expression with variable size [D:/FPGA/H13D/hdl/cpu_new.vhd:624]
+INFO: [Synth 8-6054] Found Dynamic range expression with variable size [D:/FPGA/H13D/hdl/cpu_new.vhd:624]
+WARNING: [Synth 8-5858] RAM instruction_details_array_reg from Abstract Data Type (record/struct) for this pattern/configuration is not supported. This will most likely be implemented in registers
+WARNING: [Synth 8-6014] Unused sequential element counter_reg was removed.  [D:/FPGA/H13D/hdl/cpu_new.vhd:358]
+INFO: [Synth 8-256] done synthesizing module 'cpu' (8#1) [D:/FPGA/H13D/hdl/cpu_new.vhd:48]
+INFO: [Synth 8-3491] module 'registerFile' declared at 'D:/FPGA/H13D/hdl/registerfile.vhd:6' bound to instance 'regfile' of component 'registerFile' [D:/FPGA/H13D/hdl/main.vhd:371]
+INFO: [Synth 8-638] synthesizing module 'registerFile' [D:/FPGA/H13D/hdl/registerfile.vhd:63]
+INFO: [Synth 8-256] done synthesizing module 'registerFile' (9#1) [D:/FPGA/H13D/hdl/registerfile.vhd:63]
+WARNING: [Synth 8-3848] Net miso in module/entity main does not have driver. [D:/FPGA/H13D/hdl/main.vhd:212]
+INFO: [Synth 8-256] done synthesizing module 'main' (10#1) [D:/FPGA/H13D/hdl/main.vhd:42]
+WARNING: [Synth 8-3331] design rom has unconnected port rst
+WARNING: [Synth 8-3331] design rom has unconnected port clk
+WARNING: [Synth 8-3331] design i2cmaster has unconnected port mem_wdata[31]
+WARNING: [Synth 8-3331] design i2cmaster has unconnected port mem_wdata[30]
+WARNING: [Synth 8-3331] design i2cmaster has unconnected port mem_wdata[29]
+WARNING: [Synth 8-3331] design i2cmaster has unconnected port mem_wdata[28]
+WARNING: [Synth 8-3331] design i2cmaster has unconnected port mem_wdata[27]
+WARNING: [Synth 8-3331] design i2cmaster has unconnected port mem_wdata[26]
+WARNING: [Synth 8-3331] design i2cmaster has unconnected port mem_wdata[25]
+WARNING: [Synth 8-3331] design i2cmaster has unconnected port mem_wdata[24]
+WARNING: [Synth 8-3331] design i2cmaster has unconnected port mem_wdata[23]
+WARNING: [Synth 8-3331] design i2cmaster has unconnected port mem_wdata[22]
+WARNING: [Synth 8-3331] design i2cmaster has unconnected port mem_wdata[21]
+WARNING: [Synth 8-3331] design i2cmaster has unconnected port mem_wdata[20]
+WARNING: [Synth 8-3331] design i2cmaster has unconnected port mem_wdata[19]
+WARNING: [Synth 8-3331] design i2cmaster has unconnected port mem_wdata[18]
+WARNING: [Synth 8-3331] design i2cmaster has unconnected port mem_wdata[17]
+WARNING: [Synth 8-3331] design i2cmaster has unconnected port mem_wdata[16]
+WARNING: [Synth 8-3331] design spimaster has unconnected port mem_wdata[31]
+WARNING: [Synth 8-3331] design spimaster has unconnected port mem_wdata[30]
+WARNING: [Synth 8-3331] design spimaster has unconnected port mem_wdata[29]
+WARNING: [Synth 8-3331] design spimaster has unconnected port mem_wdata[28]
+WARNING: [Synth 8-3331] design spimaster has unconnected port mem_wdata[27]
+WARNING: [Synth 8-3331] design spimaster has unconnected port mem_wdata[26]
+WARNING: [Synth 8-3331] design spimaster has unconnected port mem_wdata[25]
+WARNING: [Synth 8-3331] design spimaster has unconnected port mem_wdata[24]
+WARNING: [Synth 8-3331] design spimaster has unconnected port mem_wdata[23]
+WARNING: [Synth 8-3331] design spimaster has unconnected port mem_wdata[22]
+WARNING: [Synth 8-3331] design spimaster has unconnected port mem_wdata[21]
+WARNING: [Synth 8-3331] design spimaster has unconnected port mem_wdata[20]
+WARNING: [Synth 8-3331] design spimaster has unconnected port mem_wdata[19]
+WARNING: [Synth 8-3331] design spimaster has unconnected port mem_wdata[18]
+WARNING: [Synth 8-3331] design spimaster has unconnected port mem_wdata[17]
+WARNING: [Synth 8-3331] design spimaster has unconnected port mem_wdata[16]
+WARNING: [Synth 8-3331] design spimaster has unconnected port mem_wdata[15]
+WARNING: [Synth 8-3331] design spimaster has unconnected port mem_wdata[14]
+WARNING: [Synth 8-3331] design spimaster has unconnected port mem_wdata[13]
+WARNING: [Synth 8-3331] design spimaster has unconnected port mem_wdata[12]
+WARNING: [Synth 8-3331] design spimaster has unconnected port mem_wdata[11]
+WARNING: [Synth 8-3331] design spimaster has unconnected port mem_wdata[10]
+WARNING: [Synth 8-3331] design spimaster has unconnected port mem_wdata[9]
+WARNING: [Synth 8-3331] design spimaster has unconnected port mem_wdata[8]
+WARNING: [Synth 8-3331] design timebase has unconnected port mem_re
+WARNING: [Synth 8-3331] design uart has unconnected port mem_wdata[31]
+WARNING: [Synth 8-3331] design uart has unconnected port mem_wdata[30]
+WARNING: [Synth 8-3331] design uart has unconnected port mem_wdata[29]
+WARNING: [Synth 8-3331] design uart has unconnected port mem_wdata[28]
+WARNING: [Synth 8-3331] design uart has unconnected port mem_wdata[27]
+WARNING: [Synth 8-3331] design uart has unconnected port mem_wdata[26]
+WARNING: [Synth 8-3331] design uart has unconnected port mem_wdata[25]
+WARNING: [Synth 8-3331] design uart has unconnected port mem_wdata[24]
+WARNING: [Synth 8-3331] design uart has unconnected port mem_wdata[23]
+WARNING: [Synth 8-3331] design uart has unconnected port mem_wdata[22]
+WARNING: [Synth 8-3331] design uart has unconnected port mem_wdata[21]
+WARNING: [Synth 8-3331] design uart has unconnected port mem_wdata[20]
+WARNING: [Synth 8-3331] design uart has unconnected port mem_wdata[19]
+WARNING: [Synth 8-3331] design uart has unconnected port mem_wdata[18]
+WARNING: [Synth 8-3331] design uart has unconnected port mem_wdata[17]
+WARNING: [Synth 8-3331] design uart has unconnected port mem_wdata[16]
+WARNING: [Synth 8-3331] design uart has unconnected port mem_wdata[15]
+WARNING: [Synth 8-3331] design uart has unconnected port mem_wdata[14]
+WARNING: [Synth 8-3331] design uart has unconnected port mem_wdata[13]
+WARNING: [Synth 8-3331] design uart has unconnected port mem_wdata[12]
+WARNING: [Synth 8-3331] design uart has unconnected port mem_wdata[11]
+WARNING: [Synth 8-3331] design uart has unconnected port mem_wdata[10]
+WARNING: [Synth 8-3331] design uart has unconnected port mem_wdata[9]
+WARNING: [Synth 8-3331] design uart has unconnected port mem_wdata[8]
+WARNING: [Synth 8-3331] design uart has unconnected port mem_re
+WARNING: [Synth 8-3331] design gpio has unconnected port mem_re
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:02:37 ; elapsed = 00:02:39 . Memory (MB): peak = 1259.070 ; gain = 556.684
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:02:38 ; elapsed = 00:02:40 . Memory (MB): peak = 1259.070 ; gain = 556.684
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:02:38 ; elapsed = 00:02:40 . Memory (MB): peak = 1259.070 ; gain = 556.684
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.132 . Memory (MB): peak = 1259.070 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [D:/FPGA/H13D/constraints/Arty-S7-50-Rev-B-Master.xdc]
+Finished Parsing XDC File [D:/FPGA/H13D/constraints/Arty-S7-50-Rev-B-Master.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [D:/FPGA/H13D/constraints/Arty-S7-50-Rev-B-Master.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/main_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/main_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Parsing XDC File [D:/FPGA/H13D/project_1.runs/synth_1/dont_touch.xdc]
+Finished Parsing XDC File [D:/FPGA/H13D/project_1.runs/synth_1/dont_touch.xdc]
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1299.742 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.015 . Memory (MB): peak = 1299.742 ; gain = 0.000
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:02:46 ; elapsed = 00:02:47 . Memory (MB): peak = 1299.742 ; gain = 597.355
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7s50csga324-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:02:46 ; elapsed = 00:02:47 . Memory (MB): peak = 1299.742 ; gain = 597.355
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:02:46 ; elapsed = 00:02:47 . Memory (MB): peak = 1299.742 ; gain = 597.355
+---------------------------------------------------------------------------------
+INFO: [Synth 8-5545] ROM "mem_rdata0" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "mem_rdata0" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "mem_rdata1" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "mem_rdata1" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [D:/FPGA/H13D/hdl/cpu_new.vhd:544]
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'cpu'
+WARNING: [Synth 8-327] inferring latch for variable 'blockram_addr_reg' [D:/FPGA/H13D/hdl/ram.vhd:76]
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+       fetch_instruction |                         00000001 |                              000
+  wait_until_rd_unlocked |                         00000010 |                              001
+               fetch_rs1 |                         00000100 |                              010
+               fetch_rs2 |                         00001000 |                              011
+                 execute |                         00010000 |                              100
+               writeback |                         00100000 |                              101
+            increment_pc |                         01000000 |                              110
+                   panic |                         10000000 |                              111
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'one-hot' in module 'cpu'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:06:22 ; elapsed = 00:06:24 . Memory (MB): peak = 1299.742 ; gain = 597.355
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++------+--------------+------------+----------+
+|      |RTL Partition |Replication |Instances |
++------+--------------+------------+----------+
+|1     |main__GB0     |           1|     31811|
+|2     |main__GB1     |           1|     24538|
++------+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 11    
+	   3 Input     32 Bit       Adders := 1     
+	   2 Input     16 Bit       Adders := 4     
+	   2 Input      8 Bit       Adders := 1     
+	   2 Input      6 Bit       Adders := 2     
+	   2 Input      5 Bit       Adders := 3     
+	   2 Input      4 Bit       Adders := 1     
++---XORs : 
+	   2 Input     32 Bit         XORs := 2     
+	   8 Input      1 Bit         XORs := 1     
++---Registers : 
+	               32 Bit    Registers := 10    
+	               16 Bit    Registers := 3     
+	                8 Bit    Registers := 9     
+	                5 Bit    Registers := 10    
+	                4 Bit    Registers := 1     
+	                3 Bit    Registers := 1     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 7     
++---RAMs : 
+	             512K Bit         RAMs := 1     
+	               1K Bit         RAMs := 1     
++---Muxes : 
+	   8 Input    128 Bit        Muxes := 2     
+	   8 Input     36 Bit        Muxes := 1     
+	   2 Input     33 Bit        Muxes := 16    
+	   9 Input     33 Bit        Muxes := 1     
+	   2 Input     32 Bit        Muxes := 49    
+	   4 Input     32 Bit        Muxes := 5     
+	   5 Input     32 Bit        Muxes := 3     
+	   8 Input     32 Bit        Muxes := 8     
+	  11 Input     32 Bit        Muxes := 1     
+	 128 Input     32 Bit        Muxes := 2     
+	   3 Input     32 Bit        Muxes := 2     
+	   9 Input     32 Bit        Muxes := 1     
+	   2 Input     16 Bit        Muxes := 2     
+	   8 Input      8 Bit        Muxes := 3     
+	   2 Input      8 Bit        Muxes := 13    
+	   7 Input      8 Bit        Muxes := 1     
+	   2 Input      5 Bit        Muxes := 4     
+	   4 Input      5 Bit        Muxes := 1     
+	   5 Input      5 Bit        Muxes := 1     
+	   3 Input      5 Bit        Muxes := 1     
+	   8 Input      5 Bit        Muxes := 1     
+	   9 Input      5 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 1     
+	   9 Input      3 Bit        Muxes := 1     
+	   2 Input      3 Bit        Muxes := 2     
+	 128 Input      3 Bit        Muxes := 3     
+	   8 Input      2 Bit        Muxes := 2     
+	 128 Input      2 Bit        Muxes := 1     
+	   5 Input      1 Bit        Muxes := 10    
+	   2 Input      1 Bit        Muxes := 37    
+	   4 Input      1 Bit        Muxes := 10    
+	   8 Input      1 Bit        Muxes := 28    
+	   7 Input      1 Bit        Muxes := 8     
+	  11 Input      1 Bit        Muxes := 2     
+	   9 Input      1 Bit        Muxes := 1     
+	  12 Input      1 Bit        Muxes := 1     
+	 128 Input      1 Bit        Muxes := 1     
+	   3 Input      1 Bit        Muxes := 5     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+Module main 
+Detailed RTL Component Info : 
++---Muxes : 
+	   9 Input     32 Bit        Muxes := 1     
+	   8 Input      1 Bit        Muxes := 2     
+Module rom 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 1     
+Module timebase 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 2     
++---Registers : 
+	               32 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 7     
+	   4 Input     32 Bit        Muxes := 3     
+	   5 Input     32 Bit        Muxes := 1     
+	   5 Input      1 Bit        Muxes := 3     
+	   2 Input      1 Bit        Muxes := 5     
+	   4 Input      1 Bit        Muxes := 2     
+Module block_ram 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     16 Bit       Adders := 3     
++---Registers : 
+	               32 Bit    Registers := 1     
+	               16 Bit    Registers := 1     
+	                8 Bit    Registers := 1     
+	                3 Bit    Registers := 1     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 2     
++---RAMs : 
+	             512K Bit         RAMs := 1     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 2     
+	   8 Input     32 Bit        Muxes := 2     
+	   8 Input      8 Bit        Muxes := 1     
+	   2 Input      8 Bit        Muxes := 4     
+	   9 Input      3 Bit        Muxes := 1     
+	   2 Input      3 Bit        Muxes := 2     
+	   4 Input      1 Bit        Muxes := 1     
+	   8 Input      1 Bit        Muxes := 10    
+Module spimaster 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      8 Bit       Adders := 1     
+	   2 Input      5 Bit       Adders := 1     
++---Registers : 
+	                8 Bit    Registers := 4     
+	                5 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 1     
+	   4 Input     32 Bit        Muxes := 1     
+	  11 Input     32 Bit        Muxes := 1     
+	   2 Input      8 Bit        Muxes := 2     
+	   7 Input      8 Bit        Muxes := 1     
+	   2 Input      5 Bit        Muxes := 2     
+	   4 Input      5 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 5     
+	   4 Input      1 Bit        Muxes := 3     
+	   8 Input      1 Bit        Muxes := 1     
+	   7 Input      1 Bit        Muxes := 7     
+	  11 Input      1 Bit        Muxes := 2     
+Module i2cmaster 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     16 Bit       Adders := 1     
+	   2 Input      5 Bit       Adders := 1     
++---Registers : 
+	               16 Bit    Registers := 2     
+	                8 Bit    Registers := 1     
+	                5 Bit    Registers := 1     
+	                1 Bit    Registers := 2     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 1     
+	   5 Input     32 Bit        Muxes := 1     
+	   8 Input     32 Bit        Muxes := 1     
+	   2 Input     16 Bit        Muxes := 2     
+	   8 Input      8 Bit        Muxes := 1     
+	   2 Input      5 Bit        Muxes := 1     
+	   5 Input      5 Bit        Muxes := 1     
+	   3 Input      5 Bit        Muxes := 1     
+	   8 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 9     
+	   5 Input      1 Bit        Muxes := 7     
+	   9 Input      1 Bit        Muxes := 1     
+	   8 Input      1 Bit        Muxes := 8     
+	  12 Input      1 Bit        Muxes := 1     
+Module uart 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 1     
+	   2 Input      5 Bit       Adders := 1     
+	   2 Input      4 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 1     
+	                8 Bit    Registers := 1     
+	                4 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 7     
+	   2 Input      4 Bit        Muxes := 1     
+	   4 Input      1 Bit        Muxes := 3     
+	   2 Input      1 Bit        Muxes := 3     
+Module cpu 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 7     
+	   3 Input     32 Bit       Adders := 1     
+	   2 Input      6 Bit       Adders := 2     
++---XORs : 
+	   2 Input     32 Bit         XORs := 2     
++---Registers : 
+	               32 Bit    Registers := 5     
++---Muxes : 
+	   8 Input    128 Bit        Muxes := 2     
+	   8 Input     36 Bit        Muxes := 1     
+	   2 Input     32 Bit        Muxes := 29    
+	   4 Input     32 Bit        Muxes := 1     
+	   8 Input     32 Bit        Muxes := 5     
+	 128 Input     32 Bit        Muxes := 2     
+	   5 Input     32 Bit        Muxes := 1     
+	   8 Input      8 Bit        Muxes := 1     
+	   2 Input      8 Bit        Muxes := 6     
+	   2 Input      5 Bit        Muxes := 1     
+	   8 Input      5 Bit        Muxes := 1     
+	 128 Input      3 Bit        Muxes := 3     
+	 128 Input      2 Bit        Muxes := 1     
+	   8 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 11    
+	 128 Input      1 Bit        Muxes := 1     
+	   8 Input      1 Bit        Muxes := 7     
+	   3 Input      1 Bit        Muxes := 4     
+	   7 Input      1 Bit        Muxes := 1     
+	   4 Input      1 Bit        Muxes := 1     
+Module registerFile 
+Detailed RTL Component Info : 
++---XORs : 
+	   8 Input      1 Bit         XORs := 1     
++---Registers : 
+	                8 Bit    Registers := 2     
+	                5 Bit    Registers := 8     
+	                1 Bit    Registers := 2     
++---RAMs : 
+	               1K Bit         RAMs := 1     
++---Muxes : 
+	   2 Input     33 Bit        Muxes := 16    
+	   9 Input     33 Bit        Muxes := 1     
+	   2 Input      8 Bit        Muxes := 1     
+	   9 Input      5 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 3     
+Module gpio 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 2     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 2     
+	   3 Input     32 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 1     
+	   3 Input      1 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 120 (col length:60)
+BRAMs: 150 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+Warning: Parallel synthesis criteria is not met 
+INFO: [Synth 8-5544] ROM "mem_rdata0" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-4652] Swapped enable and write-enable on 8 RAM instances of RAM memory_reg to conserve power
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_1r_reg[0]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_2r_reg_rep[4]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_2r_reg_rep[3]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_2r_reg_rep[2]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_2r_reg_rep[1]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_2r_reg_rep[0]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_4r_reg_rep[4]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_4r_reg_rep[3]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_4r_reg_rep[2]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_4r_reg_rep[1]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_4r_reg_rep[0]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_6r_reg_rep[4]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_6r_reg_rep[3]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_6r_reg_rep[2]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_6r_reg_rep[1]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_6r_reg_rep[0]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_7r_reg_rep[0]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_7r_reg_rep[1]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_7r_reg_rep[2]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_7r_reg_rep[3]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_7r_reg_rep[4]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_5r_reg_rep[0]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_5r_reg_rep[1]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_5r_reg_rep[2]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_5r_reg_rep[3]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_5r_reg_rep[4]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_3r_reg_rep[0]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_3r_reg_rep[1]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_3r_reg_rep[2]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_3r_reg_rep[3]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_3r_reg_rep[4]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_1r_reg_rep[0]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_1r_reg_rep[1]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_1r_reg_rep[2]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_1r_reg_rep[3]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_1r_reg_rep[4]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_2r_reg[0]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_3r_reg[0]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_4r_reg[0]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_5r_reg[0]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_6r_reg[0]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_7r_reg[0]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_1r_reg[1]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_2r_reg[1]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_3r_reg[1]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_4r_reg[1]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_5r_reg[1]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_6r_reg[1]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_7r_reg[1]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_1r_reg[2]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_2r_reg[2]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_3r_reg[2]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_4r_reg[2]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_5r_reg[2]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_6r_reg[2]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_7r_reg[2]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_1r_reg[3]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_2r_reg[3]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_3r_reg[3]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_4r_reg[3]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_5r_reg[3]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_6r_reg[3]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_7r_reg[3]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/i_access_grant_reg[1]' (FDC) to 'i_1/regfile/register_selection_1r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_1r_reg[4]' (FDC) to 'i_1/regfile/register_selection_3r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/i_access_grant_reg[2]' (FDC) to 'i_1/regfile/register_selection_3r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_2r_reg[4]' (FDC) to 'i_1/regfile/register_selection_3r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/i_access_grant_reg[3]' (FDC) to 'i_1/regfile/register_selection_3r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_3r_reg[4]' (FDC) to 'i_1/regfile/register_selection_5r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/i_access_grant_reg[4]' (FDC) to 'i_1/regfile/register_selection_5r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_4r_reg[4]' (FDC) to 'i_1/regfile/register_selection_5r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/i_access_grant_reg[5]' (FDC) to 'i_1/regfile/register_selection_5r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_5r_reg[4]' (FDC) to 'i_1/regfile/register_selection_7r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/i_access_grant_reg[6]' (FDC) to 'i_1/regfile/register_selection_7r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_6r_reg[4]' (FDC) to 'i_1/regfile/register_selection_7r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/i_access_grant_reg[7]' (FDC) to 'i_1/regfile/register_selection_7r_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_7r_reg[4]' (FDC) to 'i_1/regfile/data_in_r_reg[32]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_0r_reg_rep[0]' (FDC) to 'i_1/regfile/register_selection_0r_reg[0]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_0r_reg_rep[1]' (FDC) to 'i_1/regfile/register_selection_0r_reg[1]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_0r_reg_rep[2]' (FDC) to 'i_1/regfile/register_selection_0r_reg[2]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_0r_reg_rep[3]' (FDC) to 'i_1/regfile/register_selection_0r_reg[3]'
+INFO: [Synth 8-3886] merging instance 'i_1/regfile/register_selection_0r_reg_rep[4]' (FDC) to 'i_1/regfile/register_selection_0r_reg[4]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_1/regfile/\data_in_r_reg[32] )
+WARNING: [Synth 8-3332] Sequential element (FSM_onehot_state_reg[7]) is unused and will be removed from module cpu.
+INFO: [Synth 8-3886] merging instance 'i_1/cpu0/instruction_reg[1]' (FDCE) to 'i_1/cpu0/instruction_reg[0]'
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:10:14 ; elapsed = 00:10:42 . Memory (MB): peak = 2019.465 ; gain = 1317.078
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+ROM:
++------------+---------------+---------------+----------------+
+|Module Name | RTL Object    | Depth x Width | Implemented As | 
++------------+---------------+---------------+----------------+
+|rom         | memory[32767] | 32768x31      | LUT            | 
+|rom         | memory[32767] | 32768x31      | LUT            | 
++------------+---------------+---------------+----------------+
+
+
+Block RAM: Preliminary Mapping	Report (see note below)
++------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Module Name | RTL Object | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
++------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|i_1/ram     | memory_reg | 64 K x 8(READ_FIRST)   | W |   | 64 K x 8(WRITE_FIRST)  |   | R | Port A and B     | 0      | 16     | 
++------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+
+Note: The table above is a preliminary report that shows the Block RAMs at the current stage of the synthesis flow. Some Block RAMs may be reimplemented as non Block RAM primitives later in the synthesis flow. Multiple instantiated Block RAMs are reported only once. 
+
+Distributed RAM: Preliminary Mapping	Report (see note below)
++------------+---------------+-----------+----------------------+--------------+
+|Module Name | RTL Object    | Inference | Size (Depth x Width) | Primitives   | 
++------------+---------------+-----------+----------------------+--------------+
+|i_1/regfile | registers_reg | Implied   | 32 x 33              | RAM32M x 48	 | 
++------------+---------------+-----------+----------------------+--------------+
+
+Note: The table above is a preliminary report that shows the Distributed RAMs at the current stage of the synthesis flow. Some Distributed RAMs may be reimplemented as non Distributed RAM primitives later in the synthesis flow. Multiple instantiated RAMs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++------+--------------+------------+----------+
+|      |RTL Partition |Replication |Instances |
++------+--------------+------------+----------+
+|1     |main__GB0     |           1|     21161|
+|2     |main__GB1     |           1|      7105|
++------+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:10:21 ; elapsed = 00:10:49 . Memory (MB): peak = 2019.465 ; gain = 1317.078
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:10:38 ; elapsed = 00:11:06 . Memory (MB): peak = 2019.465 ; gain = 1317.078
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Block RAM: Final Mapping	Report
++------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Module Name | RTL Object | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
++------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|i_1/ram     | memory_reg | 64 K x 8(READ_FIRST)   | W |   | 64 K x 8(WRITE_FIRST)  |   | R | Port A and B     | 0      | 16     | 
++------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+
+
+Distributed RAM: Final Mapping	Report
++------------+---------------+-----------+----------------------+--------------+
+|Module Name | RTL Object    | Inference | Size (Depth x Width) | Primitives   | 
++------------+---------------+-----------+----------------------+--------------+
+|i_1/regfile | registers_reg | Implied   | 32 x 33              | RAM32M x 48	 | 
++------------+---------------+-----------+----------------------+--------------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++------+--------------+------------+----------+
+|      |RTL Partition |Replication |Instances |
++------+--------------+------------+----------+
+|1     |main__GB0     |           1|     21161|
+|2     |main__GB1     |           1|      6880|
++------+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+INFO: [Synth 8-7053] The timing for the instance ram/memory_reg_1_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7053] The timing for the instance ram/memory_reg_1_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7053] The timing for the instance ram/memory_reg_1_2 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7053] The timing for the instance ram/memory_reg_1_3 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7053] The timing for the instance ram/memory_reg_1_4 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7053] The timing for the instance ram/memory_reg_1_5 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7053] The timing for the instance ram/memory_reg_1_6 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7053] The timing for the instance ram/memory_reg_1_7 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:10:43 ; elapsed = 00:11:11 . Memory (MB): peak = 2019.465 ; gain = 1317.078
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6064] Net \ram/blockram_we  is driving 64 big block pins (URAM, BRAM and DSP loads). Created 7 replicas of its driver. 
+INFO: [Synth 8-6064] Net \ram/blockram_addr [0] is driving 32 big block pins (URAM, BRAM and DSP loads). Created 4 replicas of its driver. 
+INFO: [Synth 8-6064] Net \ram/blockram_addr [1] is driving 32 big block pins (URAM, BRAM and DSP loads). Created 4 replicas of its driver. 
+INFO: [Synth 8-6064] Net \ram/blockram_addr [2] is driving 32 big block pins (URAM, BRAM and DSP loads). Created 4 replicas of its driver. 
+INFO: [Synth 8-6064] Net \ram/blockram_addr [3] is driving 32 big block pins (URAM, BRAM and DSP loads). Created 4 replicas of its driver. 
+INFO: [Synth 8-6064] Net \ram/blockram_addr [4] is driving 32 big block pins (URAM, BRAM and DSP loads). Created 4 replicas of its driver. 
+INFO: [Synth 8-6064] Net \ram/blockram_addr [5] is driving 32 big block pins (URAM, BRAM and DSP loads). Created 4 replicas of its driver. 
+INFO: [Synth 8-6064] Net \ram/blockram_addr [6] is driving 32 big block pins (URAM, BRAM and DSP loads). Created 4 replicas of its driver. 
+INFO: [Synth 8-6064] Net \ram/blockram_addr [7] is driving 32 big block pins (URAM, BRAM and DSP loads). Created 4 replicas of its driver. 
+INFO: [Synth 8-6064] Net \ram/blockram_addr [8] is driving 32 big block pins (URAM, BRAM and DSP loads). Created 4 replicas of its driver. 
+INFO: [Synth 8-6064] Net \ram/blockram_addr [9] is driving 32 big block pins (URAM, BRAM and DSP loads). Created 4 replicas of its driver. 
+INFO: [Synth 8-6064] Net \ram/blockram_addr [10] is driving 32 big block pins (URAM, BRAM and DSP loads). Created 4 replicas of its driver. 
+INFO: [Synth 8-6064] Net \ram/blockram_addr [11] is driving 32 big block pins (URAM, BRAM and DSP loads). Created 4 replicas of its driver. 
+INFO: [Synth 8-6064] Net \ram/blockram_addr [12] is driving 32 big block pins (URAM, BRAM and DSP loads). Created 4 replicas of its driver. 
+INFO: [Synth 8-6064] Net \ram/blockram_addr [13] is driving 32 big block pins (URAM, BRAM and DSP loads). Created 4 replicas of its driver. 
+INFO: [Synth 8-6064] Net \ram/blockram_addr [14] is driving 32 big block pins (URAM, BRAM and DSP loads). Created 4 replicas of its driver. 
+INFO: [Synth 8-6064] Net \ram/blockram_addr [15] is driving 32 big block pins (URAM, BRAM and DSP loads). Created 4 replicas of its driver. 
+WARNING: [Synth 8-3332] Sequential element (ram/blockram_addr_reg[15]) is unused and will be removed from module main.
+WARNING: [Synth 8-3332] Sequential element (ram/blockram_addr_reg[14]) is unused and will be removed from module main.
+WARNING: [Synth 8-3332] Sequential element (ram/blockram_addr_reg[13]) is unused and will be removed from module main.
+WARNING: [Synth 8-3332] Sequential element (ram/blockram_addr_reg[12]) is unused and will be removed from module main.
+WARNING: [Synth 8-3332] Sequential element (ram/blockram_addr_reg[11]) is unused and will be removed from module main.
+WARNING: [Synth 8-3332] Sequential element (ram/blockram_addr_reg[10]) is unused and will be removed from module main.
+WARNING: [Synth 8-3332] Sequential element (ram/blockram_addr_reg[9]) is unused and will be removed from module main.
+WARNING: [Synth 8-3332] Sequential element (ram/blockram_addr_reg[8]) is unused and will be removed from module main.
+WARNING: [Synth 8-3332] Sequential element (ram/blockram_addr_reg[7]) is unused and will be removed from module main.
+WARNING: [Synth 8-3332] Sequential element (ram/blockram_addr_reg[6]) is unused and will be removed from module main.
+WARNING: [Synth 8-3332] Sequential element (ram/blockram_addr_reg[5]) is unused and will be removed from module main.
+WARNING: [Synth 8-3332] Sequential element (ram/blockram_addr_reg[4]) is unused and will be removed from module main.
+WARNING: [Synth 8-3332] Sequential element (ram/blockram_addr_reg[3]) is unused and will be removed from module main.
+WARNING: [Synth 8-3332] Sequential element (ram/blockram_addr_reg[2]) is unused and will be removed from module main.
+WARNING: [Synth 8-3332] Sequential element (ram/blockram_addr_reg[1]) is unused and will be removed from module main.
+WARNING: [Synth 8-3332] Sequential element (ram/blockram_addr_reg[0]) is unused and will be removed from module main.
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:10:49 ; elapsed = 00:11:17 . Memory (MB): peak = 2019.465 ; gain = 1317.078
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:10:49 ; elapsed = 00:11:17 . Memory (MB): peak = 2019.465 ; gain = 1317.078
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:10:50 ; elapsed = 00:11:18 . Memory (MB): peak = 2019.465 ; gain = 1317.078
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:10:50 ; elapsed = 00:11:18 . Memory (MB): peak = 2019.465 ; gain = 1317.078
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:10:52 ; elapsed = 00:11:20 . Memory (MB): peak = 2019.465 ; gain = 1317.078
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:10:52 ; elapsed = 00:11:20 . Memory (MB): peak = 2019.465 ; gain = 1317.078
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-----------+------+
+|      |Cell       |Count |
++------+-----------+------+
+|1     |BUFG       |     2|
+|2     |CARRY4     |   155|
+|3     |LUT1       |    71|
+|4     |LUT2       |   532|
+|5     |LUT3       |   526|
+|6     |LUT4       |   752|
+|7     |LUT5       |  2132|
+|8     |LUT6       |  7101|
+|9     |MUXF7      |  1621|
+|10    |MUXF8      |   401|
+|11    |RAM32M     |     6|
+|12    |RAMB36E1   |     1|
+|13    |RAMB36E1_1 |     8|
+|14    |RAMB36E1_2 |     1|
+|15    |RAMB36E1_3 |     1|
+|16    |RAMB36E1_4 |     1|
+|17    |RAMB36E1_5 |     1|
+|18    |RAMB36E1_6 |     1|
+|19    |RAMB36E1_7 |     1|
+|20    |RAMB36E1_8 |     1|
+|21    |FDCE       |   601|
+|22    |FDPE       |    23|
+|23    |LD         |    64|
+|24    |IBUF       |     5|
+|25    |IOBUF      |     2|
+|26    |OBUF       |     1|
+|27    |OBUFT      |    11|
++------+-----------+------+
+
+Report Instance Areas: 
++------+--------------+-------------+------+
+|      |Instance      |Module       |Cells |
++------+--------------+-------------+------+
+|1     |top           |             | 14022|
+|2     |  cpu0        |cpu          |  2189|
+|3     |  i_gpio      |gpio         |   165|
+|4     |  i_i2cmaster |i2cmaster    |   130|
+|5     |  i_spimaster |spimaster    |   123|
+|6     |  i_timebase  |timebase     |   233|
+|7     |  i_uart      |uart         |   177|
+|8     |  myrom       |rom          | 10556|
+|9     |  ram         |block_ram    |   287|
+|10    |  regfile     |registerFile |   141|
++------+--------------+-------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:10:52 ; elapsed = 00:11:20 . Memory (MB): peak = 2019.465 ; gain = 1317.078
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 18 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:08:10 ; elapsed = 00:11:16 . Memory (MB): peak = 2019.465 ; gain = 1276.406
+Synthesis Optimization Complete : Time (s): cpu = 00:10:52 ; elapsed = 00:11:20 . Memory (MB): peak = 2019.465 ; gain = 1317.078
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.157 . Memory (MB): peak = 2019.465 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 2265 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 2019.465 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 72 instances were transformed.
+  IOBUF => IOBUF (IBUF, OBUFT): 2 instances
+  LD => LDCE: 64 instances
+  RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 6 instances
+
+INFO: [Common 17-83] Releasing license: Synthesis
+169 Infos, 92 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:10:58 ; elapsed = 00:11:27 . Memory (MB): peak = 2019.465 ; gain = 1583.617
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 2019.465 ; gain = 0.000
+WARNING: [Constraints 18-5210] No constraints selected for write.
+Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
+INFO: [Common 17-1381] The checkpoint 'D:/FPGA/H13D/project_1.runs/synth_1/main.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file main_utilization_synth.rpt -pb main_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Tue Feb 18 16:34:09 2020...

@@ -113,14 +113,14 @@ architecture behavioural of cpu is
     signal i_inst_addr, i_data_wdata, i_data_addr : std_logic_vector(31 downto 0);
     signal i_data_we, i_data_re : std_logic;
 
-    -- component ila_0 PORT (
-    --   clk : in std_logic;
-    --   probe2, probe3, probe4, probe5, probe6, probe7, probe8 : in std_logic_vector(31 downto 0);
-    --   probe0, probe9, probe10 : in std_logic;
-    --   probe1 : in std_logic_vector(2 downto 0);
-    --   probe11, probe12 : in std_logic_vector(127 downto 0)
-    -- );
-    -- end component;
+    component ila_0 PORT (
+      clk : in std_logic;
+      probe2, probe3, probe4, probe5, probe6, probe7, probe8 : in std_logic_vector(31 downto 0);
+      probe0, probe9, probe10 : in std_logic;
+      probe1 : in std_logic_vector(2 downto 0);
+      probe11, probe12 : in std_logic_vector(127 downto 0)
+    );
+    end component;
 
 
     impure function DoShift (
@@ -231,9 +231,6 @@ begin
         reset_instruction <= '0';
         err <= '0';
 
-        --fifo_wdata <= (others => '0');
-        --fifo_we <= '0';
-
         set_counter <= '0';
 
         state_out <= "000";
@@ -331,7 +328,7 @@ begin
 
                 state_out <= "101";
                 registerfile_register_selection <= rd;
-                registerfile_wdata <= '0' & result_r; --result(to_integer(unsigned(opcode)));
+                registerfile_wdata <= '0' & result_r;
                 registerfile_we <= '1';
                 if (registerfile_register_selected = rd) and (registerfile_rdata(32) = '0') and (registerfile_rdata(31 downto 0) = result_r) then --result(to_integer(unsigned(opcode)))) then
                     n_state <= INCREMENT_PC;
@@ -387,18 +384,6 @@ begin
                 reg_rs1 <= result(to_integer(unsigned(opcode)));
             end if;
 
-            -- if shift_rs1_left(to_integer(unsigned(opcode))) = '1' then
-            --     reg_rs1 <= reg_rs1(30 downto 0) & '0';
-            -- end if;
-
-            -- if shift_rs1_right_arithmetic(to_integer(unsigned(opcode))) = '1' then
-            --     reg_rs1 <= reg_rs1(31) & reg_rs1(31 downto 1);
-            -- end if;
-
-            -- if shift_rs1_right_logical(to_integer(unsigned(opcode))) = '1' then
-            --     reg_rs1 <= '0' & reg_rs1(31 downto 1);
-            -- end if;
-
             if set_rs2 = '1' then
                 reg_rs2 <= registerfile_rdata(31 downto 0);
             end if;
@@ -437,11 +422,7 @@ begin
         decode_error(to_integer(unsigned(I_TYPE_LOAD))) <= '0';
 
         daddr(to_integer(unsigned(I_TYPE_LOAD))) <= reg_rs1 + imm_i;
-        --if state = EXECUTE then
-            instruction_details_array(to_integer(unsigned(I_TYPE_LOAD))).data_re <= '1';
-        --else
-        --    instruction_details_array(to_integer(unsigned(I_TYPE_LOAD))).data_re <= '0';
-        --end if;
+        instruction_details_array(to_integer(unsigned(I_TYPE_LOAD))).data_re <= '1';
 
         result(to_integer(unsigned(I_TYPE_LOAD))) <= data_rdata;
 
@@ -569,14 +550,6 @@ begin
 
         update_rs1_from_rd(to_integer(unsigned(R_TYPE))) <= '0';
 
-        -- shift_rs1_left(to_integer(unsigned(R_TYPE))) <= '0';
-        -- shift_rs1_right_arithmetic(to_integer(unsigned(R_TYPE))) <= '0';
-        -- shift_rs1_right_logical(to_integer(unsigned(R_TYPE))) <= '0';
-
-        --if selected(to_integer(unsigned(R_TYPE))) = '0' then
-        --    execution_done(to_integer(unsigned(R_TYPE))) <= '0';
-        --    instruction_details_array(to_integer(unsigned(R_TYPE))).counter <= (others => '0');
-        --elsif rising_edge(clk) then
             execution_done(to_integer(unsigned(R_TYPE))) <= '1';
             dec_counter(to_integer(unsigned(R_TYPE))) <= '0';
 
@@ -594,19 +567,8 @@ begin
                     end case;
 
                 when "001" => -- SLL
-                    execution_done(to_integer(unsigned(R_TYPE))) <= '0';
-                    result(to_integer(unsigned(R_TYPE))) <= reg_rs1;
-
-                    if counter = X"00000000" then
-                        execution_done(to_integer(unsigned(R_TYPE))) <= '1';
-                    elsif set_counter = '0' then
-                        dec_counter(to_integer(unsigned(R_TYPE))) <= '1';
-                        --shift_rs1_left(to_integer(unsigned(R_TYPE))) <= '1';
-                        update_rs1_from_rd(to_integer(unsigned(R_TYPE))) <= '1';
-                        result(to_integer(unsigned(R_TYPE))) <= reg_rs1(30 downto 0) & '0';
-                    end if;
-
-
+                    execution_done(to_integer(unsigned(R_TYPE))) <= '1';
+                    result(to_integer(unsigned(R_TYPE))) <=  DoShift(reg_rs1, to_integer(unsigned(reg_rs2(4 downto 0))), false, true);
                     
                 when "010" => -- SLT
                     if signed(reg_rs1) < signed(reg_rs2) then
@@ -627,9 +589,6 @@ begin
 
                 when "101" =>
                     execution_done(to_integer(unsigned(R_TYPE))) <= '0';
-                    --if instruction_details_array(to_integer(unsigned(R_TYPE))).counter = X"00000000" then
-                    --    result(to_integer(unsigned(R_TYPE))) <= reg_rs1;
-                    --end if;
 
                     case funct7 is
                         when "0000000" => -- SRL
@@ -637,32 +596,9 @@ begin
                             execution_done(to_integer(unsigned(R_TYPE))) <= '1';
                             result(to_integer(unsigned(R_TYPE))) <=  DoShift(reg_rs1, to_integer(unsigned(reg_rs2(4 downto 0))), false, false);
 
-                            -- execution_done(to_integer(unsigned(R_TYPE))) <= '0';
-                            -- result(to_integer(unsigned(R_TYPE))) <= reg_rs1;
-
-                            -- if counter = X"00000000" then
-                            --     execution_done(to_integer(unsigned(R_TYPE))) <= '1';
-                            -- elsif set_counter = '0' then
-                            --     dec_counter(to_integer(unsigned(R_TYPE))) <= '1';
-                            --     --shift_rs1_right_logical(to_integer(unsigned(R_TYPE))) <= '1';
-                            --     update_rs1_from_rd(to_integer(unsigned(R_TYPE))) <= '1';
-                            --     result(to_integer(unsigned(R_TYPE))) <= '0' & reg_rs1(31 downto 1);
-                            -- end if;
-
                         when "0100000" => -- SRA
                             execution_done(to_integer(unsigned(R_TYPE))) <= '1';
                             result(to_integer(unsigned(R_TYPE))) <=  DoShift(reg_rs1, to_integer(unsigned(reg_rs2(4 downto 0))), true, false);
-
-
-                            -- if counter = X"00000000" then
-                            --     execution_done(to_integer(unsigned(R_TYPE))) <= '1';
-                            -- elsif set_counter = '0' then
-                            --     dec_counter(to_integer(unsigned(R_TYPE))) <= '1';
-                            --     --shift_rs1_right_arithmetic(to_integer(unsigned(R_TYPE))) <= '1';
-                            --     update_rs1_from_rd(to_integer(unsigned(R_TYPE))) <= '1';
-                            --     result(to_integer(unsigned(R_TYPE))) <= reg_rs1(31) & reg_rs1(31 downto 1);
-                            -- end if;
-                            -- result(to_integer(unsigned(R_TYPE))) <=  reg_rs1;
 
                         when others =>
                             decode_error(to_integer(unsigned(R_TYPE))) <= '1';
@@ -694,18 +630,8 @@ begin
         result(to_integer(unsigned(I_TYPE))) <= (others => '0');
 
         dec_counter(to_integer(unsigned(I_TYPE))) <= '0';
-
-        -- shift_rs1_left(to_integer(unsigned(I_TYPE))) <= '0';
-        -- shift_rs1_right_arithmetic(to_integer(unsigned(I_TYPE))) <= '0';
-        -- shift_rs1_right_logical(to_integer(unsigned(I_TYPE))) <= '0';
-
         update_rs1_from_rd(to_integer(unsigned(I_TYPE))) <= '0';
 
-        -- if selected(to_integer(unsigned(I_TYPE))) = '0' then
-        --     execution_done(to_integer(unsigned(I_TYPE))) <= '0';
-        --     result(to_integer(unsigned(I_TYPE))) <= (others => '0');
-        --     instruction_details_array(to_integer(unsigned(I_TYPE))).counter <= (others => '0');
-        -- elsif rising_edge(clk) then
 
             case funct3 is
                 when "000" => -- ADDI
@@ -715,16 +641,7 @@ begin
                     case funct7 is
                         when "0000000" => -- SLLI
                             execution_done(to_integer(unsigned(I_TYPE))) <= '1';
-
-                            -- if counter = X"00000000" then
-                            --     execution_done(to_integer(unsigned(I_TYPE))) <= '1';
-                            -- elsif set_counter = '0' then
-                            --     shift_rs1_left(to_integer(unsigned(I_TYPE))) <= '1';
-                            --     dec_counter(to_integer(unsigned(I_TYPE))) <= '1';
-                            -- end if;
                             result(to_integer(unsigned(I_TYPE))) <=  DoShift(reg_rs1, to_integer(unsigned(imm_i(4 downto 0))), false, true);
-                            
-                            --reg_rs1;
 
                         when others =>
                             decode_error(to_integer(unsigned(I_TYPE))) <= '1';
@@ -748,42 +665,15 @@ begin
 
                 when "101" =>
                     execution_done(to_integer(unsigned(I_TYPE))) <= '0';
-                    -- if instruction_details_array(to_integer(unsigned(I_TYPE))).counter = X"00000000" then
-                    --     result(to_integer(unsigned(I_TYPE))) <= reg_rs1;
-                    -- end if;
 
                     case funct7 is
                         when "0000000" => -- SRLI
                             execution_done(to_integer(unsigned(I_TYPE))) <= '1';
                             result(to_integer(unsigned(I_TYPE))) <=  DoShift(reg_rs1, to_integer(unsigned(imm_i(4 downto 0))), false, false);
-                            -- execution_done(to_integer(unsigned(I_TYPE))) <= '0';
-                            -- result(to_integer(unsigned(I_TYPE))) <=  reg_rs1;
-
-                            -- if counter = X"00000000" then
-                            --     execution_done(to_integer(unsigned(I_TYPE))) <= '1';
-                            -- elsif set_counter = '0' then
-                            --     dec_counter(to_integer(unsigned(I_TYPE))) <= '1';
-                            --     update_rs1_from_rd(to_integer(unsigned(I_TYPE))) <= '1';
-                            --     --shift_rs1_right_logical(to_integer(unsigned(I_TYPE))) <= '1';
-                            --     result(to_integer(unsigned(I_TYPE))) <= '0' & reg_rs1(31 downto 1);
-                            -- end if;
-
 
                         when "0100000" => -- SRAI
                             execution_done(to_integer(unsigned(I_TYPE))) <= '1';
                             result(to_integer(unsigned(I_TYPE))) <=  DoShift(reg_rs1, to_integer(unsigned(imm_i(4 downto 0))), true, false);
-                            -- execution_done(to_integer(unsigned(I_TYPE))) <= '0';
-                            -- result(to_integer(unsigned(I_TYPE))) <=  reg_rs1;
-
-                            -- if counter = X"00000000" then
-                            --     execution_done(to_integer(unsigned(I_TYPE))) <= '1';
-                            -- elsif set_counter = '0' then
-                            --     dec_counter(to_integer(unsigned(I_TYPE))) <= '1';
-                            --     update_rs1_from_rd(to_integer(unsigned(I_TYPE))) <= '1';
-                            --     result(to_integer(unsigned(I_TYPE))) <= reg_rs1(31) & reg_rs1(31 downto 1);
-                            --     --shift_rs1_right_arithmetic(to_integer(unsigned(I_TYPE))) <= '1';
-                            -- end if;
-                            
 
                         when others =>
                             decode_error(to_integer(unsigned(I_TYPE))) <= '1';
