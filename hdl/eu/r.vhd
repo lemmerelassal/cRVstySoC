@@ -27,11 +27,14 @@ end eu_r;
 
 architecture behavioural of eu_r is
 
-    signal dec_counter : std_logic;
-
     
+        
 
-    impure function DoShift (
+        type word_t is array (natural range <>) of std_logic_vector(31 downto 0);
+    signal i_result : word_t(7 downto 0);
+
+
+     impure function DoShift (
         value : std_logic_vector(31 downto 0); 
         shamt : integer range 0 to 31;
         arithmetic_shift : boolean; 
@@ -63,20 +66,21 @@ architecture behavioural of eu_r is
         return result;
     end function;
 
-
-    constant R_TYPE         : std_logic_vector(6 downto 0) := "0110011"; -- Register/Register (ADD, ...)
-    constant I_TYPE         : std_logic_vector(6 downto 0) := "0010011"; -- Register/Immediate (ADDI, ...)
-    constant I_TYPE_LOAD    : std_logic_vector(6 downto 0) := "0000011";
-    constant S_TYPE         : std_logic_vector(6 downto 0) := "0100011"; -- Store (SB, SH, SW)
-    constant B_TYPE         : std_logic_vector(6 downto 0) := "1100011"; -- Branch
-    constant U_TYPE_LUI     : std_logic_vector(6 downto 0) := "0110111"; -- LUI
-    constant U_TYPE_AUIPC   : std_logic_vector(6 downto 0) := "0010111"; -- AUIPC
-    constant J_TYPE_JAL     : std_logic_vector(6 downto 0) := "1101111"; -- JAL
-    constant J_TYPE_JALR    : std_logic_vector(6 downto 0) := "1100111"; -- JALR
-        
-
-
 begin
+
+    i_result(0) <= reg_rs1 + reg_rs2 when funct7 = "0000000" else reg_rs1 - reg_rs2 when funct7 = "0100000" else (others => '0');
+    i_result(1) <=  DoShift(reg_rs1, to_integer(unsigned(reg_rs2(4 downto 0))), false, true);
+    i_result(2) <= X"00000001" when signed(reg_rs1) < signed(reg_rs2) else (others => '0');
+    i_result(3) <= X"00000001" when unsigned(reg_rs1) < unsigned(reg_rs2) else (others => '0');
+    i_result(4) <= reg_rs1 xor reg_rs2;
+    i_result(5) <= DoShift(reg_rs1, to_integer(unsigned(reg_rs2(4 downto 0))), false, false) when funct7 = "0000000" else  DoShift(reg_rs1, to_integer(unsigned(reg_rs2(4 downto 0))), true, false) when funct7 = "0100000" else (others => '0');
+    i_result(6) <= reg_rs1 or reg_rs2;
+    i_result(7) <= reg_rs1 and reg_rs2;
+
+
+    result <= i_result(to_integer(unsigned(funct3)));
+
+
 
 decode_r_type: process(funct3, funct7, reg_rs1, reg_rs2, pc) --clk, pc)
     begin
@@ -85,75 +89,9 @@ decode_r_type: process(funct3, funct7, reg_rs1, reg_rs2, pc) --clk, pc)
         use_rd <= '1';
         next_pc <= pc + X"00000004";
         decode_error <= '0';
-
-        for i in 0 to 7 loop
-        result <= (others => '0');
-        end loop;
-
-
-
-
         execution_done <= '1';
 
-         case funct3 is
-             when "000" =>
-                case funct7 is
-                    when "0000000" => -- ADD
-                        result <= reg_rs1 + reg_rs2;
-
-                    when "0100000" => -- SUB
-                        result <= reg_rs1 - reg_rs2;
-
-                    when others =>
-                        decode_error <= '1';
-                end case;
-
-             when "001" => -- SLL
-                execution_done <= '1';
-                result <=  DoShift(reg_rs1, to_integer(unsigned(reg_rs2(4 downto 0))), false, true);
-                
-             when "010" => -- SLT
-                if signed(reg_rs1) < signed(reg_rs2) then
-                    result <= X"00000001";
-                else
-                    result <= (others => '0');
-                end if;
-
-             when "011" => -- SLTU
-                if unsigned(reg_rs1) < unsigned(reg_rs2) then
-                    result <= X"00000001";
-                else
-                    result <= (others => '0');
-                end if;
-
-             when "100" => -- XOR
-                result <= reg_rs1 xor reg_rs2;
-
-            when "101" =>
-                -- execution_done <= '0';
-
-                case funct7 is
-                    when "0000000" => -- SRL
-
-                        -- execution_done <= '1';
-                        result <=  DoShift(reg_rs1, to_integer(unsigned(reg_rs2(4 downto 0))), false, false);
-
-                    when "0100000" => -- SRA
-                        -- execution_done <= '1';
-                        result <=  DoShift(reg_rs1, to_integer(unsigned(reg_rs2(4 downto 0))), true, false);
-
-                    when others =>
-                        decode_error <= '1';
-                end case;
-
-            when "110" => -- OR
-                result <= reg_rs1 or reg_rs2;
-
-            when "111" => -- AND
-                result <= reg_rs1 and reg_rs2;
-            when others =>
-                 decode_error <= '1';
-         end case;
+        
     end process;
 
 end behavioural;
