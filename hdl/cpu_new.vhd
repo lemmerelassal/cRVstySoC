@@ -182,6 +182,96 @@ architecture behavioural of cpu is
         return quotient;
     end function;
 
+
+
+
+    component eu_auipc is
+    generic (entry_point : std_logic_vector(31 downto 0) := X"80010000");
+
+  Port (
+    pc, imm : in std_logic_vector(31 downto 0);
+    use_rd, execution_done, decode_error : out std_logic;
+    next_pc, result : out std_logic_vector(31 downto 0)
+
+  );
+end component;
+
+    component eu_lui is
+    generic (entry_point : std_logic_vector(31 downto 0) := X"80010000");
+
+  Port (
+    pc, imm : in std_logic_vector(31 downto 0);
+    use_rd, execution_done, decode_error : out std_logic;
+    next_pc, result : out std_logic_vector(31 downto 0)
+
+  );
+end component;
+
+    component eu_jal is
+    generic (entry_point : std_logic_vector(31 downto 0) := X"80010000");
+
+  Port (
+    pc, imm : in std_logic_vector(31 downto 0);
+    use_rd, execution_done, decode_error : out std_logic;
+    result, next_pc : out std_logic_vector(31 downto 0)
+
+  );
+end component;
+
+
+component eu_jalr is
+    generic (entry_point : std_logic_vector(31 downto 0) := X"80010000");
+
+  Port (
+    reg_rs1,pc, imm : in std_logic_vector(31 downto 0);
+
+    use_rd, use_rs1, execution_done, decode_error : out std_logic;
+
+    result, next_pc : out std_logic_vector(31 downto 0)
+  );
+end component;
+
+
+component eu_r is
+
+    PORT (
+
+        reg_rs1, reg_rs2, pc : in std_logic_vector(31 downto 0);
+    
+    funct7 : in std_logic_vector(6 downto 0);
+    funct3 : in std_logic_vector(2 downto 0);
+
+     result, next_pc : out std_logic_vector(31 downto 0);
+    use_rs1,use_rs2,use_rd, execution_done, decode_error : out std_logic
+    );
+end component;
+
+
+component eu_b is
+    generic (entry_point : std_logic_vector(31 downto 0) := X"80010000");
+
+  Port (
+    imm, reg_rs1, reg_rs2, pc : in std_logic_vector(31 downto 0);
+    funct3 : in std_logic_vector(2 downto 0);
+
+    next_pc : out std_logic_vector(31 downto 0)
+  );
+end component;
+
+component eu_i is
+
+    PORT (
+
+        reg_rs1, imm, pc : in std_logic_vector(31 downto 0);
+    
+    funct7 : in std_logic_vector(6 downto 0);
+    funct3 : in std_logic_vector(2 downto 0);
+
+     result, next_pc : out std_logic_vector(31 downto 0);
+    use_rs1,use_rs2,use_rd, execution_done, decode_error : out std_logic
+    );
+end component;
+
 begin
     i_inst_addr <= pc;
     inst_addr <= i_inst_addr;
@@ -447,249 +537,65 @@ begin
 
     end process;
 
-    execution_done(55) <= '1';
-    decode_lui: process(imm_u, pc)
-    begin
-        imm(to_integer(unsigned(U_TYPE_LUI))) <= imm_u;
-        result(to_integer(unsigned(U_TYPE_LUI))) <= imm_u;
-        use_rd(to_integer(unsigned(U_TYPE_LUI))) <= '1';
-        next_pc(to_integer(unsigned(U_TYPE_LUI))) <= pc + X"00000004";
-        --execution_done(to_integer(unsigned(U_TYPE_LUI))) <= '1';
-        decode_error(to_integer(unsigned(U_TYPE_LUI))) <= '0';
-    end process;
 
-    execution_done(23) <= '1';
-    decode_auipc: process(imm_u, pc)
-    begin
-        imm(to_integer(unsigned(U_TYPE_AUIPC))) <= imm_u;
-        use_rd(to_integer(unsigned(U_TYPE_AUIPC))) <= '1';
-        result(to_integer(unsigned(U_TYPE_AUIPC))) <= pc + imm_u;
-        next_pc(to_integer(unsigned(U_TYPE_AUIPC))) <= pc + X"00000004";
-        --execution_done(to_integer(unsigned(U_TYPE_AUIPC))) <= '1';
-        decode_error(to_integer(unsigned(U_TYPE_AUIPC))) <= '0';
-    end process;
+    eu_lui_inst: eu_lui PORT MAP(
+    pc => pc, imm => imm_u,
+    use_rd => use_rd(to_integer(unsigned(U_TYPE_AUIPC))), execution_done => execution_done(to_integer(unsigned(U_TYPE_AUIPC))), decode_error => decode_error(to_integer(unsigned(U_TYPE_AUIPC))),
+    next_pc => next_pc(to_integer(unsigned(U_TYPE_AUIPC))) , result => result(to_integer(unsigned(U_TYPE_AUIPC)))
 
-    execution_done(111) <= '1';
-    decode_jal: process(imm_j, pc)
-    begin
-        imm(to_integer(unsigned(J_TYPE_JAL))) <= imm_j;
-        use_rd(to_integer(unsigned(J_TYPE_JAL))) <= '1';
-        result(to_integer(unsigned(J_TYPE_JAL))) <= pc + X"00000004";
-        next_pc(to_integer(unsigned(J_TYPE_JAL))) <= pc + imm_j;
-        --execution_done(to_integer(unsigned(J_TYPE_JAL))) <= '1';
-        decode_error(to_integer(unsigned(J_TYPE_JAL))) <= '0';
-    end process;
+    );
 
-    execution_done(103) <= '1';
-    decode_jalr: process(reg_rs1, pc, imm_jalr)
-    begin
-        imm(to_integer(unsigned(J_TYPE_JALR))) <= imm_jalr;
-        use_rd(to_integer(unsigned(J_TYPE_JALR))) <= '1';
-        use_rs1(to_integer(unsigned(J_TYPE_JALR))) <= '1';
-        result(to_integer(unsigned(J_TYPE_JALR))) <= pc + X"00000004";
-        next_pc(to_integer(unsigned(J_TYPE_JALR))) <= (imm_jalr + reg_rs1) and X"FFFFFFFE"; --(pc + reg_rs1) and X"FFFFFFFE";
-        --execution_done(to_integer(unsigned(J_TYPE_JALR))) <= '1';
-        decode_error(to_integer(unsigned(J_TYPE_JALR))) <= '0';
-    end process;
+    
+    eu_auipc_inst: eu_auipc PORT MAP(
+    pc => pc, imm => imm_u,
+    use_rd => use_rd(to_integer(unsigned(U_TYPE_AUIPC))), execution_done => execution_done(to_integer(unsigned(U_TYPE_AUIPC))), decode_error => decode_error(to_integer(unsigned(U_TYPE_AUIPC))),
+    next_pc => next_pc(to_integer(unsigned(U_TYPE_AUIPC))) , result => result(to_integer(unsigned(U_TYPE_AUIPC)))
 
-    execution_done(99) <= '1';
-    decode_b_type: process(funct3, reg_rs1, reg_rs2, imm_b, pc)
-    begin
-        imm(to_integer(unsigned(B_TYPE))) <= imm_b;
+    );
+    
 
-        result(to_integer(unsigned(B_TYPE))) <= (others => '0');
-        use_rs1(to_integer(unsigned(B_TYPE))) <= '1';
-        use_rs2(to_integer(unsigned(B_TYPE))) <= '1';
-        next_pc(to_integer(unsigned(B_TYPE))) <= pc + X"00000004";
+    eu_jal_inst: eu_jal PORT MAP(
+        pc => pc, imm => imm_j,
+        use_rd => use_rd(to_integer(unsigned(J_TYPE_JAL))), execution_done => execution_done(to_integer(unsigned(J_TYPE_JAL))), decode_error => decode_error(to_integer(unsigned(J_TYPE_JAL))),
 
-        decode_error(to_integer(unsigned(B_TYPE))) <= '0';
-        --execution_done(to_integer(unsigned(B_TYPE))) <= '1';
+        result => result(to_integer(unsigned(J_TYPE_JAL))), next_pc => next_pc(to_integer(unsigned(J_TYPE_JAL)))
+    );
 
-        case funct3 is
-            when "000" => -- BEQ
-                if signed(reg_rs1) = signed(reg_rs2) then
-                    next_pc(to_integer(unsigned(B_TYPE))) <= pc + imm_b;
-                end if;
-            when "001" => -- BNE
-                if signed(reg_rs1) /= signed(reg_rs2) then
-                    next_pc(to_integer(unsigned(B_TYPE))) <= pc + imm_b;
-                end if;
-            when "100" => -- BLT
-                if signed(reg_rs1) < signed(reg_rs2) then
-                    next_pc(to_integer(unsigned(B_TYPE))) <= pc + imm_b;
-                end if;
-            when "101" => -- BGE
-                if signed(reg_rs1) >= signed(reg_rs2) then
-                    next_pc(to_integer(unsigned(B_TYPE))) <= pc + imm_b;
-                end if;
-            when "110" => -- BLTU
-                if unsigned(reg_rs1) < unsigned(reg_rs2) then
-                    next_pc(to_integer(unsigned(B_TYPE))) <= pc + imm_b;
-                end if;
-            when "111" => -- BGEU
-                if unsigned(reg_rs1) >= unsigned(reg_rs2) then
-                    next_pc(to_integer(unsigned(B_TYPE))) <= pc + imm_b;
-                end if;
-            when others =>
-                decode_error(to_integer(unsigned(B_TYPE))) <= '1';
-        end case;
-    end process;
+    eu_jalr_inst: eu_jalr PORT MAP(
+        reg_rs1 => reg_rs1, pc => pc, imm => imm_j,
+        use_rd => use_rd(to_integer(unsigned(J_TYPE_JALR))), use_rs1 => use_rs1(to_integer(unsigned(J_TYPE_JALR))), execution_done => execution_done(to_integer(unsigned(J_TYPE_JALR))), decode_error => decode_error(to_integer(unsigned(J_TYPE_JALR))),
+
+        result => result(to_integer(unsigned(J_TYPE_JALR))), next_pc => next_pc(to_integer(unsigned(J_TYPE_JALR)))
+    );
+
+    
+
+    
 
 
-    decode_r_type: process(selected(to_integer(unsigned(R_TYPE))), funct3, funct7, reg_rs1, reg_rs2, counter, pc, set_counter) --clk, pc)
-    begin
-        use_rs1(to_integer(unsigned(R_TYPE))) <= '1'; 
-        use_rs2(to_integer(unsigned(R_TYPE))) <= '1'; 
-        use_rd(to_integer(unsigned(R_TYPE))) <= '1';
-        next_pc(to_integer(unsigned(R_TYPE))) <= pc + X"00000004";
-        decode_error(to_integer(unsigned(R_TYPE))) <= '0';
-        result(to_integer(unsigned(R_TYPE))) <= (others => '0');
+        eu_r_inst: eu_r PORT MAP(
+        reg_rs1 => reg_rs1, reg_rs2 => reg_rs2, pc => pc, funct7 => funct7, funct3 => funct3,
+        use_rd => use_rd(to_integer(unsigned(R_TYPE))), use_rs1 => use_rs1(to_integer(unsigned(R_TYPE))),  use_rs2 => use_rs2(to_integer(unsigned(R_TYPE))), execution_done => execution_done(to_integer(unsigned(R_TYPE))), decode_error => decode_error(to_integer(unsigned(R_TYPE))),
 
+        result => result(to_integer(unsigned(R_TYPE))), next_pc => next_pc(to_integer(unsigned(R_TYPE)))
+    );
 
-        imm(to_integer(unsigned(R_TYPE))) <= reg_rs2;
+        eu_i_inst: eu_i PORT MAP(
+        reg_rs1 => reg_rs1, imm => imm_i, pc => pc, funct7 => funct7, funct3 => funct3,
+        use_rd => use_rd(to_integer(unsigned(I_TYPE))), use_rs1 => use_rs1(to_integer(unsigned(I_TYPE))),  use_rs2 => use_rs2(to_integer(unsigned(I_TYPE))), execution_done => execution_done(to_integer(unsigned(I_TYPE))), decode_error => decode_error(to_integer(unsigned(I_TYPE))),
 
-        update_rs1_from_rd(to_integer(unsigned(R_TYPE))) <= '0';
+        result => result(to_integer(unsigned(I_TYPE))), next_pc => next_pc(to_integer(unsigned(I_TYPE)))
+    );
+    
 
-            execution_done(to_integer(unsigned(R_TYPE))) <= '1';
-            dec_counter(to_integer(unsigned(R_TYPE))) <= '0';
+    eu_b_inst : eu_b PORT MAP (
+        imm => imm_b,
+        
+        reg_rs1 => reg_rs1, reg_rs2 => reg_rs2, pc => pc,
+    funct3 => funct3,
 
-            case funct3 is
-                when "000" =>
-                    case funct7 is
-                        when "0000000" => -- ADD
-                            result(to_integer(unsigned(R_TYPE))) <= reg_rs1 + reg_rs2;
-
-                        when "0100000" => -- SUB
-                            result(to_integer(unsigned(R_TYPE))) <= reg_rs1 - reg_rs2;
-
-                        when others =>
-                            decode_error(to_integer(unsigned(R_TYPE))) <= '1';
-                    end case;
-
-                when "001" => -- SLL
-                    execution_done(to_integer(unsigned(R_TYPE))) <= '1';
-                    result(to_integer(unsigned(R_TYPE))) <=  DoShift(reg_rs1, to_integer(unsigned(reg_rs2(4 downto 0))), false, true);
-                    
-                when "010" => -- SLT
-                    if signed(reg_rs1) < signed(reg_rs2) then
-                        result(to_integer(unsigned(R_TYPE))) <= X"00000001";
-                    else
-                        result(to_integer(unsigned(R_TYPE))) <= (others => '0');
-                    end if;
-
-                when "011" => -- SLTU
-                    if unsigned(reg_rs1) < unsigned(reg_rs2) then
-                        result(to_integer(unsigned(R_TYPE))) <= X"00000001";
-                    else
-                        result(to_integer(unsigned(R_TYPE))) <= (others => '0');
-                    end if;
-
-                when "100" => -- XOR
-                    result(to_integer(unsigned(R_TYPE))) <= reg_rs1 xor reg_rs2;
-
-                when "101" =>
-                    execution_done(to_integer(unsigned(R_TYPE))) <= '0';
-
-                    case funct7 is
-                        when "0000000" => -- SRL
-
-                            execution_done(to_integer(unsigned(R_TYPE))) <= '1';
-                            result(to_integer(unsigned(R_TYPE))) <=  DoShift(reg_rs1, to_integer(unsigned(reg_rs2(4 downto 0))), false, false);
-
-                        when "0100000" => -- SRA
-                            execution_done(to_integer(unsigned(R_TYPE))) <= '1';
-                            result(to_integer(unsigned(R_TYPE))) <=  DoShift(reg_rs1, to_integer(unsigned(reg_rs2(4 downto 0))), true, false);
-
-                        when others =>
-                            decode_error(to_integer(unsigned(R_TYPE))) <= '1';
-                    end case;
-
-                when "110" => -- OR
-                    result(to_integer(unsigned(R_TYPE))) <= reg_rs1 or reg_rs2;
-
-                when "111" => -- AND
-                    result(to_integer(unsigned(R_TYPE))) <= reg_rs1 and reg_rs2;
-                when others =>
-                    decode_error(to_integer(unsigned(R_TYPE))) <= '1';
-            end case;
-        --end if;
-    end process;
-
-    decode_i_type: process(selected(to_integer(unsigned(I_TYPE))), imm_i, funct3, funct7, counter, reg_rs1, pc, set_counter) --clk, pc)
-    begin
-        imm(to_integer(unsigned(I_TYPE))) <= imm_i;
-
-        decode_error(to_integer(unsigned(I_TYPE))) <= '0';
-        execution_done(to_integer(unsigned(I_TYPE))) <= '1';
-        next_pc(to_integer(unsigned(I_TYPE))) <= pc + X"00000004";
-
-        use_rs1(to_integer(unsigned(I_TYPE))) <= '1'; 
-        use_rs2(to_integer(unsigned(I_TYPE))) <= '1'; 
-        use_rd(to_integer(unsigned(I_TYPE))) <= '1';
-
-        result(to_integer(unsigned(I_TYPE))) <= (others => '0');
-
-        dec_counter(to_integer(unsigned(I_TYPE))) <= '0';
-        update_rs1_from_rd(to_integer(unsigned(I_TYPE))) <= '0';
-
-
-            case funct3 is
-                when "000" => -- ADDI
-                    result(to_integer(unsigned(I_TYPE))) <= reg_rs1 + imm_i;
-
-                when "001" =>
-                    case funct7 is
-                        when "0000000" => -- SLLI
-                            execution_done(to_integer(unsigned(I_TYPE))) <= '1';
-                            result(to_integer(unsigned(I_TYPE))) <=  DoShift(reg_rs1, to_integer(unsigned(imm_i(4 downto 0))), false, true);
-
-                        when others =>
-                            decode_error(to_integer(unsigned(I_TYPE))) <= '1';
-                    end case;
-                when "010" => -- SLTI
-                    if signed(reg_rs1) < signed(imm_i) then
-                        result(to_integer(unsigned(I_TYPE))) <= X"00000001";
-                    else
-                        result(to_integer(unsigned(I_TYPE))) <= (others => '0');
-                    end if;
-
-                when "011" => -- SLTIU
-                    if unsigned(reg_rs1) < unsigned(imm_i) then
-                        result(to_integer(unsigned(I_TYPE))) <= X"00000001";
-                    else
-                        result(to_integer(unsigned(I_TYPE))) <= (others => '0');
-                    end if;
-
-                when "100" => -- XORI
-                    result(to_integer(unsigned(I_TYPE))) <= reg_rs1 xor imm_i;
-
-                when "101" =>
-                    execution_done(to_integer(unsigned(I_TYPE))) <= '0';
-
-                    case funct7 is
-                        when "0000000" => -- SRLI
-                            execution_done(to_integer(unsigned(I_TYPE))) <= '1';
-                            result(to_integer(unsigned(I_TYPE))) <=  DoShift(reg_rs1, to_integer(unsigned(imm_i(4 downto 0))), false, false);
-
-                        when "0100000" => -- SRAI
-                            execution_done(to_integer(unsigned(I_TYPE))) <= '1';
-                            result(to_integer(unsigned(I_TYPE))) <=  DoShift(reg_rs1, to_integer(unsigned(imm_i(4 downto 0))), true, false);
-
-                        when others =>
-                            decode_error(to_integer(unsigned(I_TYPE))) <= '1';
-                    end case;
-                when "110" => -- ORI
-                    result(to_integer(unsigned(I_TYPE))) <= reg_rs1 or imm_i;
-
-                when "111" => -- ANDI
-                    result(to_integer(unsigned(I_TYPE))) <= reg_rs1 and imm_i;
-
-                when others =>
-                    decode_error(to_integer(unsigned(I_TYPE))) <= '1';
-
-            end case;
-        --end if;
-    end process;
+    next_pc => next_pc(to_integer(unsigned(B_TYPE)))
+    );
 
 
 

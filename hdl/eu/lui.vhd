@@ -9,12 +9,9 @@ entity eu_lui is
     generic (entry_point : std_logic_vector(31 downto 0) := X"80010000");
 
   Port (
-    instruction, pc, registerfile_rdata_rs1, registerfile_rdata_rs2 : in std_logic_vector(31 downto 0);
-    data_wack, selected : in std_logic;
-    funct3 : in std_logic_vector(2 downto 0);
-
-    imm, daddr, wdata, result : out std_logic_vector(31 downto 0);
-    use_rs1,use_rs2,use_rd, execution_done, decode_error, dwe : out std_logic
+    pc, imm : in std_logic_vector(31 downto 0);
+    use_rd, execution_done, decode_error : out std_logic;
+    next_pc, result : out std_logic_vector(31 downto 0)
 
   );
 end eu_lui;
@@ -85,14 +82,13 @@ architecture behavioural of eu_lui is
 
 
 begin
-       decode_lui: process(instruction, pc)
+       decode_lui: process(pc, imm)
     begin
-        imm <= decode_imm(instruction);
-        result <= decode_imm(instruction);
+        result <= imm;
         use_rd <= '1';
-        decode_error <= '0';
+        next_pc <= pc + X"00000004";
         execution_done <= '1';
-
+        decode_error <= '0';
     end process;
 
 end behavioural;
