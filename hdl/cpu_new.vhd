@@ -272,6 +272,19 @@ component eu_i is
     );
 end component;
 
+component eu_s is
+    generic (entry_point : std_logic_vector(31 downto 0) := X"80010000");
+
+  Port (
+    imm, pc, reg_rs1, reg_rs2 : in std_logic_vector(31 downto 0);
+    data_wack, selected : in std_logic;
+
+    result, next_pc, daddr, wdata : out std_logic_vector(31 downto 0);
+    use_rs1, use_rs2, execution_done, decode_error, dwe : out std_logic
+  );
+end component;
+
+
 begin
     i_inst_addr <= pc;
     inst_addr <= i_inst_addr;
@@ -485,21 +498,21 @@ begin
     n_counter <= imm(to_integer(unsigned(opcode))) when set_counter = '1' else counter - X"00000001" when decrement_counter = '1' else counter;
 
 
-    decode_store: process(imm_s, pc, reg_rs1, reg_rs2, data_wack, funct3, selected(to_integer(unsigned(S_TYPE))))
-    begin
-        imm(to_integer(unsigned(S_TYPE))) <= imm_s;
-        result(to_integer(unsigned(S_TYPE))) <= imm_s;
-        use_rs1(to_integer(unsigned(S_TYPE))) <= '1';
-        use_rs2(to_integer(unsigned(S_TYPE))) <= '1';
-        next_pc(to_integer(unsigned(S_TYPE))) <= pc + X"00000004";
-        execution_done(to_integer(unsigned(S_TYPE))) <= data_wack;
-        decode_error(to_integer(unsigned(S_TYPE))) <= '0';
+    -- decode_store: process(imm_s, pc, reg_rs1, reg_rs2, data_wack, funct3, selected(to_integer(unsigned(S_TYPE))))
+    -- begin
+    --     imm(to_integer(unsigned(S_TYPE))) <= imm_s;
+    --     result(to_integer(unsigned(S_TYPE))) <= imm_s;
+    --     use_rs1(to_integer(unsigned(S_TYPE))) <= '1';
+    --     use_rs2(to_integer(unsigned(S_TYPE))) <= '1';
+    --     next_pc(to_integer(unsigned(S_TYPE))) <= pc + X"00000004";
+    --     execution_done(to_integer(unsigned(S_TYPE))) <= data_wack;
+    --     decode_error(to_integer(unsigned(S_TYPE))) <= '0';
 
-        daddr(to_integer(unsigned(S_TYPE))) <= reg_rs1 + imm_s;
-        wdata(to_integer(unsigned(S_TYPE)))<= reg_rs2;
-        dwe(to_integer(unsigned(S_TYPE))) <= selected(to_integer(unsigned(S_TYPE)));
-        instruction_details_array(to_integer(unsigned(S_TYPE))).data_width <= funct3(1 downto 0);
-    end process;
+    --     daddr(to_integer(unsigned(S_TYPE))) <= reg_rs1 + imm_s;
+    --     wdata(to_integer(unsigned(S_TYPE)))<= reg_rs2;
+    --     dwe(to_integer(unsigned(S_TYPE))) <= selected(to_integer(unsigned(S_TYPE)));
+    --     instruction_details_array(to_integer(unsigned(S_TYPE))).data_width <= funct3(1 downto 0);
+    -- end process;
 
     decode_load: process(imm_i, pc, reg_rs1, data_rdy, data_rdata, funct3)
     begin
@@ -597,6 +610,15 @@ begin
     next_pc => next_pc(to_integer(unsigned(B_TYPE)))
     );
 
+    eu_s_inst : eu_s PORT MAP (
+
+    imm => imm_s, pc => pc, reg_rs1 => reg_rs1, reg_rs2 => reg_rs2,
+    data_wack => data_wack , selected => selected(to_integer(unsigned(S_TYPE))),
+
+    result => result(to_integer(unsigned(S_TYPE))), next_pc => next_pc(to_integer(unsigned(S_TYPE))), daddr => daddr(to_integer(unsigned(S_TYPE))), wdata => wdata(to_integer(unsigned(S_TYPE))),
+    use_rs1 => use_rs1(to_integer(unsigned(S_TYPE))), use_rs2 => use_rs2(to_integer(unsigned(S_TYPE))), execution_done => execution_done(to_integer(unsigned(S_TYPE))), decode_error => decode_error(to_integer(unsigned(S_TYPE))), dwe => dwe(to_integer(unsigned(S_TYPE)))
+
+    );
 
 
     -- Immediate fields

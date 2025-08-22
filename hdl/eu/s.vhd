@@ -9,14 +9,11 @@ entity eu_s is
     generic (entry_point : std_logic_vector(31 downto 0) := X"80010000");
 
   Port (
-    instruction, registerfile_rdata_rs1, registerfile_rdata_rs2 : in std_logic_vector(31 downto 0);
+    imm, pc, reg_rs1, reg_rs2 : in std_logic_vector(31 downto 0);
     data_wack, selected : in std_logic;
-    funct3 : in std_logic_vector(2 downto 0);
 
-    imm, daddr, wdata, result : out std_logic_vector(31 downto 0);
-    use_rs1,use_rs2,use_rd, execution_done, decode_error, dwe : out std_logic
-
-
+    result, next_pc, daddr, wdata : out std_logic_vector(31 downto 0);
+    use_rs1, use_rs2, execution_done, decode_error, dwe : out std_logic
 
 
 
@@ -90,22 +87,18 @@ architecture behavioural of eu_s is
 
 
 begin
-    decode_store: process(instruction, registerfile_rdata_rs1, registerfile_rdata_rs2, data_wack, funct3, selected)
+    decode_store: process(imm, pc, reg_rs1, reg_rs2, data_wack, selected)
     begin
-        imm <= decode_imm(instruction);
-        result <= decode_imm(instruction);
+        result <= imm;
         use_rs1 <= '1';
         use_rs2 <= '1';
+        next_pc <= pc + X"00000004";
         execution_done <= data_wack;
         decode_error <= '0';
 
-        daddr <= registerfile_rdata_rs1 + decode_imm(instruction);
-        wdata <= registerfile_rdata_rs2;
+        daddr <= reg_rs1 + imm;
+        wdata<= reg_rs2;
         dwe <= selected;
-
-        --for i in 0 to 7 loop
-         result <= decode_imm(instruction);
-    --     end loop;
     end process;
 
 end behavioural;
