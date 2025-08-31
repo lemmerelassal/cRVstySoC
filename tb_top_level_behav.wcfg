@@ -3,50 +3,183 @@
    <wave_state>
    </wave_state>
    <db_ref_list>
-      <db_ref path="tb_top_level_behav.wdb" id="1">
+      <db_ref path="tb_cpu_behav.wdb" id="1">
          <top_modules>
             <top_module name="glbl" />
             <top_module name="mylibrary" />
-            <top_module name="tb_top_level" />
+            <top_module name="tb_cpu" />
          </top_modules>
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="17130000fs"></ZoomStartTime>
-      <ZoomEndTime time="30030001fs"></ZoomEndTime>
-      <Cursor1Time time="27880000fs"></Cursor1Time>
+      <ZoomStartTime time="0.000 ns"></ZoomStartTime>
+      <ZoomEndTime time="500.001 ns"></ZoomEndTime>
+      <Cursor1Time time="100.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="111"></NameColumnWidth>
-      <ValueColumnWidth column_width="72"></ValueColumnWidth>
+      <NameColumnWidth column_width="113"></NameColumnWidth>
+      <ValueColumnWidth column_width="98"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="7" />
-   <wvobject fp_name="/tb_top_level/sim/CLK100MHZ" type="logic">
-      <obj_property name="ElementShortName">CLK100MHZ</obj_property>
-      <obj_property name="ObjectShortName">CLK100MHZ</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_top_level/sim/ck_scl" type="logic">
-      <obj_property name="ElementShortName">ck_scl</obj_property>
-      <obj_property name="ObjectShortName">ck_scl</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_top_level/sim/ck_sda" type="logic">
-      <obj_property name="ElementShortName">ck_sda</obj_property>
-      <obj_property name="ObjectShortName">ck_sda</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_top_level/sim/rst" type="logic">
+   <WVObjectSize size="40" />
+   <wvobject fp_name="/tb_cpu/sim/rst" type="logic">
       <obj_property name="ElementShortName">rst</obj_property>
       <obj_property name="ObjectShortName">rst</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_top_level/sim/uart_rxd_out" type="logic">
-      <obj_property name="ElementShortName">uart_rxd_out</obj_property>
-      <obj_property name="ObjectShortName">uart_rxd_out</obj_property>
+   <wvobject fp_name="/tb_cpu/sim/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_top_level/sim/i_i2cmaster/state" type="other">
-      <obj_property name="ElementShortName">state</obj_property>
-      <obj_property name="ObjectShortName">state</obj_property>
+   <wvobject fp_name="/tb_cpu/sim/inst_width" type="array">
+      <obj_property name="ElementShortName">inst_width[1:0]</obj_property>
+      <obj_property name="ObjectShortName">inst_width[1:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_top_level/sim/i_i2cmaster/mem_we" type="logic">
-      <obj_property name="ElementShortName">mem_we</obj_property>
-      <obj_property name="ObjectShortName">mem_we</obj_property>
+   <wvobject fp_name="/tb_cpu/sim/inst_addr" type="array">
+      <obj_property name="ElementShortName">inst_addr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">inst_addr[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/sim/inst_rdata" type="array">
+      <obj_property name="ElementShortName">inst_rdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">inst_rdata[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/sim/inst_re" type="logic">
+      <obj_property name="ElementShortName">inst_re</obj_property>
+      <obj_property name="ObjectShortName">inst_re</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/sim/inst_rdy" type="logic">
+      <obj_property name="ElementShortName">inst_rdy</obj_property>
+      <obj_property name="ObjectShortName">inst_rdy</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/sim/data_width" type="array">
+      <obj_property name="ElementShortName">data_width[1:0]</obj_property>
+      <obj_property name="ObjectShortName">data_width[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/sim/data_addr" type="array">
+      <obj_property name="ElementShortName">data_addr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">data_addr[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/sim/data_wdata" type="array">
+      <obj_property name="ElementShortName">data_wdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">data_wdata[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/sim/data_rdata" type="array">
+      <obj_property name="ElementShortName">data_rdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">data_rdata[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/sim/data_re" type="logic">
+      <obj_property name="ElementShortName">data_re</obj_property>
+      <obj_property name="ObjectShortName">data_re</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/sim/data_we" type="logic">
+      <obj_property name="ElementShortName">data_we</obj_property>
+      <obj_property name="ObjectShortName">data_we</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/sim/data_rdy" type="logic">
+      <obj_property name="ElementShortName">data_rdy</obj_property>
+      <obj_property name="ObjectShortName">data_rdy</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/sim/data_wack" type="logic">
+      <obj_property name="ElementShortName">data_wack</obj_property>
+      <obj_property name="ObjectShortName">data_wack</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/sim/pc" type="array">
+      <obj_property name="ElementShortName">pc[31:0]</obj_property>
+      <obj_property name="ObjectShortName">pc[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/sim/reg_rs1" type="array">
+      <obj_property name="ElementShortName">reg_rs1[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_rs1[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/sim/reg_rs2" type="array">
+      <obj_property name="ElementShortName">reg_rs2[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_rs2[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/sim/funct7" type="array">
+      <obj_property name="ElementShortName">funct7[6:0]</obj_property>
+      <obj_property name="ObjectShortName">funct7[6:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/sim/funct3" type="array">
+      <obj_property name="ElementShortName">funct3[2:0]</obj_property>
+      <obj_property name="ObjectShortName">funct3[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/sim/rs1" type="array">
+      <obj_property name="ElementShortName">rs1[4:0]</obj_property>
+      <obj_property name="ObjectShortName">rs1[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/sim/rs2" type="array">
+      <obj_property name="ElementShortName">rs2[4:0]</obj_property>
+      <obj_property name="ObjectShortName">rs2[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/sim/rd" type="array">
+      <obj_property name="ElementShortName">rd[4:0]</obj_property>
+      <obj_property name="ObjectShortName">rd[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/sim/regfile_we" type="logic">
+      <obj_property name="ElementShortName">regfile_we</obj_property>
+      <obj_property name="ObjectShortName">regfile_we</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/sim/execution_done" type="array">
+      <obj_property name="ElementShortName">execution_done[0:9]</obj_property>
+      <obj_property name="ObjectShortName">execution_done[0:9]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/sim/use_rd" type="array">
+      <obj_property name="ElementShortName">use_rd[0:9]</obj_property>
+      <obj_property name="ObjectShortName">use_rd[0:9]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/sim/use_rs1" type="array">
+      <obj_property name="ElementShortName">use_rs1[0:9]</obj_property>
+      <obj_property name="ObjectShortName">use_rs1[0:9]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/sim/use_rs2" type="array">
+      <obj_property name="ElementShortName">use_rs2[0:9]</obj_property>
+      <obj_property name="ObjectShortName">use_rs2[0:9]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/sim/decode_error" type="array">
+      <obj_property name="ElementShortName">decode_error[0:9]</obj_property>
+      <obj_property name="ObjectShortName">decode_error[0:9]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/sim/dwe" type="array">
+      <obj_property name="ElementShortName">dwe[0:9]</obj_property>
+      <obj_property name="ObjectShortName">dwe[0:9]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/sim/selected" type="array">
+      <obj_property name="ElementShortName">selected[0:9]</obj_property>
+      <obj_property name="ObjectShortName">selected[0:9]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/sim/next_pc" type="array">
+      <obj_property name="ElementShortName">next_pc[0:9][31:0]</obj_property>
+      <obj_property name="ObjectShortName">next_pc[0:9][31:0]</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/sim/result" type="array">
+      <obj_property name="ElementShortName">result[0:9][31:0]</obj_property>
+      <obj_property name="ObjectShortName">result[0:9][31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/sim/wdata" type="array">
+      <obj_property name="ElementShortName">wdata[0:9][31:0]</obj_property>
+      <obj_property name="ObjectShortName">wdata[0:9][31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/sim/daddr" type="array">
+      <obj_property name="ElementShortName">daddr[0:9][31:0]</obj_property>
+      <obj_property name="ObjectShortName">daddr[0:9][31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/sim/i_result" type="array">
+      <obj_property name="ElementShortName">i_result[31:0]</obj_property>
+      <obj_property name="ObjectShortName">i_result[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/sim/opcode" type="other">
+      <obj_property name="ElementShortName">opcode</obj_property>
+      <obj_property name="ObjectShortName">opcode</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/sim/imm" type="array">
+      <obj_property name="ElementShortName">imm[31:0]</obj_property>
+      <obj_property name="ObjectShortName">imm[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/sim/entry_point" type="array">
+      <obj_property name="ElementShortName">entry_point[31:0]</obj_property>
+      <obj_property name="ObjectShortName">entry_point[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_cpu/sim/eu_jal_inst/next_pc" type="array">
+      <obj_property name="ElementShortName">next_pc[31:0]</obj_property>
+      <obj_property name="ObjectShortName">next_pc[31:0]</obj_property>
    </wvobject>
 </wave_config>

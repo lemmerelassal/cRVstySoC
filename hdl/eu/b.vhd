@@ -6,7 +6,6 @@ use IEEE.std_logic_unsigned.all;
 
 
 entity eu_b is
-    generic (entry_point : std_logic_vector(31 downto 0) := X"80010000");
 
   Port (
     imm, reg_rs1, reg_rs2, pc : in std_logic_vector(31 downto 0);
@@ -26,6 +25,8 @@ begin
 
     i_next_pc(0) <= pc + imm when  signed(reg_rs1) = signed(reg_rs2) else pc + X"00000004";
     i_next_pc(1) <= pc + imm when  signed(reg_rs1) /= signed(reg_rs2) else pc + X"00000004";
+    i_next_pc(2) <= pc;
+    i_next_pc(3) <= pc;
     i_next_pc(4) <= pc + imm when  signed(reg_rs1) < signed(reg_rs2) else pc + X"00000004";
     i_next_pc(5) <= pc + imm when  signed(reg_rs1) >= signed(reg_rs2) else pc + X"00000004";
     i_next_pc(6) <= pc + imm when  unsigned(reg_rs1) < unsigned(reg_rs2) else pc + X"00000004";

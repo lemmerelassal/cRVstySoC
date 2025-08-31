@@ -6,16 +6,8 @@ package mylibrary is
 
 
 
-
-type memory_address_details_t is
-    record
-        rdy, wack : std_logic;
-        rdata : std_logic_vector(31 downto 0);
-        valid : std_logic;
-    end record;
-constant init_memory_address_details: memory_address_details_t := (rdy => '0', wack => '0', rdata => (others => '0'), valid => '0');
-type memory_address_details_array_t is array (natural range <>) of memory_address_details_t;
-
+    type opcode_t is (R_TYPE, I_TYPE, I_TYPE_LOAD, S_TYPE, B_TYPE, U_TYPE_LUI, U_TYPE_AUIPC, J_TYPE_JAL, J_TYPE_JALR, INVALID);
+    type opcode_array_t is array (opcode_t) of std_logic_vector(31 downto 0);
 
 
 end mylibrary;

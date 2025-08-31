@@ -6,7 +6,6 @@ use IEEE.std_logic_unsigned.all;
 
 
 entity eu_jalr is
-    generic (entry_point : std_logic_vector(31 downto 0) := X"80010000");
 
   Port (
     reg_rs1,pc, imm : in std_logic_vector(31 downto 0);

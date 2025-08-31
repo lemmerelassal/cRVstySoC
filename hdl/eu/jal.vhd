@@ -6,7 +6,6 @@ use IEEE.std_logic_unsigned.all;
 
 
 entity eu_jal is
-    generic (entry_point : std_logic_vector(31 downto 0) := X"80010000");
 
   Port (
     pc, imm : in std_logic_vector(31 downto 0);
@@ -20,13 +19,10 @@ architecture behavioural of eu_jal is
 begin
 
     
-
-    decode_jal: process(imm, pc)
-    begin
-        use_rd <= '1';
-        result <= pc + X"00000004";
-        next_pc <= pc + imm;
-        execution_done <= '1';
-        decode_error <= '0';
-    end process;
+  use_rd <= '1';
+  result <= pc + X"00000004";
+  execution_done <= '1';
+  decode_error <= '0';
+  next_pc <= pc + imm;
+    
 end behavioural;

@@ -3,7 +3,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 use IEEE.std_logic_unsigned.all;
 
-entity cpu is
+entity cpunew is
     generic (entry_point : std_logic_vector(31 downto 0) := X"80010000");
 
   Port (
@@ -23,12 +23,6 @@ entity cpu is
     data_re, data_we : out std_logic;
     data_rdy, data_wack : in std_logic;
 
-    -- FIFO for distribution onto other sub-CPUs (not implemented yet)
-    --fifo_we : out std_logic;
-    --fifo_full : in std_logic;
-    --fifo_wdata : out std_logic_vector(31 downto 0);
-
-
     -- Register file
     registerfile_register_selection : out std_logic_vector(4 downto 0);
     registerfile_register_selected : in std_logic_vector(4 downto 0);
@@ -43,9 +37,9 @@ entity cpu is
         
     --interrupt_error, exec_done : out std_logic
   );
-end cpu;
+end cpunew;
 
-architecture behavioural of cpu is
+architecture behavioural of cpunew is
 
     type instruction_details_t is
         record
@@ -285,6 +279,23 @@ component eu_s is
 end component;
 
 
+component eu_l is
+    generic (entry_point : std_logic_vector(31 downto 0) := X"80010000");
+
+  Port (
+    imm, pc, reg_rs1, data_rdata : in std_logic_vector(31 downto 0);
+    data_rdy : in std_logic;
+    funct3 : in std_logic_vector(2 downto 0);
+
+    result, next_pc, daddr : out std_logic_vector(31 downto 0);
+    use_rs1, use_rd, execution_done, decode_error, dwe : out std_logic
+
+
+
+
+  );
+end component;
+
 begin
     i_inst_addr <= pc;
     inst_addr <= i_inst_addr;
@@ -498,57 +509,18 @@ begin
     n_counter <= imm(to_integer(unsigned(opcode))) when set_counter = '1' else counter - X"00000001" when decrement_counter = '1' else counter;
 
 
-    -- decode_store: process(imm_s, pc, reg_rs1, reg_rs2, data_wack, funct3, selected(to_integer(unsigned(S_TYPE))))
-    -- begin
-    --     imm(to_integer(unsigned(S_TYPE))) <= imm_s;
-    --     result(to_integer(unsigned(S_TYPE))) <= imm_s;
-    --     use_rs1(to_integer(unsigned(S_TYPE))) <= '1';
-    --     use_rs2(to_integer(unsigned(S_TYPE))) <= '1';
-    --     next_pc(to_integer(unsigned(S_TYPE))) <= pc + X"00000004";
-    --     execution_done(to_integer(unsigned(S_TYPE))) <= data_wack;
-    --     decode_error(to_integer(unsigned(S_TYPE))) <= '0';
+    eu_l_inst : eu_l PORT MAP(
+            imm => imm_i, pc => pc, reg_rs1 => reg_rs1, data_rdata => data_rdata,
+        data_rdy => data_rdy,
+        funct3 => funct3,
 
-    --     daddr(to_integer(unsigned(S_TYPE))) <= reg_rs1 + imm_s;
-    --     wdata(to_integer(unsigned(S_TYPE)))<= reg_rs2;
-    --     dwe(to_integer(unsigned(S_TYPE))) <= selected(to_integer(unsigned(S_TYPE)));
-    --     instruction_details_array(to_integer(unsigned(S_TYPE))).data_width <= funct3(1 downto 0);
-    -- end process;
-
-    decode_load: process(imm_i, pc, reg_rs1, data_rdy, data_rdata, funct3)
-    begin
-        imm(to_integer(unsigned(I_TYPE_LOAD))) <= imm_i;
-        use_rs1(to_integer(unsigned(I_TYPE_LOAD))) <= '1';
-        use_rd(to_integer(unsigned(I_TYPE_LOAD))) <= '1';
-
-        next_pc(to_integer(unsigned(I_TYPE_LOAD))) <= pc + X"00000004";
-        execution_done(to_integer(unsigned(I_TYPE_LOAD))) <= data_rdy;
-        decode_error(to_integer(unsigned(I_TYPE_LOAD))) <= '0';
-
-        daddr(to_integer(unsigned(I_TYPE_LOAD))) <= reg_rs1 + imm_i;
-        instruction_details_array(to_integer(unsigned(I_TYPE_LOAD))).data_re <= '1';
-
-        result(to_integer(unsigned(I_TYPE_LOAD))) <= data_rdata;
-
-        instruction_details_array(to_integer(unsigned(I_TYPE_LOAD))).data_width <= funct3(1 downto 0);
-
-
-        if(funct3(2) = '0') then
-            case funct3(1 downto 0) is
-                when "00" =>
-                    result(to_integer(unsigned(I_TYPE_LOAD)))(31 downto 8) <= (others => data_rdata(7));
-
-                when "01" =>
-                    result(to_integer(unsigned(I_TYPE_LOAD)))(31 downto 16) <= (others => data_rdata(15));
-
-                when "11" =>
-                    decode_error(to_integer(unsigned(I_TYPE_LOAD))) <= '1';
-
-                when others =>
-
-            end case;
-        end if;
-
-    end process;
+        result => result(to_integer(unsigned(I_TYPE_LOAD))), next_pc => next_pc(to_integer(unsigned(I_TYPE_LOAD))), daddr => daddr(to_integer(unsigned(I_TYPE_LOAD))),
+        use_rs1 => use_rs1(to_integer(unsigned(I_TYPE_LOAD))),
+        use_rd => use_rd(to_integer(unsigned(I_TYPE_LOAD))),
+        execution_done => execution_done(to_integer(unsigned(I_TYPE_LOAD))),
+        decode_error => decode_error(to_integer(unsigned(I_TYPE_LOAD))),
+        dwe => dwe(to_integer(unsigned(I_TYPE_LOAD)))
+    );
 
 
     eu_lui_inst: eu_lui PORT MAP(

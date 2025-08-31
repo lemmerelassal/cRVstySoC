@@ -6,7 +6,6 @@ use IEEE.std_logic_unsigned.all;
 
 
 entity eu_r is
-    generic (entry_point : std_logic_vector(31 downto 0) := X"80010000");
 
   Port (
     reg_rs1, reg_rs2, pc : in std_logic_vector(31 downto 0);
@@ -16,11 +15,6 @@ entity eu_r is
 
      result, next_pc : out std_logic_vector(31 downto 0);
     use_rs1,use_rs2,use_rd, execution_done, decode_error : out std_logic
-
-
-
-
-
 
   );
 end eu_r;
@@ -82,8 +76,6 @@ begin
 
 
 
-decode_r_type: process(funct3, funct7, reg_rs1, reg_rs2, pc) --clk, pc)
-    begin
         use_rs1 <= '1'; 
         use_rs2 <= '1'; 
         use_rd <= '1';
@@ -92,6 +84,5 @@ decode_r_type: process(funct3, funct7, reg_rs1, reg_rs2, pc) --clk, pc)
         execution_done <= '1';
 
         
-    end process;
 
 end behavioural;
