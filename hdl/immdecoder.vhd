@@ -18,20 +18,7 @@ ARCHITECTURE behavioural OF immdecoder IS
 signal imm_i, imm_s, imm_b, imm_u, imm_j, imm_jalr : std_logic_vector(31 downto 0);
 
 begin
-    PROCESS (instruction)
-begin
-        CASE instruction(6 downto 0) IS
-            WHEN "0010011"  => imm <= imm_i;    -- Register/Immediate (ADDI, ...)
-            WHEN "0000011"  => imm <= imm_i;    -- Load (LB, LH, LW)
-            WHEN "0100011"  => imm <= imm_s;    -- Store (SB, SH, SW)
-            WHEN "1100011"  => imm <= imm_b;    -- Branch
-            WHEN "0110111"  => imm <= imm_u;    -- LUI
-            WHEN "0010111"  => imm <= imm_u;    -- AUIPC
-            WHEN "1101111"  => imm <= imm_j;    -- JAL
-            WHEN "1100111"  => imm <= imm_j;    -- JALR
-            WHEN OTHERS     => imm <= (others => '0');
-        END CASE;
-    END PROCESS;
+
 
 
      decode_imm: process(instruction)
@@ -74,5 +61,21 @@ begin
         imm_jalr(11 downto 0) <= instruction(31 downto 20);
 
     end process;
+
+
+    PROCESS (instruction)
+begin
+        CASE instruction(6 downto 0) IS
+            WHEN "0010011"  => imm <= imm_i;    -- Register/Immediate (ADDI, ...)
+            WHEN "0000011"  => imm <= imm_i;    -- Load (LB, LH, LW)
+            WHEN "0100011"  => imm <= imm_s;    -- Store (SB, SH, SW)
+            WHEN "1100011"  => imm <= imm_b;    -- Branch
+            WHEN "0110111"  => imm <= imm_u;    -- LUI
+            WHEN "0010111"  => imm <= imm_u;    -- AUIPC
+            WHEN "1101111"  => imm <= imm_j;    -- JAL
+            WHEN "1100111"  => imm <= imm_jalr;    -- JALR
+            WHEN OTHERS     => imm <= (others => '0');
+        END CASE;
+    END PROCESS;
 
 END behavioural;

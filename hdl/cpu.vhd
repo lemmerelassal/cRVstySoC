@@ -88,131 +88,131 @@ attribute keep of result, i_result, execution_done, use_rd, use_rs1, use_rs2, de
     -- constant J_TYPE_JALR    : std_logic_vector(6 downto 0) := "1100111"; -- JALR
 
     -- components
-   component eu_auipc is
+--    component eu_auipc is
 
-  Port (
-    pc, imm : in std_logic_vector(31 downto 0);
-    use_rd, execution_done, decode_error : out std_logic;
-    next_pc, result : out std_logic_vector(31 downto 0)
+--   Port (
+--     pc, imm : in std_logic_vector(31 downto 0);
+--     use_rd, execution_done, decode_error : out std_logic;
+--     next_pc, result : out std_logic_vector(31 downto 0)
 
-  );
-end component;
+--   );
+-- end component;
 
-    component eu_lui is
+--     component eu_lui is
 
-  Port (
-    pc, imm : in std_logic_vector(31 downto 0);
-    use_rd, execution_done, decode_error : out std_logic;
-    next_pc, result : out std_logic_vector(31 downto 0)
+--   Port (
+--     pc, imm : in std_logic_vector(31 downto 0);
+--     use_rd, execution_done, decode_error : out std_logic;
+--     next_pc, result : out std_logic_vector(31 downto 0)
 
-  );
-end component;
+--   );
+-- end component;
 
-    component eu_jal is
+--     component eu_jal is
 
-  Port (
-    pc, imm : in std_logic_vector(31 downto 0);
-    use_rd, execution_done, decode_error : out std_logic;
-    result, next_pc : out std_logic_vector(31 downto 0)
+--   Port (
+--     pc, imm : in std_logic_vector(31 downto 0);
+--     use_rd, execution_done, decode_error : out std_logic;
+--     result, next_pc : out std_logic_vector(31 downto 0)
 
-  );
-end component;
-
-
-component eu_jalr is
-
-  Port (
-    reg_rs1,pc, imm : in std_logic_vector(31 downto 0);
-
-    use_rd, use_rs1, execution_done, decode_error : out std_logic;
-
-    result, next_pc : out std_logic_vector(31 downto 0)
-  );
-end component;
+--   );
+-- end component;
 
 
-component eu_r is
+-- component eu_jalr is
 
-    PORT (
+--   Port (
+--     reg_rs1,pc, imm : in std_logic_vector(31 downto 0);
 
-        reg_rs1, reg_rs2, pc : in std_logic_vector(31 downto 0);
+--     use_rd, use_rs1, execution_done, decode_error : out std_logic;
+
+--     result, next_pc : out std_logic_vector(31 downto 0)
+--   );
+-- end component;
+
+
+-- component eu_r is
+
+--     PORT (
+
+--         reg_rs1, reg_rs2, pc : in std_logic_vector(31 downto 0);
     
-    funct7 : in std_logic_vector(6 downto 0);
-    funct3 : in std_logic_vector(2 downto 0);
+--     funct7 : in std_logic_vector(6 downto 0);
+--     funct3 : in std_logic_vector(2 downto 0);
 
-     result, next_pc : out std_logic_vector(31 downto 0);
-    use_rs1,use_rs2,use_rd, execution_done, decode_error : out std_logic
-    );
-end component;
+--      result, next_pc : out std_logic_vector(31 downto 0);
+--     use_rs1,use_rs2,use_rd, execution_done, decode_error : out std_logic
+--     );
+-- end component;
 
 
-component eu_b is
+-- component eu_b is
 
-  Port (
-    imm, reg_rs1, reg_rs2, pc : in std_logic_vector(31 downto 0);
-    funct3 : in std_logic_vector(2 downto 0);
+--   Port (
+--     imm, reg_rs1, reg_rs2, pc : in std_logic_vector(31 downto 0);
+--     funct3 : in std_logic_vector(2 downto 0);
 
-    next_pc : out std_logic_vector(31 downto 0)
-  );
-end component;
+--     next_pc : out std_logic_vector(31 downto 0)
+--   );
+-- end component;
 
-component eu_i is
+-- component eu_i is
 
-    PORT (
+--     PORT (
 
-        reg_rs1, imm, pc : in std_logic_vector(31 downto 0);
+--         reg_rs1, imm, pc : in std_logic_vector(31 downto 0);
     
-    funct7 : in std_logic_vector(6 downto 0);
-    funct3 : in std_logic_vector(2 downto 0);
+--     funct7 : in std_logic_vector(6 downto 0);
+--     funct3 : in std_logic_vector(2 downto 0);
 
-     result, next_pc : out std_logic_vector(31 downto 0);
-    use_rs1,use_rd, execution_done, decode_error : out std_logic
-    );
-end component;
+--      result, next_pc : out std_logic_vector(31 downto 0);
+--     use_rs1,use_rd, execution_done, decode_error : out std_logic
+--     );
+-- end component;
 
-component eu_s is
+-- component eu_s is
 
-  Port (
-    imm, pc, reg_rs1, reg_rs2 : in std_logic_vector(31 downto 0);
-    data_wack, selected : in std_logic;
+--   Port (
+--     imm, pc, reg_rs1, reg_rs2 : in std_logic_vector(31 downto 0);
+--     data_wack, selected : in std_logic;
 
-    result, next_pc, daddr, wdata : out std_logic_vector(31 downto 0);
-    use_rs1, use_rs2, execution_done, decode_error, dwe : out std_logic
-  );
-end component;
-
-
-component eu_l is
-
-  Port (
-    imm, pc, reg_rs1, data_rdata : in std_logic_vector(31 downto 0);
-    data_rdy : in std_logic;
-    funct3 : in std_logic_vector(2 downto 0);
-
-    result, next_pc, daddr : out std_logic_vector(31 downto 0);
-    use_rs1, use_rd, execution_done, decode_error : out std_logic
+--     result, next_pc, daddr, wdata : out std_logic_vector(31 downto 0);
+--     use_rs1, use_rs2, execution_done, decode_error, dwe : out std_logic
+--   );
+-- end component;
 
 
+-- component eu_l is
+
+--   Port (
+--     imm, pc, reg_rs1, data_rdata : in std_logic_vector(31 downto 0);
+--     data_rdy : in std_logic;
+--     funct3 : in std_logic_vector(2 downto 0);
+
+--     result, next_pc, daddr : out std_logic_vector(31 downto 0);
+--     use_rs1, use_rd, execution_done, decode_error : out std_logic
 
 
-  );
-end component;
 
 
-component opcodedecoder IS
-    PORT (
-        instruction : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-        opcode : OUT opcode_t
-    );
-END component;
+--   );
+-- end component;
 
 
-component immdecoder IS
-    PORT (
-        instruction : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-        imm : OUT STD_LOGIC_VECTOR(31 downto 0)
-    );
-END component;
+-- component opcodedecoder IS
+--     PORT (
+--         instruction : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+--         opcode : OUT opcode_t
+--     );
+-- END component;
+
+
+-- component immdecoder IS
+--     PORT (
+--         instruction : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+--         imm : OUT STD_LOGIC_VECTOR(31 downto 0)
+--     );
+-- END component;
 
 
 
@@ -240,18 +240,18 @@ begin
     funct3 <= inst_rdata(14 downto 12);
     rd <= inst_rdata(11 downto 7);
 
-    opcodedecoder_inst : opcodedecoder PORT MAP(
+    opcodedecoder_inst : entity work.opcodedecoder(behavioural) PORT MAP(
         instruction => inst_rdata,
         opcode => opcode
     );
 
 
-    immdecoder_inst : immdecoder PORT MAP(
+    immdecoder_inst : entity work.immdecoder(behavioural) PORT MAP(
         instruction => inst_rdata,
         imm => imm
     );
 
-    regfile_inst : regfile PORT MAP(
+    regfile_inst : entity work.regfile(behavioural) PORT MAP(
                 rst => rst, clk => clk, we => regfile_we,
             rd => rd, rs1 => rs1, rs2 => rs2,
             result => i_result,
@@ -260,7 +260,7 @@ begin
     
 
 
-    process(rst, clk)
+    process(rst, clk,execution_done, next_pc, opcode)
     begin
         if rst = '1' then
             pc <= entry_point;
@@ -282,7 +282,7 @@ begin
 
 
 
-    -- eu_l_inst : eu_l PORT MAP(
+    -- eu_l_inst : entity work.eu_l(behavioural) PORT MAP(
     --     imm => imm,
     --     pc => pc,
     --     reg_rs1 => reg_rs1,
@@ -320,7 +320,7 @@ begin
     -- );
 
 
-    eu_lui_inst: eu_lui PORT MAP(
+    eu_lui_inst: entity work.eu_lui(behavioural) PORT MAP(
         pc => pc,
         imm => imm,
         use_rd => use_rd(U_TYPE_LUI),
@@ -332,7 +332,7 @@ begin
     );
 
     
-    eu_auipc_inst: eu_auipc PORT MAP(
+    eu_auipc_inst: entity work.eu_auipc(behavioural) PORT MAP(
         pc => pc,
         imm => imm,
         use_rd => use_rd(U_TYPE_AUIPC),
@@ -344,7 +344,7 @@ begin
     );
     
 
-    eu_jal_inst: eu_jal PORT MAP(
+    eu_jal_inst: entity work.eu_jal(behavioural) PORT MAP(
         pc => pc,
         imm => imm,
         use_rd => use_rd(J_TYPE_JAL),
@@ -355,7 +355,7 @@ begin
         next_pc => next_pc(J_TYPE_JAL)
     );
 
-    eu_jalr_inst: eu_jalr PORT MAP(
+    eu_jalr_inst: entity work.eu_jalr(behavioural) PORT MAP(
         reg_rs1 => reg_rs1,
         pc => pc,
         imm => imm,
@@ -373,7 +373,7 @@ begin
     
 
 
-    eu_r_inst: eu_r PORT MAP(
+    eu_r_inst: entity work.eu_r(behavioural) PORT MAP(
         reg_rs1 => reg_rs1,
         reg_rs2 => reg_rs2,
         pc => pc,
@@ -389,7 +389,7 @@ begin
         next_pc => next_pc(R_TYPE)
     );
 
-        eu_i_inst: eu_i PORT MAP(
+        eu_i_inst: entity work.eu_i(behavioural) PORT MAP(
         reg_rs1 => reg_rs1,
         imm => imm,
         pc => pc,
@@ -405,7 +405,7 @@ begin
     );
     
 
-    eu_b_inst : eu_b PORT MAP (
+    eu_b_inst :  entity work.eu_b(behavioural) PORT MAP (
         imm => imm,
         
         reg_rs1 => reg_rs1,
