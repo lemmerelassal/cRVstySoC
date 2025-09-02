@@ -43,14 +43,7 @@ architecture behavioural of cpu is
     signal regfile_we : std_logic;
 
 
-    component regfile is
-        Port (
-            rst, clk, we : in std_logic;
-            rd, rs1, rs2 : in std_logic_vector(4 downto 0);
-            result : in std_logic_vector(31 downto 0);
-            rs1_out, rs2_out : out std_logic_vector(31 downto 0)
-        );
-    end component;
+    
 
 
         type opcode_bit_t is array (opcode_t) of std_logic;
@@ -72,147 +65,6 @@ architecture behavioural of cpu is
 attribute keep : string;
 attribute keep of result, i_result, execution_done, use_rd, use_rs1, use_rs2, decode_error, dwe, selected, next_pc, wdata, daddr : signal is "true";
 
-    -- type opcode_t is (R_TYPE, I_TYPE, I_TYPE_LOAD, S_TYPE, B_TYPE, U_TYPE_LUI, U_TYPE_AUIPC, J_TYPE_JAL, J_TYPE_JALR);
-    -- type opcode_array_t is array (opcode_t) of std_logic_vector(31 downto 0);
-    -- signal res : opcode_array_t;
-
-
-    -- constant R_TYPE         : std_logic_vector(6 downto 0) := "0110011"; -- Register/Register (ADD, ...)
-    -- constant I_TYPE         : std_logic_vector(6 downto 0) := "0010011"; -- Register/Immediate (ADDI, ...)
-    -- constant I_TYPE_LOAD    : std_logic_vector(6 downto 0) := "0000011";
-    -- constant S_TYPE         : std_logic_vector(6 downto 0) := "0100011"; -- Store (SB, SH, SW)
-    -- constant B_TYPE         : std_logic_vector(6 downto 0) := "1100011"; -- Branch
-    -- constant U_TYPE_LUI     : std_logic_vector(6 downto 0) := "0110111"; -- LUI
-    -- constant U_TYPE_AUIPC   : std_logic_vector(6 downto 0) := "0010111"; -- AUIPC
-    -- constant J_TYPE_JAL     : std_logic_vector(6 downto 0) := "1101111"; -- JAL
-    -- constant J_TYPE_JALR    : std_logic_vector(6 downto 0) := "1100111"; -- JALR
-
-    -- components
---    component eu_auipc is
-
---   Port (
---     pc, imm : in std_logic_vector(31 downto 0);
---     use_rd, execution_done, decode_error : out std_logic;
---     next_pc, result : out std_logic_vector(31 downto 0)
-
---   );
--- end component;
-
---     component eu_lui is
-
---   Port (
---     pc, imm : in std_logic_vector(31 downto 0);
---     use_rd, execution_done, decode_error : out std_logic;
---     next_pc, result : out std_logic_vector(31 downto 0)
-
---   );
--- end component;
-
---     component eu_jal is
-
---   Port (
---     pc, imm : in std_logic_vector(31 downto 0);
---     use_rd, execution_done, decode_error : out std_logic;
---     result, next_pc : out std_logic_vector(31 downto 0)
-
---   );
--- end component;
-
-
--- component eu_jalr is
-
---   Port (
---     reg_rs1,pc, imm : in std_logic_vector(31 downto 0);
-
---     use_rd, use_rs1, execution_done, decode_error : out std_logic;
-
---     result, next_pc : out std_logic_vector(31 downto 0)
---   );
--- end component;
-
-
--- component eu_r is
-
---     PORT (
-
---         reg_rs1, reg_rs2, pc : in std_logic_vector(31 downto 0);
-    
---     funct7 : in std_logic_vector(6 downto 0);
---     funct3 : in std_logic_vector(2 downto 0);
-
---      result, next_pc : out std_logic_vector(31 downto 0);
---     use_rs1,use_rs2,use_rd, execution_done, decode_error : out std_logic
---     );
--- end component;
-
-
--- component eu_b is
-
---   Port (
---     imm, reg_rs1, reg_rs2, pc : in std_logic_vector(31 downto 0);
---     funct3 : in std_logic_vector(2 downto 0);
-
---     next_pc : out std_logic_vector(31 downto 0)
---   );
--- end component;
-
--- component eu_i is
-
---     PORT (
-
---         reg_rs1, imm, pc : in std_logic_vector(31 downto 0);
-    
---     funct7 : in std_logic_vector(6 downto 0);
---     funct3 : in std_logic_vector(2 downto 0);
-
---      result, next_pc : out std_logic_vector(31 downto 0);
---     use_rs1,use_rd, execution_done, decode_error : out std_logic
---     );
--- end component;
-
--- component eu_s is
-
---   Port (
---     imm, pc, reg_rs1, reg_rs2 : in std_logic_vector(31 downto 0);
---     data_wack, selected : in std_logic;
-
---     result, next_pc, daddr, wdata : out std_logic_vector(31 downto 0);
---     use_rs1, use_rs2, execution_done, decode_error, dwe : out std_logic
---   );
--- end component;
-
-
--- component eu_l is
-
---   Port (
---     imm, pc, reg_rs1, data_rdata : in std_logic_vector(31 downto 0);
---     data_rdy : in std_logic;
---     funct3 : in std_logic_vector(2 downto 0);
-
---     result, next_pc, daddr : out std_logic_vector(31 downto 0);
---     use_rs1, use_rd, execution_done, decode_error : out std_logic
-
-
-
-
---   );
--- end component;
-
-
--- component opcodedecoder IS
---     PORT (
---         instruction : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
---         opcode : OUT opcode_t
---     );
--- END component;
-
-
--- component immdecoder IS
---     PORT (
---         instruction : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
---         imm : OUT STD_LOGIC_VECTOR(31 downto 0)
---     );
--- END component;
 
 
 
@@ -239,6 +91,9 @@ begin
     rs1 <= inst_rdata(19 downto 15);
     funct3 <= inst_rdata(14 downto 12);
     rd <= inst_rdata(11 downto 7);
+
+
+    regfile_we <= execution_done(opcode) and use_rd(opcode);
 
     opcodedecoder_inst : entity work.opcodedecoder(behavioural) PORT MAP(
         instruction => inst_rdata,
@@ -282,42 +137,42 @@ begin
 
 
 
-    -- eu_l_inst : entity work.eu_l(behavioural) PORT MAP(
-    --     imm => imm,
-    --     pc => pc,
-    --     reg_rs1 => reg_rs1,
-    --     data_rdata => data_rdata,
-    --     data_rdy => data_rdy,
-    --     funct3 => funct3,
-    --     result => result(to_integer(unsigned(I_TYPE_LOAD))),
-    --     next_pc => next_pc(to_integer(unsigned(I_TYPE_LOAD))),
-    --     daddr => daddr(to_integer(unsigned(I_TYPE_LOAD))),
-    --     use_rs1 => use_rs1(to_integer(unsigned(I_TYPE_LOAD))),
-    --     use_rd => use_rd(to_integer(unsigned(I_TYPE_LOAD))),
-    --     execution_done => execution_done(to_integer(unsigned(I_TYPE_LOAD))),
-    --     decode_error => decode_error(to_integer(unsigned(I_TYPE_LOAD)))
-    -- );
+    eu_l_inst : entity work.eu_l(behavioural) PORT MAP(
+        imm => imm,
+        pc => pc,
+        reg_rs1 => reg_rs1,
+        data_rdata => data_rdata,
+        data_rdy => data_rdy,
+        funct3 => funct3,
+        result => result(I_TYPE_LOAD),
+        next_pc => next_pc(I_TYPE_LOAD),
+        daddr => daddr(I_TYPE_LOAD),
+        use_rs1 => use_rs1(I_TYPE_LOAD),
+        use_rd => use_rd(I_TYPE_LOAD),
+        execution_done => execution_done(I_TYPE_LOAD),
+        decode_error => decode_error(I_TYPE_LOAD)
+    );
 
-        -- eu_s_inst : eu_s PORT MAP (
+        eu_s_inst : entity work.eu_s(behavioural) PORT MAP (
 
-    --     imm => imm_s,
-    --     pc => pc,
-    --     reg_rs1 => reg_rs1,
-    --     reg_rs2 => reg_rs2,
-    --     data_wack => data_wack ,
-    --     selected => selected(to_integer(unsigned(S_TYPE))),
+        imm => imm,
+        pc => pc,
+        reg_rs1 => reg_rs1,
+        reg_rs2 => reg_rs2,
+        data_wack => data_wack ,
+        selected => selected(S_TYPE),
 
-    --     result => result(to_integer(unsigned(S_TYPE))),
-    --     next_pc => next_pc(to_integer(unsigned(S_TYPE))),
-    --     daddr => daddr(to_integer(unsigned(S_TYPE))),
-    --     wdata => wdata(to_integer(unsigned(S_TYPE))),
-    --     use_rs1 => use_rs1(to_integer(unsigned(S_TYPE))),
-    --     use_rs2 => use_rs2(to_integer(unsigned(S_TYPE))),
-    --     execution_done => execution_done(to_integer(unsigned(S_TYPE))),
-    --     decode_error => decode_error(to_integer(unsigned(S_TYPE))),
-    --     dwe => dwe(to_integer(unsigned(S_TYPE)))
+        result => result(S_TYPE),
+        next_pc => next_pc(S_TYPE),
+        daddr => daddr(S_TYPE),
+        wdata => wdata(S_TYPE),
+        use_rs1 => use_rs1(S_TYPE),
+        use_rs2 => use_rs2(S_TYPE),
+        execution_done => execution_done(S_TYPE),
+        decode_error => decode_error(S_TYPE),
+        dwe => dwe(S_TYPE)
 
-    -- );
+    );
 
 
     eu_lui_inst: entity work.eu_lui(behavioural) PORT MAP(

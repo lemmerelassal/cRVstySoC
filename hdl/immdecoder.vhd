@@ -63,7 +63,7 @@ begin
     end process;
 
 
-    PROCESS (instruction)
+    PROCESS (instruction, imm_i, imm_s, imm_b, imm_u, imm_j, imm_jalr)
 begin
         CASE instruction(6 downto 0) IS
             WHEN "0010011"  => imm <= imm_i;    -- Register/Immediate (ADDI, ...)
