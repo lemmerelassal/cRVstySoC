@@ -18,9 +18,6 @@ end eu_lui;
 architecture behavioural of eu_lui is
     
 
-attribute keep : string;
-attribute keep of result, use_rd, next_pc, execution_done, decode_error : signal is "true";
-
 
 begin
 

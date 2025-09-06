@@ -199,29 +199,7 @@ begin
     );
     
 
-    eu_jal_inst: entity work.eu_jal(behavioural) PORT MAP(
-        pc => pc,
-        imm => imm,
-        use_rd => use_rd(J_TYPE_JAL),
-        execution_done => execution_done(J_TYPE_JAL),
-        decode_error => decode_error(J_TYPE_JAL),
 
-        result => result(J_TYPE_JAL),
-        next_pc => next_pc(J_TYPE_JAL)
-    );
-
-    eu_jalr_inst: entity work.eu_jalr(behavioural) PORT MAP(
-        reg_rs1 => reg_rs1,
-        pc => pc,
-        imm => imm,
-        use_rd => use_rd(J_TYPE_JALR),
-        use_rs1 => use_rs1(J_TYPE_JALR),
-        execution_done => execution_done(J_TYPE_JALR),
-        decode_error => decode_error(J_TYPE_JALR),
-
-        result => result(J_TYPE_JALR),
-        next_pc => next_pc(J_TYPE_JALR)
-    );
 
     
 
@@ -271,6 +249,29 @@ begin
         next_pc => next_pc(B_TYPE)
     );
 
+        eu_jal_inst: entity work.eu_jal(behavioural) PORT MAP(
+        pc => pc,
+        imm => imm,
+        use_rd => use_rd(J_TYPE_JAL),
+        execution_done => execution_done(J_TYPE_JAL),
+        decode_error => decode_error(J_TYPE_JAL),
+
+        result => result(J_TYPE_JAL),
+        next_pc => next_pc(J_TYPE_JAL)
+    );
+
+    eu_jalr_inst: entity work.eu_jalr(behavioural) PORT MAP(
+        reg_rs1 => reg_rs1,
+        pc => pc,
+        imm => imm,
+        use_rd => use_rd(J_TYPE_JALR),
+        use_rs1 => use_rs1(J_TYPE_JALR),
+        execution_done => execution_done(J_TYPE_JALR),
+        decode_error => decode_error(J_TYPE_JALR),
+
+        result => result(J_TYPE_JALR),
+        next_pc => next_pc(J_TYPE_JALR)
+    );
 
 
 

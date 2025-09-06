@@ -19,13 +19,11 @@ end eu_jalr;
 architecture behavioural of eu_jalr is
 
 begin
-    decode_jalr: process(reg_rs1, pc, imm)
-    begin
+
         use_rd <= '1';
         use_rs1 <= '1';
         result <= pc + X"00000004";
         next_pc <= (imm + reg_rs1) and X"FFFFFFFE"; --(pc + reg_rs1) and X"FFFFFFFE";
         execution_done <= '1';
         decode_error <= '0';
-    end process;
 end behavioural;

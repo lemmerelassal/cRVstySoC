@@ -11,7 +11,9 @@ entity eu_b is
     imm, reg_rs1, reg_rs2, pc : in std_logic_vector(31 downto 0);
     funct3 : in std_logic_vector(2 downto 0);
 
-    next_pc : out std_logic_vector(31 downto 0)
+    next_pc : out std_logic_vector(31 downto 0);
+
+    execution_done : out std_logic
   );
 end eu_b;
 
@@ -33,6 +35,8 @@ begin
     i_next_pc(7) <= pc + imm when  unsigned(reg_rs1) >= unsigned(reg_rs2) else pc + X"00000004";
 
     next_pc <= i_next_pc(to_integer(unsigned(funct3)));
+
+    execution_done <= '1';
     
 -- decode error not implemented yet
 
