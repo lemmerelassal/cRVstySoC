@@ -27,6 +27,8 @@ architecture behavioural of eu_r is
         type word_t is array (natural range <>) of std_logic_vector(31 downto 0);
     signal i_result : word_t(7 downto 0);
 
+    signal ires : word_t(4095 downto 0);
+
 
      impure function DoShift (
         value : std_logic_vector(31 downto 0); 
@@ -60,18 +62,54 @@ architecture behavioural of eu_r is
         return result;
     end function;
 
+
+    signal remainder : std_logic_vector(31 downto 0);
+    signal f3f7 : std_logic_vector(11 downto 0);
+    signal mul : std_logic_vector(31 downto 0);
+
+
 begin
 
-    i_result(0) <= reg_rs1 + reg_rs2 when funct7 = "0000000" else reg_rs1 - reg_rs2 when funct7 = "0100000" else (others => '0');
+    -- f3f7 <= '0' & funct3 & '0' & funct7;
+
+    -- ires(to_integer(X"000")) <= reg_rs1 + reg_rs2;
+    -- ires(to_integer(X"020")) <= reg_rs1 - reg_rs2;
+    -- ires(to_integer(X"001")) <= mul;
+    
+    -- ires(to_integer(X"100")) <= DoShift(reg_rs1, to_integer(unsigned(reg_rs2(4 downto 0))), false, true);
+
+    -- ires(to_integer(X"200")) <= X"00000001" when signed(reg_rs1) < signed(reg_rs2) else (others => '0');
+
+    -- ires(to_integer(X"300")) <= X"00000001" when unsigned(reg_rs1) < unsigned(reg_rs2) else (others => '0');
+
+    -- ires(to_integer(X"400")) <=  reg_rs1 xor reg_rs2;
+
+    -- ires(to_integer(X"500")) <= DoShift(reg_rs1, to_integer(unsigned(reg_rs2(4 downto 0))), false, false);
+    -- ires(to_integer(X"520")) <= DoShift(reg_rs1, to_integer(unsigned(reg_rs2(4 downto 0))), true, false);
+
+    -- ires(to_integer(X"600")) <= reg_rs1 or reg_rs2;
+    -- ires(to_integer(X"601")) <= remainder;
+
+    -- ires(to_integer(X"700")) <= reg_rs1 and reg_rs2;
+
+
+    -- result <= ires(to_integer(unsigned(f3f7)));
+
+
+
+    mul <= std_logic_vector(unsigned(reg_rs1) * unsigned(reg_rs2))(31 downto 0);
+
+
+    i_result(0) <= reg_rs1 + reg_rs2 when funct7 = "0000000" else reg_rs1 - reg_rs2 when funct7 = "0100000" 
+    else mul when funct7 = "00000001" 
+    else (others => '0');
     i_result(1) <=  DoShift(reg_rs1, to_integer(unsigned(reg_rs2(4 downto 0))), false, true);
     i_result(2) <= X"00000001" when signed(reg_rs1) < signed(reg_rs2) else (others => '0');
     i_result(3) <= X"00000001" when unsigned(reg_rs1) < unsigned(reg_rs2) else (others => '0');
     i_result(4) <= reg_rs1 xor reg_rs2;
     i_result(5) <= DoShift(reg_rs1, to_integer(unsigned(reg_rs2(4 downto 0))), false, false) when funct7 = "0000000" else  DoShift(reg_rs1, to_integer(unsigned(reg_rs2(4 downto 0))), true, false) when funct7 = "0100000" else (others => '0');
-    i_result(6) <= reg_rs1 or reg_rs2;
+    i_result(6) <= remainder when funct7 = "00000001" else reg_rs1 or reg_rs2;
     i_result(7) <= reg_rs1 and reg_rs2;
-
-
     result <= i_result(to_integer(unsigned(funct3)));
 
 
@@ -83,6 +121,18 @@ begin
         decode_error <= '0';
         execution_done <= '1';
 
+
+
+            process(reg_rs1, reg_rs2)
+    begin
+        if reg_rs2 /= X"00000000" then   -- avoid divide-by-zero
+            remainder <= std_logic_vector(
+                          unsigned(reg_rs1) rem unsigned(reg_rs2)
+                      );
+        else
+            remainder <= (others => '0');  -- define remainder as 0 on div-by-zero
+        end if;
+    end process;
         
 
 end behavioural;

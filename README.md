@@ -1,2 +1,4 @@
-# H13D
-The H1 3D is a RISC V ISA based processor.
+# cRVstySoC
+
+cRVstySoC is a RISCV CPU based System-on-Chip project.
+

@@ -24,7 +24,12 @@ entity cpu is
     data_addr, data_wdata : out std_logic_vector(31 downto 0);
     data_rdata : in std_logic_vector(31 downto 0);
     data_re, data_we : out std_logic;
-    data_rdy, data_wack : in std_logic
+    data_rdy, data_wack : in std_logic;
+
+    fifo_we : out std_logic;
+    fifo_full : in std_logic;
+    fifo_wdata : out std_logic_vector(63 downto 0)
+
   );
 end cpu;
 
@@ -74,7 +79,9 @@ signal imm : std_logic_vector(31 downto 0);
 
 begin
 
-
+    fifo_wdata <= inst_rdata & pc;
+    
+    
   
 
     i_result <= result(opcode);
@@ -119,14 +126,25 @@ begin
     begin
         if rst = '1' then
             pc <= entry_point;
+                fifo_we <= '1';
         elsif rising_edge(clk) then
+
+-- if (opcode = B_TYPE) or (opcode = J_TYPE_JAL) or (opcode = J_TYPE_JALR) then
+--     fifo_we <= '1';
+--     end if;
+
             if execution_done(opcode) = '1' then
                 pc <= next_pc(opcode);
+            end if;
+
+
+            fifo_we <= '0';
+            if fifo_full = '0' then
+                fifo_we <= '1';
             end if;
             
         end if;
     end process;
-
 
 
 
@@ -137,66 +155,66 @@ begin
 
 
 
-    eu_l_inst : entity work.eu_l(behavioural) PORT MAP(
-        imm => imm,
-        pc => pc,
-        reg_rs1 => reg_rs1,
-        data_rdata => data_rdata,
-        data_rdy => data_rdy,
-        funct3 => funct3,
-        result => result(I_TYPE_LOAD),
-        next_pc => next_pc(I_TYPE_LOAD),
-        daddr => daddr(I_TYPE_LOAD),
-        use_rs1 => use_rs1(I_TYPE_LOAD),
-        use_rd => use_rd(I_TYPE_LOAD),
-        execution_done => execution_done(I_TYPE_LOAD),
-        decode_error => decode_error(I_TYPE_LOAD)
-    );
+    -- eu_l_inst : entity work.eu_l(behavioural) PORT MAP(
+    --     imm => imm,
+    --     pc => pc,
+    --     reg_rs1 => reg_rs1,
+    --     data_rdata => data_rdata,
+    --     data_rdy => data_rdy,
+    --     funct3 => funct3,
+    --     result => result(I_TYPE_LOAD),
+    --     next_pc => next_pc(I_TYPE_LOAD),
+    --     daddr => daddr(I_TYPE_LOAD),
+    --     use_rs1 => use_rs1(I_TYPE_LOAD),
+    --     use_rd => use_rd(I_TYPE_LOAD),
+    --     execution_done => execution_done(I_TYPE_LOAD),
+    --     decode_error => decode_error(I_TYPE_LOAD)
+    -- );
 
-        eu_s_inst : entity work.eu_s(behavioural) PORT MAP (
+    --     eu_s_inst : entity work.eu_s(behavioural) PORT MAP (
 
-        imm => imm,
-        pc => pc,
-        reg_rs1 => reg_rs1,
-        reg_rs2 => reg_rs2,
-        data_wack => data_wack ,
-        selected => selected(S_TYPE),
+    --     imm => imm,
+    --     pc => pc,
+    --     reg_rs1 => reg_rs1,
+    --     reg_rs2 => reg_rs2,
+    --     data_wack => data_wack ,
+    --     selected => selected(S_TYPE),
 
-        result => result(S_TYPE),
-        next_pc => next_pc(S_TYPE),
-        daddr => daddr(S_TYPE),
-        wdata => wdata(S_TYPE),
-        use_rs1 => use_rs1(S_TYPE),
-        use_rs2 => use_rs2(S_TYPE),
-        execution_done => execution_done(S_TYPE),
-        decode_error => decode_error(S_TYPE),
-        dwe => dwe(S_TYPE)
+    --     result => result(S_TYPE),
+    --     next_pc => next_pc(S_TYPE),
+    --     daddr => daddr(S_TYPE),
+    --     wdata => wdata(S_TYPE),
+    --     use_rs1 => use_rs1(S_TYPE),
+    --     use_rs2 => use_rs2(S_TYPE),
+    --     execution_done => execution_done(S_TYPE),
+    --     decode_error => decode_error(S_TYPE),
+    --     dwe => dwe(S_TYPE)
 
-    );
+    -- );
 
 
-    eu_lui_inst: entity work.eu_lui(behavioural) PORT MAP(
-        pc => pc,
-        imm => imm,
-        use_rd => use_rd(U_TYPE_LUI),
-        execution_done => execution_done(U_TYPE_LUI),
-        decode_error => decode_error(U_TYPE_LUI),
-        next_pc => next_pc(U_TYPE_LUI) ,
-        result => result(U_TYPE_LUI)
+    -- eu_lui_inst: entity work.eu_lui(behavioural) PORT MAP(
+    --     pc => pc,
+    --     imm => imm,
+    --     use_rd => use_rd(U_TYPE_LUI),
+    --     execution_done => execution_done(U_TYPE_LUI),
+    --     decode_error => decode_error(U_TYPE_LUI),
+    --     next_pc => next_pc(U_TYPE_LUI) ,
+    --     result => result(U_TYPE_LUI)
 
-    );
+    -- );
 
     
-    eu_auipc_inst: entity work.eu_auipc(behavioural) PORT MAP(
-        pc => pc,
-        imm => imm,
-        use_rd => use_rd(U_TYPE_AUIPC),
-        execution_done => execution_done(U_TYPE_AUIPC),
-        decode_error => decode_error(U_TYPE_AUIPC),
-        next_pc => next_pc(U_TYPE_AUIPC) ,
-        result => result(U_TYPE_AUIPC)
+    -- eu_auipc_inst: entity work.eu_auipc(behavioural) PORT MAP(
+    --     pc => pc,
+    --     imm => imm,
+    --     use_rd => use_rd(U_TYPE_AUIPC),
+    --     execution_done => execution_done(U_TYPE_AUIPC),
+    --     decode_error => decode_error(U_TYPE_AUIPC),
+    --     next_pc => next_pc(U_TYPE_AUIPC) ,
+    --     result => result(U_TYPE_AUIPC)
 
-    );
+    -- );
     
 
 
@@ -245,33 +263,34 @@ begin
         reg_rs2 => reg_rs2,
         pc => pc,
         funct3 => funct3,
+        execution_done => execution_done(B_TYPE),
 
         next_pc => next_pc(B_TYPE)
     );
 
-        eu_jal_inst: entity work.eu_jal(behavioural) PORT MAP(
-        pc => pc,
-        imm => imm,
-        use_rd => use_rd(J_TYPE_JAL),
-        execution_done => execution_done(J_TYPE_JAL),
-        decode_error => decode_error(J_TYPE_JAL),
+    --     eu_jal_inst: entity work.eu_jal(behavioural) PORT MAP(
+    --     pc => pc,
+    --     imm => imm,
+    --     use_rd => use_rd(J_TYPE_JAL),
+    --     execution_done => execution_done(J_TYPE_JAL),
+    --     decode_error => decode_error(J_TYPE_JAL),
 
-        result => result(J_TYPE_JAL),
-        next_pc => next_pc(J_TYPE_JAL)
-    );
+    --     result => result(J_TYPE_JAL),
+    --     next_pc => next_pc(J_TYPE_JAL)
+    -- );
 
-    eu_jalr_inst: entity work.eu_jalr(behavioural) PORT MAP(
-        reg_rs1 => reg_rs1,
-        pc => pc,
-        imm => imm,
-        use_rd => use_rd(J_TYPE_JALR),
-        use_rs1 => use_rs1(J_TYPE_JALR),
-        execution_done => execution_done(J_TYPE_JALR),
-        decode_error => decode_error(J_TYPE_JALR),
+    -- eu_jalr_inst: entity work.eu_jalr(behavioural) PORT MAP(
+    --     reg_rs1 => reg_rs1,
+    --     pc => pc,
+    --     imm => imm,
+    --     use_rd => use_rd(J_TYPE_JALR),
+    --     use_rs1 => use_rs1(J_TYPE_JALR),
+    --     execution_done => execution_done(J_TYPE_JALR),
+    --     decode_error => decode_error(J_TYPE_JALR),
 
-        result => result(J_TYPE_JALR),
-        next_pc => next_pc(J_TYPE_JALR)
-    );
+    --     result => result(J_TYPE_JALR),
+    --     next_pc => next_pc(J_TYPE_JALR)
+    -- );
 
 
 
