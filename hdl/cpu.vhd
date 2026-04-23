@@ -7,7 +7,10 @@ LIBRARY work;
 USE work.mylibrary.ALL;
 
 entity cpu is
-    generic (entry_point : std_logic_vector(31 downto 0) := X"80010000");
+    generic (
+        entry_point : std_logic_vector(31 downto 0) := X"80010000";
+        mtvec_init  : std_logic_vector(31 downto 0) := X"80010000"  -- trap vector base
+    );
 
   Port (
     rst, clk : in std_logic;
@@ -40,6 +43,41 @@ architecture behavioural of cpu is
 
 
     signal pc, reg_rs1, reg_rs2 : std_logic_vector(31 downto 0);
+
+    -- -----------------------------------------------------------------------
+    -- CSR register file (M-mode, minimal set)
+    -- -----------------------------------------------------------------------
+    signal csr_mstatus  : std_logic_vector(31 downto 0) := (others => '0');
+    signal csr_mtvec    : std_logic_vector(31 downto 0) := mtvec_init;
+    signal csr_mscratch : std_logic_vector(31 downto 0) := (others => '0');
+    signal csr_mepc     : std_logic_vector(31 downto 0) := (others => '0');
+    signal csr_mcause   : std_logic_vector(31 downto 0) := (others => '0');
+    signal csr_mtval    : std_logic_vector(31 downto 0) := (others => '0');
+
+    -- CSR read mux output (combinational, fed to eu_csr)
+    signal csr_rdata : std_logic_vector(31 downto 0);
+    signal csr_addr  : std_logic_vector(11 downto 0);  -- instruction[31:20]
+
+    -- eu_csr write outputs
+    signal eu_csr_wdata : std_logic_vector(31 downto 0);
+    signal eu_csr_we    : std_logic;
+
+    -- eu_system trap outputs
+    signal system_trap_we    : std_logic;
+    signal system_trap_cause : std_logic_vector(31 downto 0);
+
+    -- -----------------------------------------------------------------------
+    -- RV32A: LR/SC reservation register
+    -- -----------------------------------------------------------------------
+    signal lr_valid : std_logic := '0';
+    signal lr_addr  : std_logic_vector(31 downto 0) := (others => '0');
+
+    -- eu_a control signals
+    signal eu_a_data_re    : std_logic;
+    signal eu_a_data_we    : std_logic;
+    signal eu_a_lr_we      : std_logic;
+    signal eu_a_lr_valid   : std_logic;
+    signal eu_a_lr_addr    : std_logic_vector(31 downto 0);
 
     signal funct7 : std_logic_vector(6 downto 0);
     signal funct3 : std_logic_vector(2 downto 0);
@@ -89,15 +127,38 @@ begin
     inst_re <= '1';
     inst_width <= "10";
 
-    data_addr <= daddr(opcode);
+    data_addr  <= daddr(opcode);
     data_wdata <= wdata(opcode);
-    data_we <= dwe(opcode);
+    data_we    <= dwe(opcode);
+    -- data_re: eu_a during AMO; eu_l will join here when uncommented
+    data_re    <= eu_a_data_re when opcode = A_TYPE else '0';
 
-    funct7 <= inst_rdata(31 downto 25);
-    rs2 <= inst_rdata(24 downto 20);
-    rs1 <= inst_rdata(19 downto 15);
-    funct3 <= inst_rdata(14 downto 12);
-    rd <= inst_rdata(11 downto 7);
+    -- Route eu_a's write-enable into the shared dwe array
+    dwe(A_TYPE) <= eu_a_data_we;
+
+    -- selected: tells eu_a when it is the active EU
+    selected(A_TYPE) <= '1' when opcode = A_TYPE else '0';
+
+    funct7   <= inst_rdata(31 downto 25);
+    csr_addr <= inst_rdata(31 downto 20);
+    rs2      <= inst_rdata(24 downto 20);
+    rs1      <= inst_rdata(19 downto 15);
+    funct3   <= inst_rdata(14 downto 12);
+    rd       <= inst_rdata(11 downto 7);
+
+    -- CSR read mux (combinational)
+    process(csr_addr, csr_mstatus, csr_mtvec, csr_mscratch, csr_mepc, csr_mcause, csr_mtval)
+    begin
+        case csr_addr is
+            when X"300" => csr_rdata <= csr_mstatus;
+            when X"305" => csr_rdata <= csr_mtvec;
+            when X"340" => csr_rdata <= csr_mscratch;
+            when X"341" => csr_rdata <= csr_mepc;
+            when X"342" => csr_rdata <= csr_mcause;
+            when X"343" => csr_rdata <= csr_mtval;
+            when others => csr_rdata <= (others => '0');
+        end case;
+    end process;
 
 
     regfile_we <= execution_done(opcode) and use_rd(opcode);
@@ -133,8 +194,33 @@ begin
 --     fifo_we <= '1';
 --     end if;
 
+            -- LR/SC reservation: updated mid-AMO (before execution_done)
+            if eu_a_lr_we = '1' then
+                lr_valid <= eu_a_lr_valid;
+                lr_addr  <= eu_a_lr_addr;
+            end if;
+
             if execution_done(opcode) = '1' then
                 pc <= next_pc(opcode);
+
+                -- ECALL / EBREAK: save trap state
+                if system_trap_we = '1' and opcode = SYSTEM then
+                    csr_mepc   <= pc;
+                    csr_mcause <= system_trap_cause;
+                end if;
+
+                -- CSR instruction write
+                if eu_csr_we = '1' and opcode = CSR_TYPE then
+                    case csr_addr is
+                        when X"300" => csr_mstatus  <= eu_csr_wdata;
+                        when X"305" => csr_mtvec    <= eu_csr_wdata;
+                        when X"340" => csr_mscratch <= eu_csr_wdata;
+                        when X"341" => csr_mepc     <= eu_csr_wdata;
+                        when X"342" => csr_mcause   <= eu_csr_wdata;
+                        when X"343" => csr_mtval    <= eu_csr_wdata;
+                        when others => null;
+                    end case;
+                end if;
             end if;
 
 
@@ -258,7 +344,7 @@ begin
 
     eu_b_inst :  entity work.eu_b(behavioural) PORT MAP (
         imm => imm,
-        
+
         reg_rs1 => reg_rs1,
         reg_rs2 => reg_rs2,
         pc => pc,
@@ -266,6 +352,65 @@ begin
         execution_done => execution_done(B_TYPE),
 
         next_pc => next_pc(B_TYPE)
+    );
+
+    eu_system_inst : entity work.eu_system(behavioural) PORT MAP (
+        pc             => pc,
+        opcode7        => inst_rdata(6 downto 0),
+        funct3         => funct3,
+        funct12        => csr_addr,
+        mtvec          => csr_mtvec,
+        mepc           => csr_mepc,
+        next_pc        => next_pc(SYSTEM),
+        trap_we        => system_trap_we,
+        trap_cause     => system_trap_cause,
+        execution_done => execution_done(SYSTEM),
+        decode_error   => decode_error(SYSTEM)
+    );
+
+    eu_a_inst : entity work.eu_a(behavioural) PORT MAP (
+        clk            => clk,
+        rst            => rst,
+        selected       => selected(A_TYPE),
+        reg_rs1        => reg_rs1,
+        reg_rs2        => reg_rs2,
+        pc             => pc,
+        funct5         => inst_rdata(31 downto 27),
+        data_rdata     => data_rdata,
+        data_rdy       => data_rdy,
+        data_wack      => data_wack,
+        lr_valid_in    => lr_valid,
+        lr_addr_in     => lr_addr,
+        lr_we          => eu_a_lr_we,
+        lr_valid_out   => eu_a_lr_valid,
+        lr_addr_out    => eu_a_lr_addr,
+        result         => result(A_TYPE),
+        next_pc        => next_pc(A_TYPE),
+        daddr          => daddr(A_TYPE),
+        wdata          => wdata(A_TYPE),
+        data_re        => eu_a_data_re,
+        data_we        => eu_a_data_we,
+        use_rs1        => use_rs1(A_TYPE),
+        use_rs2        => use_rs2(A_TYPE),
+        use_rd         => use_rd(A_TYPE),
+        execution_done => execution_done(A_TYPE),
+        decode_error   => decode_error(A_TYPE)
+    );
+
+    eu_csr_inst : entity work.eu_csr(behavioural) PORT MAP (
+        reg_rs1        => reg_rs1,
+        rs1_addr       => rs1,
+        funct3         => funct3,
+        pc             => pc,
+        csr_rdata      => csr_rdata,
+        result         => result(CSR_TYPE),
+        next_pc        => next_pc(CSR_TYPE),
+        csr_wdata      => eu_csr_wdata,
+        csr_we         => eu_csr_we,
+        use_rs1        => use_rs1(CSR_TYPE),
+        use_rd         => use_rd(CSR_TYPE),
+        execution_done => execution_done(CSR_TYPE),
+        decode_error   => decode_error(CSR_TYPE)
     );
 
     --     eu_jal_inst: entity work.eu_jal(behavioural) PORT MAP(

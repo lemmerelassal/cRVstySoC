@@ -28,6 +28,14 @@ begin
             WHEN "0010111"  => opcode <= U_TYPE_AUIPC;   -- AUIPC
             WHEN "1101111"  => opcode <= J_TYPE_JAL;     -- JAL
             WHEN "1100111"  => opcode <= J_TYPE_JALR;    -- JALR
+            WHEN "0101111"  => opcode <= A_TYPE;     -- LR.W, SC.W, AMO*
+            WHEN "0001111"  => opcode <= SYSTEM;    -- FENCE, FENCE.I
+            WHEN "1110011"  =>                   -- ECALL, EBREAK, MRET, WFI, CSR*
+                IF instruction(14 DOWNTO 12) = "000" THEN
+                    opcode <= SYSTEM;            -- ECALL / EBREAK / MRET / WFI
+                ELSE
+                    opcode <= CSR_TYPE;          -- CSRRW, CSRRS, CSRRC, CSRRWI, CSRRSI, CSRRCI
+                END IF;
             WHEN OTHERS     => opcode <= INVALID;
         END CASE;
     END PROCESS;

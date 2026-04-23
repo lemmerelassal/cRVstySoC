@@ -40,19 +40,27 @@ begin
         result <= data_rdata;
 
 
-        if(funct3(2) = '0') then
+        if funct3(2) = '0' then
+            -- Signed loads: sign-extend from the loaded width
             case funct3(1 downto 0) is
-                when "00" =>
+                when "00" =>  -- LB
                     result(31 downto 8) <= (others => data_rdata(7));
-
-                when "01" =>
+                when "01" =>  -- LH
                     result(31 downto 16) <= (others => data_rdata(15));
-
-                when "11" =>
-                    decode_error <= '1';
-
+                when "10" =>  -- LW: full word, no change
+                    null;
                 when others =>
-
+                    decode_error <= '1';
+            end case;
+        else
+            -- Unsigned loads: zero-extend
+            case funct3(1 downto 0) is
+                when "00" =>  -- LBU
+                    result <= X"000000" & data_rdata(7 downto 0);
+                when "01" =>  -- LHU
+                    result <= X"0000" & data_rdata(15 downto 0);
+                when others =>
+                    decode_error <= '1';
             end case;
         end if;
 
